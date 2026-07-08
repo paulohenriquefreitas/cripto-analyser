@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: crypto-analyzer
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/crypto-analyzer}
+      auto-index-creation: true
+
+server:
+  port: 8080
