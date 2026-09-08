@@ -1,0 +1,108 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "scanner": "Scanner",
+    "stock": "Detalhe do Ativo",
+    "settings": "Configurações"
+  },
+  "dashboard": {
+    "title": "Panic Scanner",
+    "subtitle": "Dashboard de momentum e timing de entrada para B3 usando somente candles diários fechados.",
+    "openScanner": "Abrir Scanner",
+    "discovered": "Descobertos",
+    "eligible": "Elegíveis",
+    "analyzed": "Analisados",
+    "qualified": "Qualificados",
+    "breakoutReady": "Rompimentos Prontos",
+    "returned": "Retornados",
+    "executionTime": "Tempo de Execução",
+    "averageAnalysisTime": "Tempo Médio por Ativo"
+  },
+  "scanner": {
+    "title": "Scanner de Mercado",
+    "subtitle": "Execute uma varredura sequencial controlada da B3 e ranqueie candidatos por momentum ou entrada.",
+    "loading": "Executando scan. Isso pode levar algum tempo porque as chamadas ao provedor são sequenciais.",
+    "emptyTitle": "Nenhum scan executado",
+    "emptyDescription": "Configure os filtros e execute um scan de mercado.",
+    "noResults": "Nenhum candidato retornado",
+    "momentum": "Momentum",
+    "entry": "Entrada",
+    "entryAnalysis": "Análise de Entrada",
+    "scoreBreakdown": "Composição do Score",
+    "reasons": "Razões",
+    "actions": {
+      "run": "Executar Scan",
+      "running": "Executando..."
+    },
+    "filters": {
+      "minimumMomentumScore": "Score Mínimo de Momentum",
+      "minimumEntryScore": "Score Mínimo de Entrada",
+      "rankingMode": "Modo de Ranking",
+      "limit": "Limite",
+      "searchTicker": "Buscar ticker"
+    }
+  },
+  "stock": {
+    "analysisDate": "Data da análise"
+  },
+  "settings": {
+    "title": "Configurações",
+    "subtitle": "Preferências locais do frontend e detalhes de conexão com o backend.",
+    "theme": "Tema",
+    "dark": "Escuro",
+    "light": "Claro",
+    "language": "Idioma",
+    "apiUrl": "URL da API",
+    "apiMode": "Modo da API"
+  },
+  "table": {
+    "ticker": "Ticker",
+    "momentumScore": "Score Momentum",
+    "entryScore": "Score Entrada",
+    "momentumStatus": "Status Momentum",
+    "entryStatus": "Status Entrada",
+    "trend": "Tendência",
+    "lastClose": "Último Fechamento",
+    "currentPrice": "Preço Atual",
+    "rsi": "RSI",
+    "adx": "ADX",
+    "atr": "ATR",
+    "relativeVolume": "Volume Relativo",
+    "distanceEma21": "Distância EMA21",
+    "pullback": "Pullback %",
+    "updated": "Atualizado"
+  },
+  "errors": {
+    "scanFailed": "Falha no scan",
+    "stockFailed": "Falha na análise do ativo"
+  },
+  "enums": {
+    "QUALIFIED": "Qualificado",
+    "WATCH": "Observação",
+    "REJECTED": "Rejeitado",
+    "BREAKOUT_READY": "Rompimento Pronto",
+    "PULLBACK_READY": "Pullback Pronto",
+    "ENTRY_READY": "Entrada Confirmada",
+    "PULLBACK_CONFIRMED": "Pullback Confirmado",
+    "BREAKOUT_CONFIRMED": "Rompimento Confirmado",
+    "PULLBACK_IN_PROGRESS": "Pullback em Andamento",
+    "WAIT_PULLBACK": "Aguardando Pullback",
+    "WAIT_BREAKOUT": "Aguardando Rompimento",
+    "POTENTIAL_BREAKOUT": "Rompimento Potencial",
+    "OVEREXTENDED": "Esticado",
+    "TREND_WEAKENING": "Tendência Enfraquecendo",
+    "INVALIDATED": "Invalidado",
+    "NO_ENTRY_SETUP": "Sem Setup de Entrada",
+    "PULLBACK": "Pullback",
+    "BREAKOUT": "Rompimento",
+    "NONE": "Nenhum",
+    "MOMENTUM": "Momentum",
+    "ENTRY": "Entrada",
+    "UPTREND": "Alta",
+    "DOWNTREND": "Baixa",
+    "SIDEWAYS": "Lateral"
+  },
+  "reasons": {
+    "MOMENTUM_QUALIFIED": "Momentum qualificado: critérios obrigatórios passaram"
+  }
+}
