@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main class="page-shell">
+    <section class="hero">
+        <div class="hero-copy">
+            <p class="eyebrow">Crypto Sequence Console</p>
+            <h1>Leitura visual das sequencias de candles.</h1>
+            <p class="hero-text">
+                Consulte o endpoint de analise e veja rapidamente maior sequencia, distribuicao por tamanho e o historico
+                consolidado de movimentos bullish e bearish.
+            </p>
+        </div>
+        <div class="hero-card">
+            <div class="hero-card-header">
+                <span class="status-dot"></span>
+                <span>API local conectada em <code>/analysis/sumarry</code></span>
+            </div>
+            <div class="hero-metrics">
+                <article>
+                    <span>Endpoint</span>
+                    <strong>Resumo de sequencias</strong>
+                </article>
+                <article>
+                    <span>Saida</span>
+                    <strong>Distribuicao por tamanho</strong>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel query-panel">
+        <form id="analysis-form" class="query-form">
+            <label>
+                <span>Ativo</span>
+                <select name="symbol">
+                    <option value="BTCUSDT" selected>BTCUSDT</option>
+                    <option value="ETHUSDT">ETHUSDT</option>
+                    <option value="BNBUSDT">BNBUSDT</option>
+                    <option value="SOLUSDT">SOLUSDT</option>
+                </select>
+            </label>
+            <label>
+                <span>Interval</span>
+                <select name="interval">
+                    <option value="1m" selected>1m</option>
+                    <option value="5m">5m</option>
+                    <option value="15m">15m</option>
+                    <option value="1h">1h</option>
+                    <option value="4h">4h</option>
+                    <option value="1d">1d</option>
+                </select>
+            </label>
+            <label>
+                <span>Requested Candles</span>
+                <input name="requestedCandles" type="number" min="1" value="1440">
+            </label>
+            <label>
+                <span>API Base URL</span>
+                <input name="baseUrl" type="text" value="" placeholder="http://localhost:8080">
+            </label>
+            <label>
+                <span>Lox Cookie</span>
+                <input name="loxCookie" type="password" value="" placeholder="session=...">
+            </label>
+            <button id="submit-button" type="submit">Analisar</button>
+        </form>
+        <p id="status-message" class="status-message">Pronto para consultar.</p>
+    </section>
+
+    <section class="panel alert-panel">
+        <div class="panel-header">
+            <div>
+                <h2>Monitor de reversao</h2>
+                <p class="panel-subtitle">Alerta quando fechar 3 candles consecutivos na mesma direcao.</p>
+            </div>
+            <span id="alert-monitor-state" class="panel-tag">parado</span>
+        </div>
+        <div class="alert-controls">
+            <label>
+                <span>Interval</span>
+                <select id="alert-interval">
+                    <option value="1m" selected>1m</option>
+                    <option value="5m">5m</option>
+                    <option value="15m">15m</option>
+                    <option value="1h">1h</option>
+                </select>
+            </label>
+            <label>
+                <span>Validade alerta (s)</span>
+                <input id="alert-window" type="number" min="1" value="20">
+            </label>
+            <button id="start-alert-monitor" type="button">Iniciar monitor</button>
+            <button id="stop-alert-monitor" type="button" disabled>Parar</button>
+            <button id="enable-browser-notifications" type="button">Ativar notificacoes</button>
+            <button id="enable-alert-sound" type="button">Ativar som</button>
+        </div>
+        <div id="active-alerts" class="active-alerts empty-state">
+            Nenhum alerta ativo.
+        </div>
+    </section>
+
+    <section class="metrics-grid">
+        <article class="panel metric-card">
+            <span>Total candles</span>
+            <strong id="total-candles">-</strong>
+        </article>
+        <article class="panel metric-card">
+            <span>Total sequencias</span>
+            <strong id="total-sequences">-</strong>
+        </article>
+        <article class="panel metric-card accent-bullish">
+            <span>Maior bullish</span>
+            <strong id="largest-bullish">-</strong>
+        </article>
+        <article class="panel metric-card accent-bearish">
+            <span>Maior bearish</span>
+            <strong id="largest-bearish">-</strong>
+        </article>
+    </section>
+
+    <section class="analytics-grid">
+        <article class="panel">
+            <div class="panel-header">
+                <h2>Distribuicao bullish</h2>
+                <span id="bullish-count" class="panel-tag">0 candles</span>
+            </div>
+            <div id="bullish-distribution" class="distribution-list empty-state">
+                Nenhuma consulta executada.
+            </div>
+        </article>
+        <article class="panel">
+            <div class="panel-header">
+                <h2>Distribuicao bearish</h2>
+                <span id="bearish-count" class="panel-tag">0 candles</span>
+            </div>
+            <div id="bearish-distribution" class="distribution-list empty-state">
+                Nenhuma consulta executada.
+            </div>
+        </article>
+    </section>
+
+    <section class="panel">
+        <div class="panel-header">
+            <h2>Sequencias retornadas</h2>
+            <span class="panel-tag">direction + length</span>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Direction</th>
+                    <th>Length</th>
+                    <th>Start Index</th>
+                    <th>End Index</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+                </thead>
+                <tbody id="sequences-body">
+                <tr>
+                    <td colspan="7" class="empty-row">Nenhuma consulta executada.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<div id="alert-toast-stack" class="alert-toast-stack" aria-live="polite"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

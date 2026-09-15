@@ -2,6 +2,7 @@
   "navigation": {
     "dashboard": "Dashboard",
     "scanner": "Scanner",
+    "winScanner": "WIN Scanner",
     "stock": "Stock Detail",
     "settings": "Settings"
   },

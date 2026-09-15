@@ -2,6 +2,7 @@
   "navigation": {
     "dashboard": "Dashboard",
     "scanner": "Scanner",
+    "winScanner": "WIN Scanner",
     "stock": "Detalhe do Ativo",
     "settings": "Configurações"
   },

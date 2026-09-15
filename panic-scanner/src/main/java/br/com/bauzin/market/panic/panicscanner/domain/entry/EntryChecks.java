@@ -1,0 +1,38 @@
+package br.com.bauzin.market.panic.panicscanner.domain.entry;
+
+/** Structured entry checks consumed by API clients without parsing reason text. */
+public record EntryChecks(
+        boolean trendQualified,
+        boolean priceAboveSma21,
+        boolean ema9AboveEma21,
+        boolean adxAccepted,
+        boolean recentHighDetected,
+        boolean pullbackDepthAccepted,
+        boolean touchedShortAverage,
+        boolean sma21Preserved,
+        boolean rsiEntryRangeAccepted,
+        boolean closedAbovePreviousHigh,
+        boolean latestCloseAbovePreviousClose,
+        boolean latestCloseAboveEma9,
+        boolean bullishConfirmationCandle,
+        boolean previousLowPreserved,
+        boolean confirmationVolumeAccepted,
+        boolean breakoutAboveRecentHigh,
+        boolean breakoutVolumeAccepted,
+        boolean liquidityAccepted,
+        boolean breakoutEligible,
+        boolean latestCloseAboveEma21,
+        boolean breakoutRsiAccepted,
+        boolean breakoutAdxAccepted,
+        boolean breakoutExtensionAccepted,
+        boolean consolidationDetected,
+        boolean overextendedFromEma21,
+        boolean trendWeakening,
+        boolean ema9SlopeNegative,
+        boolean latestCloseBelowSma21,
+        boolean adxWeakening,
+        boolean latestSwingLowBelowPrevious,
+        boolean movingAveragesConverging,
+        boolean higherLowDetected,
+        boolean sufficientEntryHistory) {
+}
