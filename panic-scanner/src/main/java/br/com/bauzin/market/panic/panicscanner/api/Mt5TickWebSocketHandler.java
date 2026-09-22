@@ -1,6 +1,7 @@
 package br.com.bauzin.market.panic.panicscanner.api;
 
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Tick;
+import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.MarketStructureLiveObserver;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.ta4j.Ta4jMt5Sma9Adapter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -26,12 +28,20 @@ public class Mt5TickWebSocketHandler extends TextWebSocketHandler {
     private TextMessage latest;
     private Mt5Tick latestTick;
     private final Ta4jMt5Sma9Adapter sma9;
+    private final MarketStructureLiveObserver structureObserver;
     private boolean available;
     private boolean closed;
 
-    public Mt5TickWebSocketHandler(ObjectMapper mapper, Ta4jMt5Sma9Adapter sma9) {
+    @Autowired
+    public Mt5TickWebSocketHandler(ObjectMapper mapper, Ta4jMt5Sma9Adapter sma9,
+                                   MarketStructureLiveObserver structureObserver) {
         this.mapper = mapper;
         this.sma9 = sma9;
+        this.structureObserver = structureObserver;
+    }
+
+    public Mt5TickWebSocketHandler(ObjectMapper mapper, Ta4jMt5Sma9Adapter sma9) {
+        this(mapper, sma9, new MarketStructureLiveObserver());
     }
 
     @Override
@@ -48,6 +58,7 @@ public class Mt5TickWebSocketHandler extends TextWebSocketHandler {
         if (closed) return;
         latestTick = tick;
         var current = sma9.onTick(tick);
+        structureObserver.onTick(tick, current);
         latest = serialize(new TickMessage("tick", "WINV26", tick.time(), tick.timeMsc(),
                 tick.last(), tick.bid(), tick.ask(), tick.volume(),
                 current == null ? null : current.value(), current == null ? null : current.time(),
@@ -67,6 +78,7 @@ public class Mt5TickWebSocketHandler extends TextWebSocketHandler {
         available = false;
         latest = null;
         latestTick = null;
+        structureObserver.reset();
         TextMessage message = status();
         sessions.values().forEach(connection -> connection.offer(message));
     }
