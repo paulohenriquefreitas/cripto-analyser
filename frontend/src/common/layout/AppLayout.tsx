@@ -23,6 +23,7 @@ export function AppLayout() {
   const items = [
     { to: '/dashboard', label: t('navigation.dashboard'), icon: <DashboardRoundedIcon /> },
     { to: '/scanner', label: t('navigation.scanner'), icon: <InsightsRoundedIcon /> },
+    { to: '/win-m5', label: 'WIN M5', icon: <ShowChartRoundedIcon /> },
     { to: '/win-scanner', label: t('navigation.winScanner'), icon: <SsidChartRoundedIcon /> },
     { to: '/stock/PETR4', label: t('navigation.stock'), icon: <ShowChartRoundedIcon /> },
     { to: '/settings', label: t('navigation.settings'), icon: <SettingsRoundedIcon /> },
