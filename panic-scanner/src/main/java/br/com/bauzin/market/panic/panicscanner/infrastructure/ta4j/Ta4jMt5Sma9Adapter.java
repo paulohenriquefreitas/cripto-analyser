@@ -3,6 +3,8 @@ package br.com.bauzin.market.panic.panicscanner.infrastructure.ta4j;
 import br.com.bauzin.market.panic.panicscanner.application.Mt5ChartCandle;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Candle;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Tick;
+import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarCandleSnapshot;
+import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.M5Bucket;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
@@ -48,7 +50,8 @@ public class Ta4jMt5Sma9Adapter {
 
     /** O(9 + 21) bounded TA4J work; no IO, no new bars and no history rebuild per tick. */
     public synchronized Current onTick(Mt5Tick tick) {
-        if (!Double.isFinite(tick.last()) || tick.last() <= 0
+        if (!Double.isFinite(tick.last()) || tick.last() <= 0 || tick.timeMsc() < 0
+                || tick.timeMsc() > Long.MAX_VALUE - M5Bucket.DURATION_MSC
                 || Math.floorDiv(tick.timeMsc(), 1000) != tick.time()
                 || (latestTick != null && tick.timeMsc() < latestTick.timeMsc())) return null;
         latestTick = tick;
@@ -57,7 +60,7 @@ public class Ta4jMt5Sma9Adapter {
 
     private Current apply(Mt5Tick tick) {
         if (series == null || series.isEmpty()
-                || Math.floorDiv(tick.time(), 300) != Math.floorDiv(currentTime, 300)) return null;
+                || M5Bucket.start(tick.timeMsc()) != M5Bucket.start(Math.multiplyExact(currentTime, 1000))) return null;
         // addPrice preserves open/volume and updates only the mutable last bar.
         // TA4J 0.22.6 invalidates last-bar indicator caches when close changes.
         series.getLastBar().addPrice(series.numFactory().numOf(tick.last()));
@@ -66,4 +69,13 @@ public class Ta4jMt5Sma9Adapter {
     }
 
     public record Current(long time, double value, Double sma21) {}
+
+    /** Read-only diagnostic view of the actual legacy bar, never a second OHLC calculation. */
+    public synchronized IntrabarCandleSnapshot candleSnapshot(String symbol) {
+        if (series == null || series.isEmpty()) return null;
+        var bar = series.getLastBar();
+        return new IntrabarCandleSnapshot(symbol, bar.getBeginTime().toEpochMilli(),
+                bar.getOpenPrice().doubleValue(), bar.getHighPrice().doubleValue(),
+                bar.getLowPrice().doubleValue(), bar.getClosePrice().doubleValue());
+    }
 }
