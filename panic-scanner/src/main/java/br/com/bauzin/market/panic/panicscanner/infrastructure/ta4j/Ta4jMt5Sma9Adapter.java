@@ -14,6 +14,10 @@ import org.ta4j.core.indicators.helpers.ClosePriceIndicator;
 
 @Component
 public class Ta4jMt5Sma9Adapter {
+    private final br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.LegacyShadowCapture shadowCapture =
+            new br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.LegacyShadowCapture();
+    private long syncGeneration;
+    private long syncReplayThrough = -1;
     private BarSeries series;
     private SMAIndicator sma;
     private SMAIndicator sma21;
@@ -42,6 +46,8 @@ public class Ta4jMt5Sma9Adapter {
                 sma = indicator;
                 sma21 = indicator21;
                 currentTime = candles.getLast().time();
+                syncGeneration++;
+                syncReplayThrough = latestTick == null ? -1 : latestTick.timeMsc();
                 if (latestTick != null) apply(latestTick);
             }
         }
@@ -55,7 +61,16 @@ public class Ta4jMt5Sma9Adapter {
                 || Math.floorDiv(tick.timeMsc(), 1000) != tick.time()
                 || (latestTick != null && tick.timeMsc() < latestTick.timeMsc())) return null;
         latestTick = tick;
-        return apply(tick);
+        Current result = apply(tick);
+        if (shadowCapture.enabled()) {
+            // Capture under the SAME adapter lock as the update. No IO, callback,
+            // consumer code, or synchronization of the shadow engine on this path.
+            shadowCapture.offer(new br.com.bauzin.market.panic.panicscanner.application.win.intrabar.ShadowObservation(
+                    "WINV26", tick.timeMsc(), tick.last(), candleSnapshot("WINV26"),
+                    result == null ? null : result.value(), result == null ? null : result.sma21(),
+                    tick.timeMsc() > syncReplayThrough, syncGeneration));
+        }
+        return result;
     }
 
     private Current apply(Mt5Tick tick) {
@@ -69,6 +84,10 @@ public class Ta4jMt5Sma9Adapter {
     }
 
     public record Current(long time, double value, Double sma21) {}
+
+    public br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.LegacyShadowCapture shadowCapture() {
+        return shadowCapture;
+    }
 
     /** Read-only diagnostic view of the actual legacy bar, never a second OHLC calculation. */
     public synchronized IntrabarCandleSnapshot candleSnapshot(String symbol) {
