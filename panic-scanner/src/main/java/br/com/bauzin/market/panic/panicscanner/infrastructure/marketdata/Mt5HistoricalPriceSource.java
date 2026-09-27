@@ -14,15 +14,27 @@ public final class Mt5HistoricalPriceSource {
             .enable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES);
 
     public record Header(String symbol, long startMsc, long endMsc,
-                         List<Mt5Candle> warmup, List<Mt5Candle> official) {}
+                         List<Mt5Candle> warmup, List<Mt5Candle> official, Integer schema) {}
     public record Statistics(long eventsRead, long lastEvents) {}
 
     public Statistics stream(Reader input, Consumer<Header> onHeader,
                              Consumer<CanonicalPriceEvent> onEvent) throws IOException {
+        return streamInternal(input, onHeader, event -> onEvent.accept(event.priceEvent()), false);
+    }
+
+    public Statistics streamHistorical(Reader input, Consumer<Header> onHeader,
+                                       Consumer<HistoricalCanonicalPriceEvent> onEvent) throws IOException {
+        return streamInternal(input, onHeader, onEvent, true);
+    }
+
+    private Statistics streamInternal(Reader input, Consumer<Header> onHeader,
+                                      Consumer<HistoricalCanonicalPriceEvent> onEvent,
+                                      boolean requireVolume) throws IOException {
         BufferedReader reader = input instanceof BufferedReader b ? b : new BufferedReader(input);
         JsonNode first = parse(reader.readLine());
         if (!"header".equals(first.path("type").asText())) throw new IOException("Missing header");
         ((com.fasterxml.jackson.databind.node.ObjectNode) first).remove("type");
+        if (!first.has("schema")) ((com.fasterxml.jackson.databind.node.ObjectNode) first).putNull("schema");
         Header header = JSON.treeToValue(first, Header.class);
         if (header.symbol() == null || header.warmup() == null || header.official() == null
                 || header.startMsc() < 0 || header.endMsc() <= header.startMsc()
@@ -52,7 +64,13 @@ public final class Mt5HistoricalPriceSource {
             var event = Mt5CanonicalPriceMapper.historical(header.symbol(), timestamp,
                     node.get("last").doubleValue(), (int) flags);
             if (event.isPresent()) {
-                onEvent.accept(event.get());
+                JsonNode volume = node.get("volumeReal");
+                if (requireVolume && (volume == null || !volume.isNumber() || !Double.isFinite(volume.doubleValue())
+                        || volume.doubleValue() < 0)) {
+                    throw new IOException("Missing or invalid volumeReal");
+                }
+                onEvent.accept(new HistoricalCanonicalPriceEvent(
+                        event.get(), volume == null ? 0 : volume.doubleValue(), (int) flags, selected));
                 selected++;
             }
         }

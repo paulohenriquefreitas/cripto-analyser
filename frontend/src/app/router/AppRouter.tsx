@@ -8,6 +8,7 @@ import { StockDetailPage } from '@/features/stock/pages/StockDetailPage';
 import { WinScannerPage } from '@/features/win/pages/WinScannerPage';
 
 import { WinMt5Page } from '@/features/win/pages/WinMt5Page';
+import { ReplayPage } from '@/features/replay/pages/ReplayPage';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: 'dashboard', element: <DashboardPage /> },
       { path: 'scanner', element: <ScannerPage /> },
       { path: 'win-m5', element: <WinMt5Page /> },
+      { path: 'replay', element: <ReplayPage /> },
       { path: 'win-scanner', element: <WinScannerPage /> },
       { path: 'stock/:ticker', element: <StockDetailPage /> },
       { path: 'settings', element: <SettingsPage /> },

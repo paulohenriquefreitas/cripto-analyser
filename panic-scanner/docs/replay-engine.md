@@ -2,9 +2,9 @@
 
 ## Objetivo e arquitetura
 
-O replay transmite eventos normalizados para os mesmos motores usados no LIVE.
-Não contém estratégia, sinais, alertas, avaliação financeira ou regras de
-mercado.
+O Trade Replay transmite eventos normalizados para os mesmos motores usados no
+LIVE. O Replay visual M5 também publica marcadores estruturais e o setup
+experimental Pullback09 descrito abaixo; nenhum desses caminhos executa ordens.
 
 ```text
 Historical Source
@@ -62,7 +62,7 @@ em memória.
 
 ## Sessão e warm-up
 
-`ReplaySession` usa limites inclusivos para análise:
+`M5ReplaySession` usa limites inclusivos para análise:
 
 ```text
 [loadStart, analysisStart)  WARMUP
@@ -151,11 +151,33 @@ estático (`polled=1`) e nenhum evento novo, portanto não forneceu uma segunda
 prova LIVE. A diferença semântica acima é suficiente para impedir alegação de
 paridade exata.
 
-Consequentemente, esta versão **não conecta `COPY_TICKS_ALL` diretamente ao
-MarketStructureEngine**. Fazer isso criaria uma trajetória intrabar diferente
-da fonte LIVE atual. Antes dessa conexão será necessário definir e validar uma
-fonte canônica de eventos de preço e um construtor M5 capaz de avançar buckets
-com a mesma regra nos dois caminhos.
+O Replay visual M5 consome o histórico `LAST` pelo `IntrabarM5Processor` e
+envia as amostras causais ao `MarketStructureEngine`; isso não altera nem
+substitui a fonte LIVE. A ocorrência visual
+`SMA21_SAME_SIDE_MOVE_AWAY` usa o mesmo classificador do
+`CanonicalStructuralOutcomeReplayRunner` e é publicada separadamente dos
+`MARKET_STATE` coalescidos. O `LAST` que conclui `INTERACTION_COMPLETED` define
+o instante e o preço da ocorrência.
+
+### Pullback09 ↑ no Replay visual M5
+
+`Pullback09Setup` mantém uma máquina de estados independente da regra SMA21:
+
+```text
+WAITING_FOR_CRZ09 → WAITING_FOR_RJ09 → WAITING_FOR_CONFIRMATION
+```
+
+`CRZ09 ↑` exige abertura observada abaixo da SMA9, cruzamento intrabar de baixo
+para cima e fechamento acima da SMA9 final do candle. `RJ09 ↑` precisa ocorrer
+no candle M5 seguinte: abrir acima da SMA9, retornar até/interagir com ela e
+fechar acima. O `PULLB09 ↑` confirma no primeiro LAST do terceiro candle que
+ultrapassa estritamente a máxima do candle de rejeição; fechamento do terceiro
+candle não é necessário.
+
+CRZ09 e RJ09 são conhecidos no primeiro LAST do candle seguinte, que torna
+observável o fechamento do candle analisado. A mensagem conserva separadamente
+o instante de reconhecimento e o candle M5 ao qual pertence o marcador.
+Confirmação, expiração e retomada após pausa são processadas em ordem de evento.
 
 ## Execução manual
 
@@ -180,6 +202,6 @@ criou, com término forçado limitado como fallback.
 
 ## Limites desta versão
 
-Não existem Historical Store, replay visual, estratégia, alertas, confluência,
-CVD, MFE/MAE, target/stop, custos, slippage ou avaliação. A infraestrutura para
-essas etapas termina nos engines e em seus resultados objetivos.
+Não existem Historical Store, alertas, confluência, CVD, MFE/MAE, target/stop,
+custos, slippage ou execução de ordens no Replay visual. Ele exibe candles e
+marcadores das ocorrências estruturais e do setup Pullback09 ↑ experimental.

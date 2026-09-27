@@ -25,7 +25,7 @@ public final class TradeReplayRunner {
         this.nanoTime = Objects.requireNonNull(nanoTime, "nanoTime");
     }
 
-    public ReplayRunResult run(ReplaySession session, ReplaySource<MarketTrade> source,
+    public ReplayRunResult run(br.com.bauzin.market.panic.panicscanner.domain.replay.ReplaySession session, ReplaySource<MarketTrade> source,
                                TradeReplayObserver observer) throws IOException, InterruptedException {
         Objects.requireNonNull(session, "session");
         Objects.requireNonNull(source, "source");
@@ -41,7 +41,7 @@ public final class TradeReplayRunner {
     }
 
     private final class Accumulator {
-        private final ReplaySession session;
+        private final br.com.bauzin.market.panic.panicscanner.domain.replay.ReplaySession session;
         private final TradeReplayObserver observer;
         private long read, processed, warmup, analysis, buy, sell, ambiguous;
         private double totalVolume, buyVolume, sellVolume, ambiguousVolume;
@@ -49,7 +49,7 @@ public final class TradeReplayRunner {
         private long firstTime, lastTime;
         private long previousTime = -1;
 
-        private Accumulator(ReplaySession session, TradeReplayObserver observer) {
+        private Accumulator(br.com.bauzin.market.panic.panicscanner.domain.replay.ReplaySession session, TradeReplayObserver observer) {
             this.session = session;
             this.observer = observer;
         }

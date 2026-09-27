@@ -6,6 +6,7 @@ import java.util.Optional;
 /** Source-specific policy lives here, never in the candle processor. */
 public final class Mt5CanonicalPriceMapper {
     public static final int TICK_FLAG_LAST = 8;
+    public static final int TICK_FLAG_VOLUME = 16;
     private Mt5CanonicalPriceMapper() {}
 
     public static CanonicalPriceEvent liveSnapshot(String symbol, Mt5Tick tick) {

@@ -5,6 +5,7 @@ import json
 import sys
 
 M5_MSC = 300_000
+HISTORY_SCHEMA = 2
 
 
 def utc(time_msc):
@@ -28,7 +29,7 @@ def export(mt5, symbol, start, end, emit):
     official = mt5.copy_rates_range(symbol, mt5.TIMEFRAME_M5, utc(start), utc(end - 1))
     if warmup is None or len(warmup) < 20 or official is None or len(official) == 0:
         raise RuntimeError(f"Missing closed warm-up or official rates: {mt5.last_error()}")
-    emit({"type": "header", "symbol": symbol, "startMsc": start, "endMsc": end,
+    emit({"type": "header", "schema": HISTORY_SCHEMA, "symbol": symbol, "startMsc": start, "endMsc": end,
           "warmup": [candle(r) for r in warmup if int(r["time"]) * 1000 < start],
           "official": [candle(r) for r in official if start <= int(r["time"]) * 1000 < end]})
     count = 0
@@ -51,7 +52,8 @@ def export(mt5, symbol, start, end, emit):
                 raise ValueError("MT5 returned inconsistent time/time_msc")
             previous = timestamp
             emit({"type": "tick", "timeMsc": timestamp,
-                  "last": float(row["last"]), "flags": int(row["flags"])})
+                  "last": float(row["last"]), "flags": int(row["flags"]),
+                  "volumeReal": float(row["volume_real"])})
             count += 1
     emit({"type": "end", "rows": count})
 

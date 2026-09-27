@@ -27,9 +27,22 @@ export function updateLastCandle(candle: Mt5Candle, tick: LiveTick): Change {
   } };
 }
 
-type ChartSink = {
+export type ChartSink = {
   setHistory: (candles: Mt5Candle[]) => void;
   updateLast: (candle: Mt5Candle) => void;
+  addRuleOccurrence?: (marker: ReplayRuleMarker) => void;
+  addReplaySetupMarker?: (marker: ReplaySetupMarker) => void;
+};
+
+export type ReplayRuleMarker = {
+  occurrenceId: string;
+  time: number;
+  direction: 'LONG' | 'SHORT';
+};
+export type ReplaySetupMarker = {
+  eventId: string;
+  time: number;
+  setupType: 'CRZ09_UP' | 'RJ09_UP' | 'PULLB09_UP';
 };
 type Snapshot = { loading: boolean; error: string | null; count: number };
 

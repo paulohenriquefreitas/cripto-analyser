@@ -6,8 +6,9 @@ def rate(time):
     return dict(time=time, open=100, high=110, low=90, close=100, tick_volume=10, real_volume=100)
 
 
-def tick(time, last=100, flags=8):
-    return dict(time=time // 1000, time_msc=time, last=last, flags=flags)
+def tick(time, last=100, flags=8, volume_real=1):
+    return dict(time=time // 1000, time_msc=time, last=last, flags=flags,
+                volume_real=volume_real)
 
 
 class FakeMt5:

@@ -16,7 +16,7 @@ public final class Mt5SessionVwap {
         this.series = series;
         this.indicator = new AnchoredVWAPIndicator(series, new AbstractIndicator<Boolean>(series) {
             @Override public Boolean getValue(int index) {
-                return index == series.getBeginIndex() || !session(index).equals(session(index - 1));
+                return index <= series.getBeginIndex() || !session(index).equals(session(index - 1));
             }
             @Override public int getCountOfUnstableBars() { return 0; }
         });
