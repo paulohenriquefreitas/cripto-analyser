@@ -17,6 +17,12 @@ public final class Pullback09Setup {
     public record Event(String eventId, EventType eventType, String symbol,
                         long timeMsc, long candleTimeMsc, double price) {}
 
+    public record Pullback09Context(
+            IntrabarCandleSnapshot rejectionCandle,
+            double rejectionMinDistanceToSma9,
+            double rejectionHigh,
+            long rejectionBucket) {}
+
     private enum State { WAITING_FOR_CRZ09, WAITING_FOR_RJ09, WAITING_FOR_CONFIRMATION }
 
     private State state = State.WAITING_FOR_CRZ09;
@@ -33,9 +39,13 @@ public final class Pullback09Setup {
     private boolean currentObservedBelowSma9;
     private boolean currentCrossedUp;
     private boolean currentTouchedSma9;
+    private double currentMinDistanceToSma9 = Double.NaN;
     private long candidateCandle1Bucket = -1;
     private double rejectionHigh;
     private long rejectionBucket = -1;
+    private IntrabarCandleSnapshot rejectionCandle;
+    private double rejectionMinDistanceToSma9 = Double.NaN;
+    private Pullback09Context lastPullback09Context;
     private long earliestCrzBucket = -1;
     private long occurrenceNumber;
 
@@ -62,9 +72,12 @@ public final class Pullback09Setup {
             updateCurrentCandle(marketState);
         }
 
-        confirmBreakout(marketState, events);
         lastTimeMsc = marketState.timeMsc();
         return List.copyOf(events);
+    }
+
+    public synchronized Pullback09Context lastPullback09Context() {
+        return lastPullback09Context;
     }
 
     private void beginCandle(IntrabarMarketState marketState) {
@@ -81,6 +94,9 @@ public final class Pullback09Setup {
         currentObservedBelowSma9 = currentStartedBelowSma9;
         currentCrossedUp = false;
         currentTouchedSma9 = false;
+        currentMinDistanceToSma9 = Double.isFinite(currentSma9)
+                ? Math.abs(currentOpenPrice - currentSma9)
+                : Double.NaN;
         observeUpwardCross(marketState);
         observeSma9Retest(marketState);
     }
@@ -89,6 +105,12 @@ public final class Pullback09Setup {
         currentCandle = marketState.candle();
         currentClose = marketState.candle().close();
         currentSma9 = sma9(marketState);
+        if (Double.isFinite(currentSma9)) {
+            double dist = Math.abs(marketState.price() - currentSma9);
+            currentMinDistanceToSma9 = Double.isNaN(currentMinDistanceToSma9)
+                    ? dist
+                    : Math.min(currentMinDistanceToSma9, dist);
+        }
         observeUpwardCross(marketState);
         observeSma9Retest(marketState);
     }
@@ -133,6 +155,8 @@ public final class Pullback09Setup {
                 events.add(event(EventType.RJ09_UP, availableAtTimeMsc, currentBucket, currentClose));
                 rejectionHigh = currentHigh();
                 rejectionBucket = currentBucket;
+                rejectionCandle = currentCandle;
+                rejectionMinDistanceToSma9 = currentMinDistanceToSma9;
                 state = State.WAITING_FOR_CONFIRMATION;
             } else {
                 resetCandidate();
@@ -142,6 +166,7 @@ public final class Pullback09Setup {
 
         if (state == State.WAITING_FOR_CONFIRMATION
                 && currentBucket >= rejectionBucket + M5Bucket.DURATION_MSC) {
+            confirmClosedCandle(availableAtTimeMsc, events);
             resetCandidate();
         }
     }
@@ -158,19 +183,20 @@ public final class Pullback09Setup {
                 && currentClose > currentSma9 && currentClose < currentCandle.open();
     }
 
-    private void confirmBreakout(IntrabarMarketState marketState, List<Event> events) {
-        if (state != State.WAITING_FOR_CONFIRMATION) return;
+    private void confirmClosedCandle(long availableAtTimeMsc, List<Event> events) {
         long confirmationBucket = rejectionBucket + M5Bucket.DURATION_MSC;
-        long observedBucket = marketState.candle().bucketStartTimeMsc();
-        if (observedBucket > confirmationBucket) {
-            resetCandidate();
-            return;
-        }
-        if (observedBucket == confirmationBucket && marketState.price() > rejectionHigh) {
-            events.add(event(EventType.PULLB09_UP, marketState.timeMsc(),
-                    observedBucket, marketState.price()));
-            resetCandidate();
-            earliestCrzBucket = observedBucket + M5Bucket.DURATION_MSC;
+        if (currentBucket == confirmationBucket
+                && currentClose > currentCandle.open()
+                && currentHigh() > rejectionHigh
+                && currentClose > rejectionHigh) {
+            lastPullback09Context = new Pullback09Context(
+                    rejectionCandle,
+                    rejectionMinDistanceToSma9,
+                    rejectionHigh,
+                    rejectionBucket);
+            events.add(event(EventType.PULLB09_UP, availableAtTimeMsc,
+                    currentBucket, currentClose));
+            earliestCrzBucket = currentBucket + M5Bucket.DURATION_MSC;
         }
     }
 
@@ -184,6 +210,8 @@ public final class Pullback09Setup {
         candidateCandle1Bucket = -1;
         rejectionBucket = -1;
         rejectionHigh = 0;
+        rejectionCandle = null;
+        rejectionMinDistanceToSma9 = Double.NaN;
     }
 
     private double currentHigh() {

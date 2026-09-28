@@ -55,6 +55,7 @@ public final class M5ReplaySession {
     private final Path historyFile;
     private final String requestedSymbol;
     private final Mt5HistoricalPriceSource source;
+    private final Pullback09ResearchEngine researchEngine = new Pullback09ResearchEngine();
     private final List<Consumer<Snapshot>> listeners = new CopyOnWriteArrayList<>();
     private final List<Consumer<RuleOccurrenceMessage>> ruleOccurrenceListeners = new CopyOnWriteArrayList<>();
     private final List<Consumer<SetupEventMessage>> setupEventListeners = new CopyOnWriteArrayList<>();
@@ -89,6 +90,10 @@ public final class M5ReplaySession {
     public Metrics metrics() {
         return new Metrics(eventsProcessed.sum(), marketStatesPublished.sum(), coalescedMarketStates.sum());
     }
+    public Pullback09ResearchEngine researchEngine() { return researchEngine; }
+    public List<Pullback09ResearchRecord> researchRecords() { return researchEngine.researchRecords(); }
+    public String researchCsv() { return researchEngine.toCsv(); }
+
     public void addListener(Consumer<Snapshot> listener) { listeners.add(listener); }
     public void removeListener(Consumer<Snapshot> listener) { listeners.remove(listener); }
     public void addRuleOccurrenceListener(Consumer<RuleOccurrenceMessage> listener) {
@@ -146,13 +151,16 @@ public final class M5ReplaySession {
                 processor.warmUp(header.symbol(), header.startMsc(), toSnapshots(header.symbol(), header.warmup()));
                 vwap.warmUp(header.symbol(), header.warmup());
                 structureEngine.reset();
+                researchEngine.warmUp(header.symbol(), header.warmup());
             }, event -> accept(processor, structureEngine, vwap, pullback09, occurrenceNumber, event));
+            researchEngine.finish();
             synchronized (lock) {
                 if (status != Status.CLOSED) status = Status.COMPLETED;
             }
             flushLatestMarketState(Status.COMPLETED);
             publish(new Snapshot("COMPLETED", replayId, currentTimeMsc, status, null, null, null, null, null));
         } catch (Exception ex) {
+            researchEngine.finish();
             synchronized (lock) {
                 if (status != Status.CLOSED) status = Status.ERROR;
             }
@@ -173,14 +181,33 @@ public final class M5ReplaySession {
             if (status == Status.CLOSED) return;
         }
         IntrabarMarketState state = processor.onEvent(event);
-        if (state.completedCandle() != null && latestMarketState != null
-                && latestMarketState.candle().time() * 1000
-                == state.completedCandle().bucketStartTimeMsc()) {
-            flushLatestMarketState(status);
+        if (state.completedCandle() != null) {
+            researchEngine.onCandleClosed(state.completedCandle());
+            if (latestMarketState != null
+                    && latestMarketState.candle().time() * 1000
+                    == state.completedCandle().bucketStartTimeMsc()) {
+                flushLatestMarketState(status);
+            }
         }
         eventsProcessed.increment();
+        double volume = CausalSessionVwap.isEligibleVolume(historical) ? historical.volumeReal() : 0;
+        Double vwapValue = vwap.update(event.timeMsc(), event.price(), volume);
+        currentTimeMsc = event.timeMsc();
+
         List<RuleOccurrenceMessage> ruleOccurrences = new ArrayList<>();
-        List<SetupEventMessage> setupEvents = pullback09.onEvent(state).stream()
+        List<Pullback09Setup.Event> setupEventList = pullback09.onEvent(state);
+        for (Pullback09Setup.Event se : setupEventList) {
+            if (se.eventType() == Pullback09Setup.EventType.PULLB09_UP) {
+                researchEngine.onPullback09(
+                        se,
+                        pullback09.lastPullback09Context(),
+                        state,
+                        vwapValue);
+            }
+        }
+        researchEngine.onPrice(event);
+
+        List<SetupEventMessage> setupEvents = setupEventList.stream()
                 .map(setupEvent -> new SetupEventMessage(
                         "REPLAY_SETUP_EVENT",
                         setupEvent.eventId(),
@@ -207,9 +234,6 @@ public final class M5ReplaySession {
                                 occurrence.exitSide())));
             }
         });
-        double volume = CausalSessionVwap.isEligibleVolume(historical) ? historical.volumeReal() : 0;
-        Double vwapValue = vwap.update(event.timeMsc(), event.price(), volume);
-        currentTimeMsc = event.timeMsc();
         Candle candle = new Candle(state.candle().bucketStartTimeMsc() / 1000,
                 state.candle().open(), state.candle().high(),
                 state.candle().low(), state.candle().close(),

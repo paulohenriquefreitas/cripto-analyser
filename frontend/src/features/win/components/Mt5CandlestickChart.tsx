@@ -113,8 +113,11 @@ export function Mt5CandlestickChart({ controller }: { controller: Mt5ChartContro
       let initialized = false;
       detach = controller.attachChart({
         setHistory(candles) {
-          setupMarkers.clear();
-          markerApi.setMarkers([]);
+          // Bucket updates replace candle history too; only an explicit reset clears setups.
+          if (candles.length === 0) {
+            setupMarkers.clear();
+            markerApi.setMarkers([]);
+          }
           series.setData(candles.map(toBar));
           smaSeries.setData(candles.filter(c => c.sma9 != null).map(c => ({
             time: c.time as UTCTimestamp, value: c.sma9!,

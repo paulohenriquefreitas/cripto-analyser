@@ -3,6 +3,8 @@ package br.com.bauzin.market.panic.panicscanner.application.win.replay;
 import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarCandleSnapshot;
 import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarMarketState;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +17,7 @@ class Pullback09SetupTest {
     private static final long CANDLE_1 = 6_000_000L;
     private static final long CANDLE_2 = CANDLE_1 + 300_000;
     private static final long CANDLE_3 = CANDLE_2 + 300_000;
+    private static final long CANDLE_4 = CANDLE_3 + 300_000;
 
     @Test
     void closeAboveWithoutStartingBelowDoesNotCreateCrz() {
@@ -115,13 +118,16 @@ class Pullback09SetupTest {
         events.addAll(feed.tick(CANDLE_3, 189_190, 189_100));
         events.addAll(feed.tick(CANDLE_3 + 1, 189_490, 189_200));
         events.addAll(feed.tick(CANDLE_3 + 2, 189_500, 189_200));
+        assertThat(events).extracting(Pullback09Setup.Event::eventType)
+                .containsExactly(Pullback09Setup.EventType.CRZ09_UP, Pullback09Setup.EventType.RJ09_UP);
+        events.addAll(feed.tick(CANDLE_4, 189_100, 189_200));
 
         assertThat(events).extracting(Pullback09Setup.Event::eventType)
                 .containsExactly(
                         Pullback09Setup.EventType.CRZ09_UP,
                         Pullback09Setup.EventType.RJ09_UP,
                         Pullback09Setup.EventType.PULLB09_UP);
-        assertThat(events.getLast().timeMsc()).isEqualTo(CANDLE_3 + 1);
+        assertThat(events.getLast().timeMsc()).isEqualTo(CANDLE_4);
         assertThat(events.getLast().candleTimeMsc()).isEqualTo(CANDLE_3);
     }
 
@@ -163,11 +169,13 @@ class Pullback09SetupTest {
                 .extracting(Pullback09Setup.Event::eventType)
                 .containsExactly(Pullback09Setup.EventType.RJ09_UP);
 
-        List<Pullback09Setup.Event> confirmation = feed.tick(CANDLE_3 + 1, 151, 100);
+        assertThat(feed.tick(CANDLE_3 + 1, 151, 100)).isEmpty();
+        List<Pullback09Setup.Event> confirmation = feed.tick(CANDLE_4 + 7, 80, 100);
         assertThat(confirmation).extracting(Pullback09Setup.Event::eventType)
                 .containsExactly(Pullback09Setup.EventType.PULLB09_UP);
-        assertThat(confirmation.getFirst().timeMsc()).isEqualTo(CANDLE_3 + 1);
+        assertThat(confirmation.getFirst().timeMsc()).isEqualTo(CANDLE_4 + 7);
         assertThat(confirmation.getFirst().candleTimeMsc()).isEqualTo(CANDLE_3);
+        assertThat(confirmation.getFirst().price()).isEqualTo(151);
     }
 
     @Test
@@ -177,6 +185,10 @@ class Pullback09SetupTest {
         events.addAll(feed.tick(CANDLE_3, 151, 100));
         events.addAll(feed.tick(CANDLE_3 + 1, 152, 100));
         events.addAll(feed.tick(CANDLE_3 + 2, 153, 100));
+        assertThat(events).isEmpty();
+        events.addAll(feed.tick(CANDLE_4, 154, 100));
+        events.addAll(feed.tick(CANDLE_4 + 1, 155, 100));
+        events.addAll(feed.tick(CANDLE_4 + 300_000, 156, 100));
 
         assertThat(events).extracting(Pullback09Setup.Event::eventType)
                 .containsExactly(Pullback09Setup.EventType.PULLB09_UP);
@@ -199,10 +211,10 @@ class Pullback09SetupTest {
         assertThat(feed.tick(CANDLE_3, 90, 100))
                 .extracting(Pullback09Setup.Event::eventType)
                 .containsExactly(Pullback09Setup.EventType.RJ09_UP);
-        assertThat(feed.tick(CANDLE_3, 151, 100))
+        assertThat(feed.tick(CANDLE_3 + 1, 151, 100)).isEmpty();
+        assertThat(feed.tick(CANDLE_4, 90, 100))
                 .extracting(Pullback09Setup.Event::eventType)
                 .containsExactly(Pullback09Setup.EventType.PULLB09_UP);
-        assertThat(feed.tick(CANDLE_3 + 300_000, 90, 100)).isEmpty();
         feed.tick(CANDLE_3 + 300_001, 110, 100);
         assertThat(feed.tick(CANDLE_3 + 600_000, 110, 100))
                 .extracting(Pullback09Setup.Event::eventType)
@@ -223,6 +235,43 @@ class Pullback09SetupTest {
         assertThat(recorded).isEqualTo(emitted.getFirst());
         assertThat(recorded.eventType()).isEqualTo(Pullback09Setup.EventType.CRZ09_UP);
         assertThat(recorded.timeMsc()).isEqualTo(CANDLE_2);
+    }
+
+    @ParameterizedTest(name = "{0}")
+    @CsvSource({
+            "B wick breakout closes below rejection, 149, 160, 140",
+            "C red despite close above rejection, 170, 180, 160",
+            "D green closes at rejection high, 140, 160, 150",
+            "D green closes below rejection high, 140, 160, 145",
+            "E green never breaks rejection high, 140, 150, 149",
+            "E green stays below rejection high, 140, 149, 148",
+            "neutral above rejection high, 160, 170, 160"
+    })
+    void failedConfirmationExpiresWithoutAllowingLaterCandles(
+            String scenario, double open, double high, double close) {
+        Feed feed = crzFeed();
+        feed.tick(CANDLE_2 + 1, 100, 100);
+        feed.tick(CANDLE_2 + 2, 140, 100);
+        assertThat(feed.tick(CANDLE_3, open, 100))
+                .extracting(Pullback09Setup.Event::eventType)
+                .containsExactly(Pullback09Setup.EventType.RJ09_UP);
+        assertThat(feed.tick(CANDLE_3 + 1, high, 100)).isEmpty();
+        assertThat(feed.tick(CANDLE_3 + 2, close, 100)).isEmpty();
+        assertThat(feed.tick(CANDLE_4, 200, 100)).isEmpty();
+        assertThat(feed.tick(CANDLE_4 + 1, 210, 100)).isEmpty();
+        assertThat(feed.tick(CANDLE_4 + 300_000, 220, 100)).isEmpty();
+    }
+
+    @Test
+    void missingCandleThreeCannotBeConfirmedByCandleFour() {
+        Feed feed = crzFeed();
+        feed.tick(CANDLE_2 + 1, 100, 100);
+        feed.tick(CANDLE_2 + 2, 140, 100);
+        assertThat(feed.tick(CANDLE_4, 160, 100))
+                .extracting(Pullback09Setup.Event::eventType)
+                .containsExactly(Pullback09Setup.EventType.RJ09_UP);
+        assertThat(feed.tick(CANDLE_4 + 1, 170, 100)).isEmpty();
+        assertThat(feed.tick(CANDLE_4 + 300_000, 180, 100)).isEmpty();
     }
 
     private static Feed crzFeed() {
