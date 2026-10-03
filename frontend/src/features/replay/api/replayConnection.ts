@@ -1,7 +1,8 @@
+import { createReplayTradeStore, type ReplayTradeEvent } from './replayTradeStore';
 import type { Mt5Candle } from '@/features/win/api/mt5Api';
-import { M5_SECONDS, type ChartSink } from '@/features/win/models/mt5Intrabar';
+import { M5_SECONDS, type ChartSink, type Ema9ReversalMarker } from '@/features/win/models/mt5Intrabar';
 import { createReplayOccurrenceStore } from './replayOccurrenceStore';
-import { createReplaySetupStore } from './replaySetupStore';
+import { createReplaySetupStore, isReplaySetupType, type ReplaySetupEventMessage } from './replaySetupStore';
 
 type Message = {
   type: 'CLOCK' | 'MARKET_STATE' | 'RULE_OCCURRENCE' | 'REPLAY_SETUP_EVENT' | 'COMPLETED' | 'ERROR';
@@ -9,6 +10,8 @@ type Message = {
   status: string;
   candle?: { time: number; open: number; high: number; low: number; close: number };
   sma9?: number | null;
+  closedEma9?: { time: number; value: number; reversal?: 'UP' | 'DOWN' | null;
+    previousValue?: number | null; availableAtTimeMsc?: number } | null;
   sma21?: number | null;
   vwap?: number | null;
   vwapSession?: string | null;
@@ -23,7 +26,10 @@ type Message = {
   exitSide?: 'ABOVE' | 'BELOW' | 'AT';
   eventId?: string;
   candleTimeMsc?: number;
-  setupType?: 'CRZ09_UP' | 'RJ09_UP' | 'PULLB09_UP';
+  setupType?: ReplaySetupEventMessage['setupType'];
+  signal?: ReplaySetupEventMessage['signal'];
+  sequence?: number | null;
+  breakoutPrice?: number | null;
 };
 
 export function connectReplay(
@@ -42,6 +48,8 @@ export function connectReplay(
   let history: Mt5Candle[] = [];
   const occurrences = createReplayOccurrenceStore(M5_SECONDS);
   const setupEvents = createReplaySetupStore(M5_SECONDS);
+  const tradeEvents = createReplayTradeStore();
+  const emaReversals = new Map<number, Ema9ReversalMarker>();
   let closed = false;
 
   const controller = {
@@ -49,9 +57,12 @@ export function connectReplay(
       if (closed) return () => {};
       sink = next;
       if (history.length) next.setHistory(history);
+      emaReversals.forEach(marker => next.addEma9Reversal?.(marker));
       const detachOccurrences = occurrences.attach(marker => next.addRuleOccurrence?.(marker));
       const detachSetupEvents = setupEvents.attach(marker => next.addReplaySetupMarker?.(marker));
+      const detachTrades = tradeEvents.attach(marker => next.addReplayTradeMarker?.(marker));
       return () => {
+        detachTrades();
         detachOccurrences();
         detachSetupEvents();
         if (sink === next) sink = undefined;
@@ -77,6 +88,8 @@ export function connectReplay(
       pendingCommands.length = 0;
       occurrences.clear();
       setupEvents.clear();
+      tradeEvents.clear();
+      emaReversals.clear();
       history = [];
       last = undefined;
       if (sink) {
@@ -99,7 +112,12 @@ export function connectReplay(
   };
   socket.onmessage = event => {
     if (closed) return;
-    const message = JSON.parse(event.data) as Message;
+    const parsed = JSON.parse(event.data);
+    if (parsed.type === 'REPLAY_TRADE_EVENT') {
+      tradeEvents.add(parsed as ReplayTradeEvent);
+      return;
+    }
+    const message = parsed as Message;
     if (typeof message.status === 'string') onClock(message.timeMsc, message.status);
     if (message.type === 'ERROR') onError(message.message ?? 'Replay error');
     if (message.type === 'RULE_OCCURRENCE'
@@ -117,14 +135,16 @@ export function connectReplay(
       && typeof message.eventId === 'string'
       && typeof message.candleTimeMsc === 'number'
       && Number.isSafeInteger(message.candleTimeMsc)
-      && (message.setupType === 'CRZ09_UP' || message.setupType === 'RJ09_UP'
-        || message.setupType === 'PULLB09_UP')) {
+      && isReplaySetupType(message.setupType)) {
       setupEvents.add({
         type: 'REPLAY_SETUP_EVENT',
         eventId: message.eventId,
         timeMsc: message.timeMsc,
         candleTimeMsc: message.candleTimeMsc,
         setupType: message.setupType,
+        signal: message.signal,
+        sequence: message.sequence,
+        breakoutPrice: message.breakoutPrice,
       });
       return;
     }
@@ -135,12 +155,29 @@ export function connectReplay(
       vwap: message.vwap ?? null, vwapSession: message.vwapSession ?? undefined,
     };
     const previous = last;
+    // The backend publishes EMA only after closure, keyed to the closed candle.
+    const ema = message.closedEma9;
+    if (ema && Number.isFinite(ema.value)) {
+      history = history.map(bar => bar.time === ema.time ? { ...bar, ema9: ema.value } : bar);
+    }
     last = candle;
     if (!previous || previous.time !== candle.time) history = [...history, candle];
     else history = [...history.slice(0, -1), candle];
     if (sink) {
       if (previous && candle.time !== previous.time) sink.setHistory(history);
       else sink.updateLast(candle);
+    }
+    if (ema && (ema.reversal === 'UP' || ema.reversal === 'DOWN')
+      && Number.isSafeInteger(ema.time) && ema.time < candle.time
+      && Number.isFinite(ema.value) && typeof ema.previousValue === 'number'
+      && Number.isFinite(ema.previousValue) && typeof ema.availableAtTimeMsc === 'number'
+      && Number.isSafeInteger(ema.availableAtTimeMsc)
+      && ema.availableAtTimeMsc >= (ema.time + M5_SECONDS) * 1000
+      && !emaReversals.has(ema.time)) {
+      const marker: Ema9ReversalMarker = { time: ema.time, direction: ema.reversal,
+        value: ema.value, previousValue: ema.previousValue, availableAtTimeMsc: ema.availableAtTimeMsc };
+      emaReversals.set(marker.time, marker);
+      sink?.addEma9Reversal?.(marker);
     }
   };
   socket.onerror = () => {

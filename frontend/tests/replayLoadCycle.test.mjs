@@ -96,13 +96,13 @@ test('A. nova carga limpa imediatamente os dados anteriores', async () => {
     addReplaySetupMarker: marker => { setupMarkers.push(marker); },
   });
 
-  // Adiciona marcador de setup para simular CRZ09/RJ09/PULLB09
+  // Adiciona marcador de setup para simular Setup91
   activeMock.simulateSetupEvent({
     type: 'REPLAY_SETUP_EVENT',
     eventId: 'evt-1',
     timeMsc: 6_000_000,
     candleTimeMsc: 6_000_000,
-    setupType: 'CRZ09_UP',
+    setupType: 'SETUP91_BUY_ARMED',
   });
   assert.equal(setupMarkers.length, 1);
 
@@ -115,7 +115,7 @@ test('A. nova carga limpa imediatamente os dados anteriores', async () => {
   const loading = manager.load('2026-09-25', { force: true });
 
   // Requisito 1: Ao clicar CARREGAR, limpar IMEDIATAMENTE a sessão visual anterior:
-  // - candles, MM9, MM21, VWAP, CRZ09, RJ09, PULLB09;
+  // - candles, MM9, MM21, VWAP, EMA9, Setup91;
   // - relógio/progresso do Replay;
   // - erros anteriores;
   // - stores relacionados ao Replay;

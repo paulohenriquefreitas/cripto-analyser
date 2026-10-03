@@ -5,8 +5,18 @@ export type ReplaySetupEventMessage = {
   eventId: string;
   timeMsc: number;
   candleTimeMsc: number;
-  setupType: 'CRZ09_UP' | 'RJ09_UP' | 'PULLB09_UP';
+  setupType: ReplaySetupMarker['setupType'];
+  signal?: ReplaySetupMarker['signal'];
+  sequence?: number | null;
+  breakoutPrice?: number | null;
 };
+
+export function isReplaySetupType(value: unknown): value is ReplaySetupMarker['setupType'] {
+  return typeof value === 'string' && [
+    'SETUP91_BUY_ARMED', 'SETUP91_BUY_TRIGGERED', 'SETUP91_BUY_CANCELLED',
+    'SETUP91_SELL_ARMED', 'SETUP91_SELL_TRIGGERED', 'SETUP91_SELL_CANCELLED',
+  ].includes(value);
+}
 
 export function createReplaySetupStore(bucketSeconds: number) {
   const events = new Map<string, ReplaySetupMarker>();
@@ -16,12 +26,16 @@ export function createReplaySetupStore(bucketSeconds: number) {
     add(message: ReplaySetupEventMessage) {
       if (!message.eventId || !Number.isSafeInteger(message.timeMsc)
         || !Number.isSafeInteger(message.candleTimeMsc)
-        || !['CRZ09_UP', 'RJ09_UP', 'PULLB09_UP'].includes(message.setupType)
+        || !isReplaySetupType(message.setupType)
         || events.has(message.eventId)) return;
-      const marker = {
+      // Presentation only: ARMED anchors to the signal; later events anchor to their LAST.
+      const anchor = !message.setupType.endsWith('_ARMED') ? message.timeMsc : message.candleTimeMsc;
+      const marker: ReplaySetupMarker = {
         eventId: message.eventId,
-        time: Math.floor(message.candleTimeMsc / (bucketSeconds * 1000)) * bucketSeconds,
+        time: Math.floor(anchor / (bucketSeconds * 1000)) * bucketSeconds,
         setupType: message.setupType,
+        timeMsc: message.timeMsc, candleTimeMsc: message.candleTimeMsc,
+        signal: message.signal, sequence: message.sequence, breakoutPrice: message.breakoutPrice,
       };
       events.set(marker.eventId, marker);
       publish?.(marker);

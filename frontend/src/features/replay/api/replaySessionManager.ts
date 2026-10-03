@@ -63,7 +63,7 @@ export function createReplaySessionManager(options: ReplaySessionManagerOptions 
     }
   }
 
-  async function load(date: string, loadOptions: { force?: boolean } = {}): Promise<void> {
+  async function load(date: string, loadOptions: { force?: boolean; symbol?: string } = {}): Promise<void> {
     const now = Date.now();
     const isDoubleClick = now - lastLoadTime < DOUBLE_CLICK_WINDOW_MS;
     lastLoadTime = now;
@@ -109,7 +109,7 @@ export function createReplaySessionManager(options: ReplaySessionManagerOptions 
       if (!createSession) {
         throw new Error('createSession function is not configured.');
       }
-      const session = await createSession(symbol, date, signal);
+      const session = await createSession(loadOptions.symbol ?? symbol, date, signal);
       // If a newer load has started, ignore response A completely!
       if (thisGeneration !== loadGeneration) {
         return;

@@ -11,6 +11,7 @@ const candleSchema = z.object({
   tickVolume: z.number().int(),
   realVolume: z.number().int(),
   sma9: z.number().finite().nullable().optional(),
+  ema9: z.number().finite().nullable().optional(),
   sma21: z.number().finite().nullable().optional(),
   vwap: z.number().finite().nullable().optional(),
   vwapSession: z.string().optional(),

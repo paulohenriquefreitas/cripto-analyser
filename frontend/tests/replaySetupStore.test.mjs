@@ -10,35 +10,35 @@ const setupEvent = (eventId, setupType, timeMsc, candleTimeMsc) => ({
   candleTimeMsc,
 });
 
-test('retains only the three M5 setup markers at their source candle', () => {
+test('rejects every Pullback09 event and unknown event types', () => {
   const store = createReplaySetupStore(300);
   const markers = [];
-  store.add(setupEvent('crz-0', 'CRZ09_UP', 6_300_000, 6_000_000));
-  store.add(setupEvent('rj-0', 'RJ09_UP', 6_600_000, 6_300_000));
-  store.add(setupEvent('pullb-0', 'PULLB09_UP', 6_600_015, 6_600_000));
-  store.add(setupEvent('other-0', 'OTHER', 6_600_016, 6_600_000));
+  for (const type of ['CRZ09_UP', 'RJ09_UP', 'PULLB09_UP', 'CRZ09_DOWN', 'RJ09_DOWN', 'PULLB09_DOWN', 'OTHER']) {
+    store.add(setupEvent(type, type, 6_600_015, 6_300_000));
+  }
   store.attach(marker => markers.push(marker));
-
-  assert.deepEqual(markers, [
-    { eventId: 'crz-0', time: 6000, setupType: 'CRZ09_UP' },
-    { eventId: 'rj-0', time: 6300, setupType: 'RJ09_UP' },
-    { eventId: 'pullb-0', time: 6600, setupType: 'PULLB09_UP' },
-  ]);
+  assert.deepEqual(markers, []);
 });
 
-test('deduplicates setup events and replays them after chart remount', () => {
+test('retains all six Setup91 types at signal/event buckets and deduplicates across remount', () => {
   const store = createReplaySetupStore(300);
-  const firstChart = [];
-  const detach = store.attach(marker => firstChart.push(marker));
-  const event = setupEvent('pullb-0', 'PULLB09_UP', 6_600_015, 6_600_000);
-  store.add(event);
-  store.add(event);
+  const markers = [];
+  const detach = store.attach(marker => markers.push(marker));
+  const types = ['SETUP91_BUY_ARMED', 'SETUP91_BUY_TRIGGERED', 'SETUP91_BUY_CANCELLED',
+    'SETUP91_SELL_ARMED', 'SETUP91_SELL_TRIGGERED', 'SETUP91_SELL_CANCELLED'];
+  for (const type of types) {
+    const event = setupEvent(type, type, 6_600_015, 6_300_000);
+    store.add(event); store.add(event);
+  }
+  assert.equal(markers.length, 6);
+  assert.deepEqual(markers.map(m => m.setupType), types);
+  assert.deepEqual(markers.map(m => m.time), [6300, 6600, 6600, 6300, 6600, 6600]);
   detach();
-
-  const reattachedChart = [];
-  store.attach(marker => reattachedChart.push(marker));
-  assert.equal(firstChart.length, 1);
-  assert.deepEqual(reattachedChart, [
-    { eventId: 'pullb-0', time: 6600, setupType: 'PULLB09_UP' },
-  ]);
+  const reattached = [];
+  store.attach(marker => reattached.push(marker));
+  assert.deepEqual(reattached, markers);
+  store.clear();
+  const afterReset = [];
+  store.attach(marker => afterReset.push(marker));
+  assert.deepEqual(afterReset, []);
 });

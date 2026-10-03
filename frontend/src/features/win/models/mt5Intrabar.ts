@@ -1,3 +1,4 @@
+import type { ReplayTradeMarker } from '@/features/replay/api/replayTradeStore';
 import type { Mt5Candle } from '@/features/win/api/mt5Api';
 import type { LiveTick } from '@/features/win/api/mt5LiveConnection';
 
@@ -28,10 +29,17 @@ export function updateLastCandle(candle: Mt5Candle, tick: LiveTick): Change {
 }
 
 export type ChartSink = {
+  addEma9Reversal?: (marker: Ema9ReversalMarker) => void;
   setHistory: (candles: Mt5Candle[]) => void;
   updateLast: (candle: Mt5Candle) => void;
   addRuleOccurrence?: (marker: ReplayRuleMarker) => void;
+  addReplayTradeMarker?: (marker: ReplayTradeMarker) => void;
   addReplaySetupMarker?: (marker: ReplaySetupMarker) => void;
+};
+
+export type Ema9ReversalMarker = {
+  time: number; direction: 'UP' | 'DOWN'; value: number; previousValue: number;
+  availableAtTimeMsc: number;
 };
 
 export type ReplayRuleMarker = {
@@ -42,7 +50,21 @@ export type ReplayRuleMarker = {
 export type ReplaySetupMarker = {
   eventId: string;
   time: number;
-  setupType: 'CRZ09_UP' | 'RJ09_UP' | 'PULLB09_UP';
+  setupType: 'SETUP91_BUY_ARMED' | 'SETUP91_BUY_TRIGGERED' | 'SETUP91_BUY_CANCELLED'
+    | 'SETUP91_SELL_ARMED' | 'SETUP91_SELL_TRIGGERED' | 'SETUP91_SELL_CANCELLED';
+  timeMsc?: number;
+  candleTimeMsc?: number;
+  signal?: {
+    side: 'BUY' | 'SELL';
+    candle: { symbol: string; bucketStartTimeMsc: number; open: number; high: number; low: number; close: number };
+    ema9: number;
+    previousFiveEma9: number[];
+    previousFiveDirection: 'UP' | 'DOWN' | 'FLAT';
+    previousSlope: number;
+    currentSlope: number;
+  } | null;
+  sequence?: number | null;
+  breakoutPrice?: number | null;
 };
 type Snapshot = { loading: boolean; error: string | null; count: number };
 
