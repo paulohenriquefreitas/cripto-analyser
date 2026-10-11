@@ -43,6 +43,15 @@ public class AnalyzeStockUseCase {
     private final PanicScannerProperties properties;
     private final Clock clock;
 
+    @org.springframework.beans.factory.annotation.Value("${panic-scanner.experimental.entry-enabled:false}")
+    private boolean experimentalEntryEnabled;
+
+    /** Explicit opt-in for standalone replay; defaults to disabled in production. */
+    public AnalyzeStockUseCase withExperimentalEntryEnabled(boolean enabled) {
+        this.experimentalEntryEnabled = enabled;
+        return this;
+    }
+
     public AnalyzeStockUseCase(MarketDataClient marketDataClient,
                                TechnicalAnalysisEngine technicalAnalysisEngine,
                                ScannerStrategy scannerStrategy,
@@ -67,10 +76,22 @@ public class AnalyzeStockUseCase {
     }
 
     public ScannerResult execute(String ticker) {
+        return execute(ticker, experimentalEntryEnabled);
+    }
+
+    /** Request-scoped opt-in; never changes the shared production flag. */
+    public ScannerResult executeExperimental(String ticker) {
+        return execute(ticker, true);
+    }
+
+    private ScannerResult execute(String ticker, boolean experimental) {
         String normalizedTicker = ticker.trim().toUpperCase(Locale.ROOT);
         LocalDate to = LocalDate.now(clock);
         LocalDate from = to.minusDays(properties.lookbackDays());
         List<Candle> candles = marketDataClient.getDailyCandles(normalizedTicker, from, to);
+        if (experimental) {
+            candles = candles.stream().filter(c -> !c.date().isAfter(to)).toList();
+        }
         List<Candle> closedCandles = candles.stream()
                 .filter(candle -> candle.status() == CandleStatus.CLOSED)
                 .sorted(Comparator.comparing(Candle::date))
@@ -112,6 +133,10 @@ public class AnalyzeStockUseCase {
         if (entryAnalyzer != null) {
             result = result.withEntryAnalysis(entryAnalyzer.analyze(analysis, closedCandles));
             result = withPotentialIntradayBreakout(result, currentPartialCandle, analysis);
+        }
+        if (experimental) {
+            result = result.withExperimentalEntry(new br.com.bauzin.market.panic.panicscanner.application.experimental.ExperimentalEntryAnalyzer()
+                    .analyze(analysis, closedCandles, technicalAnalysisEngine, properties.minAverageFinancialVolume20()));
         }
         return result
                 .withMarketDataSnapshot(

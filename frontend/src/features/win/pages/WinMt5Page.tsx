@@ -1,13 +1,32 @@
 import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
-import { Alert, Button, LinearProgress, Link, Paper, Stack, Typography } from '@mui/material';
+import { Alert, Button, LinearProgress, Link, Paper, Stack, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { createMt5Intrabar } from '@/features/win/models/mt5Intrabar';
 
 import { getMt5Candles } from '@/features/win/api/mt5Api';
 import { Mt5LiveQuote } from '@/features/win/components/Mt5LiveQuote';
+import { ReplayPage } from '@/features/replay/pages/ReplayPage';
 import { Mt5CandlestickChart } from '@/features/win/components/Mt5CandlestickChart';
 
 export function WinMt5Page() {
+  const [mode, setMode] = useState<'live' | 'replay'>('live');
+
+  return (
+    <Stack spacing={3}>
+      <Typography variant="h3">WIN M5</Typography>
+      <ToggleButtonGroup value={mode} exclusive size="small" aria-label="Modo do mercado"
+        onChange={(_, nextMode: 'live' | 'replay' | null) => {
+          if (nextMode) setMode(nextMode);
+        }}>
+        <ToggleButton value="live">Tempo real</ToggleButton>
+        <ToggleButton value="replay">Replay</ToggleButton>
+      </ToggleButtonGroup>
+      {mode === 'live' ? <WinMt5LivePanel /> : <ReplayPage embedded setup91Only={false} />}
+    </Stack>
+  );
+}
+
+function WinMt5LivePanel() {
   const [controller] = useState(() => createMt5Intrabar(signal => getMt5Candles(signal)));
   const state = useSyncExternalStore(controller.subscribe, controller.getSnapshot);
   useEffect(() => { controller.start(); return () => controller.stop(); }, [controller]);
@@ -15,7 +34,7 @@ export function WinMt5Page() {
   return (
     <Stack spacing={3}>
       <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
-        <Typography variant="h3">WINV26 — M5</Typography>
+        <Typography variant="h6">WINV26 — M5</Typography>
         <Button variant="outlined" startIcon={<RefreshRoundedIcon />} disabled={state.loading}
           onClick={() => void controller.refresh()}>Atualizar</Button>
       </Stack>

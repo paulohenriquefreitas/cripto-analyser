@@ -6,6 +6,8 @@ import {
 } from 'lightweight-charts';
 import { useEffect, useRef, useState } from 'react';
 
+import { createSwingPivotTracker } from '@/features/win/models/mt5SwingPivots';
+import { SwingPivotPrimitive } from './SwingPivotPrimitive';
 import { vwapSegments } from '@/features/win/models/mt5Vwap';
 import type { Mt5Candle } from '@/features/win/api/mt5Api';
 import type {
@@ -70,6 +72,11 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
         wickUpColor: theme.palette.success.main,
         wickDownColor: theme.palette.error.main,
       });
+      const swingTracker = createSwingPivotTracker();
+      const swingPrimitive = setup91Only ? undefined : new SwingPivotPrimitive();
+      if (swingPrimitive) series.attachPrimitive(swingPrimitive);
+      let firstCandleTime = Infinity;
+      const updateSwings = () => swingPrimitive?.setLevels(swingTracker.getLevels(), firstCandleTime);
       const markerApi = createSeriesMarkers(series, []);
       const setupMarkers = new Map<string, SeriesMarker<UTCTimestamp>>();
       const tradeMarkers = new Map<string, ReplayTradeMarker>();
@@ -118,18 +125,20 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
         lineWidth: 2,
         priceScaleId: 'right',
         priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
-        title: 'MM9',
+        title: '',
+        lastValueVisible: false, priceLineVisible: false,
       });
-      const emaSeries = chart.addSeries(LineSeries, {
-        color: '#2e7d32', lineWidth: 1, priceScaleId: 'right', title: 'EMA9 (closed)',
-        priceLineVisible: false,
-      });
+      const emaSeries = setup91Only ? chart.addSeries(LineSeries, {
+        color: '#2e7d32', lineWidth: 1, priceScaleId: 'right', title: '',
+        lastValueVisible: false, priceLineVisible: false,
+      }) : undefined;
       const sma21Series = setup91Only ? undefined : chart.addSeries(LineSeries, {
         color: '#ff5252',
         lineWidth: 2,
         priceScaleId: 'right',
         priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
-        title: 'MM21',
+        title: '',
+        lastValueVisible: false, priceLineVisible: false,
       });
       let vwapSeries: ISeriesApi<'Line'>[] = [];
       const vwapBySession = new Map<string, ISeriesApi<'Line'>>();
@@ -139,7 +148,8 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
           let segment = vwapBySession.get(candle.vwapSession);
           if (!segment) {
             segment = chart!.addSeries(LineSeries, {
-              color: theme.palette.warning.main, lineWidth: 2, priceScaleId: 'right', title: 'VWAP',
+              color: theme.palette.warning.main, lineWidth: 2, priceScaleId: 'right', title: '',
+              lastValueVisible: false, priceLineVisible: false,
               priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
             });
             vwapBySession.set(candle.vwapSession, segment);
@@ -180,7 +190,10 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
             markerApi.setMarkers([]);
           }
           series.setData(candles.map(toBar));
-          emaSeries.setData(candles.filter(c => c.ema9 != null).map(c => ({
+          firstCandleTime = candles[0]?.time ?? Infinity;
+          swingTracker.setHistory(candles);
+          updateSwings();
+          emaSeries?.setData(candles.filter(c => c.ema9 != null).map(c => ({
             time: c.time as UTCTimestamp, value: c.ema9!,
           })));
           smaSeries?.setData(candles.filter(c => c.sma9 != null).map(c => ({
@@ -196,17 +209,17 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
           // Independent series guarantee no diagonal across sessions; REST only.
           const segments = setup91Only ? [] : vwapSegments(candles);
           vwapSeries = segments.map(({ session, points }) => {
-            const latestSession = session === candles.at(-1)?.vwapSession;
             const segment = chart!.addSeries(LineSeries, {
-              color: theme.palette.warning.main, lineWidth: 2, priceScaleId: 'right', title: 'VWAP',
+              color: theme.palette.warning.main, lineWidth: 2, priceScaleId: 'right', title: '',
               priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
-              lastValueVisible: latestSession, priceLineVisible: latestSession,
+              lastValueVisible: false, priceLineVisible: false,
             });
             segment.setData(points.map(point => ({ ...point, time: point.time as UTCTimestamp })));
+            vwapBySession.set(session, segment);
             return segment;
           });
           showSma(candles.at(-1));
-          candles.forEach(updateVwap);
+
           if (!initialized && candles.length) {
             initializeViewport();
           }
@@ -214,6 +227,9 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
         updateLast(candle) {
           // Same raw candle timestamp: updates the last bar, never appends a synthetic one.
           series.update(toBar(candle));
+          firstCandleTime = Math.min(firstCandleTime, candle.time);
+          swingTracker.updateLast(candle);
+          updateSwings();
           initializeViewport();
           if (candle.sma9 != null) smaSeries?.update({ time: candle.time as UTCTimestamp, value: candle.sma9 });
           if (candle.sma21 != null) sma21Series?.update({ time: candle.time as UTCTimestamp, value: candle.sma21 });

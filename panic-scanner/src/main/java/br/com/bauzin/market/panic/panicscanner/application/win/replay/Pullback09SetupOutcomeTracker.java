@@ -23,7 +23,8 @@ public final class Pullback09SetupOutcomeTracker {
         if (finished) throw new IllegalStateException("Research already finished");
         if (snapshots.containsKey(snapshot.eventId())) return;
         snapshots.put(snapshot.eventId(), snapshot);
-        trackers.put(snapshot.eventId(), new WindowTracker(snapshot.setupAvailableTimeMsc(), snapshot.referencePrice()));
+        trackers.put(snapshot.eventId(), new WindowTracker(snapshot.setupAvailableTimeMsc(), snapshot.referencePrice(),
+                snapshot.setupType() == Pullback09Setup.EventType.PULLB09_DOWN));
     }
 
     public synchronized void onPrice(CanonicalPriceEvent event) {
@@ -65,6 +66,7 @@ public final class Pullback09SetupOutcomeTracker {
     private static final class WindowTracker {
         private final long setupAvailableTimeMsc;
         private final double referencePrice;
+        private final boolean down;
 
         private double max5 = Double.NEGATIVE_INFINITY;
         private double min5 = Double.POSITIVE_INFINITY;
@@ -78,7 +80,8 @@ public final class Pullback09SetupOutcomeTracker {
         private double min30 = Double.POSITIVE_INFINITY;
         private boolean complete30 = false;
 
-        WindowTracker(long setupAvailableTimeMsc, double referencePrice) {
+        WindowTracker(long setupAvailableTimeMsc, double referencePrice, boolean down) {
+            this.down = down;
             this.setupAvailableTimeMsc = setupAvailableTimeMsc;
             this.referencePrice = referencePrice;
         }
@@ -119,14 +122,14 @@ public final class Pullback09SetupOutcomeTracker {
         }
 
         Pullback09SetupOutcome outcome(String eventId) {
-            Double mfe5 = (complete5 && Double.isFinite(max5)) ? (max5 - referencePrice) : null;
-            Double mae5 = (complete5 && Double.isFinite(min5)) ? (referencePrice - min5) : null;
+            Double mfe5 = (complete5 && Double.isFinite(max5)) ? (down ? referencePrice - min5 : max5 - referencePrice) : null;
+            Double mae5 = (complete5 && Double.isFinite(min5)) ? (down ? max5 - referencePrice : referencePrice - min5) : null;
 
-            Double mfe15 = (complete15 && Double.isFinite(max15)) ? (max15 - referencePrice) : null;
-            Double mae15 = (complete15 && Double.isFinite(min15)) ? (referencePrice - min15) : null;
+            Double mfe15 = (complete15 && Double.isFinite(max15)) ? (down ? referencePrice - min15 : max15 - referencePrice) : null;
+            Double mae15 = (complete15 && Double.isFinite(min15)) ? (down ? max15 - referencePrice : referencePrice - min15) : null;
 
-            Double mfe30 = (complete30 && Double.isFinite(max30)) ? (max30 - referencePrice) : null;
-            Double mae30 = (complete30 && Double.isFinite(min30)) ? (referencePrice - min30) : null;
+            Double mfe30 = (complete30 && Double.isFinite(max30)) ? (down ? referencePrice - min30 : max30 - referencePrice) : null;
+            Double mae30 = (complete30 && Double.isFinite(min30)) ? (down ? max30 - referencePrice : referencePrice - min30) : null;
 
             return new Pullback09SetupOutcome(
                     eventId,

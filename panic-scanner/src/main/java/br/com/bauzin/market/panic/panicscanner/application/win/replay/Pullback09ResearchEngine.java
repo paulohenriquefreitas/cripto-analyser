@@ -30,6 +30,8 @@ public final class Pullback09ResearchEngine {
     private final SMAIndicator sma21Indicator = new SMAIndicator(closePrice, 21);
     private final ATRIndicator atr14Indicator = new ATRIndicator(closedSeries, 14);
 
+    private final java.util.NavigableMap<Long, IntrabarCandleSnapshot> closedCandles = new java.util.TreeMap<>();
+
     private final Pullback09SetupOutcomeTracker outcomeTracker = new Pullback09SetupOutcomeTracker();
     private final List<Pullback09ResearchSnapshot> snapshots = new ArrayList<>();
     private final List<Consumer<Pullback09ResearchSnapshot>> snapshotListeners = new CopyOnWriteArrayList<>();
@@ -46,6 +48,8 @@ public final class Pullback09ResearchEngine {
 
     public synchronized void onCandleClosed(IntrabarCandleSnapshot closedCandle) {
         if (closedCandle == null) return;
+        closedCandles.put(closedCandle.bucketStartTimeMsc(), closedCandle);
+        while (closedCandles.size() > 3) closedCandles.pollFirstEntry();
         addClosedBar(
                 closedCandle.bucketStartTimeMsc(),
                 closedCandle.open(),
@@ -63,7 +67,8 @@ public final class Pullback09ResearchEngine {
             Double sessionVwap) {
         Objects.requireNonNull(context, "RJ09 context required");
         IntrabarCandleSnapshot confirmation = marketState.completedCandle();
-        if (event.eventType() != Pullback09Setup.EventType.PULLB09_UP
+        if ((event.eventType() != Pullback09Setup.EventType.PULLB09_UP
+                && event.eventType() != Pullback09Setup.EventType.PULLB09_DOWN)
                 || event.timeMsc() != marketState.timeMsc()
                 || confirmation == null
                 || confirmation.bucketStartTimeMsc() != event.candleTimeMsc()
@@ -86,9 +91,13 @@ public final class Pullback09ResearchEngine {
                 event.eventId(), event.symbol(), event.candleTimeMsc(), event.timeMsc(),
                 marketState.price(), marketState.candle().bucketStartTimeMsc(),
                 context.rejectionCandle(), context.rejectionMinDistanceToSma9(), confirmation,
-                confirmation.close() - context.rejectionHigh(), marketState.sma9(), marketState.sma21(),
+                event.eventType() == Pullback09Setup.EventType.PULLB09_UP
+                        ? confirmation.close() - context.rejectionHigh()
+                        : context.rejectionCandle().low() - confirmation.close(),
+                marketState.sma9(), marketState.sma21(),
                 marketState.sma9() == null || marketState.sma21() == null ? null : marketState.sma9() - marketState.sma21(),
-                slope9, slope21, sessionVwap, distance, atr);
+                slope9, slope21, sessionVwap, distance, atr, event.eventType(),
+                closedCandles.get(event.candleTimeMsc() - 600_000L));
         snapshots.add(snapshot);
         outcomeTracker.register(snapshot);
         snapshotListeners.forEach(listener -> listener.accept(snapshot));

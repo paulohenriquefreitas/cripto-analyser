@@ -1,0 +1,533 @@
+﻿{
+    "scannedAt":  "2026-10-08T17:12:04.202-03:00",
+    "strategy":  "MOMENTUM",
+    "discoveredCount":  788,
+    "eligibleCount":  377,
+    "analyzedCount":  367,
+    "qualifiedCount":  2,
+    "momentumQualifiedCount":  11,
+    "momentumWatchCount":  96,
+    "breakoutEligibleCount":  249,
+    "breakoutReadyCount":  0,
+    "pullbackReadyCount":  5,
+    "returnedCount":  2,
+    "totalExecutionDurationMillis":  255608,
+    "averageAnalysisDurationMillis":  696,
+    "providerRequestCount":  368,
+    "results":  [
+                    {
+                        "ticker":  "SLCE3",
+                        "analysisDate":  "2026-10-07",
+                        "timeframe":  "1D",
+                        "lastClose":  17.72,
+                        "currentPrice":  17.52,
+                        "dataStatus":  "INTRADAY_PARTIAL",
+                        "currentPartialCandle":  {
+                                                     "date":  "2026-10-08",
+                                                     "open":  17.77,
+                                                     "high":  17.95,
+                                                     "low":  17.39,
+                                                     "close":  17.52,
+                                                     "volume":  3030700,
+                                                     "status":  "INTRADAY_PARTIAL",
+                                                     "marketDataUpdatedAt":  "2026-10-08T17:09:07.6082955-03:00"
+                                                 },
+                        "marketDataUpdatedAt":  "2026-10-08T17:09:07.6082955-03:00",
+                        "score":  70,
+                        "status":  "WATCH",
+                        "trend":  "DOWNTREND",
+                        "technicalAnalysis":  {
+                                                  "ticker":  "SLCE3",
+                                                  "analysisDate":  "2026-10-07",
+                                                  "timeframe":  "1D",
+                                                  "lastClose":  17.72,
+                                                  "sma9":  17.0889,
+                                                  "sma21":  17.4814,
+                                                  "ema9":  17.2542,
+                                                  "ema21":  17.0742,
+                                                  "rsi9":  59.8811,
+                                                  "atr14":  0.5411,
+                                                  "adx14":  45.8846,
+                                                  "averageVolume20":  2923980.0000,
+                                                  "averageFinancialVolume20":  51255625.7500,
+                                                  "relativeVolume20":  0.8488,
+                                                  "distanceFromSma21Percent":  1.3649,
+                                                  "return5DaysPercent":  5.1632,
+                                                  "return20DaysPercent":  -0.8949,
+                                                  "distanceFromEma9Percent":  2.6996,
+                                                  "distanceFromEma21Percent":  3.7823,
+                                                  "highestHigh5":  17.8400,
+                                                  "highestHigh10":  17.8400,
+                                                  "highestHigh20":  18.7000,
+                                                  "lowestLow5":  16.5700,
+                                                  "lowestLow10":  16.5200,
+                                                  "lowestLow20":  16.5200,
+                                                  "recentHigh":  17.8400,
+                                                  "recentHighDate":  "2026-10-07",
+                                                  "recentLow":  16.5200,
+                                                  "recentLowDate":  "2026-09-29",
+                                                  "candlesSinceRecentHigh":  0,
+                                                  "pullbackDepthPercent":  0.6726,
+                                                  "previousCandleHigh":  17.36,
+                                                  "previousCandleLow":  16.93,
+                                                  "previousCandleClose":  17.32,
+                                                  "movingAverageSlope9":  -1.2710,
+                                                  "movingAverageSlope21":  0.9931,
+                                                  "consolidationWidthPercent":  13.1961,
+                                                  "bullishVolumeAverage":  3043512.5000,
+                                                  "bearishVolumeAverage":  2844291.6667,
+                                                  "latestClosedCandleVolume":  2744000,
+                                                  "previousClosedCandleVolume":  2731700,
+                                                  "trend":  "DOWNTREND",
+                                                  "adxSma5":  47.7797,
+                                                  "adxRising":  false,
+                                                  "adxSma5Rising":  false,
+                                                  "plusDiAboveMinusDi":  true
+                                              },
+                        "entryAnalysis":  {
+                                              "status":  "INVALIDATED",
+                                              "setupType":  "NONE",
+                                              "confirmationStrength":  "NONE",
+                                              "score":  60,
+                                              "scoreBreakdown":  {
+                                                                     "trend":  0,
+                                                                     "pullbackDepth":  0,
+                                                                     "averageTouch":  15,
+                                                                     "sma21Preserved":  10,
+                                                                     "rsi":  10,
+                                                                     "confirmationCandle":  15,
+                                                                     "higherLow":  0,
+                                                                     "volume":  5,
+                                                                     "distance":  5,
+                                                                     "breakout":  0,
+                                                                     "relativeVolume":  0,
+                                                                     "adx":  0,
+                                                                     "slopes":  0,
+                                                                     "recentReturn":  0,
+                                                                     "penalties":  0,
+                                                                     "total":  60
+                                                                 },
+                                              "checks":  {
+                                                             "trendQualified":  false,
+                                                             "priceAboveSma21":  true,
+                                                             "ema9AboveEma21":  true,
+                                                             "adxAccepted":  true,
+                                                             "recentHighDetected":  true,
+                                                             "pullbackDepthAccepted":  false,
+                                                             "touchedShortAverage":  true,
+                                                             "sma21Preserved":  true,
+                                                             "rsiEntryRangeAccepted":  true,
+                                                             "closedAbovePreviousHigh":  true,
+                                                             "latestCloseAbovePreviousClose":  true,
+                                                             "latestCloseAboveEma9":  true,
+                                                             "bullishConfirmationCandle":  true,
+                                                             "previousLowPreserved":  true,
+                                                             "confirmationVolumeAccepted":  true,
+                                                             "breakoutAboveRecentHigh":  false,
+                                                             "breakoutVolumeAccepted":  false,
+                                                             "liquidityAccepted":  true,
+                                                             "breakoutEligible":  true,
+                                                             "latestCloseAboveEma21":  true,
+                                                             "breakoutRsiAccepted":  true,
+                                                             "breakoutAdxAccepted":  true,
+                                                             "breakoutExtensionAccepted":  true,
+                                                             "consolidationDetected":  false,
+                                                             "overextendedFromEma21":  false,
+                                                             "trendWeakening":  true,
+                                                             "ema9SlopeNegative":  true,
+                                                             "latestCloseBelowSma21":  false,
+                                                             "adxWeakening":  false,
+                                                             "latestSwingLowBelowPrevious":  true,
+                                                             "movingAveragesConverging":  true,
+                                                             "higherLowDetected":  false,
+                                                             "sufficientEntryHistory":  true
+                                                         },
+                                              "reasons":  [
+                                                              "No deterministic entry setup is currently confirmed"
+                                                          ],
+                                              "recentHigh":  17.8400,
+                                              "recentLow":  16.5200,
+                                              "pullbackDepthPercent":  0.6726,
+                                              "distanceFromEma9Percent":  2.6996,
+                                              "distanceFromEma21Percent":  3.7823,
+                                              "candlesSinceRecentHigh":  0,
+                                              "consolidationWidthPercent":  13.1961,
+                                              "nearestSupport":  16.5200,
+                                              "nearestResistance":  17.8400,
+                                              "recentHighBeforeLatest":  18.7,
+                                              "breakoutPercentAboveResistance":  -5.2406,
+                                              "breakoutConfirmed":  false,
+                                              "pullbackDetected":  false,
+                                              "pullbackConfirmed":  false,
+                                              "overextended":  false,
+                                              "sideways":  false
+                                          },
+                        "checks":  {
+                                       "closeAboveSma21":  true,
+                                       "sma9AboveSma21":  false,
+                                       "rsiInsideRange":  true,
+                                       "adxAccepted":  true,
+                                       "liquidityAccepted":  true,
+                                       "historyAccepted":  true
+                                   },
+                        "reasons":  [
+                                        "SMA9 is not above SMA21"
+                                    ],
+                        "experimentalEntry":  {
+                                                  "signal":  "ANALYZE_ENTRY",
+                                                  "patterns":  [
+                                                                   "EARLY_REVERSAL"
+                                                               ],
+                                                  "checks":  {
+                                                                 "liquidity":  true,
+                                                                 "rsi45to72":  true,
+                                                                 "extension":  true,
+                                                                 "EARLY_REVERSAL.priceRecovery":  true,
+                                                                 "EARLY_REVERSAL.momentumStrengthening":  true,
+                                                                 "EARLY_REVERSAL.averagesReacting":  true,
+                                                                 "EARLY_REVERSAL.recentReclaim":  true,
+                                                                 "ADX_RECOVERY.below20AboveSma5":  false,
+                                                                 "ADX_RECOVERY.consistentStrengthening":  false,
+                                                                 "ADX_RECOVERY.bullishDirection":  true,
+                                                                 "PULLBACK_REENTRY.uptrend":  false,
+                                                                 "PULLBACK_REENTRY.supportRejection":  false,
+                                                                 "PULLBACK_REENTRY.laterConfirmation":  true
+                                                             },
+                                                  "reasons":  [
+                                                                  "Confirmed closed-bar hypothesis: EARLY_REVERSAL"
+                                                              ]
+                                              }
+                    },
+                    {
+                        "ticker":  "BBSE3",
+                        "analysisDate":  "2026-10-07",
+                        "timeframe":  "1D",
+                        "lastClose":  40.28,
+                        "currentPrice":  40.81,
+                        "dataStatus":  "INTRADAY_PARTIAL",
+                        "currentPartialCandle":  {
+                                                     "date":  "2026-10-08",
+                                                     "open":  40.32,
+                                                     "high":  41.12,
+                                                     "low":  40.21,
+                                                     "close":  40.81,
+                                                     "volume":  7807800,
+                                                     "status":  "INTRADAY_PARTIAL",
+                                                     "marketDataUpdatedAt":  "2026-10-08T17:08:32.7171692-03:00"
+                                                 },
+                        "marketDataUpdatedAt":  "2026-10-08T17:08:32.7171692-03:00",
+                        "score":  68,
+                        "status":  "WATCH",
+                        "trend":  "DOWNTREND",
+                        "technicalAnalysis":  {
+                                                  "ticker":  "BBSE3",
+                                                  "analysisDate":  "2026-10-07",
+                                                  "timeframe":  "1D",
+                                                  "lastClose":  40.28,
+                                                  "sma9":  39.6156,
+                                                  "sma21":  39.8448,
+                                                  "ema9":  39.9301,
+                                                  "ema21":  39.7827,
+                                                  "rsi9":  55.1028,
+                                                  "atr14":  1.0301,
+                                                  "adx14":  18.3597,
+                                                  "averageVolume20":  6556780.0000,
+                                                  "averageFinancialVolume20":  261511948.9000,
+                                                  "relativeVolume20":  0.9545,
+                                                  "distanceFromSma21Percent":  1.0922,
+                                                  "return5DaysPercent":  2.3634,
+                                                  "return20DaysPercent":  -1.5400,
+                                                  "distanceFromEma9Percent":  0.8763,
+                                                  "distanceFromEma21Percent":  1.2500,
+                                                  "highestHigh5":  42.4200,
+                                                  "highestHigh10":  42.4200,
+                                                  "highestHigh20":  42.4200,
+                                                  "lowestLow5":  38.9000,
+                                                  "lowestLow10":  38.2400,
+                                                  "lowestLow20":  38.2400,
+                                                  "recentHigh":  42.4200,
+                                                  "recentHighDate":  "2026-10-05",
+                                                  "recentLow":  38.2400,
+                                                  "recentLowDate":  "2026-09-29",
+                                                  "candlesSinceRecentHigh":  2,
+                                                  "pullbackDepthPercent":  5.0448,
+                                                  "previousCandleHigh":  41.7,
+                                                  "previousCandleLow":  39.8,
+                                                  "previousCandleClose":  40.08,
+                                                  "movingAverageSlope9":  0.9628,
+                                                  "movingAverageSlope21":  -0.8917,
+                                                  "consolidationWidthPercent":  10.9310,
+                                                  "bullishVolumeAverage":  5923690.0000,
+                                                  "bearishVolumeAverage":  7189870.0000,
+                                                  "latestClosedCandleVolume":  6283000,
+                                                  "previousClosedCandleVolume":  9656500,
+                                                  "trend":  "DOWNTREND",
+                                                  "adxSma5":  17.4613,
+                                                  "adxRising":  true,
+                                                  "adxSma5Rising":  true,
+                                                  "plusDiAboveMinusDi":  true
+                                              },
+                        "entryAnalysis":  {
+                                              "status":  "INVALIDATED",
+                                              "setupType":  "NONE",
+                                              "confirmationStrength":  "NONE",
+                                              "score":  60,
+                                              "scoreBreakdown":  {
+                                                                     "trend":  0,
+                                                                     "pullbackDepth":  15,
+                                                                     "averageTouch":  15,
+                                                                     "sma21Preserved":  10,
+                                                                     "rsi":  10,
+                                                                     "confirmationCandle":  0,
+                                                                     "higherLow":  0,
+                                                                     "volume":  5,
+                                                                     "distance":  5,
+                                                                     "breakout":  0,
+                                                                     "relativeVolume":  0,
+                                                                     "adx":  0,
+                                                                     "slopes":  0,
+                                                                     "recentReturn":  0,
+                                                                     "penalties":  0,
+                                                                     "total":  60
+                                                                 },
+                                              "checks":  {
+                                                             "trendQualified":  false,
+                                                             "priceAboveSma21":  true,
+                                                             "ema9AboveEma21":  true,
+                                                             "adxAccepted":  false,
+                                                             "recentHighDetected":  true,
+                                                             "pullbackDepthAccepted":  true,
+                                                             "touchedShortAverage":  true,
+                                                             "sma21Preserved":  true,
+                                                             "rsiEntryRangeAccepted":  true,
+                                                             "closedAbovePreviousHigh":  false,
+                                                             "latestCloseAbovePreviousClose":  true,
+                                                             "latestCloseAboveEma9":  true,
+                                                             "bullishConfirmationCandle":  true,
+                                                             "previousLowPreserved":  true,
+                                                             "confirmationVolumeAccepted":  true,
+                                                             "breakoutAboveRecentHigh":  false,
+                                                             "breakoutVolumeAccepted":  false,
+                                                             "liquidityAccepted":  true,
+                                                             "breakoutEligible":  true,
+                                                             "latestCloseAboveEma21":  true,
+                                                             "breakoutRsiAccepted":  true,
+                                                             "breakoutAdxAccepted":  true,
+                                                             "breakoutExtensionAccepted":  true,
+                                                             "consolidationDetected":  false,
+                                                             "overextendedFromEma21":  false,
+                                                             "trendWeakening":  true,
+                                                             "ema9SlopeNegative":  false,
+                                                             "latestCloseBelowSma21":  false,
+                                                             "adxWeakening":  true,
+                                                             "latestSwingLowBelowPrevious":  true,
+                                                             "movingAveragesConverging":  false,
+                                                             "higherLowDetected":  false,
+                                                             "sufficientEntryHistory":  true
+                                                         },
+                                              "reasons":  [
+                                                              "No deterministic entry setup is currently confirmed"
+                                                          ],
+                                              "recentHigh":  42.4200,
+                                              "recentLow":  38.2400,
+                                              "pullbackDepthPercent":  5.0448,
+                                              "distanceFromEma9Percent":  0.8763,
+                                              "distanceFromEma21Percent":  1.2500,
+                                              "candlesSinceRecentHigh":  2,
+                                              "consolidationWidthPercent":  10.9310,
+                                              "nearestSupport":  38.2400,
+                                              "nearestResistance":  42.4200,
+                                              "recentHighBeforeLatest":  42.42,
+                                              "breakoutPercentAboveResistance":  -5.0448,
+                                              "breakoutConfirmed":  false,
+                                              "pullbackDetected":  false,
+                                              "pullbackConfirmed":  false,
+                                              "overextended":  false,
+                                              "sideways":  false
+                                          },
+                        "checks":  {
+                                       "closeAboveSma21":  true,
+                                       "sma9AboveSma21":  false,
+                                       "rsiInsideRange":  true,
+                                       "adxAccepted":  false,
+                                       "liquidityAccepted":  true,
+                                       "historyAccepted":  true
+                                   },
+                        "reasons":  [
+                                        "SMA9 is not above SMA21",
+                                        "ADX14 is below threshold 20"
+                                    ],
+                        "experimentalEntry":  {
+                                                  "signal":  "ANALYZE_ENTRY",
+                                                  "patterns":  [
+                                                                   "ADX_RECOVERY"
+                                                               ],
+                                                  "checks":  {
+                                                                 "liquidity":  true,
+                                                                 "rsi45to72":  true,
+                                                                 "extension":  true,
+                                                                 "EARLY_REVERSAL.priceRecovery":  false,
+                                                                 "EARLY_REVERSAL.momentumStrengthening":  false,
+                                                                 "EARLY_REVERSAL.averagesReacting":  false,
+                                                                 "EARLY_REVERSAL.recentReclaim":  false,
+                                                                 "ADX_RECOVERY.below20AboveSma5":  true,
+                                                                 "ADX_RECOVERY.consistentStrengthening":  true,
+                                                                 "ADX_RECOVERY.bullishDirection":  true,
+                                                                 "PULLBACK_REENTRY.uptrend":  false,
+                                                                 "PULLBACK_REENTRY.supportRejection":  false,
+                                                                 "PULLBACK_REENTRY.laterConfirmation":  false
+                                                             },
+                                                  "reasons":  [
+                                                                  "Confirmed closed-bar hypothesis: ADX_RECOVERY"
+                                                              ]
+                                              }
+                    }
+                ],
+    "failures":  [
+                     {
+                         "ticker":  "RPAD5",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "MAPT4",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "TXRX4",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "PEAB3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "GSHP3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "HETA4",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "COCE3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "RPAD6",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "CBEE3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "BRSR5",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "FIEI3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "WLMM3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "ESUD11",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "SOND5",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "RPAD3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "BAUH4",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "CCTY3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "GPAR3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "CGAS3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "MAPT3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "JOPA3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "BMIN3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "GEPA3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "SOND6",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "CEEB5",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "AHEB3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "USIM6",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "DTCY3",
+                         "errorCode":  "INSUFFICIENT_HISTORY",
+                         "message":  "Insufficient candle history for technical analysis"
+                     },
+                     {
+                         "ticker":  "BMIN4",
+                         "errorCode":  "PROVIDER_UNAVAILABLE",
+                         "message":  "Market data provider is unavailable"
+                     }
+                 ]
+}

@@ -30,10 +30,11 @@ function harness() {
   };
   const chart = {
     addSeries: (_kind, options) => {
-      createdSeries.push(structuredClone(options));
-      if (!options.title) return series;
+      const name = options.title || ({ '#00ff00': 'MM9', '#ff5252': 'MM21', '#ffaa00': 'VWAP', '#2e7d32': 'EMA9 (closed)' })[options.color];
+      createdSeries.push({ ...structuredClone(options), title: name, actualTitle: options.title });
+      if (!name) return series;
       const line = { data: [], setData(data) { this.data = structuredClone(data); }, update() {} };
-      lines.set(options.title, line);
+      lines.set(name, line);
       return line;
     }, removeSeries() {}, remove() {},
     subscribeCrosshairMove: callback => { crosshair = callback; },
@@ -41,7 +42,7 @@ function harness() {
   };
   const mocks = {
     '@mui/material': {
-      useTheme: () => ({ palette: { background: {}, text: {}, success: {}, error: {}, warning: {} } }),
+      useTheme: () => ({ palette: { background: {}, text: {}, success: { main: '#00ff00' }, error: {}, warning: { main: '#ffaa00' } } }),
     },
     react: {
       useRef: () => { const ref = { current: {} }; refs.push(ref); return ref; },
@@ -355,3 +356,58 @@ for (const direction of ['UP', 'DOWN']) {
     assert.deepEqual(h.rawMarkers(), []); h.manager.close(); h.unmount();
   });
 }
+
+
+test('WIN M5 shared chart confirms swing rays only after closure, preserves indicators and clears on replay reset', async () => {
+  const h = harness();
+  await h.manager.load('2026-09-24'); h.mount(false);
+  const send = (index, high, low) => {
+    const time = 6000 + index * 300;
+    h.send({ type: 'MARKET_STATE', timeMsc: time * 1000,
+      candle: { time, open: 182000, high, low, close: 182000 },
+      sma9: 182001, sma21: 182002, vwap: 182003, vwapSession: '2026-09-24' });
+  };
+  send(0, 182020, 181980); send(1, 182040, 181960);
+  send(2, 182100, 181900); send(3, 182050, 181950); send(4, 182060, 181940);
+  assert.deepEqual(h.paint().paths, []);
+  send(5, 182080, 181920);
+  const rays = h.paint().paths;
+  assert.equal(rays.length, 2);
+  for (const ray of rays) {
+    assert.equal(ray.color, '#ff5252');
+    assert.deepEqual(Array.from(ray.dash), [6, 4]);
+  }
+  send(5, 183000, 181000);
+  assert.deepEqual(h.paint().paths, rays);
+  for (const title of ['MM9', 'MM21', 'VWAP']) assert.ok(h.createdSeries().some(series => series.title === title));
+  h.unmount(); h.mount(false);
+  assert.deepEqual(h.paint().paths, rays);
+  h.manager.close();
+  assert.deepEqual(h.paint().paths, []);
+  h.unmount();
+});
+
+
+test('WIN M5 has one MM9 and one VWAP per session, with no indicator price labels or horizontal price lines', async () => {
+  const h = harness();
+  await h.manager.load('2026-09-24'); h.mount(false);
+  const market = time => h.send({ type: 'MARKET_STATE', timeMsc: time * 1000,
+    candle: { time, open: 100, high: 120, low: 80, close: 110 },
+    sma9: 111, sma21: 112, vwap: 113, vwapSession: '2026-09-24',
+    closedEma9: { time: time - 300, value: 112 } });
+  market(6000); market(6000);
+  assert.equal(h.createdSeries().filter(series => series.title === 'VWAP').length, 1);
+  market(6300);
+  // History replaces the old session series once; intrabar updates reuse it.
+  assert.equal(h.createdSeries().filter(series => series.title === 'VWAP').length, 2);
+  market(6300);
+  assert.equal(h.createdSeries().filter(series => series.title === 'VWAP').length, 2);
+  assert.equal(h.createdSeries().filter(series => series.title === 'MM9').length, 1);
+  assert.equal(h.createdSeries().filter(series => series.title === 'EMA9 (closed)').length, 0);
+  for (const series of h.createdSeries().filter(series => series.title)) {
+    assert.equal(series.actualTitle, '', series.title);
+    assert.equal(series.lastValueVisible, false, series.title);
+    assert.equal(series.priceLineVisible, false, series.title);
+  }
+  h.manager.close(); h.unmount();
+});

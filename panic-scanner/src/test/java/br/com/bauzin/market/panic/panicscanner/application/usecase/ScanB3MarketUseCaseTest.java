@@ -19,6 +19,8 @@ import br.com.bauzin.market.panic.panicscanner.domain.strategy.ScannerResult;
 import br.com.bauzin.market.panic.panicscanner.domain.strategy.SignalStatus;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigDecimal;
 import java.time.Clock;
@@ -99,21 +101,32 @@ class ScanB3MarketUseCaseTest {
                 });
     }
 
-    @Test
-    void shouldStopSafelyOnProviderWideAuthenticationFailure() {
+    @ParameterizedTest
+    @CsvSource({
+            "AUTHENTICATION_REQUIRED,false", "AUTHENTICATION_REQUIRED,true",
+            "RATE_LIMIT_EXCEEDED,false", "RATE_LIMIT_EXCEEDED,true",
+            "PROVIDER_UNAVAILABLE,false", "PROVIDER_UNAVAILABLE,true"
+    })
+    void shouldContinueAfterProviderFailure(ProviderErrorCode errorCode, boolean experimental) {
         marketDataClient.stocks = List.of(
                 new StockSummary("PETR4", "Petrobras", "stock", true),
                 new StockSummary("WEGE3", "Weg", "stock", true),
                 new StockSummary("VALE3", "Vale", "stock", true));
-        analyzeStockUseCase.failures.put("PETR4", new MarketDataProviderException(ProviderErrorCode.AUTHENTICATION_REQUIRED));
+        analyzeStockUseCase.failures.put("PETR4", new MarketDataProviderException(errorCode));
+        analyzeStockUseCase.failures.put("WEGE3", new MarketDataProviderException(errorCode));
+        analyzeStockUseCase.results.put("VALE3", result("VALE3", 88, "1.3", "24")
+                .withExperimentalEntry(new br.com.bauzin.market.panic.panicscanner.domain.entry.ExperimentalEntryAnalysis(
+                        "ANALYZE_ENTRY", List.of("EARLY_REVERSAL"), Map.of(), List.of())));
 
-        MarketScanExecutionResult result = useCase.execute(CRITERIA);
+        MarketScanExecutionResult result = experimental
+                ? useCase.executeExperimental(CRITERIA) : useCase.execute(CRITERIA);
 
-        assertThat(result.analyzedCount()).isEqualTo(1);
-        assertThat(analyzeStockUseCase.requestedTickers).containsExactly("PETR4");
-        assertThat(result.failures()).singleElement()
-                .extracting(ScanFailure::errorCode)
-                .isEqualTo("AUTHENTICATION_REQUIRED");
+        assertThat(result.analyzedCount()).isEqualTo(3);
+        assertThat(analyzeStockUseCase.requestedTickers).containsExactly("PETR4", "WEGE3", "VALE3");
+        assertThat(result.results()).extracting(ScannerResult::ticker).containsExactly("VALE3");
+        assertThat(result.failures()).extracting(ScanFailure::ticker).containsExactly("PETR4", "WEGE3");
+        assertThat(result.failures()).extracting(ScanFailure::errorCode)
+                .containsExactly(errorCode.name(), errorCode.name());
     }
 
     @Test
@@ -222,6 +235,20 @@ class ScanB3MarketUseCaseTest {
         assertThat(result.results()).extracting(ScannerResult::ticker).containsExactly("ABCD3", "RADL3", "VALE3");
     }
 
+    @Test
+    void experimentalScanIncludesWatchWithoutChangingProductionSelection() {
+        marketDataClient.stocks = List.of(new StockSummary("TEST3", "Test", "stock", true));
+        var watch = result("TEST3", 50, "1.5", "18", SignalStatus.WATCH)
+                .withExperimentalEntry(new br.com.bauzin.market.panic.panicscanner.domain.entry.ExperimentalEntryAnalysis(
+                        "ANALYZE_ENTRY", List.of("ADX_RECOVERY"), Map.of("direction", true), List.of("test")));
+        analyzeStockUseCase.results.put("TEST3", watch);
+        assertThat(useCase.execute(CRITERIA).results()).isEmpty();
+        assertThat(useCase.executeExperimental(CRITERIA).results()).containsExactly(watch);
+        assertThat(useCase.execute(CRITERIA).results()).isEmpty();
+        analyzeStockUseCase.results.put("TEST3", watch.withExperimentalEntry(null));
+        assertThat(useCase.executeExperimental(CRITERIA).results()).isEmpty();
+    }
+
     private ScannerResult result(String ticker, int score, String relativeVolume20, String adx14) {
         return result(ticker, score, relativeVolume20, adx14, SignalStatus.QUALIFIED);
     }
@@ -316,6 +343,11 @@ class ScanB3MarketUseCaseTest {
 
         private FakeAnalyzeStockUseCase() {
             super(null, null, null, null, null);
+        }
+
+        @Override
+        public ScannerResult executeExperimental(String ticker) {
+            return execute(ticker);
         }
 
         @Override

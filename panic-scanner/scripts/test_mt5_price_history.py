@@ -41,12 +41,22 @@ class PriceHistoryTest(unittest.TestCase):
         self.assertEqual("header", result[0]["type"])
         rows = result[1:-1]
         self.assertEqual([6_000_000, 6_000_000, 6_000_000, 6_299_999, 6_300_000], [r["timeMsc"] for r in rows])
+        self.assertEqual(list(range(5)), [r["sequence"] for r in rows])
         self.assertEqual(2, rows[3]["flags"])  # selection belongs to the Java adapter
         self.assertEqual({"type": "end", "rows": 5}, result[-1])
         self.assertEqual(2, len(mt5.calls))
         self.assertEqual(utc(6_300_000), mt5.calls[0][2])
         self.assertEqual(utc(6_300_000), mt5.calls[1][1])
         self.assertEqual(0, utc(6_000_000).utcoffset().total_seconds())
+
+    def test_non_trading_day_can_be_persisted_without_confusing_api_error(self):
+        mt5 = FakeMt5()
+        mt5.official = []
+        mt5.rows = []
+        result = []
+        export(mt5, "WINV26", 6_000_000, 6_600_000, result.append)
+        self.assertEqual([], result[0]["official"])
+        self.assertEqual({"type": "end", "rows": 0}, result[-1])
 
     def test_rejects_non_aligned_or_empty_intervals(self):
         for start, end in [(1, M5_MSC), (0, 1), (M5_MSC, 0), (0, 0), (-M5_MSC, 0)]:
@@ -82,8 +92,17 @@ class PriceHistoryTest(unittest.TestCase):
         mt5.rows[0]["time"] = 1
         with self.assertRaises(ValueError): export(mt5, "WINV26", 6_000_000, 6_600_000, lambda r: None)
 
+    def test_missing_lasts_with_official_candles_does_not_publish_complete_trailer(self):
+        mt5 = FakeMt5()
+        mt5.rows = []
+        result = []
+        with self.assertRaises(RuntimeError):
+            export(mt5, "WINV26", 6_000_000, 6_600_000, result.append)
+        self.assertNotEqual("end", result[-1]["type"])
+
     def test_empty_chunk_is_valid_but_api_error_is_not(self):
         mt5 = FakeMt5()
+        mt5.official = []
         mt5.rows = []
         result = []
         export(mt5, "WINV26", 6_000_000, 6_600_000, result.append)

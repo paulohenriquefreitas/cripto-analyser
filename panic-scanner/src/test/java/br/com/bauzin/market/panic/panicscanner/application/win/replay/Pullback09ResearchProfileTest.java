@@ -166,6 +166,27 @@ class Pullback09ResearchProfileTest {
         assertThat(lines[1].split(",", -1)).hasSameSizeAs(lines[0].split(",", -1));
     }
 
+    @Test
+    void downOutcomeReversesFavorableAndAdverseExcursionsAcrossAllWindows() {
+        var s = snapshot();
+        var down = new Pullback09ResearchSnapshot("DOWN", s.symbol(), s.pullb09CandleTimeMsc(),
+                s.setupAvailableTimeMsc(), s.referencePrice(), s.referenceBucket(), s.rj09(),
+                s.rjMinDistanceToSma9(), s.candle3(), s.confirmationStrength(), s.sma9(), s.sma21(),
+                s.sma9MinusSma21(), s.sma9Slope(), s.sma21Slope(), s.vwap(), s.distanceToVwap(), s.atr14(),
+                Pullback09Setup.EventType.PULLB09_DOWN, null);
+        var tracker = new Pullback09SetupOutcomeTracker();
+        tracker.register(s); tracker.register(down);
+        tick(tracker, -1, 9999); tick(tracker, 0, 1);
+        tick(tracker, 1, 108); tick(tracker, 2, 96); tick(tracker, 300_000, 110);
+        tick(tracker, 300_001, 92); tick(tracker, 900_000, 115);
+        tick(tracker, 900_001, 90); tick(tracker, 1_800_000, 120);
+        tick(tracker, 1_800_001, 9999);
+        assertThat(tracker.outcomeFor("DOWN").orElseThrow()).isEqualTo(
+                new Pullback09SetupOutcome("DOWN", true, 4.0, 10.0, true, 8.0, 15.0, true, 10.0, 20.0));
+        assertThat(tracker.outcomeFor("PB").orElseThrow()).isEqualTo(
+                new Pullback09SetupOutcome("PB", true, 10.0, 4.0, true, 15.0, 8.0, true, 20.0, 10.0));
+    }
+
     private static Pullback09ResearchSnapshot capture(Pullback09ResearchEngine engine, double price) {
         var rj = bar(C2, 100, 105, 95, 99);
         var state = new IntrabarMarketState(SYMBOL, C4, price, bar(C4, price, price, price, price),

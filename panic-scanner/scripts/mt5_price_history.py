@@ -27,12 +27,13 @@ def export(mt5, symbol, start, end, emit):
     # Request bars strictly before the first analysis bucket, not the current bar.
     warmup = mt5.copy_rates_from(symbol, mt5.TIMEFRAME_M5, utc(start - 1), 1000)
     official = mt5.copy_rates_range(symbol, mt5.TIMEFRAME_M5, utc(start), utc(end - 1))
-    if warmup is None or len(warmup) < 20 or official is None or len(official) == 0:
+    if warmup is None or len(warmup) < 20 or official is None:
         raise RuntimeError(f"Missing closed warm-up or official rates: {mt5.last_error()}")
     emit({"type": "header", "schema": HISTORY_SCHEMA, "symbol": symbol, "startMsc": start, "endMsc": end,
           "warmup": [candle(r) for r in warmup if int(r["time"]) * 1000 < start],
           "official": [candle(r) for r in official if start <= int(r["time"]) * 1000 < end]})
     count = 0
+    last_count = 0
     previous = -1
     for chunk_start in range(start, end, M5_MSC):
         chunk_end = min(chunk_start + M5_MSC, end)
@@ -51,10 +52,14 @@ def export(mt5, symbol, start, end, emit):
             if int(row["time"]) != timestamp // 1000:
                 raise ValueError("MT5 returned inconsistent time/time_msc")
             previous = timestamp
-            emit({"type": "tick", "timeMsc": timestamp,
+            emit({"type": "tick", "timeMsc": timestamp, "sequence": count,
                   "last": float(row["last"]), "flags": int(row["flags"]),
                   "volumeReal": float(row["volume_real"])})
             count += 1
+            if int(row["flags"]) & 8 and float(row["last"]) > 0:
+                last_count += 1
+    if last_count == 0 and any(start <= int(r["time"]) * 1000 < end for r in official):
+        raise RuntimeError("Official M5 candles exist but the exported interval contains no LASTs")
     emit({"type": "end", "rows": count})
 
 

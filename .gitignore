@@ -6,3 +6,6 @@ dist/
 **/dist/
 .idea/
 *.iml
+
+historical-data/
+research-results/

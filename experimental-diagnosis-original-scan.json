@@ -1,0 +1,27 @@
+﻿{
+    "scannedAt":  "2026-10-08T17:07:28.31-03:00",
+    "strategy":  "MOMENTUM",
+    "discoveredCount":  788,
+    "eligibleCount":  377,
+    "analyzedCount":  65,
+    "qualifiedCount":  0,
+    "momentumQualifiedCount":  7,
+    "momentumWatchCount":  50,
+    "breakoutEligibleCount":  54,
+    "breakoutReadyCount":  0,
+    "pullbackReadyCount":  1,
+    "returnedCount":  0,
+    "totalExecutionDurationMillis":  34617,
+    "averageAnalysisDurationMillis":  532,
+    "providerRequestCount":  66,
+    "results":  [
+
+                ],
+    "failures":  [
+                     {
+                         "ticker":  "ALOS3",
+                         "errorCode":  "PROVIDER_UNAVAILABLE",
+                         "message":  "Market data provider is unavailable"
+                     }
+                 ]
+}

@@ -7,6 +7,8 @@ import br.com.bauzin.market.panic.panicscanner.domain.analysis.Trend;
 import br.com.bauzin.market.panic.panicscanner.domain.checks.TechnicalChecks;
 import br.com.bauzin.market.panic.panicscanner.domain.entry.EntryAnalysis;
 
+import br.com.bauzin.market.panic.panicscanner.domain.entry.ExperimentalEntryAnalysis;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -28,7 +30,28 @@ public record ScannerResult(
         TechnicalAnalysis technicalAnalysis,
         EntryAnalysis entryAnalysis,
         TechnicalChecks checks,
+        List<String> reasons,
+        @JsonInclude(JsonInclude.Include.NON_NULL) ExperimentalEntryAnalysis experimentalEntry) {
+
+
+    public ScannerResult(
+        String ticker,
+        LocalDate analysisDate,
+        String timeframe,
+        BigDecimal lastClose,
+        BigDecimal currentPrice,
+        CandleStatus dataStatus,
+        Candle currentPartialCandle,
+        OffsetDateTime marketDataUpdatedAt,
+        Integer score,
+        SignalStatus status,
+        Trend trend,
+        TechnicalAnalysis technicalAnalysis,
+        EntryAnalysis entryAnalysis,
+        TechnicalChecks checks,
         List<String> reasons) {
+        this(ticker, analysisDate, timeframe, lastClose, currentPrice, dataStatus, currentPartialCandle, marketDataUpdatedAt, score, status, trend, technicalAnalysis, entryAnalysis, checks, reasons, null);
+    }
 
     public ScannerResult(String ticker,
                          LocalDate analysisDate,
@@ -83,7 +106,7 @@ public record ScannerResult(
                 technicalAnalysis,
                 entryAnalysis,
                 checks,
-                reasons);
+                reasons, experimentalEntry);
     }
 
     public ScannerResult withEntryAnalysis(EntryAnalysis entryAnalysis) {
@@ -102,6 +125,10 @@ public record ScannerResult(
                 technicalAnalysis,
                 entryAnalysis,
                 checks,
-                reasons);
+                reasons, experimentalEntry);
+    }
+
+    public ScannerResult withExperimentalEntry(ExperimentalEntryAnalysis value) {
+        return new ScannerResult(ticker, analysisDate, timeframe, lastClose, currentPrice, dataStatus, currentPartialCandle, marketDataUpdatedAt, score, status, trend, technicalAnalysis, entryAnalysis, checks, reasons, value);
     }
 }

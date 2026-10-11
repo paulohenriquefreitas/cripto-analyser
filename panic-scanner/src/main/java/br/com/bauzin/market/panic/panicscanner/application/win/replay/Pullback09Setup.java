@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class Pullback09Setup {
     private static final double SMA9_INTERACTION_ZONE_POINTS = 30;
 
-    public enum EventType { CRZ09_UP, RJ09_UP, PULLB09_UP }
+    public enum EventType { CRZ09_UP, RJ09_UP, PULLB09_UP, CRZ09_DOWN, RJ09_DOWN, PULLB09_DOWN }
 
     public record Event(String eventId, EventType eventType, String symbol,
                         long timeMsc, long candleTimeMsc, double price) {}

@@ -41,7 +41,7 @@ public final class Mt5HistoricalPriceSource {
                 || M5Bucket.start(header.startMsc()) != header.startMsc()
                 || M5Bucket.start(header.endMsc()) != header.endMsc()) throw new IOException("Invalid header");
         onHeader.accept(header);
-        long rows = 0, selected = 0, previous = -1;
+        long rows = 0, selected = 0, previous = -1, previousSequence = -1, previousRawSequence = -1;
         String line;
         while ((line = reader.readLine()) != null) {
             if (Thread.currentThread().isInterrupted()) throw new InterruptedIOException("History interrupted");
@@ -59,6 +59,11 @@ public final class Mt5HistoricalPriceSource {
                 throw new IOException("Invalid flags/last");
             if (timestamp < previous || timestamp < header.startMsc() || timestamp >= header.endMsc())
                 throw new IOException("Unordered or out-of-range raw history");
+            if (node.has("sequence")) {
+                long rawSequence = integer(node, "sequence");
+                if (rawSequence <= previousRawSequence) throw new IOException("Unordered raw sequence");
+                previousRawSequence = rawSequence;
+            }
             previous = timestamp;
             rows++;
             var event = Mt5CanonicalPriceMapper.historical(header.symbol(), timestamp,
@@ -69,8 +74,11 @@ public final class Mt5HistoricalPriceSource {
                         || volume.doubleValue() < 0)) {
                     throw new IOException("Missing or invalid volumeReal");
                 }
+                long sequence = node.has("sequence") ? integer(node, "sequence") : selected;
+                if (sequence <= previousSequence) throw new IOException("Unordered sequence");
+                previousSequence = sequence;
                 onEvent.accept(new HistoricalCanonicalPriceEvent(
-                        event.get(), volume == null ? 0 : volume.doubleValue(), (int) flags, selected));
+                        event.get(), volume == null ? 0 : volume.doubleValue(), (int) flags, sequence));
                 selected++;
             }
         }

@@ -10,6 +10,8 @@ import { WinScannerPage } from '@/features/win/pages/WinScannerPage';
 import { WinMt5Page } from '@/features/win/pages/WinMt5Page';
 import { ReplayPage } from '@/features/replay/pages/ReplayPage';
 
+import { ExperimentalScannerPage } from '@/features/scanner/pages/ExperimentalScannerPage';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -18,6 +20,7 @@ const router = createBrowserRouter([
       { index: true, element: <Navigate to="/dashboard" replace /> },
       { path: 'dashboard', element: <DashboardPage /> },
       { path: 'scanner', element: <ScannerPage /> },
+      { path: 'scanner-experimental', element: <ExperimentalScannerPage /> },
       { path: 'win-m5', element: <WinMt5Page /> },
       { path: 'replay', element: <ReplayPage /> },
       { path: 'win-scanner', element: <WinScannerPage /> },

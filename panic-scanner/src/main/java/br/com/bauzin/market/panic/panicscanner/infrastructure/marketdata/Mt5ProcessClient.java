@@ -7,6 +7,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Locale;
+import java.util.Objects;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -32,6 +35,22 @@ public class Mt5ProcessClient {
         return parseResponse(0, execute(), "");
     }
 
+    public List<Mt5Candle> readCandles(String symbol, String timeframe, LocalDate from, LocalDate to)
+            throws IOException, InterruptedException {
+        Objects.requireNonNull(symbol, "symbol");
+        Objects.requireNonNull(timeframe, "timeframe");
+        Objects.requireNonNull(from, "from");
+        Objects.requireNonNull(to, "to");
+        String normalizedSymbol = symbol.trim().toUpperCase(Locale.ROOT);
+        String normalizedTimeframe = timeframe.trim().toUpperCase(Locale.ROOT);
+        if (!normalizedSymbol.matches("[A-Z0-9_$]{1,24}")
+                || !List.of("M5", "D1").contains(normalizedTimeframe) || from.isAfter(to)) {
+            throw new IllegalArgumentException("Invalid MT5 historical query");
+        }
+        return parseResponse(0, execute("--symbol", normalizedSymbol, "--timeframe", normalizedTimeframe,
+                "--from", from.toString(), "--to", to.toString()), "");
+    }
+
     Mt5Tick readTick() throws IOException, InterruptedException {
         Mt5Tick tick = MAPPER.readValue(execute("--tick"), Mt5Tick.class);
         if (tick == null) {
@@ -40,7 +59,7 @@ public class Mt5ProcessClient {
         return tick;
     }
 
-    private String execute(String... arguments) throws IOException, InterruptedException {
+    protected String execute(String... arguments) throws IOException, InterruptedException {
         Path script = locateScript();
         var command = new ArrayList<>(List.of("python", script.toString()));
         command.addAll(List.of(arguments));

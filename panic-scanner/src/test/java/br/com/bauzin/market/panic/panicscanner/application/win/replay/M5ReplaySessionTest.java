@@ -208,7 +208,7 @@ class M5ReplaySessionTest {
     }
 
     @Test
-    void pauseAtCrzDoesNotAdvanceSetupAndPlayContinuesWithNextLast(@TempDir Path temp) throws Exception {
+    void pauseAtBucketPreservesResearchWithoutPublishingPullbackMarkers(@TempDir Path temp) throws Exception {
         Path history = temp.resolve("pullb09-pause.ndjson");
         Files.writeString(history, pullback09HistoryText()
                 .replace("\"endMsc\":6900000", "\"endMsc\":7200000")
@@ -218,11 +218,10 @@ class M5ReplaySessionTest {
         M5ReplaySession session = new M5ReplaySession(history, "WINV26", Long.MAX_VALUE);
         List<M5ReplaySession.SetupEventMessage> setupEvents = new ArrayList<>();
         CountDownLatch completed = new CountDownLatch(1);
-        session.addSetupEventListener(setupEvent -> {
-            setupEvents.add(setupEvent);
-            if ("CRZ09_UP".equals(setupEvent.setupType())) session.pause();
-        });
+        session.addSetupEventListener(setupEvents::add);
         session.addListener(snapshot -> {
+            if ("MARKET_STATE".equals(snapshot.type()) && snapshot.timeMsc() == 6_300_001L
+                    && session.status() == M5ReplaySession.Status.PLAYING) session.pause();
             if ("COMPLETED".equals(snapshot.type())) completed.countDown();
         });
 
@@ -231,18 +230,11 @@ class M5ReplaySessionTest {
 
         assertThat(session.metrics().eventsProcessed()).isEqualTo(3);
         assertThat(session.currentTimeMsc()).isEqualTo(6_300_001L);
-        assertThat(setupEvents).extracting(M5ReplaySession.SetupEventMessage::setupType)
-                .containsExactly("CRZ09_UP");
-        assertThat(setupEvents.getFirst().timeMsc()).isEqualTo(6_300_001L);
-        assertThat(setupEvents.getFirst().candleTimeMsc()).isEqualTo(6_000_000L);
+        assertThat(setupEvents).isEmpty();
 
         session.play();
         assertThat(completed.await(3, TimeUnit.SECONDS)).isTrue();
-        assertThat(setupEvents).extracting(M5ReplaySession.SetupEventMessage::setupType)
-                .containsExactly("CRZ09_UP", "RJ09_UP", "PULLB09_UP");
-        assertThat(setupEvents.getLast().timeMsc()).isEqualTo(6_900_001L);
-        assertThat(setupEvents.getLast().candleTimeMsc()).isEqualTo(6_600_000L);
-        assertThat(setupEvents.getLast().price()).isEqualTo(112);
+        assertThat(setupEvents).isEmpty();
         var research = session.researchRecords().getFirst();
         assertThat(research.snapshot().referencePrice()).isEqualTo(80);
         assertThat(research.snapshot().setupAvailableTimeMsc()).isEqualTo(6_900_001L);
@@ -269,6 +261,40 @@ class M5ReplaySessionTest {
         assertThat(completed.await(3, TimeUnit.SECONDS)).isTrue();
         session.close();
         return List.copyOf(occurrences);
+    }
+
+    @Test
+    void neitherPullbackDirectionIsPublishedWhileResearchRemainsAvailable(@TempDir Path temp) throws Exception {
+        long[] offsets = {1, 2, 300001, 300002, 300003, 600001, 600002, 600003,
+                900001, 900002, 1200001, 1200002, 1200003, 1500001, 1500002, 1500003, 1800001};
+        double[] prices = {90, 110, 110, 99, 105, 109, 111, 112,
+                120, 90, 90, 101, 95, 91, 89, 88, 85};
+        Path history = temp.resolve("both-directions.ndjson");
+        Files.writeString(history, historyWithTicks(offsets, prices)
+                .replace("\"endMsc\":6600000", "\"endMsc\":8100000"));
+        var session = new M5ReplaySession(history, "WINV26", Long.MAX_VALUE);
+        List<M5ReplaySession.SetupEventMessage> events = new ArrayList<>();
+        CountDownLatch completed = new CountDownLatch(1);
+        session.addSetupEventListener(events::add);
+        session.addListener(s -> { if ("COMPLETED".equals(s.type())) completed.countDown(); });
+        try {
+            session.play();
+            assertThat(completed.await(3, TimeUnit.SECONDS)).isTrue();
+            // The closed sell reversal drops 22 points; extremes no longer block Setup91.
+            assertThat(events).extracting(M5ReplaySession.SetupEventMessage::setupType)
+                    .containsExactly("SETUP91_SELL_ARMED", "SETUP91_SELL_CANCELLED");
+            var records = session.researchRecords();
+            assertThat(records).hasSize(2);
+            var down = records.getLast().snapshot();
+            assertThat(down.setupType()).isEqualTo(Pullback09Setup.EventType.PULLB09_DOWN);
+            assertThat(down.referencePrice()).isEqualTo(85);
+            assertThat(down.referenceBucket()).isEqualTo(7_800_000L);
+            assertThat(down.crz09().close()).isEqualTo(90);
+            assertThat(down.rj09().low()).isEqualTo(90);
+            assertThat(down.candle3().close()).isEqualTo(88);
+            assertThat(down.confirmationStrength()).isEqualTo(2);
+            assertThat(session.researchCsv()).contains("PULLB09_DOWN");
+        } finally { session.close(); }
     }
 
     private static String historyWithTicks(long[] offsets, double[] prices) {
@@ -360,7 +386,7 @@ class M5ReplaySessionTest {
     }
 
     @Test
-    void publishedSetupsRemainExactlyOnceAcrossThreeLaterM5Candles(@TempDir Path temp) throws Exception {
+    void pullbackMarkersRemainAbsentAcrossThreeLaterM5Candles(@TempDir Path temp) throws Exception {
         Path history = temp.resolve("pullb09-persistence.ndjson");
         String original = pullback09HistoryText();
         String laterCandles = """
@@ -386,11 +412,7 @@ class M5ReplaySessionTest {
         try {
             session.play();
             assertThat(completed.await(3, TimeUnit.SECONDS)).isTrue();
-            assertThat(events).extracting(M5ReplaySession.SetupEventMessage::setupType)
-                    .containsExactly("CRZ09_UP", "RJ09_UP", "PULLB09_UP");
-            assertThat(events).extracting(M5ReplaySession.SetupEventMessage::eventId).doesNotHaveDuplicates();
-            assertThat(events.getLast().candleTimeMsc()).isEqualTo(6_600_000L);
-            assertThat(events.getLast().timeMsc()).isEqualTo(6_900_001L);
+            assertThat(events).isEmpty();
             assertThat(atLaterBuckets).hasSize(3);
             atLaterBuckets.forEach(retained -> assertThat(retained).containsExactlyElementsOf(events));
             assertThat(session.metrics().eventsProcessed()).isEqualTo(12);

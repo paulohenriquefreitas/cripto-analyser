@@ -13,7 +13,7 @@ public record Pullback09ResearchRecord(Pullback09ResearchSnapshot snapshot, Pull
                 + "rjOpen,rjHigh,rjLow,rjClose,rjMinDistanceToSma9,candle3Open,candle3High,candle3Low,candle3Close,"
                 + "confirmationStrength,sma9,sma21,sma9MinusSma21,sma9Slope,sma21Slope,vwap,distanceToVwap,atr14,"
                 + "setupMfe5,setupMae5,setupMfe15,setupMae15,setupMfe30,setupMae30,"
-                + "outcome5Status,outcome15Status,outcome30Status";
+                + "outcome5Status,outcome15Status,outcome30Status,setupType,crzOpen,crzHigh,crzLow,crzClose";
     }
 
     public String toCsvRow() {
@@ -28,7 +28,9 @@ public record Pullback09ResearchRecord(Pullback09ResearchSnapshot snapshot, Pull
                 s.sma9(), s.sma21(), s.sma9MinusSma21(), s.sma9Slope(), s.sma21Slope(),
                 s.vwap(), s.distanceToVwap(), s.atr14(),
                 outcome.mfe5m(), outcome.mae5m(), outcome.mfe15m(), outcome.mae15m(), outcome.mfe30m(), outcome.mae30m(),
-                status(outcome.complete5m()), status(outcome.complete15m()), status(outcome.complete30m())
+                status(outcome.complete5m()), status(outcome.complete15m()), status(outcome.complete30m()), s.setupType(),
+                s.crz09() == null ? null : s.crz09().open(), s.crz09() == null ? null : s.crz09().high(),
+                s.crz09() == null ? null : s.crz09().low(), s.crz09() == null ? null : s.crz09().close()
         }).map(Pullback09ResearchRecord::cell).collect(Collectors.joining(","));
     }
 

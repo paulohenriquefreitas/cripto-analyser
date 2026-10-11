@@ -84,6 +84,16 @@ public class PanicScannerController {
     public MarketScanResponse marketScan(@RequestBody(required = false) MarketScanRequest request) {
         MarketScanCriteria criteria = criteriaFrom(request);
         MarketScanExecutionResult result = scanB3MarketUseCase.execute(criteria);
+        return marketResponse(result);
+    }
+
+    /** Manual experimental execution; existing endpoints retain their behavior. */
+    @PostMapping("/experimental/market-scan")
+    public MarketScanResponse experimentalMarketScan(@RequestBody(required = false) MarketScanRequest request) {
+        return marketResponse(scanB3MarketUseCase.executeExperimental(criteriaFrom(request)));
+    }
+
+    private MarketScanResponse marketResponse(MarketScanExecutionResult result) {
         return new MarketScanResponse(
                 result.scannedAt(),
                 result.strategy(),

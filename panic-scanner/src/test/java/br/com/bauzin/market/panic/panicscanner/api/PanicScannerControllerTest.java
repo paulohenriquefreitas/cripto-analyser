@@ -194,6 +194,25 @@ class PanicScannerControllerTest {
                 .andExpect(jsonPath("$.errors[0]").value("limit must be between 1 and 50"));
     }
 
+    @Test
+    void experimentalEndpointUsesExplicitOptInAndValidatesLimit() throws Exception {
+        var alert = result("PETR4", 88).withExperimentalEntry(
+                new br.com.bauzin.market.panic.panicscanner.domain.entry.ExperimentalEntryAnalysis(
+                        "ANALYZE_ENTRY", List.of("EARLY_REVERSAL"), java.util.Map.of("recovery", true), List.of("test")));
+        var market = new FakeScanB3MarketUseCase(new MarketScanExecutionResult(
+                OffsetDateTime.parse("2026-08-04T23:30:00-03:00"), "MOMENTUM",
+                1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 100, 100, 2, List.of(alert), List.of()));
+        var mvc = mockMvc(new FakeAnalyzeStockUseCase(null), new FakeScanStocksUseCase(null), market, properties(20));
+        mvc.perform(post("/api/panic-scanner/experimental/market-scan")
+                        .contentType("application/json").content("{\"limit\":20}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.results[0].experimentalEntry.signal").value("ANALYZE_ENTRY"));
+        org.assertj.core.api.Assertions.assertThat(market.experimentalCalled).isTrue();
+        mvc.perform(post("/api/panic-scanner/experimental/market-scan")
+                        .contentType("application/json").content("{\"limit\":51}"))
+                .andExpect(status().isBadRequest());
+    }
+
     private MockMvc mockMvc(AnalyzeStockUseCase analyzeStockUseCase) {
         return mockMvc(analyzeStockUseCase, new FakeScanStocksUseCase(null), new FakeScanB3MarketUseCase(null), properties(20));
     }
@@ -281,10 +300,17 @@ class PanicScannerControllerTest {
 
         private final MarketScanExecutionResult result;
         private MarketScanCriteria criteria;
+        private boolean experimentalCalled;
 
         private FakeScanB3MarketUseCase(MarketScanExecutionResult result) {
             super(null, null, null);
             this.result = result;
+        }
+
+        @Override
+        public MarketScanExecutionResult executeExperimental(MarketScanCriteria criteria) {
+            experimentalCalled = true;
+            return execute(criteria);
         }
 
         @Override

@@ -1,6 +1,8 @@
 package br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -8,6 +10,39 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Mt5ProcessClientTest {
+    private static class RecordingClient extends Mt5ProcessClient {
+        List<String> arguments;
+        @Override
+        protected String execute(String... arguments) {
+            this.arguments = List.of(arguments);
+            return "[" + CANDLE + "]";
+        }
+    }
+
+    @Test
+    void legacyQueryStillHasNoArguments() throws Exception {
+        var client = new RecordingClient();
+        assertEquals(1, client.readCandles().size());
+        assertEquals(List.of(), client.arguments);
+    }
+
+    @Test
+    void passesHistoricalArgumentsWithoutShellInterpolation() throws Exception {
+        var client = new RecordingClient();
+        client.readCandles(" petr4 ", "d1", LocalDate.of(2026, 7, 1), LocalDate.of(2026, 10, 6));
+        assertEquals(List.of("--symbol", "PETR4", "--timeframe", "D1", "--from", "2026-07-01",
+                "--to", "2026-10-06"), client.arguments);
+    }
+
+    @Test
+    void rejectsInvalidHistoricalArgumentsBeforeExecution() {
+        var client = new RecordingClient();
+        var date = LocalDate.of(2026, 10, 6);
+        assertThrows(IllegalArgumentException.class, () -> client.readCandles("PETR4", "D1", date, date.minusDays(1)));
+        assertThrows(IllegalArgumentException.class, () -> client.readCandles("PETR4", "BAD", date, date));
+        assertThrows(IllegalArgumentException.class, () -> client.readCandles("PETR4;exit", "D1", date, date));
+        assertNull(client.arguments);
+    }
     private static final String CANDLE = """
             {"time":1789582800,"open":187500.0,"high":187700.0,"low":187450.0,
              "close":187640.0,"tickVolume":12345,"realVolume":52341}

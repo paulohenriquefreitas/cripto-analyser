@@ -6,7 +6,10 @@ import { connectReplay } from '@/features/replay/api/replayConnection';
 import { createReplaySessionManager } from '@/features/replay/api/replaySessionManager';
 import { Mt5CandlestickChart } from '@/features/win/components/Mt5CandlestickChart';
 
-export function ReplayPage() {
+export function ReplayPage({ embedded = false, setup91Only = true }: {
+  embedded?: boolean;
+  setup91Only?: boolean;
+} = {}) {
   const [symbol, setSymbol] = useState('WIN$N');
   const [date, setDate] = useState('2026-09-24');
   const managerRef = useRef<ReturnType<typeof createReplaySessionManager> | null>(null);
@@ -29,23 +32,24 @@ export function ReplayPage() {
 
   return (
     <Stack spacing={3}>
-      <Typography variant="h3">Replay M5</Typography>
-      <Stack direction="row" spacing={2} alignItems="center">
+      {!embedded ? <Typography variant="h3">Replay M5</Typography> : null}
+      <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" useFlexGap>
         <TextField select label="Ativo" value={symbol} disabled={isLoading}
           onChange={event => setSymbol(event.target.value)} sx={{ minWidth: 220 }}>
-          <MenuItem value="WIN$N">WIN cont?nuo sem ajuste</MenuItem>
+          <MenuItem value="WIN$N">WIN contínuo sem ajuste</MenuItem>
           <MenuItem value="WINV26">WINV26</MenuItem>
         </TextField>
         <TextField
           label="Data"
           type="date"
+          disabled={isLoading}
           value={date}
           onChange={event => setDate(event.target.value)}
           InputLabelProps={{ shrink: true }}
         />
         <Button
           variant="contained"
-          disabled={isLoading}
+          disabled={isLoading || !date}
           onClick={() => void manager.load(date, { symbol })}
         >
           CARREGAR
@@ -68,13 +72,14 @@ export function ReplayPage() {
           Replay: {state.clock == null ? '--:--:--' : new Date(state.clock).toLocaleTimeString('pt-BR')}
         </Box>
       </Stack>
+      {isLoading ? <Typography color="text.secondary">Carregando replay...</Typography> : null}
       {state.error ? <Alert severity="error">{state.error}</Alert> : null}
       {state.controller ? (
         <Paper sx={{ p: { xs: 1, md: 2 }, minWidth: 0 }}>
-          <Mt5CandlestickChart controller={state.controller} setup91Only />
+          <Mt5CandlestickChart controller={state.controller} setup91Only={setup91Only} />
         </Paper>
       ) : null}
-      <Typography color="text.secondary">Simulacao 9.1: compra/venda, parcial 50%, BE protegido e saida GAIN / STOP / 0x0. BE protege o saldo; resultado inclui a parcial. Passe o cursor no candle para detalhes.</Typography>
+      {setup91Only ? <Typography color="text.secondary">Simulacao 9.1: compra/venda, parcial 50%, BE protegido e saida GAIN / STOP / 0x0. BE protege o saldo; resultado inclui a parcial. Passe o cursor no candle para detalhes.</Typography> : null}
       <Typography color="text.secondary">Status: {state.status}</Typography>
     </Stack>
   );

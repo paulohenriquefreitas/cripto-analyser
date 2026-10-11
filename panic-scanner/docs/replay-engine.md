@@ -1,10 +1,31 @@
 # Replay Engine
 
+## Setup91 visual validation
+
+M5 Replay reuses `Setup91` and `Setup91Breakout` directly, with Batch's closed
+warm-up candles and original LAST sequence numbers. `ReplayHistoryProvider`
+uses a valid COMPLETE `historical-data/{symbol}/{date}.ndjson` cache without
+invoking MT5/Python. No Setup91 rules or Batch processing are changed.
+
+The existing `REPLAY_SETUP_EVENT` WebSocket channel carries only the six Setup91 BUY/SELL
+ARMED, TRIGGERED and CANCELLED events, the signal candle, EMA diagnostics and
+breakout LAST. ARMED is drawn on the signal/reversal candle, only once its
+closure is observed. TRIGGERED and CANCELLED use the event's M5 bucket.
+Same-timestamp LASTs retain their original order; there is no synthetic final
+candle closure. EMA9 (purple) is supplied by the backend for closed candles only.
+
+Small circles (`91 A`) mark ARMED, arrows (`91 T`) mark TRIGGERED, and subtle
+gray dots mark CANCELLED. Hover a candle to see all its Setup91 event details
+in UTC below the chart. Nonempty history updates and chart remounts retain the
+markers; explicit replay close/reset/new load clears them and their details.
+The frontend only presents backend values. This adds no execution, stops,
+targets, MFE/MAE or profitability calculations.
+
 ## Objetivo e arquitetura
 
 O Trade Replay transmite eventos normalizados para os mesmos motores usados no
 LIVE. O Replay visual M5 também publica marcadores estruturais e o setup
-experimental Pullback09 descrito abaixo; nenhum desses caminhos executa ordens.
+Setup91 descrito acima; nenhum desses caminhos executa ordens.
 
 ```text
 Historical Source
@@ -159,25 +180,13 @@ substitui a fonte LIVE. A ocorrência visual
 `MARKET_STATE` coalescidos. O `LAST` que conclui `INTERACTION_COMPLETED` define
 o instante e o preço da ocorrência.
 
-### Pullback09 ↑ no Replay visual M5
+### Pullback09 research compatibility
 
-`Pullback09Setup` mantém uma máquina de estados independente da regra SMA21:
-
-```text
-WAITING_FOR_CRZ09 → WAITING_FOR_RJ09 → WAITING_FOR_CONFIRMATION
-```
-
-`CRZ09 ↑` exige abertura observada abaixo da SMA9, cruzamento intrabar de baixo
-para cima e fechamento acima da SMA9 final do candle. `RJ09 ↑` precisa ocorrer
-no candle M5 seguinte: abrir acima da SMA9, retornar até/interagir com ela e
-fechar acima. O `PULLB09 ↑` confirma no primeiro LAST do terceiro candle que
-ultrapassa estritamente a máxima do candle de rejeição; fechamento do terceiro
-candle não é necessário.
-
-CRZ09 e RJ09 são conhecidos no primeiro LAST do candle seguinte, que torna
-observável o fechamento do candle analisado. A mensagem conserva separadamente
-o instante de reconhecimento e o candle M5 ao qual pertence o marcador.
-Confirmação, expiração e retomada após pausa são processadas em ordem de evento.
+M5 Replay no longer publishes CRZ09, RJ09 or PULLB09 events in either direction.
+Its frontend event store accepts only Setup91 markers; no Pullback09 marker
+labels or styling remain. The shared causal processor and research exports are
+preserved, as are all Pullback09 strategy, research and Batch classes. See
+[pullback09-batch-one-day.md](pullback09-batch-one-day.md) for independent research.
 
 ## Execução manual
 

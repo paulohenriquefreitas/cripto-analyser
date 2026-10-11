@@ -46,6 +46,14 @@ public class ScanB3MarketUseCase {
     }
 
     public MarketScanExecutionResult execute(MarketScanCriteria criteria) {
+        return execute(criteria, false);
+    }
+
+    public MarketScanExecutionResult executeExperimental(MarketScanCriteria criteria) {
+        return execute(criteria, true);
+    }
+
+    private MarketScanExecutionResult execute(MarketScanCriteria criteria, boolean experimental) {
         Instant startedAt = clock.instant();
         List<ScanFailure> failures = new ArrayList<>();
         List<StockSummary> discoveredStocks;
@@ -64,14 +72,11 @@ public class ScanB3MarketUseCase {
 
         List<ScannerResult> successful = new ArrayList<>();
         int analyzedCount = 0;
-        boolean providerWideStop = false;
         for (String ticker : eligibleTickers) {
-            if (providerWideStop) {
-                break;
-            }
             analyzedCount++;
             try {
-                ScannerResult result = analyzeStockUseCase.execute(ticker);
+                ScannerResult result = experimental ? analyzeStockUseCase.executeExperimental(ticker)
+                        : analyzeStockUseCase.execute(ticker);
                 if (isAnalysisFailure(result)) {
                     failures.add(failure(ticker, ProviderErrorCode.INSUFFICIENT_HISTORY));
                     log.info("panic-scanner market-scan ticker={} status={} reason={}",
@@ -85,7 +90,6 @@ public class ScanB3MarketUseCase {
                 failures.add(failure(ticker, exception.errorCode()));
                 log.info("panic-scanner market-scan ticker={} status={} errorCode={}",
                         ticker, SignalStatus.REJECTED, exception.errorCode());
-                providerWideStop = isProviderWideFailure(exception.errorCode());
             } catch (RuntimeException exception) {
                 failures.add(failure(ticker, ProviderErrorCode.UNEXPECTED_ERROR));
                 log.info("panic-scanner market-scan ticker={} status={} errorCode={}",
@@ -113,7 +117,9 @@ public class ScanB3MarketUseCase {
 
         List<ScannerResult> candidates = successful.stream()
                 .filter(result -> liquidityAccepted(result, criteria))
-                .filter(result -> rankingModeAccepted(result, criteria))
+                .filter(result -> experimental
+                        ? result.experimentalEntry() != null && "ANALYZE_ENTRY".equals(result.experimentalEntry().signal())
+                        : rankingModeAccepted(result, criteria))
                 .filter(result -> entryStatusAccepted(result, criteria))
                 .sorted(resultOrdering(criteria.rankingMode()))
                 .toList();
@@ -262,12 +268,6 @@ public class ScanB3MarketUseCase {
         return result.status() == SignalStatus.REJECTED
                 && result.technicalAnalysis() == null
                 && result.reasons().stream().anyMatch(reason -> reason.startsWith("Insufficient candle history"));
-    }
-
-    private boolean isProviderWideFailure(ProviderErrorCode errorCode) {
-        return errorCode == ProviderErrorCode.AUTHENTICATION_REQUIRED
-                || errorCode == ProviderErrorCode.RATE_LIMIT_EXCEEDED
-                || errorCode == ProviderErrorCode.PROVIDER_UNAVAILABLE;
     }
 
     private ScanFailure failure(String ticker, ProviderErrorCode errorCode) {

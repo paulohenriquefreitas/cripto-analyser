@@ -13,6 +13,8 @@ import org.ta4j.core.BaseBarSeriesBuilder;
 import org.ta4j.core.indicators.ATRIndicator;
 import org.ta4j.core.indicators.RSIIndicator;
 import org.ta4j.core.indicators.adx.ADXIndicator;
+import org.ta4j.core.indicators.adx.PlusDIIndicator;
+import org.ta4j.core.indicators.adx.MinusDIIndicator;
 import org.ta4j.core.indicators.averages.EMAIndicator;
 import org.ta4j.core.indicators.averages.SMAIndicator;
 import org.ta4j.core.indicators.helpers.ClosePriceIndicator;
@@ -76,6 +78,8 @@ public class Ta4jTechnicalAnalysisAdapter implements TechnicalAnalysisEngine {
         RSIIndicator rsi9 = new RSIIndicator(closePrice, RSI_PERIOD);
         ATRIndicator atr14 = new ATRIndicator(series, ATR_PERIOD);
         ADXIndicator adx14 = new ADXIndicator(series, ADX_PERIOD);
+
+        SMAIndicator adxSma5 = new SMAIndicator(adx14, 5);
 
         BigDecimal lastSma9 = valueOrZero(sma9.getValue(lastIndex));
         BigDecimal lastSma21 = valueOrZero(sma21.getValue(lastIndex));
@@ -154,7 +158,12 @@ public class Ta4jTechnicalAnalysisAdapter implements TechnicalAnalysisEngine {
                 bearishVolumeAverage,
                 lastCandle.volume(),
                 previousCandle.volume(),
-                trend(lastSma9, lastSma21));
+                trend(lastSma9, lastSma21),
+                valueOrZero(adxSma5.getValue(lastIndex)),
+                adx14.getValue(lastIndex).isGreaterThan(adx14.getValue(lastIndex - 1)),
+                adxSma5.getValue(lastIndex).isGreaterThan(adxSma5.getValue(lastIndex - 1)),
+                new PlusDIIndicator(series, ADX_PERIOD).getValue(lastIndex)
+                        .isGreaterThan(new MinusDIIndicator(series, ADX_PERIOD).getValue(lastIndex)));
     }
 
     BarSeries toBarSeries(List<Candle> candles) {

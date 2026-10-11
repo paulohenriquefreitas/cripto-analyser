@@ -1,0 +1,27 @@
+﻿{
+    "scannedAt":  "2026-10-08T17:06:19.732-03:00",
+    "strategy":  "MOMENTUM",
+    "discoveredCount":  788,
+    "eligibleCount":  377,
+    "analyzedCount":  1,
+    "qualifiedCount":  0,
+    "momentumQualifiedCount":  0,
+    "momentumWatchCount":  0,
+    "breakoutEligibleCount":  0,
+    "breakoutReadyCount":  0,
+    "pullbackReadyCount":  0,
+    "returnedCount":  0,
+    "totalExecutionDurationMillis":  2635,
+    "averageAnalysisDurationMillis":  2635,
+    "providerRequestCount":  2,
+    "results":  [
+
+                ],
+    "failures":  [
+                     {
+                         "ticker":  "COGN3",
+                         "errorCode":  "AUTHENTICATION_REQUIRED",
+                         "message":  "Market data provider authentication is required"
+                     }
+                 ]
+}

@@ -42,8 +42,10 @@ timestamp, including additional LASTs with that same timestamp, are excluded.
 The LAST exactly at the upper boundary is included. Later prices cannot change
 that window. No future OHLC is used to infer price order.
 
-`MFE = max(posterior LASTs) - referencePrice`.
+For UP: `MFE = max(posterior LASTs) - referencePrice` and
 `MAE = referencePrice - min(posterior LASTs)`.
+For DOWN: `MFE = referencePrice - min(posterior LASTs)` and
+`MAE = max(posterior LASTs) - referencePrice`.
 These are the requested signed differences, without zero-clamping or inserting
 the reference price into the extrema. For example, if every posterior price is
 above the reference, MAE can be negative.
@@ -72,3 +74,42 @@ Posterior LASTs, as offsets in milliseconds and prices:
 
 SETUP OUTCOME: 5m MFE/MAE = 10/4; 15m = 15/8; 30m = 20/10.
 All three windows are COMPLETE. This is not TRADE OUTCOME.
+
+## DOWN symmetry
+
+The UP machine remains in `Pullback09Setup`; `Pullback09DownSetup` is its
+independent mirror. Both consume the same causal states in `M5ReplaySession`.
+Their candidates, resets and occurrence counters are separate. UP event IDs
+are unchanged. DOWN event IDs include their distinct event type.
+
+| Condition | UP | DOWN |
+|---|---|---|
+| CRZ start | Below causal SMA9 | Above causal SMA9 |
+| Observed crossing | Below then strictly above SMA9 | Above then strictly below SMA9 |
+| CRZ close | Above SMA9, green | Below SMA9, red |
+| RJ bucket | Immediately after CRZ | Immediately after CRZ |
+| RJ start | Above SMA9 | Below SMA9 |
+| Retest | price < open; price - SMA9 <= 30 | price > open; SMA9 - price <= 30 |
+| RJ close | Above SMA9, red | Below SMA9, green |
+| C3 bucket | Immediately after RJ | Immediately after RJ |
+| C3 close confirmation | close > open; high > RJ high; close > RJ high | close < open; low < RJ low; close < RJ low |
+| Availability | First LAST closing C3, normally C4 | Same |
+| Marker bucket | C3 | C3 |
+
+Finite SMA9 at open and close is required in both CRZ and RJ predicates.
+The retest zone is directional, not an absolute-distance band: crossing the
+SMA can still qualify, exactly as in the existing UP rule.
+Only the exact C3 bucket can confirm. Failure expires the candidate; an
+intrabar breakout never confirms either direction.
+
+CSV now includes `setupType` and CRZ OHLC (when available from closed candles).
+All preexisting columns retain their interpretation. For UP,
+`confirmationStrength = C3.close - RJ.high`; for DOWN,
+`confirmationStrength = RJ.low - C3.close`. Slopes and distance to VWAP retain
+their signed price meaning and are not inverted. No feature filters the setup.
+
+Deterministic DOWN example with SMA9 = 100:
+C1 prices 110 -> 50; C2 prices 50 -> 100 -> 60 (RJ low = 50);
+C3 prices 51 -> 49 -> 48. No PULLB09 occurs inside C3. The first LAST of C4
+at price 80 emits PULLB09_DOWN for C3, with confirmation close 48, strength 2,
+and reference price 80. There is no simulated entry.

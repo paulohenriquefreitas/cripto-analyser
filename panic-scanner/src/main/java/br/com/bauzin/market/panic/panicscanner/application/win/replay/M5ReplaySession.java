@@ -1,14 +1,11 @@
 package br.com.bauzin.market.panic.panicscanner.application.win.replay;
 
-import br.com.bauzin.market.panic.panicscanner.application.win.intrabar.IntrabarM5Processor;
 import br.com.bauzin.market.panic.panicscanner.application.win.structure.MarketStructureEngine;
 import br.com.bauzin.market.panic.panicscanner.domain.replay.RuleDirection;
 import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.CanonicalPriceEvent;
-import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarCandleSnapshot;
 import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarMarketState;
 import br.com.bauzin.market.panic.panicscanner.domain.win.structure.PriceReference;
 import br.com.bauzin.market.panic.panicscanner.domain.win.structure.PriceSide;
-import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Candle;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5HistoricalPriceSource;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.HistoricalCanonicalPriceEvent;
 
@@ -26,7 +23,16 @@ import java.util.function.Consumer;
 public final class M5ReplaySession {
     public enum Status { READY, PLAYING, PAUSED, COMPLETED, ERROR, CLOSED }
     public record Snapshot(String type, String replayId, long timeMsc, Status status,
-                           Candle candle, Double sma9, Double sma21, Double vwap, String vwapSession) {}
+                           Candle candle, Double sma9, Double sma21, Double vwap, String vwapSession,
+                           ClosedEma9 closedEma9) {
+        public Snapshot(String type, String replayId, long timeMsc, Status status,
+                        Candle candle, Double sma9, Double sma21, Double vwap, String vwapSession) {
+            this(type, replayId, timeMsc, status, candle, sma9, sma21, vwap, vwapSession, null);
+        }
+    }
+    public record ClosedEma9(long time, double value, String reversal, Double previousValue, long availableAtTimeMsc) {
+        public ClosedEma9(long time, double value) { this(time, value, null, null, (time + 300) * 1000); }
+    }
     public record Candle(long time, double open, double high, double low, double close, long realVolume) {}
     public record RuleOccurrenceMessage(
             String type,
@@ -46,7 +52,15 @@ public final class M5ReplaySession {
             String symbol,
             long timeMsc,
             long candleTimeMsc,
-            double price) {}
+            double price,
+            Setup91Breakout.SignalCandle signal,
+            Long sequence,
+            Double breakoutPrice) {
+        public SetupEventMessage(String type, String eventId, String setupType, String symbol,
+                                 long timeMsc, long candleTimeMsc, double price) {
+            this(type, eventId, setupType, symbol, timeMsc, candleTimeMsc, price, null, null, null);
+        }
+    }
     public record Metrics(long eventsProcessed, long marketStatesPublished, long coalescedMarketStates) {}
 
     private static final long DEFAULT_VISUAL_INTERVAL_NANOS = 50_000_000L;
@@ -56,6 +70,12 @@ public final class M5ReplaySession {
     private final String requestedSymbol;
     private final Mt5HistoricalPriceSource source;
     private final Pullback09ResearchEngine researchEngine = new Pullback09ResearchEngine();
+    private final Setup91 setup91 = new Setup91();
+    private final Setup91Breakout setup91Breakout = new Setup91Breakout(setup91);
+    private final Setup91TriggerResearch trades = new Setup91TriggerResearch(Setup91TriggerResearch.Mode.PARTIAL_1R_BREAKEVEN_TARGET_3_5R);
+    private final List<Consumer<Setup91TriggerResearch.TradeEvent>> tradeListeners = new CopyOnWriteArrayList<>();
+    private final List<Setup91TriggerResearch.TradeEvent> pendingTradeEvents = new ArrayList<>();
+    private ClosedEma9 closedEma9;
     private final List<Consumer<Snapshot>> listeners = new CopyOnWriteArrayList<>();
     private final List<Consumer<RuleOccurrenceMessage>> ruleOccurrenceListeners = new CopyOnWriteArrayList<>();
     private final List<Consumer<SetupEventMessage>> setupEventListeners = new CopyOnWriteArrayList<>();
@@ -82,6 +102,7 @@ public final class M5ReplaySession {
         this.requestedSymbol = Objects.requireNonNull(requestedSymbol, "requestedSymbol");
         this.visualIntervalNanos = visualIntervalNanos;
         this.source = new Mt5HistoricalPriceSource();
+        trades.setTradeListener(pendingTradeEvents::add);
     }
 
     public String replayId() { return replayId; }
@@ -107,6 +128,14 @@ public final class M5ReplaySession {
     }
     public void removeSetupEventListener(Consumer<SetupEventMessage> listener) {
         setupEventListeners.remove(listener);
+    }
+
+    public void addTradeListener(Consumer<Setup91TriggerResearch.TradeEvent> listener) { tradeListeners.add(listener); }
+    public void removeTradeListener(Consumer<Setup91TriggerResearch.TradeEvent> listener) { tradeListeners.remove(listener); }
+    public List<Setup91TriggerResearch.Result> tradeResults() { return trades.completedResults(); }
+    private void publishTrades() {
+        pendingTradeEvents.forEach(event -> tradeListeners.forEach(listener -> listener.accept(event)));
+        pendingTradeEvents.clear();
     }
 
     public void play() {
@@ -139,20 +168,26 @@ public final class M5ReplaySession {
 
     private void run() {
         try (var reader = Files.newBufferedReader(historyFile)) {
-            IntrabarM5Processor processor = new IntrabarM5Processor();
+            Pullback09CausalProcessor processor = new Pullback09CausalProcessor(researchEngine);
             MarketStructureEngine structureEngine = new MarketStructureEngine();
-            CausalSessionVwap vwap = new CausalSessionVwap();
-            Pullback09Setup pullback09 = new Pullback09Setup();
             long[] occurrenceNumber = {0};
             source.streamHistorical(reader, header -> {
                 if (!requestedSymbol.equalsIgnoreCase(header.symbol())) {
                     throw new IllegalArgumentException("History symbol differs from requested symbol");
                 }
-                processor.warmUp(header.symbol(), header.startMsc(), toSnapshots(header.symbol(), header.warmup()));
-                vwap.warmUp(header.symbol(), header.warmup());
+                processor.warmUp(header);
+                trades.warmUp(header.symbol(), header.startMsc(), header.warmup().stream().map(c ->
+                        new br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarCandleSnapshot(
+                                header.symbol(), c.time() * 1000L, c.open(), c.high(), c.low(), c.close())).toList());
+                // Exactly the Batch warm-up: closed candles seed the detector, never arm signals.
+                for (var candle : header.warmup()) {
+                    setup91.onCandleClosed(new br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarCandleSnapshot(
+                            header.symbol(), candle.time() * 1000L, candle.open(), candle.high(), candle.low(), candle.close()),
+                            candle.time() * 1000L + br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.M5Bucket.DURATION_MSC);
+                }
                 structureEngine.reset();
-                researchEngine.warmUp(header.symbol(), header.warmup());
-            }, event -> accept(processor, structureEngine, vwap, pullback09, occurrenceNumber, event));
+            }, event -> accept(processor, structureEngine, occurrenceNumber, event));
+            if (status != Status.CLOSED) { trades.finishDay(); publishTrades(); }
             researchEngine.finish();
             synchronized (lock) {
                 if (status != Status.CLOSED) status = Status.COMPLETED;
@@ -169,8 +204,7 @@ public final class M5ReplaySession {
         }
     }
 
-    private void accept(IntrabarM5Processor processor, MarketStructureEngine structureEngine, CausalSessionVwap vwap,
-                        Pullback09Setup pullback09,
+    private void accept(Pullback09CausalProcessor processor, MarketStructureEngine structureEngine,
                         long[] occurrenceNumber, HistoricalCanonicalPriceEvent historical) {
         CanonicalPriceEvent event = historical.priceEvent();
         synchronized (lock) {
@@ -180,9 +214,11 @@ public final class M5ReplaySession {
             }
             if (status == Status.CLOSED) return;
         }
-        IntrabarMarketState state = processor.onEvent(event);
+        boolean positionWasOpen = trades.hasOpenPosition();
+        trades.onLast(historical);
+        var causal = processor.accept(historical);
+        IntrabarMarketState state = causal.state();
         if (state.completedCandle() != null) {
-            researchEngine.onCandleClosed(state.completedCandle());
             if (latestMarketState != null
                     && latestMarketState.candle().time() * 1000
                     == state.completedCandle().bucketStartTimeMsc()) {
@@ -190,33 +226,24 @@ public final class M5ReplaySession {
             }
         }
         eventsProcessed.increment();
-        double volume = CausalSessionVwap.isEligibleVolume(historical) ? historical.volumeReal() : 0;
-        Double vwapValue = vwap.update(event.timeMsc(), event.price(), volume);
+        Double vwapValue = causal.vwap();
         currentTimeMsc = event.timeMsc();
-
-        List<RuleOccurrenceMessage> ruleOccurrences = new ArrayList<>();
-        List<Pullback09Setup.Event> setupEventList = pullback09.onEvent(state);
-        for (Pullback09Setup.Event se : setupEventList) {
-            if (se.eventType() == Pullback09Setup.EventType.PULLB09_UP) {
-                researchEngine.onPullback09(
-                        se,
-                        pullback09.lastPullback09Context(),
-                        state,
-                        vwapValue);
+        // Reuse the same causal M5 state and original LAST sequence as Batch.
+        var setup91Update = setup91Breakout.onEvent(state, historical.sequence(),
+                positionWasOpen || trades.hasOpenPosition());
+        setup91Update.observation().ifPresent(observation -> {
+            if (Double.isFinite(observation.ema9())) {
+                closedEma9 = new ClosedEma9(observation.candle().bucketStartTimeMsc() / 1000, observation.ema9(),
+                        observation.confirmedReversal().map(side -> side == Setup91.Candidate.BUY ? "UP" : "DOWN").orElse(null),
+                        observation.previousEma9(), observation.availableAtTimeMsc());
             }
-        }
-        researchEngine.onPrice(event);
+        });
 
-        List<SetupEventMessage> setupEvents = setupEventList.stream()
-                .map(setupEvent -> new SetupEventMessage(
-                        "REPLAY_SETUP_EVENT",
-                        setupEvent.eventId(),
-                        setupEvent.eventType().name(),
-                        setupEvent.symbol(),
-                        setupEvent.timeMsc(),
-                        setupEvent.candleTimeMsc(),
-                        setupEvent.price()))
-                .toList();
+        for (var trigger : setup91Update.events()) {
+            if (trigger.type().name().endsWith("_TRIGGERED")) trades.onTrigger(trigger);
+        }
+        List<RuleOccurrenceMessage> ruleOccurrences = new ArrayList<>();
+        // Replay publishes only Setup91 research markers. Pullback09 research remains independent.
         state.structureSample().ifPresent(sample -> {
             var update = structureEngine.onSample(sample);
             for (var interaction : update.completedInteractions()) {
@@ -237,23 +264,32 @@ public final class M5ReplaySession {
         Candle candle = new Candle(state.candle().bucketStartTimeMsc() / 1000,
                 state.candle().open(), state.candle().high(),
                 state.candle().low(), state.candle().close(),
-                Math.round(vwap.currentVolume()));
+                Math.round(causal.volume()));
         Snapshot snapshot = new Snapshot("MARKET_STATE", replayId, currentTimeMsc, status,
                 candle, state.sma9(), state.sma21(), vwapValue,
                 vwapValue == null ? null : java.time.Instant.ofEpochMilli(state.candle().bucketStartTimeMsc())
-                        .atZone(java.time.ZoneOffset.UTC).toLocalDate().toString());
+                        .atZone(java.time.ZoneOffset.UTC).toLocalDate().toString(), closedEma9);
         latestMarketState = snapshot;
         long bucket = state.candle().bucketStartTimeMsc();
         long now = System.nanoTime();
-        if (lastVisualBucket != bucket || now - lastVisualPublishNanos >= visualIntervalNanos) {
+        if (lastVisualBucket != bucket || now - lastVisualPublishNanos >= visualIntervalNanos
+                || !setup91Update.events().isEmpty() || !pendingTradeEvents.isEmpty()) {
             publishLatestMarketState(status);
             lastVisualBucket = bucket;
             lastVisualPublishNanos = now;
         } else {
             coalescedMarketStates.increment();
         }
+        publishTrades();
         ruleOccurrences.forEach(this::publishRuleOccurrence);
-        setupEvents.forEach(this::publishSetupEvent);
+        for (var setupEvent : setup91Update.events()) {
+            var signal = setupEvent.signal();
+            publishSetupEvent(new SetupEventMessage("REPLAY_SETUP_EVENT",
+                    setupEvent.type().name() + "-" + signal.candle().bucketStartTimeMsc() + "-" + setupEvent.sequence(),
+                    setupEvent.type().name(), signal.candle().symbol(), setupEvent.timeMsc(),
+                    signal.candle().bucketStartTimeMsc(), setupEvent.lastPrice(), signal, setupEvent.sequence(),
+                    setupEvent.type().name().endsWith("_TRIGGERED") ? setupEvent.lastPrice() : null));
+        }
     }
 
     private void flushLatestMarketState(Status state) {
@@ -270,7 +306,7 @@ public final class M5ReplaySession {
         marketStatesPublished.increment();
         lastPublishedMarketState = latest;
         publish(new Snapshot(latest.type(), latest.replayId(), latest.timeMsc(), state,
-                latest.candle(), latest.sma9(), latest.sma21(), latest.vwap(), latest.vwapSession()));
+                latest.candle(), latest.sma9(), latest.sma21(), latest.vwap(), latest.vwapSession(), latest.closedEma9()));
     }
 
     private void publish(Snapshot snapshot) {
@@ -285,8 +321,4 @@ public final class M5ReplaySession {
         setupEventListeners.forEach(listener -> listener.accept(setupEvent));
     }
 
-    private static List<IntrabarCandleSnapshot> toSnapshots(String symbol, List<Mt5Candle> candles) {
-        return candles.stream().map(c -> new IntrabarCandleSnapshot(
-                symbol, c.time() * 1000, c.open(), c.high(), c.low(), c.close())).toList();
-    }
 }

@@ -34,6 +34,9 @@ public final class ReplayWebSocketHandler extends TextWebSocketHandler {
                         setupEvent -> send(socket, setupEvent));
         session.addSetupEventListener((java.util.function.Consumer<M5ReplaySession.SetupEventMessage>)
                 socket.getAttributes().get("setupEventListener"));
+        java.util.function.Consumer<br.com.bauzin.market.panic.panicscanner.application.win.replay.Setup91TriggerResearch.TradeEvent> tradeListener = event -> send(socket, event);
+        socket.getAttributes().put("tradeListener", tradeListener);
+        session.addTradeListener(tradeListener);
         send(socket, new M5ReplaySession.Snapshot("CLOCK", session.replayId(), session.currentTimeMsc(),
                 session.status(), null, null, null, null, null));
     }
@@ -63,6 +66,10 @@ public final class ReplayWebSocketHandler extends TextWebSocketHandler {
         if (setupEventListener instanceof java.util.function.Consumer<?> consumer) {
             session.removeSetupEventListener(
                     (java.util.function.Consumer<M5ReplaySession.SetupEventMessage>) consumer);
+        }
+        Object tradeListener = socket.getAttributes().remove("tradeListener");
+        if (tradeListener instanceof java.util.function.Consumer<?> consumer) {
+            session.removeTradeListener((java.util.function.Consumer<br.com.bauzin.market.panic.panicscanner.application.win.replay.Setup91TriggerResearch.TradeEvent>) consumer);
         }
         registry.close(session.replayId());
     }

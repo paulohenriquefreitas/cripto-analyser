@@ -45,6 +45,10 @@ export type TechnicalAnalysis = {
   rsi9: number;
   atr14: number;
   adx14: number;
+  adxSma5?: number | null;
+  adxRising?: boolean | null;
+  adxSma5Rising?: boolean | null;
+  plusDiAboveMinusDi?: boolean | null;
   averageVolume20: number;
   averageFinancialVolume20: number;
   relativeVolume20: number;
@@ -182,6 +186,12 @@ export type ScannerResult = {
   trend: Trend;
   technicalAnalysis: TechnicalAnalysis;
   entryAnalysis?: EntryAnalysis | null;
+  experimentalEntry?: {
+    signal: "ANALYZE_ENTRY" | "NONE" | "INCONCLUSIVE";
+    patterns: string[];
+    checks: Record<string, boolean>;
+    reasons: string[];
+  } | null;
   checks: TechnicalChecks;
   reasons: string[];
 };
