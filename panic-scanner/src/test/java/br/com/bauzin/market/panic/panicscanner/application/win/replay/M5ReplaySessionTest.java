@@ -14,10 +14,74 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class M5ReplaySessionTest {
     @Test
+    void timesAndTradesIncludesVolumeOnlyEventsWithoutChangingCandleSelection(@TempDir Path temp) throws Exception {
+        Path history = temp.resolve("flow-integration.ndjson");
+        String text = historyWithTicks(new long[]{0, 1000, 2000}, new double[]{100, 101, 102})
+                .replace("\"flags\":12", "\"flags\":40")
+                .replace("{\"type\":\"tick\",\"timeMsc\":6002000",
+                        "{\"type\":\"tick\",\"timeMsc\":6001500,\"last\":101,\"flags\":80,\"volumeReal\":5}\n{\"type\":\"tick\",\"timeMsc\":6002000")
+                .replace("\"rows\":3", "\"rows\":4");
+        Files.writeString(history, text);
+        var session = new M5ReplaySession(history, "WINV26", Long.MAX_VALUE);
+        var states = new java.util.concurrent.CopyOnWriteArrayList<M5ReplaySession.Snapshot>();
+        var completed = new CountDownLatch(1);
+        session.addListener(snapshot -> {
+            if (snapshot.type().equals("MARKET_STATE")) states.add(snapshot);
+            if (snapshot.type().equals("COMPLETED")) completed.countDown();
+        });
+        try {
+            session.play();
+            assertThat(completed.await(3, TimeUnit.SECONDS)).isTrue();
+            assertThat(session.metrics().eventsProcessed()).isEqualTo(3);
+            var last = states.getLast();
+            assertThat(last.candle().close()).isEqualTo(102);
+            assertThat(last.flow().last()).isEqualTo(102);
+            assertThat(last.flow().timeMsc()).isEqualTo(last.timeMsc());
+            var five = last.flow().windows().getFirst();
+            assertThat(five.events()).isEqualTo(4);
+            assertThat(five.buyVolume()).isEqualTo(3);
+            assertThat(five.sellVolume()).isEqualTo(5);
+            assertThat(five.delta()).isEqualTo(-2);
+            assertThat(five.unknownVolume()).isZero();
+        } finally { session.close(); }
+    }
+    @Test
+    void defaultsToRealTimeAndChangesSpeedWhilePaused(@TempDir Path temp) throws Exception {
+        Path history = temp.resolve("paced.ndjson");
+        Files.writeString(history, historyWithTicks(new long[]{1, 2001}, new double[]{100, 101}));
+        var session = new M5ReplaySession(history, "WINV26");
+        var first = new CountDownLatch(1);
+        var completed = new CountDownLatch(1);
+        session.addListener(snapshot -> {
+            if ("MARKET_STATE".equals(snapshot.type())) first.countDown();
+            if ("COMPLETED".equals(snapshot.type())) completed.countDown();
+        });
+        try {
+            assertThat(session.speed()).isEqualTo(1);
+            session.play();
+            assertThat(first.await(2, TimeUnit.SECONDS)).isTrue();
+            assertThat(completed.await(150, TimeUnit.MILLISECONDS)).isFalse();
+            session.pause();
+            session.setSpeed(100);
+            assertThat(completed.await(100, TimeUnit.MILLISECONDS)).isFalse();
+            session.play();
+            assertThat(completed.await(1, TimeUnit.SECONDS)).isTrue();
+            assertThat(session.metrics().eventsProcessed()).isEqualTo(2);
+            assertThat(session.currentTimeMsc()).isEqualTo(6_002_001L);
+            for (double invalid : new double[]{0, -1, Double.NaN, Double.POSITIVE_INFINITY, 101}) {
+                org.assertj.core.api.Assertions.assertThatThrownBy(() -> session.setSpeed(invalid))
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
     void playPauseResumePreservesOrderCandleAndSma(@TempDir Path temp) throws Exception {
         Path history = temp.resolve("history.ndjson");
         Files.writeString(history, historyText());
-        M5ReplaySession session = new M5ReplaySession(history, "WINV26");
+        M5ReplaySession session = new M5ReplaySession(history, "WINV26", 50_000_000L);
         List<M5ReplaySession.Snapshot> snapshots = new ArrayList<>();
         CountDownLatch completed = new CountDownLatch(1);
         session.addListener(snapshot -> {
@@ -60,7 +124,7 @@ class M5ReplaySessionTest {
     void streamsTheWholeSelectedTradingDayWithoutThirtyMinuteCutoff(@TempDir Path temp) throws Exception {
         Path history = temp.resolve("full-day.ndjson");
         Files.writeString(history, fullDayHistoryText());
-        M5ReplaySession session = new M5ReplaySession(history, "WINV26");
+        M5ReplaySession session = new M5ReplaySession(history, "WINV26", 50_000_000L);
         List<M5ReplaySession.Snapshot> states = new ArrayList<>();
         CountDownLatch completed = new CountDownLatch(1);
         session.addListener(snapshot -> {

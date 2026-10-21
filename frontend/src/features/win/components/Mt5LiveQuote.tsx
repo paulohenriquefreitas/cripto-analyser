@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { env } from '@/common/api/env';
 import { connectMt5Ticks, mt5SocketUrl, type LiveState, type LiveTick } from '@/features/win/api/mt5LiveConnection';
+import type { MonitoringFlowSnapshot } from '../models/monitoringFlow';
 
 const labels = {
   connecting: 'CONECTANDO...', waiting: 'AGUARDANDO TICK', live: 'AO VIVO',
@@ -13,12 +14,14 @@ const time = new Intl.DateTimeFormat('pt-BR', {
   timeZone: 'UTC', hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3,
 });
 
-export function Mt5LiveQuote({ onTick }: { onTick?: (tick: LiveTick) => void }) {
+export function Mt5LiveQuote({ onTick, onFlow }: {
+  onTick?: (tick: LiveTick) => void; onFlow?: (snapshot: MonitoringFlowSnapshot | null) => void;
+}) {
   const [state, setState] = useState<LiveState>({ status: 'connecting', tick: null });
   useEffect(() => connectMt5Ticks(mt5SocketUrl(env.apiUrl, window.location.href), (next) => {
     setState(next);
     if (next.tick) onTick?.(next.tick);
-  }), [onTick]);
+  }, undefined, onFlow), [onTick, onFlow]);
 
   return (
     <Paper sx={{ p: 2.5 }} data-testid="mt5-live-quote">

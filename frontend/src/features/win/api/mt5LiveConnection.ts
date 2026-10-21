@@ -1,4 +1,23 @@
 import { z } from 'zod';
+import type { MonitoringFlowSnapshot } from '../models/monitoringFlow';
+
+const nullableNumber = z.number().finite().nullable();
+export const monitoringFlowSchema: z.ZodType<MonitoringFlowSnapshot> = z.object({
+  type: z.literal('FLOW'), symbol: z.string(), timeMsc: z.number().int().safe(),
+  lastTimeMsc: z.number().int().safe().nullable(), last: nullableNumber,
+  volumeSource: z.literal('MT5_VOLUME_REAL'),
+  windows: z.array(z.object({
+    seconds: z.union([z.literal(5), z.literal(10), z.literal(30)]),
+    fromTimeMsc: z.number().int().safe(), toTimeMsc: z.number().int().safe(),
+    events: z.number().int().nonnegative(), buyVolume: z.number().finite().nonnegative(),
+    sellVolume: z.number().finite().nonnegative(), unknownVolume: z.number().finite().nonnegative(),
+    delta: z.number().finite(), buyPercent: nullableNumber, sellPercent: nullableNumber,
+    unknownPercent: nullableNumber, lastDisplacement: nullableNumber,
+    quality: z.enum(['GOOD', 'WARMING_UP', 'DISCONNECTED', 'INVALID_VOLUME', 'NO_TRADES',
+      'STALE', 'HIGH_UNKNOWN', 'PRICE_UNAVAILABLE', 'UNVALIDATED_SYMBOL']),
+    alert: z.literal('POSSIBLE_ABSORPTION').nullable(),
+  })).length(3).refine(windows => new Set(windows.map(window => window.seconds)).size === 3),
+});
 
 const tickSchema = z.object({
   type: z.literal('tick'), symbol: z.literal('WINV26'),
@@ -10,7 +29,7 @@ const tickSchema = z.object({
   sma9Time: z.number().int().safe().nullable().optional(),
   sma21Time: z.number().int().safe().nullable().optional(),
 });
-const messageSchema = z.union([tickSchema, z.object({ type: z.literal('status'), available: z.boolean() })]);
+const messageSchema = z.union([tickSchema, z.object({ type: z.literal('status'), available: z.boolean() }), monitoringFlowSchema]);
 export type LiveTick = z.infer<typeof tickSchema>;
 export type LiveState = {
   status: 'connecting' | 'waiting' | 'live' | 'disconnected' | 'unavailable';
@@ -31,6 +50,7 @@ export function connectMt5Ticks(
   url: string,
   onState: (state: LiveState) => void,
   createSocket: (url: string) => WebSocket = (address) => new WebSocket(address),
+  onFlow?: (snapshot: MonitoringFlowSnapshot | null) => void,
 ): () => void {
   let disposed = false;
   let socket: WebSocket | null = null;
@@ -46,6 +66,7 @@ export function connectMt5Ticks(
   function reconnect() {
     if (disposed) return;
     onState({ status: 'disconnected', tick: null });
+    onFlow?.(null);
     timer = setTimeout(connect, 3000);
   }
 
@@ -64,15 +85,18 @@ export function connectMt5Ticks(
       if (disposed) return;
       try {
         const message = messageSchema.parse(JSON.parse(event.data));
-        if (message.type === 'tick') onState({ status: 'live', tick: message });
+        if (message.type === 'FLOW') onFlow?.(message);
+        else if (message.type === 'tick') onState({ status: 'live', tick: message });
         else onState({ status: message.available ? 'waiting' : 'unavailable', tick: null });
       } catch {
         onState({ status: 'disconnected', tick: null });
+        onFlow?.(null);
         current.close();
       }
     };
     current.onerror = () => {
       if (!disposed) onState({ status: 'disconnected', tick: null });
+      if (!disposed) onFlow?.(null);
       current.close();
     };
     current.onclose = () => {

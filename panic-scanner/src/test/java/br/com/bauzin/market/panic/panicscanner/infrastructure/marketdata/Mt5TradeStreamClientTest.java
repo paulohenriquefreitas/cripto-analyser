@@ -22,6 +22,43 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Mt5TradeStreamClientTest {
+    @Test
+    void sourceCursorDeduplicatesAcrossProcessReconnectWithoutCollapsingIdenticalTrades() throws Exception {
+        var engine = new TradeFlowEngine();
+        var delivered = new AtomicInteger();
+        Mt5TradeStreamClient.Cursor resume;
+        try (var first = new Mt5TradeStreamClient(() -> fixture("cursor"))) {
+            first.start(trade -> {
+                engine.onTrade(trade);
+                if (delivered.incrementAndGet() == 2) {
+                    try { first.stop(); } catch (IOException ex) { throw new RuntimeException(ex); }
+                }
+            });
+            resume = first.cursor();
+        }
+        assertEquals(new Mt5TradeStreamClient.Cursor(1789991940389L, 2), resume);
+        try (var second = new Mt5TradeStreamClient(() -> fixture("cursor"), resume)) {
+            second.start(trade -> {
+                engine.onTrade(trade);
+                delivered.incrementAndGet();
+                try { second.stop(); } catch (IOException ex) { throw new RuntimeException(ex); }
+            });
+            assertEquals(new Mt5TradeStreamClient.Cursor(1789991940389L, 3), second.cursor());
+        }
+        assertEquals(3, delivered.get());
+        assertEquals(6, engine.snapshot(TradeFlowEngine.THIRTY_SECONDS).buyVolume());
+    }
+
+    @Test void inconsistentFlagsBecomeUnknownAndVolumeProvenanceIsValidated() throws Exception {
+        String metadata = BUY.replace("}", ",\"flags\":88,\"volumeSource\":\"MT5_VOLUME_REAL\"}");
+        assertEquals(AggressorSide.AMBIGUOUS, Mt5TradeStreamClient.parseLine(metadata).side());
+        assertEquals(AggressorSide.AMBIGUOUS, Mt5TradeStreamClient.parseLine(
+                BUY.replace("}", ",\"cursorOrdinal\":1,\"volumeSource\":\"MT5_VOLUME_REAL\"}")).side());
+        assertThrows(IOException.class, () -> Mt5TradeStreamClient.parseLine(metadata.replace("MT5_VOLUME_REAL", "TICK_COUNT")));
+        assertEquals(AggressorSide.AMBIGUOUS, Mt5AggressorMapper.side(8));
+        assertEquals(AggressorSide.AMBIGUOUS, Mt5AggressorMapper.side(8 | 32 | 64));
+        assertEquals(AggressorSide.AMBIGUOUS, Mt5AggressorMapper.side(8 | 32 | 128));
+    }
     static final String BUY = """
             {"type":"trade","symbol":"WINV26","timeMsc":1789991940389,
              "price":188375.0,"volume":2.0,"side":"BUY"}
@@ -148,6 +185,12 @@ class Mt5TradeStreamClientTest {
     public static class Fixture {
         public static void main(String[] args) throws Exception {
             switch (args[0]) {
+                case "cursor" -> {
+                    for (int ordinal : new int[]{1, 1, 2, 3}) {
+                        System.out.println(BUY.replace("}", ",\"cursorOrdinal\":" + ordinal
+                                + ",\"flags\":40,\"volumeSource\":\"MT5_VOLUME_REAL\"}"));
+                    }
+                }
                 case "error" -> {
                     System.err.println("copy_ticks_from failed");
                     System.exit(7);

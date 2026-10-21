@@ -18,6 +18,35 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 class Mt5TickWebSocketHandlerTest {
+    @Test void flowSnapshotsAreSharedAndReplayedToReconnectingClientsWithoutRecounting() throws Exception {
+        var flow = new br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5MonitoringFlowService();
+        var handler = new Mt5TickWebSocketHandler(mapper, new Ta4jMt5Sma9Adapter(),
+                new br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.MarketStructureLiveObserver(), flow);
+        flow.onTrade(new br.com.bauzin.market.panic.panicscanner.domain.win.flow.MarketTrade(
+                "WINV26", System.currentTimeMillis(), tick.last(), 2,
+                br.com.bauzin.market.panic.panicscanner.domain.win.flow.AggressorSide.BUY));
+        handler.broadcastFlow(flow.snapshot());
+        var messages = new CopyOnWriteArrayList<String>();
+        var delivered = new CountDownLatch(4);
+        try {
+            handler.afterConnectionEstablished(session("a", messages, delivered));
+            handler.afterConnectionEstablished(session("b", messages, delivered));
+            assertTrue(delivered.await(5, TimeUnit.SECONDS));
+            var snapshots = messages.stream().filter(text -> text.contains("MT5_VOLUME_REAL")).toList();
+            assertEquals(2, snapshots.size());
+            for (String text : snapshots) {
+                var json = mapper.readTree(text);
+                assertEquals(2, json.get("windows").get(0).get("buyVolume").doubleValue());
+                assertEquals(1, json.get("windows").get(0).get("events").longValue());
+            }
+            var reconnect = new CopyOnWriteArrayList<String>();
+            var reconnected = new CountDownLatch(2);
+            handler.afterConnectionEstablished(session("reconnected", reconnect, reconnected));
+            assertTrue(reconnected.await(5, TimeUnit.SECONDS));
+            assertEquals(2, mapper.readTree(reconnect.getLast()).get("windows").get(0).get("buyVolume").doubleValue());
+            assertEquals(2, flow.snapshot().windows().getFirst().buyVolume());
+        } finally { handler.shutdown(); }
+    }
     private final ObjectMapper mapper = new ObjectMapper();
     private final Mt5Tick tick = new Mt5Tick(1789994563L, 1789994563184L, 187580, 187585, 187585, 4);
 

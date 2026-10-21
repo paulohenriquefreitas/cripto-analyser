@@ -1,6 +1,7 @@
 package br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata;
 
 import br.com.bauzin.market.panic.panicscanner.domain.win.flow.MarketTrade;
+import br.com.bauzin.market.panic.panicscanner.domain.win.flow.AggressorSide;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -26,6 +27,9 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
             .enable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES);
 
     private final ProcessStarter starter;
+    public record Cursor(long timeMsc, long ordinal) {}
+    private volatile Cursor cursor;
+    private boolean cursorRequired;
     private Process process;
     private boolean started;
     private volatile boolean stopping;
@@ -46,12 +50,33 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
         this(Mt5TradeStreamClient::startPython);
     }
 
+    public Mt5TradeStreamClient(Cursor resume) {
+        this(() -> startPython(resume), resume);
+        cursorRequired = true;
+    }
+
+    public Cursor cursor() { return cursor; }
+
     Mt5TradeStreamClient(ProcessStarter starter) {
+        this(starter, null);
+    }
+
+    Mt5TradeStreamClient(ProcessStarter starter, Cursor resume) {
         this.starter = starter;
+        this.cursor = resume;
     }
 
     /** Blocks and delivers every NDJSON trade in source order. */
     public void start(Consumer<MarketTrade> consumer) throws IOException, InterruptedException {
+        start(consumer, time -> {});
+    }
+
+    public void start(Consumer<MarketTrade> consumer, Consumer<Long> invalidVolume) throws IOException, InterruptedException {
+        start(consumer, invalidVolume, (available, time) -> {});
+    }
+
+    public void start(Consumer<MarketTrade> consumer, Consumer<Long> invalidVolume,
+                      java.util.function.BiConsumer<Boolean, Long> status) throws IOException, InterruptedException {
         Objects.requireNonNull(consumer, "consumer");
         final Process running;
         synchronized (this) {
@@ -75,6 +100,32 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
                 }
                 if (line == null) break;
                 if (!stopping) {
+                    com.fasterxml.jackson.databind.JsonNode node;
+                    Cursor nextCursor;
+                    try {
+                        node = MAPPER.readTree(line);
+                        nextCursor = parseCursor(node);
+                    } catch (IOException ex) {
+                        parseErrors.incrementAndGet();
+                        throw ex;
+                    }
+                    if (nextCursor != null && cursor != null && (nextCursor.timeMsc() < cursor.timeMsc()
+                            || nextCursor.timeMsc() == cursor.timeMsc() && nextCursor.ordinal() <= cursor.ordinal())) continue;
+                    if ("trade_status".equals(node.path("type").asText())) {
+                        if (!node.path("available").isBoolean() || !node.path("timeMsc").isIntegralNumber()
+                                || !node.path("timeMsc").canConvertToLong() || node.path("timeMsc").longValue() < 0
+                                || !"WINV26".equals(node.path("symbol").asText())) throw new IOException("Invalid status protocol");
+                        status.accept(node.get("available").booleanValue(), node.get("timeMsc").longValue());
+                        continue;
+                    }
+                    if ("invalid_trade".equals(node.path("type").asText())) {
+                        if (nextCursor == null || !"WINV26".equals(node.path("symbol").asText())
+                                || !"INVALID_VOLUME".equals(node.path("reason").asText())) throw new IOException("Invalid volume protocol");
+                        invalidVolume.accept(nextCursor.timeMsc());
+                        cursor = nextCursor;
+                        continue;
+                    }
+                    if (cursorRequired && nextCursor == null) throw new IOException("Monitoring trade requires source cursor");
                     MarketTrade trade;
                     try {
                         trade = parseLine(line);
@@ -95,6 +146,7 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
                     }
                     lastTradeTimeMsc.set(trade.timeMsc());
                     consumer.accept(trade);
+                    if (nextCursor != null) cursor = nextCursor;
                 }
             }
             if (!stopping) {
@@ -120,9 +172,26 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
             throw new IOException("Linha JSON de trade vazia.");
         }
         try {
-            Mt5TradeMessage message = MAPPER.readValue(line, Mt5TradeMessage.class);
+            var node = MAPPER.readTree(line);
+            if (node == null || !node.isObject()) throw new IOException("Invalid trade object");
+            var object = (com.fasterxml.jackson.databind.node.ObjectNode) node;
+            boolean monitoringMessage = object.has("cursorOrdinal") || object.has("volumeSource");
+            var flags = object.remove("flags");
+            object.remove("cursorOrdinal");
+            var volumeSource = object.remove("volumeSource");
+            if (monitoringMessage && volumeSource == null) throw new IOException("Missing volume provenance");
+            if (volumeSource != null && !"MT5_VOLUME_REAL".equals(volumeSource.asText())) throw new IOException("Unvalidated volume source");
+            Mt5TradeMessage message = MAPPER.treeToValue(object, Mt5TradeMessage.class);
             if (message == null) throw new IOException("Mensagem de trade nula.");
-            return message.toMarketTrade();
+            var trade = message.toMarketTrade();
+            if (flags != null) {
+                if (!flags.isIntegralNumber() || !flags.canConvertToInt()) throw new IOException("Invalid flags");
+                var classified = Mt5AggressorMapper.side(flags.intValue());
+                if (classified != trade.side()) classified = AggressorSide.AMBIGUOUS;
+                return new MarketTrade(trade.symbol(), trade.timeMsc(), trade.price(), trade.volume(), classified);
+            }
+            if (monitoringMessage) return new MarketTrade(trade.symbol(), trade.timeMsc(), trade.price(), trade.volume(), AggressorSide.AMBIGUOUS);
+            return trade;
         } catch (IOException ex) {
             throw new IOException("JSON de trade MT5 invalido.", ex);
         } catch (RuntimeException ex) {
@@ -190,9 +259,18 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
     }
 
     private static Process startPython() throws IOException {
+        return startPython(null);
+    }
+
+    private static Process startPython(Cursor resume) throws IOException {
         Path script = locateScript();
         ProcessBuilder builder = new ProcessBuilder("python", "-u", script.toString());
         builder.environment().put("PYTHONIOENCODING", "utf-8");
+        builder.environment().put("MT5_TRADE_MONITORING_PROTOCOL", "1");
+        if (resume != null) {
+            builder.environment().put("MT5_TRADE_CURSOR_MSC", Long.toString(resume.timeMsc()));
+            builder.environment().put("MT5_TRADE_CURSOR_ORDINAL", Long.toString(resume.ordinal()));
+        }
         try {
             return builder.start();
         } catch (IOException ex) {
@@ -208,5 +286,16 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
             }
         }
         throw new IOException("mt5_trade_stream.py nao encontrado; execute dentro do repositorio.");
+    }
+
+    private static Cursor parseCursor(com.fasterxml.jackson.databind.JsonNode node) throws IOException {
+        if (node == null || !node.isObject()) throw new IOException("Invalid stream object");
+        if (!node.has("cursorOrdinal")) return null; // Legacy diagnostic and historical protocol.
+        if (!node.path("timeMsc").isIntegralNumber() || !node.path("timeMsc").canConvertToLong()
+                || !node.path("cursorOrdinal").isIntegralNumber() || !node.path("cursorOrdinal").canConvertToLong()
+                || node.path("timeMsc").longValue() < 0 || node.path("cursorOrdinal").longValue() < 1) {
+            throw new IOException("Invalid trade cursor");
+        }
+        return new Cursor(node.path("timeMsc").longValue(), node.path("cursorOrdinal").longValue());
     }
 }

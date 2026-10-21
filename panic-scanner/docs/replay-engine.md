@@ -1,5 +1,16 @@
 # Replay Engine
 
+## Visual playback speed
+
+The M5 visual replay starts at 1x: historical time advances at real time speed,
+beginning with the first event. The Velocidade selector offers 0.5x, 1x, 2x,
+5x, 10x, 20x, 50x and 100x. Changes apply during playback or while paused,
+and the selection is retained when loading another date in the same page.
+The WebSocket accepts `SPEED <multiplier>` alongside `PLAY` and `PAUSE`.
+Pausing freezes the playback clock; resuming continues from that point.
+Every historical event is processed in order at every speed. Batch replay
+and the package-private visual test constructor continue without pacing.
+
 ## Setup91 visual validation
 
 M5 Replay reuses `Setup91` and `Setup91Breakout` directly, with Batch's closed

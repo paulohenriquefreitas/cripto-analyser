@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
 import math
+import os
 import sys
 import threading
 
@@ -17,7 +18,7 @@ POLL_SECONDS = 0.02
 RETRY_SECONDS = 1.0
 MAX_CONSECUTIVE_ERRORS = 3
 BATCH_SIZE = 100_000
-WARMUP_SECONDS = 10
+WARMUP_SECONDS = 35
 UTC = timezone.utc
 
 
@@ -40,6 +41,8 @@ class StreamCounters:
 
 
 def aggressor_side(flags, definitions):
+    if flags < 0 or flags & ~sum(definitions.values()):
+        return "AMBIGUOUS"
     buy = bool(flags & definitions["BUY"])
     sell = bool(flags & definitions["SELL"])
     return "AMBIGUOUS" if buy == sell else "BUY" if buy else "SELL"
@@ -75,7 +78,10 @@ def unseen_at_cursor(rows, cursor):
 
 def normalize_trade(row, definitions):
     price = float(row["last"])
-    volume_real = float(row["volume_real"])
+    try:
+        volume_real = float(row["volume_real"])
+    except (KeyError, IndexError, ValueError, TypeError):
+        volume_real = float("nan")
     if not math.isfinite(price) or price <= 0:
         raise RuntimeError(f"Trade com last inválido: {price!r}")
     if not math.isfinite(volume_real) or volume_real <= 0:
@@ -125,9 +131,23 @@ def warmup(mt5, latest_time_msc, definitions):
     return unseen, cursor, len(copied)
 
 
-def emit(rows, definitions, counters, output, errors):
+def emit(rows, definitions, counters, output, errors, cursor=None):
+    cursor = cursor or TradeCursor(-1, 0)
     for row in rows:
-        message = normalize_trade(row, definitions)
+        timestamp = int(row["time_msc"])
+        ordinal = cursor.emitted_at_time + 1 if timestamp == cursor.time_msc else 1
+        cursor = TradeCursor(timestamp, ordinal)
+        try:
+            message = normalize_trade(row, definitions)
+        except RuntimeError:
+            # Preserve source identity without inventing a volume for invalid trades.
+            if not math.isfinite(float(row["last"])) or float(row["last"]) <= 0:
+                raise
+            message = {"type": "invalid_trade", "symbol": SYMBOL, "timeMsc": timestamp,
+                       "cursorOrdinal": ordinal, "reason": "INVALID_VOLUME"}
+            print(json.dumps(message, allow_nan=False, separators=(",", ":")), file=output, flush=True)
+            continue
+        message.update(cursorOrdinal=ordinal, flags=int(row["flags"]), volumeSource="MT5_VOLUME_REAL")
         flags = int(row["flags"])
         if message["side"] == "AMBIGUOUS" and not (
                 flags & (definitions["BUY"] | definitions["SELL"])):
@@ -144,10 +164,15 @@ def emit(rows, definitions, counters, output, errors):
             counters.ambiguous_trades += 1
         print(json.dumps(message, allow_nan=False, separators=(",", ":")),
               file=output, flush=True)
+    return cursor
 
 
-def stream_trades(mt5, stop_event, output=sys.stdout, errors=sys.stderr):
+def stream_trades(mt5, stop_event, output=sys.stdout, errors=sys.stderr, resume_cursor=None):
     counters = StreamCounters()
+    def status(available, time_msc):
+        if os.environ.get("MT5_TRADE_MONITORING_PROTOCOL") == "1":
+            print(json.dumps({"type": "trade_status", "symbol": SYMBOL, "available": available,
+                              "timeMsc": time_msc}, separators=(",", ":")), file=output, flush=True)
     try:
         if not mt5.initialize():
             raise RuntimeError(f"mt5.initialize() falhou: {mt5.last_error()}")
@@ -157,20 +182,27 @@ def stream_trades(mt5, stop_event, output=sys.stdout, errors=sys.stderr):
         if latest is None:
             raise RuntimeError(f"symbol_info_tick({SYMBOL}) falhou: {mt5.last_error()}")
         definitions = flag_definitions(mt5)
-        initial, cursor, ticks_read = warmup(mt5, int(latest.time_msc), definitions)
-        counters.ticks_read += ticks_read
-        emit(initial, definitions, counters, output, errors)
+        if resume_cursor is None:
+            initial, cursor, ticks_read = warmup(mt5, int(latest.time_msc), definitions)
+            counters.ticks_read += ticks_read
+            emit(initial, definitions, counters, output, errors)
+        else:
+            cursor = resume_cursor
+        status(True, int(latest.time_msc))
         consecutive_errors = 0
         while not stop_event.is_set():
             try:
                 unseen, updated_cursor, ticks_read = query_from_cursor(mt5, cursor, definitions)
                 counters.ticks_read += ticks_read
-                emit(unseen, definitions, counters, output, errors)
+                emit(unseen, definitions, counters, output, errors, cursor)
                 cursor = updated_cursor
+                if consecutive_errors:
+                    status(True, cursor.time_msc)
                 consecutive_errors = 0
             except RuntimeError as exc:
                 counters.query_errors += 1
                 consecutive_errors += 1
+                status(False, cursor.time_msc)
                 print(f"Falha temporária na consulta MT5 ({consecutive_errors}/"
                       f"{MAX_CONSECUTIVE_ERRORS}): {exc}", file=errors, flush=True)
                 if consecutive_errors >= MAX_CONSECUTIVE_ERRORS:
@@ -201,7 +233,10 @@ def main():
         stop_event.set()
 
     threading.Thread(target=wait_for_stop, daemon=True).start()
-    stream_trades(mt5, stop_event)
+    cursor = None
+    if "MT5_TRADE_CURSOR_MSC" in os.environ:
+        cursor = TradeCursor(int(os.environ["MT5_TRADE_CURSOR_MSC"]), int(os.environ["MT5_TRADE_CURSOR_ORDINAL"]))
+    stream_trades(mt5, stop_event, resume_cursor=cursor)
 
 
 if __name__ == "__main__":

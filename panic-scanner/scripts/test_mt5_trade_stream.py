@@ -20,6 +20,8 @@ def row(ms, price=188_375, volume=1, flags=8 | 16 | 32):
 
 
 class TradeCursorTest(unittest.TestCase):
+    def test_unknown_flag_mask_does_not_claim_known_aggression(self):
+        self.assertEqual("AMBIGUOUS", aggressor_side(8 | 32 | 128, DEFINITIONS))
     def test_full_batch_advances_over_quote_only_tail(self):
         mt5 = Mock(COPY_TICKS_ALL=0)
         values = [row(1_000)]
@@ -81,6 +83,33 @@ class TradeCursorTest(unittest.TestCase):
 
 
 class PersistentTradeStreamTest(unittest.TestCase):
+    def test_reconnect_resumes_ordinal_instead_of_emitting_warmup_twice(self):
+        mt5 = self.configured_mt5()
+        identical = row(1000)
+        mt5.copy_ticks_from.return_value = [identical, identical, identical]
+        stop = Mock()
+        stop.is_set.side_effect = [False, True]
+        output = io.StringIO()
+        stream_trades(mt5, stop, output, io.StringIO(), resume_cursor=TradeCursor(1000, 2))
+        message = json.loads(output.getvalue())
+        self.assertEqual(3, message['cursorOrdinal'])
+        self.assertEqual(1, message['volume'])
+        mt5.copy_ticks_range.assert_not_called()
+
+    def test_invalid_real_volume_advances_cursor_without_fabricating_contracts(self):
+        mt5 = self.configured_mt5()
+        invalid = row(1000)
+        invalid['volume_real'] = 0
+        mt5.copy_ticks_range.return_value = [invalid]
+        mt5.copy_ticks_from.return_value = [invalid, row(1000)]
+        stop = Mock()
+        stop.is_set.side_effect = [False, True]
+        output = io.StringIO()
+        stream_trades(mt5, stop, output, io.StringIO())
+        messages = [json.loads(line) for line in output.getvalue().splitlines()]
+        self.assertEqual(['invalid_trade', 'trade'], [message['type'] for message in messages])
+        self.assertNotIn('volume', messages[0])
+        self.assertEqual([1, 2], [message['cursorOrdinal'] for message in messages])
     def test_full_batch_drains_again_without_polling_delay(self):
         mt5 = self.configured_mt5()
         mt5.copy_ticks_range.return_value = []

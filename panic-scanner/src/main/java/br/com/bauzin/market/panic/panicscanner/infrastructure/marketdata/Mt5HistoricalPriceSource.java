@@ -27,9 +27,22 @@ public final class Mt5HistoricalPriceSource {
         return streamInternal(input, onHeader, onEvent, true);
     }
 
+    /** Additional raw T&T observer; canonical candle/scanner selection remains unchanged. */
+    public Statistics streamHistorical(Reader input, Consumer<Header> onHeader,
+                                      Consumer<HistoricalCanonicalPriceEvent> onEvent,
+                                      Consumer<HistoricalCanonicalPriceEvent> onRawTrade) throws IOException {
+        return streamInternal(input, onHeader, onEvent, true, onRawTrade);
+    }
+
     private Statistics streamInternal(Reader input, Consumer<Header> onHeader,
                                       Consumer<HistoricalCanonicalPriceEvent> onEvent,
                                       boolean requireVolume) throws IOException {
+        return streamInternal(input, onHeader, onEvent, requireVolume, null);
+    }
+
+    private Statistics streamInternal(Reader input, Consumer<Header> onHeader,
+                                      Consumer<HistoricalCanonicalPriceEvent> onEvent, boolean requireVolume,
+                                      Consumer<HistoricalCanonicalPriceEvent> onRawTrade) throws IOException {
         BufferedReader reader = input instanceof BufferedReader b ? b : new BufferedReader(input);
         JsonNode first = parse(reader.readLine());
         if (!"header".equals(first.path("type").asText())) throw new IOException("Missing header");
@@ -66,6 +79,15 @@ public final class Mt5HistoricalPriceSource {
             }
             previous = timestamp;
             rows++;
+            if (onRawTrade != null && (flags & 24) != 0 && Double.isFinite(node.get("last").doubleValue())
+                    && node.get("last").doubleValue() > 0) {
+                JsonNode rawVolume = node.get("volumeReal");
+                double volume = rawVolume != null && rawVolume.isNumber() && Double.isFinite(rawVolume.doubleValue())
+                        && rawVolume.doubleValue() > 0 ? rawVolume.doubleValue() : 0;
+                onRawTrade.accept(new HistoricalCanonicalPriceEvent(
+                        new CanonicalPriceEvent(header.symbol(), timestamp, node.get("last").doubleValue()),
+                        volume, (int) flags, rows - 1));
+            }
             var event = Mt5CanonicalPriceMapper.historical(header.symbol(), timestamp,
                     node.get("last").doubleValue(), (int) flags);
             if (event.isPresent()) {

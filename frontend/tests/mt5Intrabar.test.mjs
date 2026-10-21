@@ -166,3 +166,18 @@ test('SMA21 uses only backend values for the current raw candle time, preserving
   assert.equal(updateLastCandle(baseline, { ...enriched, sma21Time: candle.time - 300 }).candle.sma21, 99);
   assert.equal(updateLastCandle(baseline, { ...enriched, sma21: null }).candle.sma21, 99);
 });
+
+
+test('LAST reaches monitoring on each tick while rollover history synchronization is pending', async () => {
+  const pending = deferred(); let calls = 0;
+  const controller = createMt5Intrabar(() => ++calls === 1 ? Promise.resolve([candle]) : pending.promise);
+  const prices = [];
+  controller.attachChart({ setHistory() {}, updateLast() {}, onLastPrice: (price, time) => prices.push([price, time]) });
+  controller.start(); await flush();
+  const first = tick(120, candle.time + 301);
+  const second = tick(130, candle.time + 302);
+  controller.receiveTick(first); controller.receiveTick(second);
+  assert.deepEqual(prices, [[120, first.timeMsc], [130, second.timeMsc]]);
+  controller.receiveTick(first); assert.equal(prices.length, 2);
+  pending.resolve([{ ...candle, time: candle.time + 300 }]); await flush(); controller.stop();
+});

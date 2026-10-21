@@ -47,7 +47,14 @@ public final class ReplayWebSocketHandler extends TextWebSocketHandler {
         String command = message.getPayload().trim().toUpperCase();
         if ("PLAY".equals(command)) session.play();
         else if ("PAUSE".equals(command)) session.pause();
-        else send(socket, Map.of("type", "ERROR", "message", "Only PLAY and PAUSE are supported"));
+        else if (command.startsWith("SPEED ")) {
+            try {
+                session.setSpeed(Double.parseDouble(command.substring(6).trim()));
+            } catch (IllegalArgumentException ex) {
+                send(socket, Map.of("type", "ERROR", "message", "Speed must be between 0.5x and 100x"));
+            }
+        }
+        else send(socket, Map.of("type", "ERROR", "message", "Only PLAY, PAUSE and SPEED are supported"));
     }
 
     @Override

@@ -6,7 +6,7 @@ import { createMt5Intrabar } from '@/features/win/models/mt5Intrabar';
 import { getMt5Candles } from '@/features/win/api/mt5Api';
 import { Mt5LiveQuote } from '@/features/win/components/Mt5LiveQuote';
 import { ReplayPage } from '@/features/replay/pages/ReplayPage';
-import { Mt5CandlestickChart } from '@/features/win/components/Mt5CandlestickChart';
+import { WinM5MonitoredChart as Mt5CandlestickChart } from '@/features/win/components/WinM5MonitoredChart';
 
 export function WinMt5Page() {
   const [mode, setMode] = useState<'live' | 'replay'>('live');
@@ -38,7 +38,7 @@ function WinMt5LivePanel() {
         <Button variant="outlined" startIcon={<RefreshRoundedIcon />} disabled={state.loading}
           onClick={() => void controller.refresh()}>Atualizar</Button>
       </Stack>
-      <Mt5LiveQuote onTick={controller.receiveTick} />
+      <Mt5LiveQuote onTick={controller.receiveTick} onFlow={controller.receiveFlow} />
       <Typography color="text.secondary">
         Últimos 100 candles do MT5 · Horários em UTC · O último candle pode estar em formação.
       </Typography>

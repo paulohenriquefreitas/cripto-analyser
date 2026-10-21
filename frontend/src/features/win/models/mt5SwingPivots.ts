@@ -4,6 +4,7 @@ export type SwingPivot = { type: 'HIGH' | 'LOW'; time: number; price: number; co
 /** Strict 2-left/2-right pivots. The last candle is always treated as forming. */
 export function createSwingPivotTracker() {
   let window: SwingCandle[] = [];
+  let confirmed: SwingPivot[] = [];
   let highs: SwingPivot[] = [];
   let lows: SwingPivot[] = [];
   let lastClosedTime = -Infinity;
@@ -20,10 +21,12 @@ export function createSwingPivotTracker() {
     const pivot = window[2];
     const neighbors = window.filter((_, index) => index !== 2);
     if (neighbors.every(bar => pivot.high > bar.high)) {
-      highs = [...highs, { type: 'HIGH' as const, time: pivot.time, price: pivot.high, confirmedAt }];
+      const level: SwingPivot = { type: 'HIGH', time: pivot.time, price: pivot.high, confirmedAt };
+      highs = [...highs, level]; confirmed.push(level);
     }
     if (neighbors.every(bar => pivot.low < bar.low)) {
-      lows = [...lows, { type: 'LOW' as const, time: pivot.time, price: pivot.low, confirmedAt }];
+      const level: SwingPivot = { type: 'LOW', time: pivot.time, price: pivot.low, confirmedAt };
+      lows = [...lows, level]; confirmed.push(level);
     }
     window.shift();
   }
@@ -31,7 +34,7 @@ export function createSwingPivotTracker() {
   return {
     setHistory(candles: readonly SwingCandle[]) {
       if (!candles.length) {
-        window = []; highs = []; lows = []; lastClosedTime = -Infinity; current = undefined;
+        window = []; confirmed = []; highs = []; lows = []; lastClosedTime = -Infinity; current = undefined;
         return;
       }
       for (let index = 0; index < candles.length - 1; index++) {
@@ -45,6 +48,7 @@ export function createSwingPivotTracker() {
       if (current && candle.time > current.time) close(current, candle.time);
       current = { ...candle };
     },
+    getConfirmedLevels: (): readonly SwingPivot[] => confirmed,
     getLevels: (): readonly SwingPivot[] => [...highs, ...lows],
   };
 }

@@ -5,6 +5,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runInNewContext } from 'node:vm';
 import ts from 'typescript';
+import { createSwingLevelMonitoring } from '../src/features/win/models/swingLevelMonitoring.ts';
 
 // Execute the real connection, stores, manager and chart component. Only the
 // React host, socket transport and graphics API are replaced with test doubles.
@@ -91,7 +92,7 @@ function harness() {
   });
   return {
     manager,
-    mount: (setup91Only = true) => Mt5CandlestickChart({ controller: manager.getSnapshot().controller, setup91Only }),
+    mount: (setup91Only = true, monitoring) => Mt5CandlestickChart({ controller: manager.getSnapshot().controller, setup91Only, monitoring }),
     unmount: () => cleanup(),
     visible: () => visible.map(marker => ({ ...marker, text: primitive?.markers.get(marker.id)?.text ?? '' })),
     rawMarkers: () => visible,
@@ -410,4 +411,54 @@ test('WIN M5 has one MM9 and one VWAP per session, with no indicator price label
     assert.equal(series.priceLineVisible, false, series.title);
   }
   h.manager.close(); h.unmount();
+});
+
+
+test('replay FLOW reaches chart monitoring independently of candles and survives remount without recounting', async () => {
+  const h = harness(); const monitoring = createSwingLevelMonitoring();
+  await h.manager.load('2026-09-24'); h.mount(false, monitoring);
+  const flow = timeMsc => ({ type: 'FLOW', symbol: 'WINV26', timeMsc, lastTimeMsc: timeMsc,
+    last: 1050, volumeSource: 'MT5_VOLUME_REAL', windows: [5, 10, 30].map(seconds => ({
+      seconds, fromTimeMsc: timeMsc - seconds * 1000, toTimeMsc: timeMsc, events: 2,
+      buyVolume: 20, sellVolume: 5, unknownVolume: 0, delta: 15, buyPercent: 80,
+      sellPercent: 20, unknownPercent: 0, lastDisplacement: 1, quality: 'GOOD', alert: null,
+    })) });
+  const current = flow(6_031_000);
+  h.send({ type: 'FLOW', timeMsc: current.timeMsc, status: 'PLAYING', flow: current });
+  assert.equal(monitoring.getSnapshot().flow.windows[0].delta, 15);
+  assert.equal(monitoring.getSnapshot().last, 1050);
+  h.unmount(); h.mount(false, monitoring);
+  assert.equal(monitoring.getSnapshot().flow.windows[0].buyVolume, 20);
+  h.send({ type: 'FLOW', timeMsc: 6_030_000, status: 'PLAYING', flow: flow(6_030_000) });
+  assert.equal(monitoring.getSnapshot().flow.timeMsc, current.timeMsc);
+  h.manager.close();
+  assert.equal(monitoring.getSnapshot().flow, null);
+  h.unmount();
+});
+
+test('chart feeds LAST and only confirmed pivots into monitoring, retaining monitoring across a broken level and resetting sessions', async () => {
+  const h = harness(); const monitoring = createSwingLevelMonitoring();
+  await h.manager.load('2026-09-24'); h.mount(false, monitoring);
+  const send = (index, high, close = 900) => {
+    const time = 6000 + index * 300;
+    h.send({ type: 'MARKET_STATE', timeMsc: time * 1000 + 20,
+      candle: { time, open: 900, high, low: 700, close } });
+  };
+  [930, 950, 1000, 960, 970].forEach((high, index) => send(index, high));
+  assert.equal(monitoring.getSnapshot().levels.length, 0);
+  send(5, 1050);
+  assert.equal(monitoring.getSnapshot().levels[0].state, 'MONITORING');
+  assert.equal(monitoring.getSnapshot().levels[0].distance, 100);
+  assert.equal(h.rawMarkers().find(marker => marker.id.startsWith('MONITORING-')).time, 7500);
+  assert.match(h.rawMarkers().find(marker => marker.id.startsWith('MONITORING-')).text, /MONITORING.*Topo.*100 pts/);
+  assert.equal(h.rawMarkers().find(marker => marker.id.startsWith('MONITORING-')).position, 'aboveBar');
+  send(5, 1050, 1050); send(6, 1050, 1050);
+  assert.equal(monitoring.getSnapshot().levels[0].state, 'MONITORING');
+  assert.equal(monitoring.getSnapshot().levels[0].distance, 50);
+  assert.equal(h.rawMarkers().find(marker => marker.id.startsWith('MONITORING-')).time, 7800);
+  send(6, 1200, 1151);
+  assert.equal(monitoring.getSnapshot().levels[0].state, 'WAITING');
+  assert.equal(monitoring.getSnapshot().levels[0].distance, 151);
+  assert.equal(h.rawMarkers().filter(marker => marker.id.startsWith('MONITORING-')).length, 0);
+  h.manager.close(); assert.equal(monitoring.getSnapshot().levels.length, 0); h.unmount();
 });

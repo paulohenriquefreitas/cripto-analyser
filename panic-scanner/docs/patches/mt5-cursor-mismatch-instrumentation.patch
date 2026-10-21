@@ -1,0 +1,425 @@
+--- a/panic-scanner/scripts/mql5/WinZ26EventJointProbe.mq5
++++ b/panic-scanner/scripts/mql5/WinZ26EventJointProbe.mq5
+@@ -1,5 +1,5 @@
+ ﻿#property strict
+-#property version "1.01"
++#property version "1.02"
+ #property description "Experimental read-only WINZ26 event DOM and raw tick capture. No trading."
+ 
+ input int DurationSeconds=30;
+@@ -9,7 +9,9 @@
+ const int WRITE_PER_TIMER=64;
+ const int TICK_BATCH=2048;
+ const int RECONFIRM_MAX_ATTEMPTS=3;
+-const ulong RECONFIRM_BUDGET_US=500000;
++const ulong RECONFIRM_BUDGET_US=500000;
++const int CURSOR_DIAGNOSTIC_MAX_ROWS=2048; // Per array; includes the entire current batch/prefix.
++const int CURSOR_DIAGNOSTIC_MAX_CHARS=1048576; // Complete diagnostic line, excluding newline.
+ 
+ class CObservation
+ {
+@@ -24,12 +26,18 @@
+    ulong ordinal_before,ordinal_after;
+    MqlBookInfo book[];
+    MqlTick ticks[];
+-   ulong ordinals[];
++   ulong ordinals[];
++   bool cursor_diagnostic,diagnostic_allocation_failed;
++   int mismatch_row,mismatch_prefix,diagnostic_expected_total,diagnostic_returned_available;
++   MqlTick diagnostic_expected[],diagnostic_returned[];
++   MqlTick mismatch_expected,mismatch_received;
+    CObservation()
+    {
+       sequence=0;handler_start=0;handler_end=0;query_start=0;query_end=0;
+       local_before=0;local_after=0;gmt_before=0;gmt_after=0;server_time=0;
+-      ok=true;error=0;returned=0;cursor_before=0;cursor_after=0;ordinal_before=0;ordinal_after=0;
++      ok=true;error=0;returned=0;cursor_before=0;cursor_after=0;ordinal_before=0;ordinal_after=0;
++      cursor_diagnostic=false;diagnostic_allocation_failed=false;
++      mismatch_row=-1;mismatch_prefix=-1;diagnostic_expected_total=0;diagnostic_returned_available=0;
+    }
+ };
+ 
+@@ -52,7 +60,8 @@
+ ulong recovery_id=0,uncertainty_start=0,recovery_first_sequence=0,last_verified_us=0;
+ ulong recovery_last_verified_us=0,recovery_empty_responses=0,recovery_total_attempts=0;
+ ulong recovery_reconfirmed=0,recovery_unverified=0,recovery_duration_total=0,recovery_duration_max=0;
+-string last_recovery_json="null";
++string last_recovery_json="null";
++bool cursor_diagnostic_captured=false; // At most one terminal-failure diagnostic per session.
+ 
+ string DeinitReasonName(int reason)
+ {
+@@ -161,7 +170,7 @@
+    return result+"]";
+ }
+ 
+-string TickRow(MqlTick &t,ulong ordinal)
++string TickRow(MqlTick &t,ulong ordinal)
+ {
+    bool trade=(t.flags & (TICK_FLAG_LAST|TICK_FLAG_VOLUME))!=0;
+    bool buy=(t.flags&TICK_FLAG_BUY)!=0,sell=(t.flags&TICK_FLAG_SELL)!=0;
+@@ -173,9 +182,118 @@
+       ",\"flags\":"+IntegerToString(t.flags)+",\"unknown_flag_mask\":"+U(t.flags & ~known)+
+       ",\"cursor_ordinal\":"+U(ordinal)+",\"classification\":"+J(trade ? "trade" : "quote")+
+       ",\"side\":"+side+"}";
+-}
+-
+-void FlushObservations(int limit)
++}
++
++// Diagnostic-only serialization: no classifications, accepted ordinals or TickRow calls.
++string DiagnosticDouble(double x)
++{
++   if(MathIsValidNumber(x)) return StringFormat("%.17g",x);
++   return "{\"non_finite\":"+J(DoubleToString(x,16))+"}";
++}
++
++string DiagnosticTick(const MqlTick &t)
++{
++   return "{\"time\":"+L((long)t.time)+",\"time_msc\":"+L(t.time_msc)+
++      ",\"bid\":"+DiagnosticDouble(t.bid)+",\"ask\":"+DiagnosticDouble(t.ask)+
++      ",\"last\":"+DiagnosticDouble(t.last)+",\"volume\":"+U(t.volume)+
++      ",\"volume_real\":"+DiagnosticDouble(t.volume_real)+",\"flags\":"+U(t.flags)+"}";
++}
++
++string DifferentTickFields(const MqlTick &a,const MqlTick &b)
++{
++   string fields="";
++   if(a.time!=b.time) fields+=",\"time\"";
++   if(a.time_msc!=b.time_msc) fields+=",\"time_msc\"";
++   if(!MathIsValidNumber(a.bid) || !MathIsValidNumber(b.bid) || a.bid!=b.bid) fields+=",\"bid\"";
++   if(!MathIsValidNumber(a.ask) || !MathIsValidNumber(b.ask) || a.ask!=b.ask) fields+=",\"ask\"";
++   if(!MathIsValidNumber(a.last) || !MathIsValidNumber(b.last) || a.last!=b.last) fields+=",\"last\"";
++   if(a.volume!=b.volume) fields+=",\"volume\"";
++   if(!MathIsValidNumber(a.volume_real) || !MathIsValidNumber(b.volume_real) || a.volume_real!=b.volume_real) fields+=",\"volume_real\"";
++   if(a.flags!=b.flags) fields+=",\"flags\"";
++   return "["+(fields=="" ? "" : StringSubstr(fields,1))+"]";
++}
++
++void CaptureCursorDiagnostic(CObservation *o,MqlTick &rows[],int row_index,int prefix_index)
++{
++   if(cursor_diagnostic_captured) return;
++   cursor_diagnostic_captured=true;o.cursor_diagnostic=true;
++   o.mismatch_row=row_index;o.mismatch_prefix=prefix_index;
++   o.mismatch_expected=consumed_prefix[prefix_index];o.mismatch_received=rows[row_index];
++   o.diagnostic_expected_total=consumed_prefix_count;
++   o.diagnostic_returned_available=ArraySize(rows);
++   int expected=MathMin(consumed_prefix_count,CURSOR_DIAGNOSTIC_MAX_ROWS);
++   int received=MathMin(MathMin(o.returned,ArraySize(rows)),CURSOR_DIAGNOSTIC_MAX_ROWS);
++   if(ArrayResize(o.diagnostic_expected,expected)==expected)
++      for(int i=0;i<expected;i++) o.diagnostic_expected[i]=consumed_prefix[i];
++   else { o.diagnostic_allocation_failed=true;ArrayResize(o.diagnostic_expected,0); }
++   if(ArrayResize(o.diagnostic_returned,received)==received)
++      for(int i=0;i<received;i++) o.diagnostic_returned[i]=rows[i];
++   else { o.diagnostic_allocation_failed=true;ArrayResize(o.diagnostic_returned,0); }
++   // No additional queue allocation, fault replacement, cursor update or accepted counters.
++}
++
++void WriteCursorDiagnostic(CObservation *o)
++{
++   if(!o.cursor_diagnostic || io_failed) return;
++   ulong begin=GetMicrosecondCount();
++   string expected="[",received="[";
++   int expected_written=0,received_written=0;
++   // Reserve 4096 characters for bounded metadata and the first differing pair.
++   int budget=CURSOR_DIAGNOSTIC_MAX_CHARS-4096;
++   for(int i=0;i<ArraySize(o.diagnostic_expected);i++)
++   {
++      string row=(i>0 ? "," : "")+DiagnosticTick(o.diagnostic_expected[i]);
++      if(StringLen(expected)+StringLen(received)+StringLen(row)>budget) break;
++      expected+=row;expected_written++;
++   }
++   for(int i=0;i<ArraySize(o.diagnostic_returned);i++)
++   {
++      string row=(i>0 ? "," : "")+DiagnosticTick(o.diagnostic_returned[i]);
++      if(StringLen(expected)+StringLen(received)+StringLen(row)>budget) break;
++      received+=row;received_written++;
++   }
++   bool truncated=expected_written<o.diagnostic_expected_total || received_written<o.returned;
++   string text="{\"kind\":\"cursor_prefix_mismatch_diagnostic\",\"diagnostic_schema\":1,\"symbol\":"+J(SYMBOL)+
++      ",\"parent_sequence\":"+U(o.sequence)+",\"diagnostic_only\":true,\"rows_are_new\":false,\"accepted_rows\":0"+
++      ",\"reason\":\"CURSOR_PREFIX_CONTENT_MISMATCH\",\"cursor_before\":{\"time_msc\":"+L(o.cursor_before)+
++      ",\"ordinal\":"+U(o.ordinal_before)+"},\"query_start_us\":"+U(o.query_start)+
++      ",\"query_end_us\":"+U(o.query_end)+",\"query_duration_us\":"+U(o.query_end-o.query_start)+
++      ",\"returned_rows\":"+IntegerToString(o.returned)+",\"returned_array_size\":"+IntegerToString(o.diagnostic_returned_available)+
++      ",\"expected_prefix_total\":"+IntegerToString(o.diagnostic_expected_total)+
++      ",\"first_response_index\":"+IntegerToString(o.mismatch_row)+
++      ",\"first_prefix_index\":"+IntegerToString(o.mismatch_prefix)+
++      ",\"different_fields\":"+DifferentTickFields(o.mismatch_expected,o.mismatch_received)+
++      ",\"first_expected\":"+DiagnosticTick(o.mismatch_expected)+",\"first_received\":"+DiagnosticTick(o.mismatch_received)+
++      ",\"max_rows_per_array\":"+IntegerToString(CURSOR_DIAGNOSTIC_MAX_ROWS)+
++      ",\"max_record_chars\":"+IntegerToString(CURSOR_DIAGNOSTIC_MAX_CHARS)+
++      ",\"expected_prefix_written\":"+IntegerToString(expected_written)+
++      ",\"returned_rows_written\":"+IntegerToString(received_written)+
++      ",\"truncated\":"+B(truncated)+",\"allocation_failed\":"+B(o.diagnostic_allocation_failed)+
++      ",\"row_limit_reached\":"+B(o.diagnostic_expected_total>CURSOR_DIAGNOSTIC_MAX_ROWS || o.returned>CURSOR_DIAGNOSTIC_MAX_ROWS)+
++      ",\"character_limit_reached\":"+B(expected_written<ArraySize(o.diagnostic_expected) || received_written<ArraySize(o.diagnostic_returned))+
++      ",\"diagnostic_build_start_us\":"+U(begin)+",\"expected_prefix\":"+expected+"]"+
++      ",\"returned_raw_rows\":"+received+"]}";
++   // Defensive hard guard: never cut a JSON string or silently emit an oversized record.
++   if(StringLen(text)>CURSOR_DIAGNOSTIC_MAX_CHARS)
++      text="{\"kind\":\"cursor_prefix_mismatch_diagnostic\",\"diagnostic_schema\":1,\"symbol\":"+J(SYMBOL)+
++         ",\"parent_sequence\":"+U(o.sequence)+",\"diagnostic_only\":true,\"rows_are_new\":false,\"accepted_rows\":0"+
++         ",\"reason\":\"CURSOR_PREFIX_CONTENT_MISMATCH\",\"cursor_before\":{\"time_msc\":"+L(o.cursor_before)+
++         ",\"ordinal\":"+U(o.ordinal_before)+"},\"query_start_us\":"+U(o.query_start)+
++         ",\"query_end_us\":"+U(o.query_end)+",\"query_duration_us\":"+U(o.query_end-o.query_start)+
++         ",\"returned_rows\":"+IntegerToString(o.returned)+",\"expected_prefix_total\":"+IntegerToString(o.diagnostic_expected_total)+
++         ",\"first_response_index\":"+IntegerToString(o.mismatch_row)+",\"first_prefix_index\":"+IntegerToString(o.mismatch_prefix)+
++         ",\"different_fields\":"+DifferentTickFields(o.mismatch_expected,o.mismatch_received)+
++         ",\"first_expected\":"+DiagnosticTick(o.mismatch_expected)+",\"first_received\":"+DiagnosticTick(o.mismatch_received)+
++         ",\"max_record_chars\":"+IntegerToString(CURSOR_DIAGNOSTIC_MAX_CHARS)+
++         ",\"max_rows_per_array\":"+IntegerToString(CURSOR_DIAGNOSTIC_MAX_ROWS)+
++         ",\"truncated\":true,\"character_limit_reached\":true,\"allocation_failed\":"+B(o.diagnostic_allocation_failed)+
++         ",\"expected_prefix_written\":0,\"returned_rows_written\":0,\"expected_prefix\":[],\"returned_raw_rows\":[]}";
++   string primary_fault=fault;
++   WriteLine(text);
++   fault=primary_fault; // Diagnostic I/O cannot disguise the original continuity failure.
++}
++
++void FlushObservations(int limit)
+ {
+    for(int n=0;n<limit && queued>0;n++)
+    {
+@@ -207,7 +325,7 @@
+          text+="]";
+       }
+       text+=o.continuity_json;
+-      WriteLine(text+"}");delete o;
++      WriteLine(text+"}");WriteCursorDiagnostic(o);delete o;
+    }
+ }
+ 
+@@ -320,7 +438,7 @@
+       reason="CURSOR_CONTINUITY_UNVERIFIED_EMPTY";
+    ulong ordinal=0,seen_prefix=0,updated_ordinal=cursor_ordinal;
+    long previous=-1,updated=cursor_ms;
+-   int accepted=0,last_group_start=0;
++   int accepted=0,last_group_start=0,mismatch_row=-1,mismatch_prefix=-1;
+    bool content_verified=false;
+    if(reason=="")
+    {
+@@ -339,8 +457,8 @@
+             {
+                if(consumed_prefix_count!=(int)cursor_ordinal)
+                { reason="CURSOR_PREFIX_EVIDENCE_UNAVAILABLE";break; }
+-               if(!SameTick(rows[i],consumed_prefix[(int)ordinal-1]))
+-               { reason="CURSOR_PREFIX_CONTENT_MISMATCH";break; }
++               if(!SameTick(rows[i],consumed_prefix[(int)ordinal-1]))
++               { reason="CURSOR_PREFIX_CONTENT_MISMATCH";mismatch_row=i;mismatch_prefix=(int)ordinal-1;break; }
+             }
+          }
+          if(t<cursor_ms || (t==cursor_ms && ordinal<=cursor_ordinal)) continue;
+@@ -380,8 +498,9 @@
+       // Metadata only: rejected candidate payloads are never serialized.
+       ArrayResize(o.ticks,0);ArrayResize(o.ordinals,0);
+       fault=reason;query_errors++;
+-      if(waiting_prefix)
+-      { CloseRecovery(now,reason,o.sequence);o.continuity_json+=",\"recovery_result\":"+last_recovery_json; }
++      if(waiting_prefix)
++      { CloseRecovery(now,reason,o.sequence);o.continuity_json+=",\"recovery_result\":"+last_recovery_json; }
++      if(mismatch_row>=0) CaptureCursorDiagnostic(o,rows,mismatch_row,mismatch_prefix);
+    }
+    else
+    {
+--- a/panic-scanner/scripts/mt5_mql5_event_audit.py
++++ b/panic-scanner/scripts/mt5_mql5_event_audit.py
+@@ -39,6 +39,7 @@
+     path=Path(path);digest=sha(path)
+     session=None;summary=None;issues=Counter();kinds=Counter();parse_errors=[]
+     observations=[];books=[];batches=[];cursor_checks=[];blocking=[];gaps=[];record_errors=[]
++    cursor_diagnostics=[]
+     times=Counter();raw_counts=Counter();numeric_counts=Counter()
+     tick_count=trade_count=invalid_numeric=0;previous_tick=None;previous_sequence=0;market_intervals=[]
+     previous_cursor=None;cursor_verifiable=0;cursor_missing=0;full_observed=0
+@@ -60,6 +61,9 @@
+             if kind=='session':issues['multiple_sessions_in_file']+=1;continue
+             if summary is not None:issues['records_after_summary']+=1
+             if kind=='summary':summary=r;continue
++            # Evidence only; no observation sequence, market rows, timing metric or
++            # validity promotion. The parent failed tick_batch retains its verdict.
++            if kind=='cursor_prefix_mismatch_diagnostic':cursor_diagnostics.append(r);continue
+             if kind not in metrics:issues['unknown_record_kind']+=1;continue
+             if r.get('ok') is False or r.get('error',0)!=0:
+                 record_errors.append({'sequence':r.get('sequence'),'kind':kind,'ok':r.get('ok'),'error':r.get('error')})
+@@ -270,6 +274,7 @@
+         'cursor_continuity':{'verifiable_batches':cursor_verifiable,'batches_missing_fields':cursor_missing,'checks':cursor_checks,
+              'limitation':'Positional cursor cannot certify stable feed prefix or absence of source losses.'},
+         'observation_gaps':gaps,'parse_errors':parse_errors,'record_errors':record_errors,'tail':tail,'segments':segments,
++        'cursor_prefix_mismatch_diagnostics':cursor_diagnostics,
+         'quality':{'classification':overall,'segment_counts':dict(Counter(s['classification'] for s in segments))},
+         'criteria':{'UTILIZAVEL':'Joint local records with valid DOM/ticks, verifiable cursor and no detected fault/gap in that segment; descriptive use only.',
+              'INCOMPLETO':'Positive evidence of invalid records, cursor fault, query failure, interruption or missing finalization.',
+--- /dev/null
++++ b/panic-scanner/scripts/test_mt5_cursor_mismatch_instrumentation.py
+@@ -0,0 +1,171 @@
++"""Diagnostic record contract + real offline-auditor integration; no MT5 calls.
++
++Events below are synthetic fixtures, not output from executing the EX5.
++Source checks guard the unchanged comparator and isolation of diagnostic payloads.
++"""
++from copy import deepcopy
++import hashlib
++import json
++from pathlib import Path
++import re
++import unittest
++
++from mt5_cursor_content_diagnostic import raw, reconstruct, replay
++import test_mt5_mql5_event_audit as audit_tests
++from test_mt5_cursor_recovery_source import function
++
++EA = Path(__file__).parent/'mql5'/'WinZ26EventJointProbe.mq5'
++FIXTURE = Path(__file__).parent/'fixtures'/'mt5_cursor_content_8026703.json'
++
++
++class CursorDiagnosticIntegrationTest(unittest.TestCase):
++    run_rows = audit_tests.EventAuditTest.run_rows
++
++    def setUp(self):
++        fixture = json.loads(FIXTURE.read_text(encoding='utf-8'))
++        self.cursor, self.prefix, _, _ = reconstruct(fixture)
++
++    def diagnostic(self, response):
++        result = replay(self.cursor, self.prefix, response)
++        self.assertEqual(result['reason'], 'CURSOR_PREFIX_CONTENT_MISMATCH')
++        diff = result['first_difference']
++        return dict(kind='cursor_prefix_mismatch_diagnostic', diagnostic_schema=1,
++                    parent_sequence=4, diagnostic_only=True, rows_are_new=False, accepted_rows=0,
++                    cursor_before=dict(time_msc=self.cursor[0], ordinal=self.cursor[1]),
++                    returned_rows=len(response), query_start_us=111000, query_end_us=111006,
++                    query_duration_us=6, expected_prefix=deepcopy(self.prefix),
++                    returned_raw_rows=deepcopy(response), expected_prefix_total=2,
++                    first_response_index=diff['response_index'], first_prefix_index=diff['prefix_ordinal']-1,
++                    first_expected=diff['expected'], first_received=diff['received'],
++                    different_fields=diff['fields'], expected_prefix_written=2,
++                    returned_rows_written=len(response), truncated=False)
++
++    def capture(self, diagnostic=None):
++        rows = audit_tests.complete_rows()
++        rows[0]['cursor_seed_ms'] = self.cursor[0]
++        rows[2]['ticks'] = [dict(t, cursor_ordinal=i+1) for i, t in enumerate(self.prefix)]
++        rows[2]['cursor_before'] = dict(time_msc=self.cursor[0], ordinal=0)
++        rows[2]['cursor_after'] = dict(time_msc=self.cursor[0], ordinal=2)
++        failed = deepcopy(rows[2])
++        failed.update(sequence=4, ok=False, rows_are_new=False, ticks=[], returned_rows=5,
++                      cursor_before=deepcopy(rows[2]['cursor_after']),
++                      cursor_after=deepcopy(rows[2]['cursor_after']),
++                      handler_start_us=111000, handler_end_us=111020,
++                      query_start_us=111000, query_end_us=111006)
++        rows.insert(-1, failed)
++        if diagnostic is not None:
++            rows.insert(-1, diagnostic)
++        rows[-1].update(fault='CURSOR_PREFIX_CONTENT_MISMATCH', completed_window=False)
++        return rows
++
++    def assert_evidence_only(self, event):
++        baseline = self.run_rows(self.capture())
++        report = self.run_rows(self.capture(event))
++        for field in ('quality', 'segments', 'raw_ticks', 'trade_ticks', 'quote_ticks',
++                      'query_errors', 'cursor_continuity', 'handler_metrics', 'integrity_issues'):
++            self.assertEqual(report[field], baseline[field], field)
++        self.assertNotIn('unknown_record_kind', report['integrity_issues'])
++        self.assertEqual(report['cursor_prefix_mismatch_diagnostics'], [event])
++        self.assertEqual((report['raw_ticks'], report['trade_ticks'], report['quote_ticks']), (2, 0, 2))
++        self.assertEqual(report['quality']['classification'], 'INCOMPLETO')
++        return report
++
++    def test_reordering_records_exact_pair_and_does_not_promote_evidence(self):
++        response = list(reversed(deepcopy(self.prefix)))
++        event = self.diagnostic(response)
++        self.assertEqual(event['different_fields'], ['ask', 'flags'])
++        self.assertEqual(event['first_response_index'], 0)
++        self.assertEqual(event['expected_prefix'], self.prefix)
++        self.assertEqual(event['returned_raw_rows'], response)
++        self.assert_evidence_only(event)
++
++    def test_bid_and_ask_change_each_identified_without_acceptance(self):
++        for field in ('bid', 'ask'):
++            with self.subTest(field=field):
++                response = deepcopy(self.prefix)
++                response[0][field] += 5.
++                event = self.diagnostic(response)
++                self.assertEqual(event['different_fields'], [field])
++                self.assert_evidence_only(event)
++
++    def test_flags_difference_at_second_position(self):
++        response = deepcopy(self.prefix)
++        response[1]['flags'] ^= 1024
++        event = self.diagnostic(response)
++        self.assertEqual(event['different_fields'], ['flags'])
++        self.assertEqual((event['first_response_index'], event['first_prefix_index']), (1, 1))
++        self.assert_evidence_only(event)
++
++    def test_legitimate_duplicates_retained_in_both_arrays(self):
++        # A valid repeated occurrence remains new, so produces no mismatch.
++        stable = deepcopy(self.prefix)+[deepcopy(self.prefix[-1])]
++        self.assertTrue(replay(self.cursor, self.prefix, stable)['ok'])
++        self.assertEqual(len(replay(self.cursor, self.prefix, stable)['accepted']), 1)
++        # In a failed response, repetitions must survive diagnostic serialization too.
++        trade = dict(self.prefix[0], time_msc=self.cursor[0]+1, flags=1080)
++        event = self.diagnostic(list(reversed(deepcopy(self.prefix)))+[trade, deepcopy(trade)])
++        decoded = json.loads(json.dumps(event))
++        self.assertEqual(decoded['returned_raw_rows'][-2:], [trade, trade])
++        self.assert_evidence_only(decoded)
++
++    def test_truncated_or_spoofed_diagnostic_never_counts_as_ticks(self):
++        event = self.diagnostic(list(reversed(deepcopy(self.prefix))))
++        event.update(truncated=True, returned_rows_written=1,
++                     returned_raw_rows=event['returned_raw_rows'][:1],
++                     ticks=[dict(self.prefix[0], flags=1080, cursor_ordinal=3)],
++                     rows_are_new=True, ok=True)
++        self.assert_evidence_only(event)
++
++    def test_maximum_normal_batch_keeps_duplicate_order_in_auditor(self):
++        response = list(reversed(deepcopy(self.prefix)))+[deepcopy(self.prefix[1])]*2046
++        event = self.diagnostic(response)
++        report = self.assert_evidence_only(event)
++        self.assertEqual(len(report['cursor_prefix_mismatch_diagnostics'][0]['returned_raw_rows']), 2048)
++
++    def test_raw_precision_contract_keeps_small_values_and_ulong(self):
++        event = self.diagnostic(list(reversed(deepcopy(self.prefix))))
++        event['returned_raw_rows'][0].update(bid=1e-200, volume=18446744073709551615)
++        decoded = json.loads(json.dumps(event))
++        self.assertEqual(decoded['returned_raw_rows'][0]['bid'], 1e-200)
++        self.assertEqual(decoded['returned_raw_rows'][0]['volume'], 18446744073709551615)
++        self.assert_evidence_only(decoded)
++
++
++class CursorDiagnosticSourceTest(unittest.TestCase):
++    def setUp(self):
++        self.source = EA.read_text(encoding='utf-8-sig')
++
++    def test_comparator_unchanged_from_deployed_1_01(self):
++        # Normalized text fingerprint from the pre-change EA.
++        expected = '7cbfc0a8530b149c6779b162c89cb64655fede1cc200f26475fc2443664605b9'
++        self.assertEqual(hashlib.sha256(function(self.source, 'SameTick').encode()).hexdigest(), expected)
++
++    def test_capture_has_no_fault_cursor_counters_or_queue_side_effects(self):
++        capture = function(self.source, 'CaptureCursorDiagnostic')
++        self.assertNotRegex(capture, r'\b(NewObservation|Enqueue|CopyTicks|WriteLine)\(')
++        self.assertNotRegex(capture, r'\b(fault|cursor_ms|cursor_ordinal|raw_ticks|trades|quotes)\s*(?:=|\+=|\+\+)')
++        self.assertIn('if(cursor_diagnostic_captured) return;', capture)
++        self.assertIn('CURSOR_DIAGNOSTIC_MAX_ROWS', capture)
++
++    def test_raw_serializer_has_no_classification_and_uses_roundtrip_precision(self):
++        serializer = function(self.source, 'DiagnosticTick')
++        self.assertNotIn('TickRow(', serializer)
++        self.assertNotIn('classification', serializer)
++        self.assertNotIn('cursor_ordinal', serializer)
++        self.assertIn('StringFormat("%.17g",x)', function(self.source, 'DiagnosticDouble'))
++        for field in ('time', 'time_msc', 'bid', 'ask', 'last', 'volume', 'volume_real', 'flags'):
++            self.assertIn('t.'+field, serializer)
++
++    def test_explicit_row_and_record_caps_and_truncation_fallback(self):
++        self.assertRegex(self.source, r'CURSOR_DIAGNOSTIC_MAX_ROWS=2048;')
++        self.assertRegex(self.source, r'CURSOR_DIAGNOSTIC_MAX_CHARS=1048576;')
++        writer = function(self.source, 'WriteCursorDiagnostic')
++        self.assertIn('if(StringLen(text)>CURSOR_DIAGNOSTIC_MAX_CHARS)', writer)
++        self.assertIn('truncated', writer)
++        self.assertIn('allocation_failed', writer)
++        self.assertIn('fault=primary_fault;', writer)
++        self.assertNotRegex(writer, r'\b(TickRow|NewObservation|Enqueue|CopyTicks)\(')
++
++
++if __name__=='__main__':
++    unittest.main()

@@ -1,6 +1,9 @@
 package br.com.bauzin.market.panic.panicscanner.application.win.replay;
 
 import br.com.bauzin.market.panic.panicscanner.application.win.structure.MarketStructureEngine;
+import br.com.bauzin.market.panic.panicscanner.application.win.flow.MonitoringFlowEngine;
+import br.com.bauzin.market.panic.panicscanner.domain.win.flow.MarketTrade;
+import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5AggressorMapper;
 import br.com.bauzin.market.panic.panicscanner.domain.replay.RuleDirection;
 import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.CanonicalPriceEvent;
 import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarMarketState;
@@ -24,7 +27,12 @@ public final class M5ReplaySession {
     public enum Status { READY, PLAYING, PAUSED, COMPLETED, ERROR, CLOSED }
     public record Snapshot(String type, String replayId, long timeMsc, Status status,
                            Candle candle, Double sma9, Double sma21, Double vwap, String vwapSession,
-                           ClosedEma9 closedEma9) {
+                           ClosedEma9 closedEma9,
+                           MonitoringFlowEngine.Snapshot flow) {
+        public Snapshot(String type, String replayId, long timeMsc, Status status,
+                        Candle candle, Double sma9, Double sma21, Double vwap, String vwapSession, ClosedEma9 closedEma9) {
+            this(type, replayId, timeMsc, status, candle, sma9, sma21, vwap, vwapSession, closedEma9, null);
+        }
         public Snapshot(String type, String replayId, long timeMsc, Status status,
                         Candle candle, Double sma9, Double sma21, Double vwap, String vwapSession) {
             this(type, replayId, timeMsc, status, candle, sma9, sma21, vwap, vwapSession, null);
@@ -69,6 +77,7 @@ public final class M5ReplaySession {
     private final Path historyFile;
     private final String requestedSymbol;
     private final Mt5HistoricalPriceSource source;
+    private final MonitoringFlowEngine monitoringFlow;
     private final Pullback09ResearchEngine researchEngine = new Pullback09ResearchEngine();
     private final Setup91 setup91 = new Setup91();
     private final Setup91Breakout setup91Breakout = new Setup91Breakout(setup91);
@@ -92,16 +101,27 @@ public final class M5ReplaySession {
     private volatile long lastVisualPublishNanos;
     private volatile long lastVisualBucket = Long.MIN_VALUE;
     private Thread worker;
+    private final boolean paced;
+    private double speed = 1;
+    private double playbackTimeMsc = -1;
+    private long pacingNanos;
+    private long lastFlowPublishNanos;
 
     public M5ReplaySession(Path historyFile, String requestedSymbol) {
-        this(historyFile, requestedSymbol, DEFAULT_VISUAL_INTERVAL_NANOS);
+        this(historyFile, requestedSymbol, DEFAULT_VISUAL_INTERVAL_NANOS, true);
     }
 
     M5ReplaySession(Path historyFile, String requestedSymbol, long visualIntervalNanos) {
+        this(historyFile, requestedSymbol, visualIntervalNanos, false);
+    }
+
+    private M5ReplaySession(Path historyFile, String requestedSymbol, long visualIntervalNanos, boolean paced) {
         this.historyFile = Objects.requireNonNull(historyFile, "historyFile");
         this.requestedSymbol = Objects.requireNonNull(requestedSymbol, "requestedSymbol");
         this.visualIntervalNanos = visualIntervalNanos;
+        this.paced = paced;
         this.source = new Mt5HistoricalPriceSource();
+        this.monitoringFlow = new MonitoringFlowEngine(requestedSymbol);
         trades.setTradeListener(pendingTradeEvents::add);
     }
 
@@ -140,8 +160,9 @@ public final class M5ReplaySession {
 
     public void play() {
         synchronized (lock) {
-            if (status == Status.COMPLETED || status == Status.CLOSED) return;
+            if (status == Status.COMPLETED || status == Status.CLOSED || status == Status.PLAYING) return;
             status = Status.PLAYING;
+            pacingNanos = System.nanoTime();
             lock.notifyAll();
             if (started.compareAndSet(false, true)) {
                 worker = Thread.ofVirtual().name("replay-" + replayId).start(this::run);
@@ -152,7 +173,9 @@ public final class M5ReplaySession {
 
     public void pause() {
         synchronized (lock) {
+            advancePlaybackClock();
             if (status == Status.PLAYING) status = Status.PAUSED;
+            lock.notifyAll();
         }
         flushLatestMarketState(Status.PAUSED);
         publish(new Snapshot("CLOCK", replayId, currentTimeMsc, status, null, null, null, null, null));
@@ -166,6 +189,49 @@ public final class M5ReplaySession {
         if (worker != null) worker.interrupt();
     }
 
+    public double speed() { synchronized (lock) { return speed; } }
+
+    public void setSpeed(double next) {
+        if (!Double.isFinite(next) || next < 0.5 || next > 100) {
+            throw new IllegalArgumentException("Speed must be between 0.5x and 100x");
+        }
+        synchronized (lock) {
+            advancePlaybackClock();
+            speed = next;
+            lock.notifyAll();
+        }
+    }
+
+    private void advancePlaybackClock() {
+        long now = System.nanoTime();
+        if (status == Status.PLAYING && playbackTimeMsc >= 0) {
+            playbackTimeMsc += (now - pacingNanos) / 1_000_000.0 * speed;
+        }
+        pacingNanos = now;
+    }
+
+    private boolean awaitEvent(long timeMsc) {
+        synchronized (lock) {
+            try {
+                while (status != Status.CLOSED) {
+                    if (status == Status.PAUSED) {
+                        lock.wait();
+                        continue;
+                    }
+                    if (!paced) return true;
+                    advancePlaybackClock();
+                    if (playbackTimeMsc < 0) playbackTimeMsc = timeMsc;
+                    double remaining = (timeMsc - playbackTimeMsc) / speed;
+                    if (remaining <= 0) return true;
+                    lock.wait(Math.max(1L, Math.min(50L, (long) Math.ceil(remaining))));
+                }
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+            return false;
+        }
+    }
+
     private void run() {
         try (var reader = Files.newBufferedReader(historyFile)) {
             Pullback09CausalProcessor processor = new Pullback09CausalProcessor(researchEngine);
@@ -176,6 +242,7 @@ public final class M5ReplaySession {
                     throw new IllegalArgumentException("History symbol differs from requested symbol");
                 }
                 processor.warmUp(header);
+                monitoringFlow.connected(true, header.startMsc());
                 trades.warmUp(header.symbol(), header.startMsc(), header.warmup().stream().map(c ->
                         new br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarCandleSnapshot(
                                 header.symbol(), c.time() * 1000L, c.open(), c.high(), c.low(), c.close())).toList());
@@ -186,13 +253,29 @@ public final class M5ReplaySession {
                             candle.time() * 1000L + br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.M5Bucket.DURATION_MSC);
                 }
                 structureEngine.reset();
-            }, event -> accept(processor, structureEngine, occurrenceNumber, event));
+            }, event -> accept(processor, structureEngine, occurrenceNumber, event), historical -> {
+                var event = historical.priceEvent();
+                if (!awaitEvent(event.timeMsc())) return;
+                currentTimeMsc = event.timeMsc();
+                monitoringFlow.onLast(event.price(), event.timeMsc());
+                if (historical.volumeReal() > 0) {
+                    monitoringFlow.onTrade(new MarketTrade(
+                            event.symbol(), event.timeMsc(), event.price(), historical.volumeReal(),
+                            Mt5AggressorMapper.side(historical.flags())), historical.sequence());
+                } else monitoringFlow.invalidVolume(event.timeMsc());
+                long now = System.nanoTime();
+                if (now - lastFlowPublishNanos >= DEFAULT_VISUAL_INTERVAL_NANOS) {
+                    publishFlow();
+                    lastFlowPublishNanos = now;
+                }
+            });
             if (status != Status.CLOSED) { trades.finishDay(); publishTrades(); }
             researchEngine.finish();
             synchronized (lock) {
                 if (status != Status.CLOSED) status = Status.COMPLETED;
             }
             flushLatestMarketState(Status.COMPLETED);
+            if (currentTimeMsc >= 0) publishFlow();
             publish(new Snapshot("COMPLETED", replayId, currentTimeMsc, status, null, null, null, null, null));
         } catch (Exception ex) {
             researchEngine.finish();
@@ -207,13 +290,7 @@ public final class M5ReplaySession {
     private void accept(Pullback09CausalProcessor processor, MarketStructureEngine structureEngine,
                         long[] occurrenceNumber, HistoricalCanonicalPriceEvent historical) {
         CanonicalPriceEvent event = historical.priceEvent();
-        synchronized (lock) {
-            while (status == Status.PAUSED && status != Status.CLOSED) {
-                try { lock.wait(); }
-                catch (InterruptedException ex) { Thread.currentThread().interrupt(); return; }
-            }
-            if (status == Status.CLOSED) return;
-        }
+        if (!awaitEvent(event.timeMsc())) return;
         boolean positionWasOpen = trades.hasOpenPosition();
         trades.onLast(historical);
         var causal = processor.accept(historical);
@@ -268,7 +345,8 @@ public final class M5ReplaySession {
         Snapshot snapshot = new Snapshot("MARKET_STATE", replayId, currentTimeMsc, status,
                 candle, state.sma9(), state.sma21(), vwapValue,
                 vwapValue == null ? null : java.time.Instant.ofEpochMilli(state.candle().bucketStartTimeMsc())
-                        .atZone(java.time.ZoneOffset.UTC).toLocalDate().toString(), closedEma9);
+                        .atZone(java.time.ZoneOffset.UTC).toLocalDate().toString(), closedEma9,
+                monitoringFlow.snapshot(currentTimeMsc));
         latestMarketState = snapshot;
         long bucket = state.candle().bucketStartTimeMsc();
         long now = System.nanoTime();
@@ -306,11 +384,16 @@ public final class M5ReplaySession {
         marketStatesPublished.increment();
         lastPublishedMarketState = latest;
         publish(new Snapshot(latest.type(), latest.replayId(), latest.timeMsc(), state,
-                latest.candle(), latest.sma9(), latest.sma21(), latest.vwap(), latest.vwapSession(), latest.closedEma9()));
+                latest.candle(), latest.sma9(), latest.sma21(), latest.vwap(), latest.vwapSession(), latest.closedEma9(), latest.flow()));
     }
 
     private void publish(Snapshot snapshot) {
         listeners.forEach(listener -> listener.accept(snapshot));
+    }
+
+    private void publishFlow() {
+        publish(new Snapshot("FLOW", replayId, currentTimeMsc, status, null, null, null, null, null, null,
+                monitoringFlow.snapshot(currentTimeMsc)));
     }
 
     private void publishRuleOccurrence(RuleOccurrenceMessage occurrence) {

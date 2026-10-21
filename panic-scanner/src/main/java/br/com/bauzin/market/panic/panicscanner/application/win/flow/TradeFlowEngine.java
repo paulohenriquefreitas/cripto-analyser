@@ -13,9 +13,10 @@ public final class TradeFlowEngine {
     public static final Duration THREE_SECONDS = Duration.ofSeconds(3);
     public static final Duration FIVE_SECONDS = Duration.ofSeconds(5);
     public static final Duration TEN_SECONDS = Duration.ofSeconds(10);
+    public static final Duration THIRTY_SECONDS = Duration.ofSeconds(30);
 
     private static final Duration[] SUPPORTED_WINDOWS = {
-            ONE_SECOND, THREE_SECONDS, FIVE_SECONDS, TEN_SECONDS
+            ONE_SECOND, THREE_SECONDS, FIVE_SECONDS, TEN_SECONDS, THIRTY_SECONDS
     };
 
     private final Map<Duration, RollingTradeWindow> windows = new LinkedHashMap<>();
@@ -56,5 +57,13 @@ public final class TradeFlowEngine {
         windows.values().forEach(RollingTradeWindow::clear);
         symbol = null;
         lastTimeMsc = -1;
+    }
+
+    /** Expire idle windows by event time; never fabricate a trade to advance the clock. */
+    public synchronized FlowSnapshot snapshotAt(Duration window, long timeMsc) {
+        if (timeMsc < lastTimeMsc) throw new IllegalArgumentException("snapshot precedes last trade");
+        RollingTradeWindow state = windows.get(window);
+        if (state == null) throw new IllegalArgumentException("unsupported flow window: " + window);
+        return state.snapshotAt(timeMsc);
     }
 }

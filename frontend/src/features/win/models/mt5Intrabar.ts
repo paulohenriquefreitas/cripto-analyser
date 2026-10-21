@@ -1,6 +1,7 @@
 import type { ReplayTradeMarker } from '@/features/replay/api/replayTradeStore';
 import type { Mt5Candle } from '@/features/win/api/mt5Api';
 import type { LiveTick } from '@/features/win/api/mt5LiveConnection';
+import type { MonitoringFlowSnapshot } from './monitoringFlow';
 
 export const M5_SECONDS = 300;
 export const RESYNC_RETRY_MS = 5000;
@@ -29,6 +30,8 @@ export function updateLastCandle(candle: Mt5Candle, tick: LiveTick): Change {
 }
 
 export type ChartSink = {
+  onFlowSnapshot?: (snapshot: MonitoringFlowSnapshot | null) => void;
+  onLastPrice?: (price: number, timeMsc: number) => void;
   addEma9Reversal?: (marker: Ema9ReversalMarker) => void;
   setHistory: (candles: Mt5Candle[]) => void;
   updateLast: (candle: Mt5Candle) => void;
@@ -74,6 +77,7 @@ export function createMt5Intrabar(load: (signal: AbortSignal) => Promise<Mt5Cand
   let current: Mt5Candle | undefined;
   let latest: LiveTick | undefined;
   let chart: ChartSink | undefined;
+  let flow: MonitoringFlowSnapshot | null = null;
   let active = false;
   let generation = 0;
   let request: AbortController | undefined;
@@ -145,11 +149,18 @@ export function createMt5Intrabar(load: (signal: AbortSignal) => Promise<Mt5Cand
       retry = undefined;
     },
     refresh,
+    receiveFlow(next: MonitoringFlowSnapshot | null) {
+      if (!active) return;
+      if (next && flow && next.timeMsc < flow.timeMsc) return;
+      flow = next;
+      chart?.onFlowSnapshot?.(flow);
+    },
     receiveTick(tick: LiveTick) {
       if (!active || (latest && tick.timeMsc < latest.timeMsc)) return;
       if (!Number.isFinite(tick.last) || tick.last <= 0
         || !Number.isSafeInteger(tick.timeMsc) || Math.floor(tick.timeMsc / 1000) !== tick.time) return;
       latest = tick;
+      chart?.onLastPrice?.(tick.last, tick.timeMsc);
       if (applyLatest() && !request && retry === undefined) void refresh();
     },
     attachChart(sink: ChartSink) {
@@ -157,6 +168,8 @@ export function createMt5Intrabar(load: (signal: AbortSignal) => Promise<Mt5Cand
       if (history.length) {
         sink.setHistory(current ? [...history.slice(0, -1), current] : history);
       }
+      if (latest) sink.onLastPrice?.(latest.last, latest.timeMsc);
+      sink.onFlowSnapshot?.(flow);
       return () => { if (chart === sink) chart = undefined; };
     },
   };

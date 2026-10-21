@@ -19,6 +19,7 @@ final class RollingTradeWindow {
     private double buyVolume;
     private double sellVolume;
     private double ambiguousVolume;
+    private long referenceTimeMsc = -1;
 
     RollingTradeWindow(Duration duration) {
         this.duration = duration;
@@ -37,7 +38,8 @@ final class RollingTradeWindow {
             maxima.removeLast();
         }
         maxima.addLast(trade);
-        expireAt(trade.timeMsc());
+        referenceTimeMsc = Math.max(referenceTimeMsc, trade.timeMsc());
+        expireAt(referenceTimeMsc);
     }
 
     FlowSnapshot snapshot() {
@@ -57,7 +59,7 @@ final class RollingTradeWindow {
         double maxPrice = maxima.peekFirst().price();
         double priceChange = lastPrice - firstPrice;
         double priceRange = maxPrice - minPrice;
-        long toTimeMsc = last.timeMsc();
+        long toTimeMsc = referenceTimeMsc;
         return new FlowSnapshot(
                 duration,
                 toTimeMsc - durationMsc,
@@ -83,12 +85,25 @@ final class RollingTradeWindow {
     }
 
     void clear() {
+        referenceTimeMsc = -1;
         trades.clear();
         minima.clear();
         maxima.clear();
         buyVolume = 0;
         sellVolume = 0;
         ambiguousVolume = 0;
+    }
+
+    FlowSnapshot snapshotAt(long timeMsc) {
+        if (timeMsc < referenceTimeMsc) throw new IllegalArgumentException("window clock cannot go backwards");
+        referenceTimeMsc = timeMsc;
+        expireAt(timeMsc);
+        if (!trades.isEmpty()) return snapshot();
+        var empty = FlowSnapshot.empty(duration);
+        return new FlowSnapshot(duration, timeMsc - durationMsc, timeMsc, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                empty.firstPrice(), empty.lastPrice(), empty.minPrice(), empty.maxPrice(),
+                empty.priceChange(), empty.priceRange(), empty.priceVelocity());
     }
 
     private void expireAt(long currentTimeMsc) {
@@ -115,9 +130,9 @@ final class RollingTradeWindow {
 
     private void removeVolume(MarketTrade trade) {
         switch (trade.side()) {
-            case BUY -> buyVolume -= trade.volume();
-            case SELL -> sellVolume -= trade.volume();
-            case AMBIGUOUS -> ambiguousVolume -= trade.volume();
+            case BUY -> buyVolume = Math.max(0, buyVolume - trade.volume());
+            case SELL -> sellVolume = Math.max(0, sellVolume - trade.volume());
+            case AMBIGUOUS -> ambiguousVolume = Math.max(0, ambiguousVolume - trade.volume());
         }
     }
 }

@@ -44,6 +44,7 @@ export function createReplaySessionManager(options: ReplaySessionManagerOptions 
   let activeController: ReplayController | undefined;
   let abortController: AbortController | undefined;
   let isLoading = false;
+  let speed = 1;
   let lastLoadTime = 0;
   const DOUBLE_CLICK_WINDOW_MS = 300;
 
@@ -142,6 +143,7 @@ export function createReplaySessionManager(options: ReplaySessionManagerOptions 
       );
 
       activeController = nextController;
+      nextController.setSpeed?.(speed);
       isLoading = false;
 
       // 7. Se a carga atual terminar com sucesso: status = READY
@@ -203,6 +205,11 @@ export function createReplaySessionManager(options: ReplaySessionManagerOptions 
     load,
     play,
     pause,
+    setSpeed(next: number) {
+      if (!Number.isFinite(next) || next < 0.5 || next > 100) throw new Error('Velocidade deve estar entre 0,5x e 100x.');
+      speed = next;
+      activeController?.setSpeed?.(speed);
+    },
     close,
     setCreateSession(fn: CreateSessionFn) {
       createSession = fn;

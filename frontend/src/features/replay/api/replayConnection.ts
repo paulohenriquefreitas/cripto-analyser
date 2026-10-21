@@ -3,13 +3,15 @@ import type { Mt5Candle } from '@/features/win/api/mt5Api';
 import { M5_SECONDS, type ChartSink, type Ema9ReversalMarker } from '@/features/win/models/mt5Intrabar';
 import { createReplayOccurrenceStore } from './replayOccurrenceStore';
 import { createReplaySetupStore, isReplaySetupType, type ReplaySetupEventMessage } from './replaySetupStore';
+import type { MonitoringFlowSnapshot } from '@/features/win/models/monitoringFlow';
 
 type Message = {
-  type: 'CLOCK' | 'MARKET_STATE' | 'RULE_OCCURRENCE' | 'REPLAY_SETUP_EVENT' | 'COMPLETED' | 'ERROR';
+  type: 'CLOCK' | 'MARKET_STATE' | 'RULE_OCCURRENCE' | 'REPLAY_SETUP_EVENT' | 'COMPLETED' | 'ERROR' | 'FLOW';
   timeMsc: number;
   status: string;
   candle?: { time: number; open: number; high: number; low: number; close: number };
   sma9?: number | null;
+  flow?: MonitoringFlowSnapshot | null;
   closedEma9?: { time: number; value: number; reversal?: 'UP' | 'DOWN' | null;
     previousValue?: number | null; availableAtTimeMsc?: number } | null;
   sma21?: number | null;
@@ -51,12 +53,14 @@ export function connectReplay(
   const tradeEvents = createReplayTradeStore();
   const emaReversals = new Map<number, Ema9ReversalMarker>();
   let closed = false;
+  let flow: MonitoringFlowSnapshot | null = null;
 
   const controller = {
     attachChart(next: ChartSink) {
       if (closed) return () => {};
       sink = next;
       if (history.length) next.setHistory(history);
+      next.onFlowSnapshot?.(flow);
       emaReversals.forEach(marker => next.addEma9Reversal?.(marker));
       const detachOccurrences = occurrences.attach(marker => next.addRuleOccurrence?.(marker));
       const detachSetupEvents = setupEvents.attach(marker => next.addReplaySetupMarker?.(marker));
@@ -78,6 +82,13 @@ export function connectReplay(
       if (socket.readyState === WebSocket.OPEN) socket.send('PAUSE');
       else if (socket.readyState === WebSocket.CONNECTING) pendingCommands.push('PAUSE');
     },
+    setSpeed(speed: number) {
+      if (!Number.isFinite(speed) || speed < 0.5 || speed > 100) throw new Error('Velocidade deve estar entre 0,5x e 100x.');
+      if (closed) return;
+      const command = `SPEED ${speed}`;
+      if (socket.readyState === WebSocket.OPEN) socket.send(command);
+      else if (socket.readyState === WebSocket.CONNECTING) pendingCommands.push(command);
+    },
     close() {
       if (closed) return;
       closed = true;
@@ -92,6 +103,7 @@ export function connectReplay(
       emaReversals.clear();
       history = [];
       last = undefined;
+      flow = null;
       if (sink) {
         sink.setHistory([]);
         sink = undefined;
@@ -120,6 +132,10 @@ export function connectReplay(
     const message = parsed as Message;
     if (typeof message.status === 'string') onClock(message.timeMsc, message.status);
     if (message.type === 'ERROR') onError(message.message ?? 'Replay error');
+    if (message.flow && (!flow || message.flow.timeMsc >= flow.timeMsc)) {
+      flow = message.flow;
+      sink?.onFlowSnapshot?.(flow);
+    }
     if (message.type === 'RULE_OCCURRENCE'
       && typeof message.occurrenceId === 'string'
       && (message.direction === 'LONG' || message.direction === 'SHORT')) {
@@ -154,6 +170,7 @@ export function connectReplay(
       sma9: message.sma9 ?? null, sma21: message.sma21 ?? null,
       vwap: message.vwap ?? null, vwapSession: message.vwapSession ?? undefined,
     };
+    sink?.onLastPrice?.(candle.close, message.timeMsc);
     const previous = last;
     // The backend publishes EMA only after closure, keyed to the closed candle.
     const ema = message.closedEma9;

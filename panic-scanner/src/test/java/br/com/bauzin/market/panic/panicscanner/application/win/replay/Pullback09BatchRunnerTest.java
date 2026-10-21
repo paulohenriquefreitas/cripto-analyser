@@ -174,7 +174,7 @@ class Pullback09BatchRunnerTest {
     }
 
     static void assertParity(Path file, Pullback09BatchRunner.Result batch) throws Exception {
-        var replay = new M5ReplaySession(file, batch.symbol());
+        var replay = new M5ReplaySession(file, batch.symbol(), 50_000_000L);
         var events = new ArrayList<M5ReplaySession.SetupEventMessage>();
         var done = new CountDownLatch(1);
         replay.addSetupEventListener(events::add);

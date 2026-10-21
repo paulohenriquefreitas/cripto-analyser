@@ -1,10 +1,11 @@
-import { Alert, Box, Button, MenuItem, Paper, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, FormControlLabel, MenuItem, Paper, Stack, Switch, TextField, Typography } from '@mui/material';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { env } from '@/common/api/env';
 import { createReplay } from '@/features/replay/api/replayApi';
 import { connectReplay } from '@/features/replay/api/replayConnection';
 import { createReplaySessionManager } from '@/features/replay/api/replaySessionManager';
-import { Mt5CandlestickChart } from '@/features/win/components/Mt5CandlestickChart';
+import { WinM5MonitoredChart as Mt5CandlestickChart } from '@/features/win/components/WinM5MonitoredChart';
+import { AbsorptionReplayPanel } from '../components/AbsorptionReplayPanel';
 
 export function ReplayPage({ embedded = false, setup91Only = true }: {
   embedded?: boolean;
@@ -12,6 +13,8 @@ export function ReplayPage({ embedded = false, setup91Only = true }: {
 } = {}) {
   const [symbol, setSymbol] = useState('WIN$N');
   const [date, setDate] = useState('2026-09-24');
+  const [speed, setSpeed] = useState(1);
+  const [absorptionMode, setAbsorptionMode] = useState(false);
   const managerRef = useRef<ReturnType<typeof createReplaySessionManager> | null>(null);
   if (!managerRef.current) {
     managerRef.current = createReplaySessionManager({
@@ -29,10 +32,15 @@ export function ReplayPage({ embedded = false, setup91Only = true }: {
   const isLoading = state.status === 'LOADING';
   const canPlay = !isLoading && !!state.controller && (state.status === 'READY' || state.status === 'PAUSED');
   const canPause = !isLoading && !!state.controller && state.status === 'PLAYING';
+  const absorptionToggle = <FormControlLabel label="Replay de Absorção (experimental)" control={<Switch checked={absorptionMode}
+    onChange={(_, enabled) => { if (enabled && canPause) manager.pause(); setAbsorptionMode(enabled); }} />} />;
+
+  if (absorptionMode) return <Stack spacing={3}>{absorptionToggle}<AbsorptionReplayPanel /></Stack>;
 
   return (
     <Stack spacing={3}>
       {!embedded ? <Typography variant="h3">Replay M5</Typography> : null}
+      {absorptionToggle}
       <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" useFlexGap>
         <TextField select label="Ativo" value={symbol} disabled={isLoading}
           onChange={event => setSymbol(event.target.value)} sx={{ minWidth: 220 }}>
@@ -68,6 +76,15 @@ export function ReplayPage({ embedded = false, setup91Only = true }: {
         >
           PAUSE
         </Button>
+        <TextField select label="Velocidade" value={speed} sx={{ minWidth: 130 }}
+          onChange={event => {
+            const next = Number(event.target.value);
+            manager.setSpeed(next);
+            setSpeed(next);
+          }}>
+          {[0.5, 1, 2, 5, 10, 20, 50, 100].map(value =>
+            <MenuItem key={value} value={value}>{value.toLocaleString('pt-BR')}x</MenuItem>)}
+        </TextField>
         <Box>
           Replay: {state.clock == null ? '--:--:--' : new Date(state.clock).toLocaleTimeString('pt-BR')}
         </Box>

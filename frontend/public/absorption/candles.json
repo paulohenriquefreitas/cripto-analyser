@@ -1,0 +1,744 @@
+{
+  "schema_version": 1,
+  "sessions": [
+    {
+      "capture_sha256": "2767e5d00f8385592270ebc2534a7dfaf940f52046d44d780e9aa389d8dd10fd",
+      "symbol": "WINZ26",
+      "time_reference": "capture_utc",
+      "timeframe_seconds": 60,
+      "source": "Clear MT5 WINZ26 M1; native same-session clock convention; rawTime retained",
+      "clock_mapping": {
+        "method": "same_session_native_server_wall_clock_equals_windows_local",
+        "source_wall_to_utc_seconds": 10800,
+        "observed_gmt_minus_local_seconds": {
+          "10800": 1036
+        },
+        "native_equality_anchors": 213,
+        "first_anchor": {
+          "sequence": 4,
+          "gmt_s": 1792182240,
+          "local_s": 1792171440,
+          "server_s": 1792171440,
+          "last_tick_time_msc": 1792171440925
+        },
+        "last_anchor": {
+          "sequence": 2324,
+          "gmt_s": 1792182270,
+          "local_s": 1792171470,
+          "server_s": 1792171470,
+          "last_tick_time_msc": 1792171470571
+        },
+        "source_clock_resolution_seconds": 1,
+        "latency_calibration_established": false
+      },
+      "candles": [
+        {
+          "time": 1792182240,
+          "open": 209460.0,
+          "high": 209490.0,
+          "low": 209450.0,
+          "close": 209480.0,
+          "tickVolume": 2316,
+          "realVolume": 6677,
+          "rawTime": 1792171440
+        }
+      ],
+      "data_quality": {
+        "missing_m1_utc": [],
+        "matched_complete_minutes": 0,
+        "mismatched_complete_minutes": 0
+      }
+    },
+    {
+      "capture_sha256": "0e075fbc78ddaa0f2ed3888f1a03c7b2ee6af43bdcd85ce0a7ee2a16d35072d2",
+      "symbol": "WINZ26",
+      "time_reference": "capture_utc",
+      "timeframe_seconds": 60,
+      "source": "Clear MT5 WINZ26 M1; native same-session clock convention; rawTime retained",
+      "clock_mapping": {
+        "method": "same_session_native_server_wall_clock_equals_windows_local",
+        "source_wall_to_utc_seconds": 10800,
+        "observed_gmt_minus_local_seconds": {
+          "10800": 14580
+        },
+        "native_equality_anchors": 4047,
+        "first_anchor": {
+          "sequence": 4,
+          "gmt_s": 1792182661,
+          "local_s": 1792171861,
+          "server_s": 1792171861,
+          "last_tick_time_msc": 1792171861848
+        },
+        "last_anchor": {
+          "sequence": 29530,
+          "gmt_s": 1792182961,
+          "local_s": 1792172161,
+          "server_s": 1792172161,
+          "last_tick_time_msc": 1792172161826
+        },
+        "source_clock_resolution_seconds": 1,
+        "latency_calibration_established": false
+      },
+      "candles": [
+        {
+          "time": 1792182660,
+          "open": 209765.0,
+          "high": 209950.0,
+          "low": 209755.0,
+          "close": 209935.0,
+          "tickVolume": 11604,
+          "realVolume": 44330,
+          "rawTime": 1792171860
+        },
+        {
+          "time": 1792182720,
+          "open": 209935.0,
+          "high": 209985.0,
+          "low": 209890.0,
+          "close": 209960.0,
+          "tickVolume": 5500,
+          "realVolume": 17029,
+          "rawTime": 1792171920
+        },
+        {
+          "time": 1792182780,
+          "open": 209960.0,
+          "high": 209990.0,
+          "low": 209885.0,
+          "close": 209905.0,
+          "tickVolume": 3839,
+          "realVolume": 12916,
+          "rawTime": 1792171980
+        },
+        {
+          "time": 1792182840,
+          "open": 209910.0,
+          "high": 209940.0,
+          "low": 209895.0,
+          "close": 209920.0,
+          "tickVolume": 1639,
+          "realVolume": 5047,
+          "rawTime": 1792172040
+        },
+        {
+          "time": 1792182900,
+          "open": 209920.0,
+          "high": 209960.0,
+          "low": 209890.0,
+          "close": 209920.0,
+          "tickVolume": 2596,
+          "realVolume": 7726,
+          "rawTime": 1792172100
+        },
+        {
+          "time": 1792182960,
+          "open": 209915.0,
+          "high": 209945.0,
+          "low": 209890.0,
+          "close": 209935.0,
+          "tickVolume": 2140,
+          "realVolume": 6325,
+          "rawTime": 1792172160
+        }
+      ],
+      "data_quality": {
+        "missing_m1_utc": [],
+        "matched_complete_minutes": 3,
+        "mismatched_complete_minutes": 1
+      }
+    },
+    {
+      "capture_sha256": "19cf77d00ef421c282d18cf14a027f44dda12849fa8e5ee94be494a174decdcd",
+      "symbol": "WINZ26",
+      "time_reference": "capture_utc",
+      "timeframe_seconds": 60,
+      "source": "Clear MT5 WINZ26 M1; native same-session clock convention; rawTime retained",
+      "clock_mapping": {
+        "method": "same_session_native_server_wall_clock_equals_windows_local",
+        "source_wall_to_utc_seconds": 10800,
+        "observed_gmt_minus_local_seconds": {
+          "10800": 33580
+        },
+        "native_equality_anchors": 8331,
+        "first_anchor": {
+          "sequence": 6,
+          "gmt_s": 1792183456,
+          "local_s": 1792172656,
+          "server_s": 1792172656,
+          "last_tick_time_msc": 1792172656706
+        },
+        "last_anchor": {
+          "sequence": 73797,
+          "gmt_s": 1792184356,
+          "local_s": 1792173556,
+          "server_s": 1792173556,
+          "last_tick_time_msc": 1792173556577
+        },
+        "source_clock_resolution_seconds": 1,
+        "latency_calibration_established": false
+      },
+      "candles": [
+        {
+          "time": 1792183440,
+          "open": 210045.0,
+          "high": 210150.0,
+          "low": 210025.0,
+          "close": 210075.0,
+          "tickVolume": 7010,
+          "realVolume": 21338,
+          "rawTime": 1792172640
+        },
+        {
+          "time": 1792183500,
+          "open": 210075.0,
+          "high": 210090.0,
+          "low": 210045.0,
+          "close": 210075.0,
+          "tickVolume": 2446,
+          "realVolume": 6383,
+          "rawTime": 1792172700
+        },
+        {
+          "time": 1792183560,
+          "open": 210075.0,
+          "high": 210110.0,
+          "low": 210045.0,
+          "close": 210065.0,
+          "tickVolume": 2760,
+          "realVolume": 7596,
+          "rawTime": 1792172760
+        },
+        {
+          "time": 1792183620,
+          "open": 210065.0,
+          "high": 210090.0,
+          "low": 210025.0,
+          "close": 210030.0,
+          "tickVolume": 3444,
+          "realVolume": 8653,
+          "rawTime": 1792172820
+        },
+        {
+          "time": 1792183680,
+          "open": 210035.0,
+          "high": 210045.0,
+          "low": 209985.0,
+          "close": 210030.0,
+          "tickVolume": 3398,
+          "realVolume": 8832,
+          "rawTime": 1792172880
+        },
+        {
+          "time": 1792183740,
+          "open": 210030.0,
+          "high": 210050.0,
+          "low": 209980.0,
+          "close": 209995.0,
+          "tickVolume": 2154,
+          "realVolume": 5237,
+          "rawTime": 1792172940
+        },
+        {
+          "time": 1792183800,
+          "open": 209995.0,
+          "high": 210035.0,
+          "low": 209960.0,
+          "close": 210005.0,
+          "tickVolume": 4234,
+          "realVolume": 11785,
+          "rawTime": 1792173000
+        },
+        {
+          "time": 1792183860,
+          "open": 210000.0,
+          "high": 210030.0,
+          "low": 209995.0,
+          "close": 210015.0,
+          "tickVolume": 1567,
+          "realVolume": 3335,
+          "rawTime": 1792173060
+        },
+        {
+          "time": 1792183920,
+          "open": 210020.0,
+          "high": 210070.0,
+          "low": 210010.0,
+          "close": 210035.0,
+          "tickVolume": 2776,
+          "realVolume": 6502,
+          "rawTime": 1792173120
+        },
+        {
+          "time": 1792183980,
+          "open": 210035.0,
+          "high": 210060.0,
+          "low": 210000.0,
+          "close": 210040.0,
+          "tickVolume": 2245,
+          "realVolume": 5493,
+          "rawTime": 1792173180
+        },
+        {
+          "time": 1792184040,
+          "open": 210040.0,
+          "high": 210105.0,
+          "low": 210015.0,
+          "close": 210035.0,
+          "tickVolume": 3282,
+          "realVolume": 8788,
+          "rawTime": 1792173240
+        },
+        {
+          "time": 1792184100,
+          "open": 210035.0,
+          "high": 210045.0,
+          "low": 209915.0,
+          "close": 209985.0,
+          "tickVolume": 4982,
+          "realVolume": 12811,
+          "rawTime": 1792173300
+        },
+        {
+          "time": 1792184160,
+          "open": 209985.0,
+          "high": 210050.0,
+          "low": 209985.0,
+          "close": 210010.0,
+          "tickVolume": 2169,
+          "realVolume": 5232,
+          "rawTime": 1792173360
+        },
+        {
+          "time": 1792184220,
+          "open": 210015.0,
+          "high": 210045.0,
+          "low": 210000.0,
+          "close": 210025.0,
+          "tickVolume": 1379,
+          "realVolume": 3251,
+          "rawTime": 1792173420
+        },
+        {
+          "time": 1792184280,
+          "open": 210025.0,
+          "high": 210075.0,
+          "low": 210010.0,
+          "close": 210055.0,
+          "tickVolume": 2026,
+          "realVolume": 4414,
+          "rawTime": 1792173480
+        },
+        {
+          "time": 1792184340,
+          "open": 210055.0,
+          "high": 210250.0,
+          "low": 210035.0,
+          "close": 210170.0,
+          "tickVolume": 7706,
+          "realVolume": 20082,
+          "rawTime": 1792173540
+        }
+      ],
+      "data_quality": {
+        "missing_m1_utc": [],
+        "matched_complete_minutes": 14,
+        "mismatched_complete_minutes": 0
+      }
+    },
+    {
+      "capture_sha256": "8fa760163ba276281adf0412f43fc6fb4b290426c49f8e2f67080ea0912f20b6",
+      "symbol": "WINZ26",
+      "time_reference": "capture_utc",
+      "timeframe_seconds": 60,
+      "source": "Clear MT5 WINZ26 M1; native same-session clock convention; rawTime retained",
+      "clock_mapping": {
+        "method": "same_session_native_server_wall_clock_equals_windows_local",
+        "source_wall_to_utc_seconds": 10800,
+        "observed_gmt_minus_local_seconds": {
+          "10800": 20140
+        },
+        "native_equality_anchors": 4298,
+        "first_anchor": {
+          "sequence": 7,
+          "gmt_s": 1792184421,
+          "local_s": 1792173621,
+          "server_s": 1792173621,
+          "last_tick_time_msc": 1792173621641
+        },
+        "last_anchor": {
+          "sequence": 46337,
+          "gmt_s": 1792185040,
+          "local_s": 1792174240,
+          "server_s": 1792174240,
+          "last_tick_time_msc": 1792174240036
+        },
+        "source_clock_resolution_seconds": 1,
+        "latency_calibration_established": false
+      },
+      "candles": [
+        {
+          "time": 1792184400,
+          "open": 210170.0,
+          "high": 210175.0,
+          "low": 210030.0,
+          "close": 210095.0,
+          "tickVolume": 5897,
+          "realVolume": 11966,
+          "rawTime": 1792173600
+        },
+        {
+          "time": 1792184460,
+          "open": 210095.0,
+          "high": 210140.0,
+          "low": 210055.0,
+          "close": 210085.0,
+          "tickVolume": 2688,
+          "realVolume": 5735,
+          "rawTime": 1792173660
+        },
+        {
+          "time": 1792184520,
+          "open": 210090.0,
+          "high": 210100.0,
+          "low": 210060.0,
+          "close": 210080.0,
+          "tickVolume": 1212,
+          "realVolume": 2328,
+          "rawTime": 1792173720
+        },
+        {
+          "time": 1792184580,
+          "open": 210080.0,
+          "high": 210120.0,
+          "low": 210075.0,
+          "close": 210085.0,
+          "tickVolume": 1456,
+          "realVolume": 2539,
+          "rawTime": 1792173780
+        },
+        {
+          "time": 1792184640,
+          "open": 210085.0,
+          "high": 210120.0,
+          "low": 210080.0,
+          "close": 210100.0,
+          "tickVolume": 911,
+          "realVolume": 1693,
+          "rawTime": 1792173840
+        },
+        {
+          "time": 1792184700,
+          "open": 210100.0,
+          "high": 210120.0,
+          "low": 210045.0,
+          "close": 210085.0,
+          "tickVolume": 1902,
+          "realVolume": 3734,
+          "rawTime": 1792173900
+        },
+        {
+          "time": 1792184760,
+          "open": 210090.0,
+          "high": 210100.0,
+          "low": 210060.0,
+          "close": 210060.0,
+          "tickVolume": 1017,
+          "realVolume": 1916,
+          "rawTime": 1792173960
+        },
+        {
+          "time": 1792184820,
+          "open": 210065.0,
+          "high": 210125.0,
+          "low": 210055.0,
+          "close": 210070.0,
+          "tickVolume": 1750,
+          "realVolume": 3348,
+          "rawTime": 1792174020
+        },
+        {
+          "time": 1792184880,
+          "open": 210075.0,
+          "high": 210085.0,
+          "low": 210030.0,
+          "close": 210080.0,
+          "tickVolume": 1812,
+          "realVolume": 3772,
+          "rawTime": 1792174080
+        },
+        {
+          "time": 1792184940,
+          "open": 210080.0,
+          "high": 210100.0,
+          "low": 210060.0,
+          "close": 210095.0,
+          "tickVolume": 876,
+          "realVolume": 1844,
+          "rawTime": 1792174140
+        },
+        {
+          "time": 1792185000,
+          "open": 210095.0,
+          "high": 210130.0,
+          "low": 210075.0,
+          "close": 210120.0,
+          "tickVolume": 2283,
+          "realVolume": 4350,
+          "rawTime": 1792174200
+        }
+      ],
+      "data_quality": {
+        "missing_m1_utc": [],
+        "matched_complete_minutes": 9,
+        "mismatched_complete_minutes": 0
+      }
+    },
+    {
+      "capture_sha256": "c48db00a29f1cd741a1295c5ee873a28be551351149ae6a78681ec727a19d3de",
+      "symbol": "WINZ26",
+      "time_reference": "capture_utc",
+      "timeframe_seconds": 60,
+      "source": "Clear MT5 WINZ26 M1; native same-session clock convention; rawTime retained",
+      "clock_mapping": {
+        "method": "same_session_native_server_wall_clock_equals_windows_local",
+        "source_wall_to_utc_seconds": 10800,
+        "observed_gmt_minus_local_seconds": {
+          "10800": 37292
+        },
+        "native_equality_anchors": 11789,
+        "first_anchor": {
+          "sequence": 3,
+          "gmt_s": 1792437353,
+          "local_s": 1792426553,
+          "server_s": 1792426553,
+          "last_tick_time_msc": 1792426553692
+        },
+        "last_anchor": {
+          "sequence": 80068,
+          "gmt_s": 1792438253,
+          "local_s": 1792427453,
+          "server_s": 1792427453,
+          "last_tick_time_msc": 1792427453394
+        },
+        "source_clock_resolution_seconds": 1,
+        "latency_calibration_established": false
+      },
+      "candles": [
+        {
+          "time": 1792437300,
+          "open": 209410.0,
+          "high": 209420.0,
+          "low": 209365.0,
+          "close": 209390.0,
+          "tickVolume": 1407,
+          "realVolume": 12254,
+          "rawTime": 1792426500
+        },
+        {
+          "time": 1792437360,
+          "open": 209390.0,
+          "high": 209430.0,
+          "low": 209350.0,
+          "close": 209430.0,
+          "tickVolume": 1803,
+          "realVolume": 22300,
+          "rawTime": 1792426560
+        },
+        {
+          "time": 1792437420,
+          "open": 209425.0,
+          "high": 209505.0,
+          "low": 209410.0,
+          "close": 209440.0,
+          "tickVolume": 2701,
+          "realVolume": 29089,
+          "rawTime": 1792426620
+        },
+        {
+          "time": 1792437480,
+          "open": 209440.0,
+          "high": 209475.0,
+          "low": 209410.0,
+          "close": 209465.0,
+          "tickVolume": 1120,
+          "realVolume": 10574,
+          "rawTime": 1792426680
+        },
+        {
+          "time": 1792437540,
+          "open": 209470.0,
+          "high": 209525.0,
+          "low": 209455.0,
+          "close": 209500.0,
+          "tickVolume": 1946,
+          "realVolume": 18610,
+          "rawTime": 1792426740
+        },
+        {
+          "time": 1792437600,
+          "open": 209500.0,
+          "high": 209540.0,
+          "low": 209460.0,
+          "close": 209475.0,
+          "tickVolume": 2076,
+          "realVolume": 19106,
+          "rawTime": 1792426800
+        },
+        {
+          "time": 1792437660,
+          "open": 209475.0,
+          "high": 209530.0,
+          "low": 209440.0,
+          "close": 209455.0,
+          "tickVolume": 1664,
+          "realVolume": 18211,
+          "rawTime": 1792426860
+        },
+        {
+          "time": 1792437720,
+          "open": 209455.0,
+          "high": 209490.0,
+          "low": 209405.0,
+          "close": 209465.0,
+          "tickVolume": 1874,
+          "realVolume": 16319,
+          "rawTime": 1792426920
+        },
+        {
+          "time": 1792437780,
+          "open": 209470.0,
+          "high": 209470.0,
+          "low": 209425.0,
+          "close": 209455.0,
+          "tickVolume": 1050,
+          "realVolume": 8975,
+          "rawTime": 1792426980
+        },
+        {
+          "time": 1792437840,
+          "open": 209450.0,
+          "high": 209495.0,
+          "low": 209425.0,
+          "close": 209480.0,
+          "tickVolume": 925,
+          "realVolume": 8664,
+          "rawTime": 1792427040
+        },
+        {
+          "time": 1792437900,
+          "open": 209480.0,
+          "high": 209535.0,
+          "low": 209460.0,
+          "close": 209530.0,
+          "tickVolume": 1617,
+          "realVolume": 12825,
+          "rawTime": 1792427100
+        },
+        {
+          "time": 1792437960,
+          "open": 209530.0,
+          "high": 209550.0,
+          "low": 209485.0,
+          "close": 209520.0,
+          "tickVolume": 1867,
+          "realVolume": 15839,
+          "rawTime": 1792427160
+        },
+        {
+          "time": 1792438020,
+          "open": 209515.0,
+          "high": 209550.0,
+          "low": 209450.0,
+          "close": 209455.0,
+          "tickVolume": 1720,
+          "realVolume": 14954,
+          "rawTime": 1792427220
+        },
+        {
+          "time": 1792438080,
+          "open": 209460.0,
+          "high": 209500.0,
+          "low": 209425.0,
+          "close": 209500.0,
+          "tickVolume": 1562,
+          "realVolume": 14409,
+          "rawTime": 1792427280
+        },
+        {
+          "time": 1792438140,
+          "open": 209495.0,
+          "high": 209500.0,
+          "low": 209425.0,
+          "close": 209425.0,
+          "tickVolume": 1109,
+          "realVolume": 8571,
+          "rawTime": 1792427340
+        },
+        {
+          "time": 1792438200,
+          "open": 209430.0,
+          "high": 209490.0,
+          "low": 209415.0,
+          "close": 209470.0,
+          "tickVolume": 1795,
+          "realVolume": 16677,
+          "rawTime": 1792427400
+        }
+      ],
+      "data_quality": {
+        "missing_m1_utc": [],
+        "matched_complete_minutes": 14,
+        "mismatched_complete_minutes": 0
+      }
+    },
+    {
+      "capture_sha256": "0789ed6419ca212b8b19e5d0be6a25795a95c06c2a152e94e5feb63aa094f46d",
+      "symbol": "WINZ26",
+      "time_reference": "capture_utc",
+      "timeframe_seconds": 60,
+      "source": "Clear MT5 WINZ26 M1; native same-session clock convention; rawTime retained",
+      "clock_mapping": {
+        "method": "same_session_native_server_wall_clock_equals_windows_local",
+        "source_wall_to_utc_seconds": 10800,
+        "observed_gmt_minus_local_seconds": {
+          "10800": 16
+        },
+        "native_equality_anchors": 3,
+        "first_anchor": {
+          "sequence": 3,
+          "gmt_s": 1792441435,
+          "local_s": 1792430635,
+          "server_s": 1792430635,
+          "last_tick_time_msc": 1792430635705
+        },
+        "last_anchor": {
+          "sequence": 16,
+          "gmt_s": 1792441435,
+          "local_s": 1792430635,
+          "server_s": 1792430635,
+          "last_tick_time_msc": 1792430635843
+        },
+        "source_clock_resolution_seconds": 1,
+        "latency_calibration_established": false
+      },
+      "candles": [
+        {
+          "time": 1792441380,
+          "open": 209805.0,
+          "high": 209815.0,
+          "low": 209675.0,
+          "close": 209690.0,
+          "tickVolume": 1642,
+          "realVolume": 16089,
+          "rawTime": 1792430580
+        }
+      ],
+      "data_quality": {
+        "missing_m1_utc": [],
+        "matched_complete_minutes": 0,
+        "mismatched_complete_minutes": 0
+      }
+    }
+  ],
+  "limitation": "Only sessions with native same-session timestamp convention evidence are exported; source feed delay remains unbounded."
+}

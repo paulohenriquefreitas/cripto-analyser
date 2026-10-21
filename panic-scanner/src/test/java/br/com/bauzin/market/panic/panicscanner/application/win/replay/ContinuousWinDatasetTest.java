@@ -25,7 +25,7 @@ class ContinuousWinDatasetTest {
         assertThat(provider.metadata("WIN$N", date).contract()).isEqualTo("WIN$N");
         assertThat(new Setup91BatchRunner(temp.resolve("{symbol}/{date}.ndjson").toString())
                 .run("WIN$N", date).lastsProcessed()).isEqualTo(1);
-        var session = new M5ReplaySession(file, "WIN$N");
+        var session = new M5ReplaySession(file, "WIN$N", 50_000_000L);
         session.close();
     }
 

@@ -14,6 +14,11 @@ import type {
   ChartSink, ReplaySetupMarker, Ema9ReversalMarker,
 } from '@/features/win/models/mt5Intrabar';
 
+import type { SwingLevelMonitoring } from '@/features/win/models/swingLevelMonitoring';
+import { MonitoringFlowPrimitive } from './MonitoringFlowPrimitive';
+import { AbsorptionPrimitive } from './AbsorptionPrimitive';
+import type { AbsorptionOverlay } from '../../replay/models/absorptionReplay';
+
 export type Mt5ChartController = { attachChart: (sink: ChartSink) => () => void };
 
 export function setup91Details(marker: ReplaySetupMarker): string {
@@ -33,9 +38,11 @@ export function setup91Details(marker: ReplaySetupMarker): string {
   ].join('\n');
 }
 
-export function Mt5CandlestickChart({ controller, setup91Only = false }: {
+export function Mt5CandlestickChart({ controller, setup91Only = false, monitoring, absorption }: {
   controller: Mt5ChartController;
   setup91Only?: boolean;
+  monitoring?: SwingLevelMonitoring;
+  absorption?: AbsorptionOverlay;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const vwapLabel = useRef<HTMLSpanElement>(null);
@@ -49,6 +56,8 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
     if (!container.current) return;
     let chart: ReturnType<typeof createChart> | undefined;
     let detach: (() => void) | undefined;
+    let unsubscribeMonitoring: (() => void) | undefined;
+    let unsubscribeAbsorption: (() => void) | undefined;
     try {
       chart = createChart(container.current, {
         autoSize: true,
@@ -73,15 +82,45 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
         wickDownColor: theme.palette.error.main,
       });
       const swingTracker = createSwingPivotTracker();
-      const swingPrimitive = setup91Only ? undefined : new SwingPivotPrimitive();
+      const absorptionPrimitive = absorption ? new AbsorptionPrimitive() : undefined;
+      if (absorptionPrimitive) series.attachPrimitive(absorptionPrimitive);
+      let focusedAbsorption: string | undefined;
+      const refreshAbsorption = () => {
+        const state = absorption?.getSnapshot();
+        if (!state) return;
+        absorptionPrimitive?.setMarkers(state.markers, state.selectedId);
+        if (state.focusId && state.focusId !== focusedAbsorption) {
+          const marker = state.markers.find(m => m.id === state.focusId);
+          if (marker) {
+            chart?.timeScale().setVisibleLogicalRange({ from: marker.candleIndex - 8, to: marker.candleIndex + 8 });
+            focusedAbsorption = state.focusId;
+          }
+        }
+      };
+      if (absorption) {
+        unsubscribeAbsorption = absorption.subscribe(refreshAbsorption);
+        chart.subscribeClick(param => {
+          if (!param.point) return;
+          const id = absorptionPrimitive?.pick(param.point.x, param.point.y);
+          if (id) absorption.select(id);
+        });
+      }
+      const flowPrimitive = monitoring ? new MonitoringFlowPrimitive(theme.palette.background.paper, theme.palette.text.primary) : undefined;
+      if (flowPrimitive) series.attachPrimitive(flowPrimitive);
+      const swingPrimitive = setup91Only || absorption ? undefined : new SwingPivotPrimitive();
       if (swingPrimitive) series.attachPrimitive(swingPrimitive);
       let firstCandleTime = Infinity;
-      const updateSwings = () => swingPrimitive?.setLevels(swingTracker.getLevels(), firstCandleTime);
+      const updateSwings = () => {
+        swingPrimitive?.setLevels(swingTracker.getLevels(), firstCandleTime);
+        monitoring?.addConfirmed(swingTracker.getConfirmedLevels());
+      };
       const markerApi = createSeriesMarkers(series, []);
       const setupMarkers = new Map<string, SeriesMarker<UTCTimestamp>>();
       const tradeMarkers = new Map<string, ReplayTradeMarker>();
       const setup91Markers = new Map<string, ReplaySetupMarker>();
       const emaReversals = new Map<number, Ema9ReversalMarker>();
+      let currentCandleTime: UTCTimestamp | undefined;
+      let currentCandleHigh: number | undefined;
       chart.subscribeCrosshairMove(param => {
         if (!setupDetails.current) return;
         const reversal = emaReversals.get(Number(param.time));
@@ -94,10 +133,22 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
             .map(marker => `${tradeLabel(marker)} | ${marker.tradeId}\nUTC: ${new Date(marker.timeMsc).toISOString()}\nPreco: ${marker.price} | Entrada: ${marker.entry} | Stop inicial: ${marker.initialStop} | R: ${marker.risk} | Stop saldo: ${marker.stop}\nSaida: ${marker.exit ?? '-'} | Pontos: ${marker.points ?? '-'}${marker.stage === 'PARTIAL' ? ' (contribuicao de 50%)' : ''}`)).join('\n\n');
       });
       const publishMarkers = () => {
-        markerApi.setMarkers(
-        [...setupMarkers.values()].sort((left, right) => Number(left.time) - Number(right.time)).map(marker => ({ ...marker, text: '' })),
-        );
+        const markers = [...setupMarkers.values()].map(marker => ({ ...marker, text: '' }));
+        if (currentCandleTime !== undefined) {
+          for (const level of monitoring?.getSnapshot().levels ?? []) {
+            if (level.state !== 'MONITORING') continue;
+            const number = (value: number) => value.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
+            markers.push({
+              id: `MONITORING-${level.id}`, time: currentCandleTime,
+              position: 'aboveBar', color: theme.palette.warning.main, shape: 'circle', size: 0,
+              text: `MONITORING | ${level.type === 'TOP' ? 'Topo' : 'Fundo'} ${number(level.price)} | ${number(level.distance ?? 0)} pts`,
+            });
+          }
+        }
+        markerApi.setMarkers(markers.sort((left, right) => Number(left.time) - Number(right.time)));
+        if (monitoring) flowPrimitive?.setSnapshot(currentCandleTime, currentCandleHigh, monitoring.getSnapshot());
       };
+      unsubscribeMonitoring = monitoring?.subscribe(publishMarkers);
       const addReplaySetupMarker = (marker: ReplaySetupMarker) => {
         // Execution events remain available as data, but never place direction arrows.
         setup91Markers.set(marker.eventId, marker);
@@ -178,9 +229,14 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
         initialized = true;
       };
       detach = controller.attachChart({
+        onFlowSnapshot: snapshot => monitoring?.receiveFlow(snapshot),
+        onLastPrice: (price, timeMsc) => monitoring?.receiveLast(price, timeMsc),
         setHistory(candles) {
+          currentCandleTime = candles.at(-1)?.time as UTCTimestamp | undefined;
+          currentCandleHigh = candles.at(-1)?.high;
           // Bucket updates replace candle history too; only an explicit reset clears setups.
           if (candles.length === 0) {
+            monitoring?.reset();
             initialized = false;
             setupMarkers.clear();
             setup91Markers.clear();
@@ -190,9 +246,13 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
             markerApi.setMarkers([]);
           }
           series.setData(candles.map(toBar));
+          refreshAbsorption();
+          publishMarkers();
           firstCandleTime = candles[0]?.time ?? Infinity;
           swingTracker.setHistory(candles);
           updateSwings();
+          const latest = candles.at(-1);
+          if (latest) monitoring?.receiveLast(latest.close, latest.time * 1000);
           emaSeries?.setData(candles.filter(c => c.ema9 != null).map(c => ({
             time: c.time as UTCTimestamp, value: c.ema9!,
           })));
@@ -227,8 +287,12 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
         updateLast(candle) {
           // Same raw candle timestamp: updates the last bar, never appends a synthetic one.
           series.update(toBar(candle));
+          currentCandleTime = candle.time as UTCTimestamp;
+          currentCandleHigh = candle.high;
+          publishMarkers();
           firstCandleTime = Math.min(firstCandleTime, candle.time);
           swingTracker.updateLast(candle);
+          monitoring?.receiveLast(candle.close, candle.time * 1000);
           updateSwings();
           initializeViewport();
           if (candle.sma9 != null) smaSeries?.update({ time: candle.time as UTCTimestamp, value: candle.sma9 });
@@ -243,8 +307,8 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
     } catch {
       setFailed(true);
     }
-    return () => { detach?.(); chart?.remove(); };
-  }, [controller, theme, setup91Only]);
+    return () => { unsubscribeAbsorption?.(); unsubscribeMonitoring?.(); detach?.(); chart?.remove(); };
+  }, [controller, theme, setup91Only, monitoring, absorption]);
 
   return (
     <>
@@ -263,7 +327,7 @@ export function Mt5CandlestickChart({ controller, setup91Only = false }: {
       </Box>
       </>}
       {failed ? <Alert severity="error">Não foi possível desenhar o gráfico de candles.</Alert> : null}
-      <Box ref={container} role="img" aria-label="Candlesticks WINV26 M5, horários em UTC"
+      <Box ref={container} role="img" aria-label={absorption ? 'Candlesticks WINZ26, absorção por captura UTC' : 'Candlesticks WINV26 M5, horários em UTC'}
         sx={{ height: 480, width: '100%', minWidth: 0 }} />
       <Box sx={{ color: 'text.secondary', fontSize: '0.75rem', mt: 1 }}>
         MME9: seta verde = inversão para alta; seta vermelha = inversão para baixa.
