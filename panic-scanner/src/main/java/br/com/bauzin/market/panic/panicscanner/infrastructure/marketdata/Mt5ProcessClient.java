@@ -25,6 +25,9 @@ import java.util.concurrent.TimeUnit;
  * Standalone proof of communication; deliberately not a Spring component.
  */
 public class Mt5ProcessClient {
+    private final Mt5Symbol symbol;
+    public Mt5ProcessClient() { this(Mt5Symbol.defaults()); }
+    public Mt5ProcessClient(Mt5Symbol symbol) { this.symbol = Objects.requireNonNull(symbol); }
 
     private static final ObjectMapper MAPPER = new ObjectMapper()
             .enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS)
@@ -64,6 +67,7 @@ public class Mt5ProcessClient {
         var command = new ArrayList<>(List.of("python", script.toString()));
         command.addAll(List.of(arguments));
         ProcessBuilder builder = new ProcessBuilder(command);
+        symbol.configure(builder);
         builder.environment().put("PYTHONIOENCODING", "utf-8");
         Process process;
         try {

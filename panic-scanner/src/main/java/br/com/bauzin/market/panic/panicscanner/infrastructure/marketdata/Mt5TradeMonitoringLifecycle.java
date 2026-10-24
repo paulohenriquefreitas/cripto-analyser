@@ -14,29 +14,39 @@ public final class Mt5TradeMonitoringLifecycle implements SmartLifecycle {
     private static final Logger LOG = LoggerFactory.getLogger(Mt5TradeMonitoringLifecycle.class);
     private final Mt5MonitoringFlowService flow;
     private final Mt5TickWebSocketHandler handler;
+    private final Mt5VolumeProfileService profile;
+    private final Mt5Symbol symbol;
     private volatile boolean running;
     private volatile Mt5TradeStreamClient client;
     private Thread reader;
     private Thread publisher;
-    public Mt5TradeMonitoringLifecycle(Mt5MonitoringFlowService flow, Mt5TickWebSocketHandler handler) {
+    public Mt5TradeMonitoringLifecycle(Mt5MonitoringFlowService flow, Mt5TickWebSocketHandler handler,
+                                       Mt5VolumeProfileService profile, Mt5Symbol symbol) {
         this.flow = flow;
         this.handler = handler;
+        this.profile = profile;
+        this.symbol = symbol;
     }
     @Override public synchronized void start() {
         if (running) return;
         running = true;
         reader = Thread.ofVirtual().name("mt5-monitor-trades").start(() -> {
-            Mt5TradeStreamClient.Cursor cursor = null;
+            Mt5TradeStreamClient.Checkpoint checkpoint = null;
             while (running) {
-                var current = new Mt5TradeStreamClient(cursor);
+                var current = new Mt5TradeStreamClient(symbol,checkpoint);
                 client = current;
                 try (current) {
-                    current.start(flow::onTrade, flow::invalidVolume, flow::connectionStatus);
+                    current.startWithCursor((trade, identity) -> {
+                        flow.onTrade(trade);
+                        profile.onTrade(trade, identity);
+                    }, time -> { flow.invalidVolume(time); profile.invalidVolume(time); },
+                    (available, time) -> { flow.connectionStatus(available,time); profile.connectionStatus(available,time); });
                 } catch (Exception ex) {
                     if (running) LOG.warn("Times & Trades indisponivel; retomando pelo cursor", ex);
                 } finally {
-                    cursor = current.cursor();
+                    checkpoint = current.checkpoint();
                     flow.disconnected();
+                    profile.disconnected();
                 }
                 if (running) {
                     try { Thread.sleep(1000); }
@@ -61,6 +71,7 @@ public final class Mt5TradeMonitoringLifecycle implements SmartLifecycle {
         try { if (client != null) client.close(); }
         catch (Exception ex) { LOG.warn("Falha ao encerrar captura T&T", ex); }
         flow.disconnected();
+        profile.disconnected();
     }
     @Override public boolean isRunning() { return running; }
 }

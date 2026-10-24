@@ -10,6 +10,17 @@ class FakeSocket {
 const tick = { type: 'tick', symbol: 'WINV26', time: 1789994563, timeMsc: 1789994563184,
   last: 187585, bid: 187580, ask: 187585, volume: 4 };
 
+test('configured WINZ26 is accepted while another contract cannot enter the same chart session', t => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  const socket=new FakeSocket();const states=[];
+  const cleanup=connectMt5Ticks('ws://test',state=>states.push(state),()=>socket,undefined,'WINZ26');
+  socket.message({...tick,symbol:'WINZ26'});
+  assert.equal(states.at(-1).status,'live');assert.equal(states.at(-1).tick.symbol,'WINZ26');
+  socket.message(tick);
+  assert.notEqual(states.at(-1).status,'live');assert.equal(socket.closed,true);
+  cleanup();
+});
+
 test('derives ws/wss URL from backend configuration', () => {
   assert.equal(mt5SocketUrl('http://localhost:8080', 'http://localhost:5173'), 'ws://localhost:8080/ws/mt5/ticks');
   assert.equal(mt5SocketUrl('https://example.com/backend/', 'https://example.com'), 'wss://example.com/backend/ws/mt5/ticks');

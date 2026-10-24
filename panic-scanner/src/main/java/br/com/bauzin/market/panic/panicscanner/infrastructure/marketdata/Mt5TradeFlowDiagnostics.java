@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public final class Mt5TradeFlowDiagnostics {
+    private static final String SYMBOL = Mt5Symbol.defaults().value();
     private static final Duration[] WINDOWS = {
             TradeFlowEngine.ONE_SECOND,
             TradeFlowEngine.THREE_SECONDS,
@@ -29,7 +30,7 @@ public final class Mt5TradeFlowDiagnostics {
             Thread hook = new Thread(() -> closeQuietly(client), "mt5-trade-flow-shutdown");
             Runtime.getRuntime().addShutdownHook(hook);
             try {
-                System.out.println("MT5/Clear Times & Trades -> TradeFlowEngine iniciado para WINV26");
+                System.out.println("MT5/Clear Times & Trades -> TradeFlowEngine iniciado para " + SYMBOL);
                 System.out.println("Snapshots seguem o tempo dos negócios; pressione Ctrl+C para encerrar.\n");
                 scheduler.scheduleAtFixedRate(() -> print(engine, client.stats()), 1, 1, TimeUnit.SECONDS);
                 client.start(engine::onTrade);
@@ -47,7 +48,7 @@ public final class Mt5TradeFlowDiagnostics {
         String timestamp = stats.lastTradeTimeMsc() < 0
                 ? "aguardando primeiro negócio"
                 : Instant.ofEpochMilli(stats.lastTradeTimeMsc()).toString();
-        System.out.println("[FLOW] WINV26 @ " + timestamp);
+        System.out.println("[FLOW] " + SYMBOL + " @ " + timestamp);
         System.out.printf(Locale.ROOT,
                 "  counters trades=%d BUY=%d SELL=%d AMBIGUOUS=%d parseErrors=%d outOfOrderErrors=%d%n",
                 stats.tradesReceived(), stats.buyTrades(), stats.sellTrades(), stats.ambiguousTrades(),

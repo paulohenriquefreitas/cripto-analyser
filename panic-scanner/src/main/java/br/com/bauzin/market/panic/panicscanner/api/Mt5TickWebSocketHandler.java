@@ -3,6 +3,7 @@ package br.com.bauzin.market.panic.panicscanner.api;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Tick;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.MarketStructureLiveObserver;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5MonitoringFlowService;
+import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Symbol;
 import br.com.bauzin.market.panic.panicscanner.application.win.flow.MonitoringFlowEngine;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.ta4j.Ta4jMt5Sma9Adapter;
@@ -35,15 +36,22 @@ public class Mt5TickWebSocketHandler extends TextWebSocketHandler {
     private boolean closed;
     private TextMessage latestFlow;
     private final Mt5MonitoringFlowService monitoringFlow;
+    private final Mt5Symbol symbol;
 
     @Autowired
     public Mt5TickWebSocketHandler(ObjectMapper mapper, Ta4jMt5Sma9Adapter sma9,
                                    MarketStructureLiveObserver structureObserver,
-                                   Mt5MonitoringFlowService monitoringFlow) {
+                                   Mt5MonitoringFlowService monitoringFlow, Mt5Symbol symbol) {
         this.mapper = mapper;
         this.sma9 = sma9;
         this.structureObserver = structureObserver;
         this.monitoringFlow = monitoringFlow;
+        this.symbol = symbol;
+    }
+
+    public Mt5TickWebSocketHandler(ObjectMapper mapper, Ta4jMt5Sma9Adapter sma9,
+                                   MarketStructureLiveObserver structureObserver, Mt5MonitoringFlowService flow) {
+        this(mapper,sma9,structureObserver,flow,Mt5Symbol.defaults());
     }
 
     public Mt5TickWebSocketHandler(ObjectMapper mapper, Ta4jMt5Sma9Adapter sma9,
@@ -73,7 +81,7 @@ public class Mt5TickWebSocketHandler extends TextWebSocketHandler {
         monitoringFlow.onLast(tick);
         var current = sma9.onTick(tick);
         structureObserver.onTick(tick, current);
-        latest = serialize(new TickMessage("tick", "WINV26", tick.time(), tick.timeMsc(),
+        latest = serialize(new TickMessage("tick", symbol.value(), tick.time(), tick.timeMsc(),
                 tick.last(), tick.bid(), tick.ask(), tick.volume(),
                 current == null ? null : current.value(), current == null ? null : current.time(),
                 current == null ? null : current.sma21(),

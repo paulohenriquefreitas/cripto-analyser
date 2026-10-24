@@ -1,12 +1,14 @@
-"""Read MT5 candles (default WINV26 M5); stdout is exclusively JSON."""
+"""Read MT5 candles (configured live WIN, M5 by default); stdout is exclusively JSON."""
 
 import json
 import sys
 import argparse
 from datetime import date, datetime, time, timedelta, timezone
+from mt5_live_symbol import configured_symbol, validate_live_symbol
 
 
-def read_candles(tick_only=False, symbol="WINV26", timeframe="M5", from_date=None, to_date=None):
+def read_candles(tick_only=False, symbol=None, timeframe="M5", from_date=None, to_date=None):
+    symbol = symbol or configured_symbol()
     if (from_date is None) != (to_date is None):
         raise ValueError("--from e --to devem ser informados juntos")
     if from_date is not None and from_date > to_date:
@@ -18,10 +20,12 @@ def read_candles(tick_only=False, symbol="WINV26", timeframe="M5", from_date=Non
     try:
         if not mt5.initialize():
             raise RuntimeError(f"mt5.initialize() falhou: {mt5.last_error()}")
+        if from_date is None and symbol.startswith("WIN"):
+            validate_live_symbol(mt5, symbol)
         if tick_only:
             tick = mt5.symbol_info_tick(symbol)
             if tick is None:
-                raise RuntimeError(f"Sem tick para WINV26: {mt5.last_error()}")
+                raise RuntimeError(f"Sem tick para {symbol}: {mt5.last_error()}")
             return {
                 "time": int(tick.time),
                 "time_msc": int(tick.time_msc),
@@ -33,8 +37,7 @@ def read_candles(tick_only=False, symbol="WINV26", timeframe="M5", from_date=Non
         if timeframe not in ("M5", "D1"):
             raise ValueError("Timeframe suportado: M5 ou D1")
         period = getattr(mt5, "TIMEFRAME_" + timeframe)
-        # Keep the legacy no-argument query exactly as before.
-        if symbol != "WINV26" or timeframe != "M5" or from_date is not None:
+        if from_date is not None or not symbol.startswith("WIN"):
             if not mt5.symbol_select(symbol, True):
                 raise RuntimeError(f"symbol_select({symbol}) falhou: {mt5.last_error()}")
         if from_date is None:
@@ -67,7 +70,7 @@ if __name__ == "__main__":
     try:
         parser = argparse.ArgumentParser()
         parser.add_argument("--tick", action="store_true")
-        parser.add_argument("--symbol", default="WINV26")
+        parser.add_argument("--symbol", default=None)
         parser.add_argument("--timeframe", choices=("M5", "D1"), default="M5")
         parser.add_argument("--from", dest="from_date", type=date.fromisoformat)
         parser.add_argument("--to", dest="to_date", type=date.fromisoformat)

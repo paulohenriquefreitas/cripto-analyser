@@ -23,7 +23,7 @@ class Mt5TickWebSocketHandlerTest {
         var handler = new Mt5TickWebSocketHandler(mapper, new Ta4jMt5Sma9Adapter(),
                 new br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.MarketStructureLiveObserver(), flow);
         flow.onTrade(new br.com.bauzin.market.panic.panicscanner.domain.win.flow.MarketTrade(
-                "WINV26", System.currentTimeMillis(), tick.last(), 2,
+                "WINZ26", System.currentTimeMillis() - 180 * 60_000L, tick.last(), 2,
                 br.com.bauzin.market.panic.panicscanner.domain.win.flow.AggressorSide.BUY));
         handler.broadcastFlow(flow.snapshot());
         var messages = new CopyOnWriteArrayList<String>();
@@ -38,6 +38,8 @@ class Mt5TickWebSocketHandlerTest {
                 var json = mapper.readTree(text);
                 assertEquals(2, json.get("windows").get(0).get("buyVolume").doubleValue());
                 assertEquals(1, json.get("windows").get(0).get("events").longValue());
+                assertEquals(180, json.get("timeBasis").get("feedTimeShiftMinutes").longValue());
+                assertFalse(json.get("timeBasis").get("confirmed").booleanValue());
             }
             var reconnect = new CopyOnWriteArrayList<String>();
             var reconnected = new CountDownLatch(2);
@@ -60,7 +62,7 @@ class Mt5TickWebSocketHandlerTest {
             handler.afterConnectionEstablished(session("b", messages, delivered));
             handler.broadcast(tick);
             assertTrue(delivered.await(5, TimeUnit.SECONDS));
-            List<String> ticks = messages.stream().filter(s -> s.contains("WINV26")).toList();
+            List<String> ticks = messages.stream().filter(s -> s.contains("WINZ26")).toList();
             assertEquals(2, ticks.size());
             var json = mapper.readTree(ticks.getFirst());
             assertEquals(tick.time(), json.get("time").longValue());

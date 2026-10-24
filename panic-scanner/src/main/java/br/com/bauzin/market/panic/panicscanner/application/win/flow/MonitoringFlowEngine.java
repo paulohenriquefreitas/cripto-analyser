@@ -13,8 +13,15 @@ public final class MonitoringFlowEngine {
                          double buyVolume, double sellVolume, double unknownVolume, double delta,
                          Double buyPercent, Double sellPercent, Double unknownPercent,
                          Double lastDisplacement, String quality, String alert) {}
+    public record TimeBasis(long feedTimeShiftMinutes, boolean confirmed,
+                            long rejectedOld, long rejectedFuture, long rejectedRegression) {}
     public record Snapshot(String type, String symbol, long timeMsc, Long lastTimeMsc,
-                           Double last, String volumeSource, List<Window> windows) {}
+                           Double last, String volumeSource, List<Window> windows, TimeBasis timeBasis) {
+        public Snapshot(String type, String symbol, long timeMsc, Long lastTimeMsc,
+                        Double last, String volumeSource, List<Window> windows) {
+            this(type, symbol, timeMsc, lastTimeMsc, last, volumeSource, windows, null);
+        }
+    }
     private final TradeFlowEngine flow = new TradeFlowEngine();
     private final NavigableMap<Long, Double> prices = new TreeMap<>();
     private final ArrayDeque<Long> invalidVolumes = new ArrayDeque<>();
@@ -82,7 +89,7 @@ public final class MonitoringFlowEngine {
         // A stale boundary LAST cannot describe movement over this window reliably.
         Double displacement = start != null && end != null && from - start.getKey() <= 2_000
                 && now - end.getKey() <= 2_000 ? end.getValue() - start.getValue() : null;
-        String quality = !"WINV26".equals(symbol) ? "UNVALIDATED_SYMBOL"
+        String quality = !("WINV26".equals(symbol) || "WINZ26".equals(symbol)) ? "UNVALIDATED_SYMBOL"
                 : !connected ? "DISCONNECTED"
                 : invalidVolumes.stream().anyMatch(time -> time > from && time <= now) ? "INVALID_VOLUME"
                 : total == 0 ? "NO_TRADES"

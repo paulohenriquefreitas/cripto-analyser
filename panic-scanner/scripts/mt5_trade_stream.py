@@ -1,4 +1,4 @@
-"""Persistent WINV26 Times & Trades stream; NDJSON on stdout, logs on stderr."""
+"""Persistent configured WIN Times & Trades; NDJSON on stdout, logs on stderr."""
 
 from __future__ import annotations
 
@@ -11,9 +11,10 @@ import sys
 import threading
 
 from mt5_ticks_diagnostic import flag_definitions, is_trade
+from mt5_live_symbol import configured_symbol, validate_live_symbol, validate_live_tick
 
 
-SYMBOL = "WINV26"
+SYMBOL = configured_symbol()
 POLL_SECONDS = 0.02
 RETRY_SECONDS = 1.0
 MAX_CONSECUTIVE_ERRORS = 3
@@ -41,7 +42,8 @@ class StreamCounters:
 
 
 def aggressor_side(flags, definitions):
-    if flags < 0 or flags & ~sum(definitions.values()):
+    extra = flags & ~sum(definitions.values())
+    if flags < 0 or extra not in (0, 1024, 1280) or not is_trade(flags, definitions):
         return "AMBIGUOUS"
     buy = bool(flags & definitions["BUY"])
     sell = bool(flags & definitions["SELL"])
@@ -176,11 +178,11 @@ def stream_trades(mt5, stop_event, output=sys.stdout, errors=sys.stderr, resume_
     try:
         if not mt5.initialize():
             raise RuntimeError(f"mt5.initialize() falhou: {mt5.last_error()}")
-        if not mt5.symbol_select(SYMBOL, True):
-            raise RuntimeError(f"symbol_select({SYMBOL}) falhou: {mt5.last_error()}")
+        validate_live_symbol(mt5, SYMBOL)
         latest = mt5.symbol_info_tick(SYMBOL)
         if latest is None:
             raise RuntimeError(f"symbol_info_tick({SYMBOL}) falhou: {mt5.last_error()}")
+        validate_live_tick(latest,SYMBOL)
         definitions = flag_definitions(mt5)
         if resume_cursor is None:
             initial, cursor, ticks_read = warmup(mt5, int(latest.time_msc), definitions)
@@ -223,6 +225,12 @@ def stream_trades(mt5, stop_event, output=sys.stdout, errors=sys.stderr, resume_
         mt5.shutdown()
 
 
+def configured_resume(environment):
+    if "MT5_TRADE_CURSOR_MSC" not in environment or environment.get("MT5_TRADE_CURSOR_SYMBOL") != SYMBOL:
+        return None
+    return TradeCursor(int(environment["MT5_TRADE_CURSOR_MSC"]), int(environment["MT5_TRADE_CURSOR_ORDINAL"]))
+
+
 def main():
     import MetaTrader5 as mt5
 
@@ -233,9 +241,7 @@ def main():
         stop_event.set()
 
     threading.Thread(target=wait_for_stop, daemon=True).start()
-    cursor = None
-    if "MT5_TRADE_CURSOR_MSC" in os.environ:
-        cursor = TradeCursor(int(os.environ["MT5_TRADE_CURSOR_MSC"]), int(os.environ["MT5_TRADE_CURSOR_ORDINAL"]))
+    cursor = configured_resume(os.environ)
     stream_trades(mt5, stop_event, resume_cursor=cursor)
 
 

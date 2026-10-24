@@ -14,14 +14,15 @@ const time = new Intl.DateTimeFormat('pt-BR', {
   timeZone: 'UTC', hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3,
 });
 
-export function Mt5LiveQuote({ onTick, onFlow }: {
+export function Mt5LiveQuote({ onTick, onFlow, symbol }: {
   onTick?: (tick: LiveTick) => void; onFlow?: (snapshot: MonitoringFlowSnapshot | null) => void;
+  symbol?: string;
 }) {
   const [state, setState] = useState<LiveState>({ status: 'connecting', tick: null });
   useEffect(() => connectMt5Ticks(mt5SocketUrl(env.apiUrl, window.location.href), (next) => {
     setState(next);
     if (next.tick) onTick?.(next.tick);
-  }, undefined, onFlow), [onTick, onFlow]);
+  }, undefined, onFlow, symbol), [onTick, onFlow, symbol]);
 
   return (
     <Paper sx={{ p: 2.5 }} data-testid="mt5-live-quote">

@@ -17,14 +17,15 @@ public class Mt5TickStreamLifecycle implements SmartLifecycle {
     private static final Logger LOG = LoggerFactory.getLogger(Mt5TickStreamLifecycle.class);
     private final Mt5TickWebSocketHandler handler;
     private final Supplier<Mt5TickStreamClient> factory;
+    private final Object attemptLock = new Object();
     private volatile boolean running;
     private boolean started;
     private Mt5TickStreamClient client;
     private Thread worker;
 
     @Autowired
-    public Mt5TickStreamLifecycle(Mt5TickWebSocketHandler handler) {
-        this(handler, Mt5TickStreamClient::new);
+    public Mt5TickStreamLifecycle(Mt5TickWebSocketHandler handler, Mt5Symbol symbol) {
+        this(handler, () -> new Mt5TickStreamClient(symbol));
     }
 
     Mt5TickStreamLifecycle(Mt5TickWebSocketHandler handler, Supplier<Mt5TickStreamClient> factory) {
@@ -36,15 +37,36 @@ public class Mt5TickStreamLifecycle implements SmartLifecycle {
     public synchronized void start() {
         if (started) return;
         started = true;
-        client = factory.get();
         running = true;
         worker = Thread.ofVirtual().name("mt5-shared-stream").start(() -> {
             try {
-                LOG.info("Iniciando stream MT5 compartilhado para WINV26");
-                client.start(handler::broadcast);
-            } catch (Exception ex) {
-                if (running) LOG.error("Feed MT5 indisponivel; a aplicacao continua ativa", ex);
-                if (ex instanceof InterruptedException) Thread.currentThread().interrupt();
+                while (running) {
+                    try {
+                        Mt5TickStreamClient current;
+                        synchronized (attemptLock) {
+                            if (!running) break;
+                            current = factory.get();
+                            client = current;
+                        }
+                        try (current) {
+                            LOG.info("Iniciando stream MT5 compartilhado com contrato configurado");
+                            current.start(tick -> {
+                                synchronized (attemptLock) {
+                                    if (running) handler.broadcast(tick);
+                                }
+                            });
+                        }
+                    } catch (Exception ex) {
+                        if (running) LOG.warn("Feed MT5 indisponivel; tentando reconectar", ex);
+                    } finally {
+                        synchronized (attemptLock) { client = null; }
+                        handler.feedUnavailable();
+                    }
+                    if (running) {
+                        try { Thread.sleep(1000); }
+                        catch (InterruptedException ex) { Thread.currentThread().interrupt(); break; }
+                    }
+                }
             } finally {
                 running = false;
                 handler.feedUnavailable();
@@ -54,16 +76,21 @@ public class Mt5TickStreamLifecycle implements SmartLifecycle {
 
     @Override
     public synchronized void stop() {
-        running = false;
+        Mt5TickStreamClient current;
+        synchronized (attemptLock) {
+            running = false;
+            current = client;
+        }
         try {
-            if (client != null) client.stop();
-            if (worker != null && worker != Thread.currentThread()) worker.join(Duration.ofSeconds(6));
+            if (current != null) current.stop();
         } catch (IOException ex) {
             LOG.error("Falha ao encerrar processo MT5", ex);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-            LOG.warn("Espera de encerramento MT5 interrompida", ex);
         } finally {
+            if (worker != null && worker != Thread.currentThread()) {
+                worker.interrupt();
+                try { worker.join(Duration.ofSeconds(6)); }
+                catch (InterruptedException ex) { Thread.currentThread().interrupt(); }
+            }
             handler.feedUnavailable();
         }
     }

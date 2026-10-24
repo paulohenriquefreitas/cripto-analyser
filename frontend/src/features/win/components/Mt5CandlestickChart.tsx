@@ -38,11 +38,12 @@ export function setup91Details(marker: ReplaySetupMarker): string {
   ].join('\n');
 }
 
-export function Mt5CandlestickChart({ controller, setup91Only = false, monitoring, absorption }: {
+export function Mt5CandlestickChart({ controller, setup91Only = false, monitoring, absorption, symbol }: {
   controller: Mt5ChartController;
   setup91Only?: boolean;
   monitoring?: SwingLevelMonitoring;
   absorption?: AbsorptionOverlay;
+  symbol?: string;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const vwapLabel = useRef<HTMLSpanElement>(null);
@@ -327,7 +328,7 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
       </Box>
       </>}
       {failed ? <Alert severity="error">Não foi possível desenhar o gráfico de candles.</Alert> : null}
-      <Box ref={container} role="img" aria-label={absorption ? 'Candlesticks WINZ26, absorção por captura UTC' : 'Candlesticks WINV26 M5, horários em UTC'}
+      <Box ref={container} role="img" aria-label={absorption ? 'Candlesticks WINZ26, absorção por captura UTC' : `Candlesticks ${symbol ?? 'WIN'} M5, horários em UTC`}
         sx={{ height: 480, width: '100%', minWidth: 0 }} />
       <Box sx={{ color: 'text.secondary', fontSize: '0.75rem', mt: 1 }}>
         MME9: seta verde = inversão para alta; seta vermelha = inversão para baixa.

@@ -4,9 +4,10 @@ import { Mt5CandlestickChart, type Mt5ChartController } from './Mt5CandlestickCh
 import { createSwingLevelMonitoring, validMonitoringConfig } from '../models/swingLevelMonitoring';
 import type { AbsorptionOverlay } from '../../replay/models/absorptionReplay';
 
-export function WinM5MonitoredChart({ controller, setup91Only = false, absorption }: {
+export function WinM5MonitoredChart({ controller, setup91Only = false, absorption, symbol }: {
   controller: Mt5ChartController; setup91Only?: boolean;
   absorption?: AbsorptionOverlay;
+  symbol?: string;
 }) {
   const [monitoring] = useState(() => {
     const candidate = {
@@ -22,7 +23,7 @@ export function WinM5MonitoredChart({ controller, setup91Only = false, absorptio
   const valid = activation.trim() !== '' && deactivation.trim() !== '' && validMonitoringConfig(config);
   const number = (value: number) => value.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
   return <>
-    <Mt5CandlestickChart controller={controller} setup91Only={setup91Only} monitoring={setup91Only || absorption ? undefined : monitoring} absorption={absorption} />
+    <Mt5CandlestickChart controller={controller} setup91Only={setup91Only} monitoring={setup91Only || absorption ? undefined : monitoring} absorption={absorption} symbol={symbol} />
     {!setup91Only && !absorption ? <Stack spacing={1.5} sx={{ mt: 2 }}>
       <Typography variant="h6">Monitoramento de topos e fundos M5</Typography>
       <Stack direction="row" spacing={1.5} useFlexGap flexWrap="wrap" alignItems="center">

@@ -18,6 +18,9 @@ class StreamTests(unittest.TestCase):
     def test_new_milliseconds_same_price_and_duplicates(self):
         mt5 = Mock()
         mt5.initialize.return_value = True
+        mt5.symbol_select.return_value = True
+        mt5.terminal_info.return_value = SimpleNamespace(connected=True)
+        mt5.symbol_info.return_value = SimpleNamespace(name="WINZ26", custom=False, expiration_time=4102444800, trade_mode=4)
         mt5.symbol_info_tick.side_effect = [tick(1789991940389), tick(1789991940389), tick(1789991940520)]
         stop = Mock()
         stop.is_set.side_effect = [False, False, False, True]
@@ -45,6 +48,9 @@ class StreamTests(unittest.TestCase):
     def test_missing_tick_shuts_down(self):
         mt5 = Mock()
         mt5.initialize.return_value = True
+        mt5.symbol_select.return_value = True
+        mt5.terminal_info.return_value = SimpleNamespace(connected=True)
+        mt5.symbol_info.return_value = SimpleNamespace(name="WINZ26", custom=False, expiration_time=4102444800, trade_mode=4)
         mt5.symbol_info_tick.return_value = None
         stop = Mock()
         stop.is_set.return_value = False
@@ -55,6 +61,9 @@ class StreamTests(unittest.TestCase):
     def test_flushes_each_tick(self):
         mt5 = Mock()
         mt5.initialize.return_value = True
+        mt5.symbol_select.return_value = True
+        mt5.terminal_info.return_value = SimpleNamespace(connected=True)
+        mt5.symbol_info.return_value = SimpleNamespace(name="WINZ26", custom=False, expiration_time=4102444800, trade_mode=4)
         mt5.symbol_info_tick.return_value = tick(1789991940389)
         stop = Mock()
         stop.is_set.side_effect = [False, True]

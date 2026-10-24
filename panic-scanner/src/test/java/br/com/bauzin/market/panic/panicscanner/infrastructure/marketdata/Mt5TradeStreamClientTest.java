@@ -22,6 +22,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Mt5TradeStreamClientTest {
+    @Test void readOnlySubscriberReceivesSourceOrdinalWithoutChangingFiltering() throws Exception {
+        var identities = new java.util.ArrayList<Mt5TradeStreamClient.Cursor>();
+        try (var client = new Mt5TradeStreamClient(() -> fixture("cursor"))) {
+            client.startWithCursor((trade, identity) -> {
+                identities.add(identity);
+                if (identities.size() == 3) {
+                    try { client.stop(); } catch (IOException ex) { throw new RuntimeException(ex); }
+                }
+            }, ignored -> {}, (available,time) -> {});
+        }
+        assertEquals(java.util.List.of(1L,2L,3L),identities.stream().map(Mt5TradeStreamClient.Cursor::ordinal).toList());
+    }
     @Test
     void sourceCursorDeduplicatesAcrossProcessReconnectWithoutCollapsingIdenticalTrades() throws Exception {
         var engine = new TradeFlowEngine();

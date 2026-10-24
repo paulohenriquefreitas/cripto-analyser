@@ -8,6 +8,7 @@ import br.com.bauzin.market.panic.panicscanner.infrastructure.ta4j.Ta4jMt5Sma9Ad
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /** Feeds normalized intrabar price/SMA values to the pure structure engine. */
 @Component
@@ -15,20 +16,28 @@ public class MarketStructureLiveObserver {
     private static final Logger LOG = LoggerFactory.getLogger(MarketStructureLiveObserver.class);
     private final MarketStructureEngine engine;
     private final boolean logging;
+    private final String symbol;
 
     public MarketStructureLiveObserver() {
         this(new MarketStructureEngine(), true);
     }
+    @Autowired public MarketStructureLiveObserver(Mt5Symbol symbol) {
+        this(new MarketStructureEngine(),true,symbol);
+    }
 
     MarketStructureLiveObserver(MarketStructureEngine engine, boolean logging) {
+        this(engine,logging,Mt5Symbol.defaults());
+    }
+    private MarketStructureLiveObserver(MarketStructureEngine engine, boolean logging, Mt5Symbol symbol) {
         this.engine = engine;
         this.logging = logging;
+        this.symbol = symbol.value();
     }
 
     public synchronized void onTick(Mt5Tick tick, Ta4jMt5Sma9Adapter.Current current) {
         if (current == null || current.sma21() == null) return;
         var update = engine.onSample(new MarketStructureSample(
-                "WINV26", tick.timeMsc(), tick.last(), current.value(), current.sma21()));
+                symbol, tick.timeMsc(), tick.last(), current.value(), current.sma21()));
         if (!logging) return;
         update.events().forEach(this::logEvent);
         update.completedInteractions().forEach(this::logCompleted);
@@ -43,15 +52,15 @@ public class MarketStructureLiveObserver {
     }
 
     private void logEvent(MarketStructureEvent event) {
-        LOG.info("[STRUCTURE] WINV26 {} {} timeMsc={} price={} average={} distance={} side={}",
-                event.reference(), event.type(), event.timeMsc(), event.price(),
+        LOG.info("[STRUCTURE] {} {} {} timeMsc={} price={} average={} distance={} side={}",
+                symbol, event.reference(), event.type(), event.timeMsc(), event.price(),
                 event.movingAverage(), event.distance(), event.side());
     }
 
     private void logCompleted(MovingAverageInteraction value) {
-        LOG.info("[STRUCTURE] WINV26 {} COMPLETED approachSide={} exitSide={} touched={} crossed={} "
+        LOG.info("[STRUCTURE] {} {} COMPLETED approachSide={} exitSide={} touched={} crossed={} "
                         + "maxPenetration={} minimumDistance={} durationMsc={} timeNearMsc={}",
-                value.reference(), value.approachSide(), value.exitSide(), value.touched(), value.crossed(),
+                symbol, value.reference(), value.approachSide(), value.exitSide(), value.touched(), value.crossed(),
                 value.maxPenetrationPoints(), value.minimumAbsoluteDistance(), value.durationMsc(),
                 value.timeNearAverageMsc());
     }

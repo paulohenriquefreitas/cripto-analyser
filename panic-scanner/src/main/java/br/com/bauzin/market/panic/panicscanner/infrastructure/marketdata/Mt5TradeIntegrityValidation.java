@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 /** Manual 60-second proof: real Java LIVE pipeline versus a later MT5 range query. */
 public final class Mt5TradeIntegrityValidation {
-    private static final String SYMBOL = "WINV26";
+    private static final String SYMBOL = Mt5Symbol.defaults().value();
     private static final long SETTLE_MILLIS = 1_000;
     private static final long HISTORY_SETTLE_MILLIS = 1_000;
 

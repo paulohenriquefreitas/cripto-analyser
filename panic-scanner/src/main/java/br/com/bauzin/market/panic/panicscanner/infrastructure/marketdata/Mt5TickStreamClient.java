@@ -32,7 +32,10 @@ public final class Mt5TickStreamClient implements AutoCloseable {
     }
 
     public Mt5TickStreamClient() {
-        this(Mt5TickStreamClient::startPython);
+        this(Mt5Symbol.defaults());
+    }
+    public Mt5TickStreamClient(Mt5Symbol symbol) {
+        this(() -> startPython(symbol));
     }
 
     Mt5TickStreamClient(ProcessStarter starter) {
@@ -151,7 +154,7 @@ public final class Mt5TickStreamClient implements AutoCloseable {
         stop();
     }
 
-    private static Process startPython() throws IOException {
+    private static Process startPython(Mt5Symbol symbol) throws IOException {
         Path script = null;
         for (Path directory = Path.of("").toAbsolutePath(); directory != null && script == null; directory = directory.getParent()) {
             for (String relative : new String[] {"scripts/mt5_tick_stream.py", "panic-scanner/scripts/mt5_tick_stream.py"}) {
@@ -161,6 +164,7 @@ public final class Mt5TickStreamClient implements AutoCloseable {
         }
         if (script == null) throw new IOException("mt5_tick_stream.py nao encontrado; execute dentro do repositorio.");
         var builder = new ProcessBuilder("python", "-u", script.toString());
+        symbol.configure(builder);
         builder.environment().put("PYTHONIOENCODING", "utf-8");
         try {
             return builder.start();

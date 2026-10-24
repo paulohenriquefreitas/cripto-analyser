@@ -41,8 +41,8 @@ class TradeCursorTest(unittest.TestCase):
             query_from_cursor(mt5, TradeCursor(1_000, BATCH_SIZE), DEFINITIONS)
 
     def test_side_mapping_including_missing_side(self):
-        self.assertEqual("BUY", aggressor_side(32, DEFINITIONS))
-        self.assertEqual("SELL", aggressor_side(64, DEFINITIONS))
+        self.assertEqual("BUY", aggressor_side(56, DEFINITIONS))
+        self.assertEqual("SELL", aggressor_side(88, DEFINITIONS))
         self.assertEqual("AMBIGUOUS", aggressor_side(32 | 64, DEFINITIONS))
         self.assertEqual("AMBIGUOUS", aggressor_side(0, DEFINITIONS))
 
@@ -75,7 +75,7 @@ class TradeCursorTest(unittest.TestCase):
         message = normalize_trade(value, DEFINITIONS)
         self.assertEqual(2, message["volume"])
         self.assertEqual("trade", message["type"])
-        self.assertEqual("WINV26", message["symbol"])
+        self.assertEqual("WINZ26", message["symbol"])
 
         value["volume_real"] = 0
         with self.assertRaisesRegex(RuntimeError, "volume_real inválido"):
@@ -127,7 +127,9 @@ class PersistentTradeStreamTest(unittest.TestCase):
         mt5 = Mock()
         mt5.initialize.return_value = True
         mt5.symbol_select.return_value = True
-        mt5.symbol_info_tick.return_value = SimpleNamespace(time_msc=1_000)
+        mt5.terminal_info.return_value = SimpleNamespace(connected=True)
+        mt5.symbol_info.return_value = SimpleNamespace(name="WINZ26", custom=False, expiration_time=4102444800, trade_mode=4)
+        mt5.symbol_info_tick.return_value = SimpleNamespace(time_msc=1_000, last=100)
         for name, value in DEFINITIONS.items():
             setattr(mt5, "TICK_FLAG_" + name, value)
         mt5.COPY_TICKS_ALL = 0
@@ -191,7 +193,9 @@ class PersistentTradeStreamTest(unittest.TestCase):
         mt5 = Mock()
         mt5.initialize.return_value = True
         mt5.symbol_select.return_value = True
-        mt5.symbol_info_tick.return_value = SimpleNamespace(time_msc=1_000)
+        mt5.terminal_info.return_value = SimpleNamespace(connected=True)
+        mt5.symbol_info.return_value = SimpleNamespace(name="WINZ26", custom=False, expiration_time=4102444800, trade_mode=4)
+        mt5.symbol_info_tick.return_value = SimpleNamespace(time_msc=1_000, last=100)
         for name, value in DEFINITIONS.items():
             setattr(mt5, "TICK_FLAG_" + name, value)
         mt5.COPY_TICKS_ALL = 0

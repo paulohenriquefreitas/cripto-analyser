@@ -1,4 +1,5 @@
 import unittest
+from types import SimpleNamespace
 from datetime import date, datetime, timezone
 from unittest.mock import MagicMock, patch
 import mt5_reader
@@ -7,6 +8,8 @@ import mt5_reader
 class ReaderTest(unittest.TestCase):
     def mt5(self):
         mt5 = MagicMock()
+        mt5.terminal_info.return_value = SimpleNamespace(connected=True)
+        mt5.symbol_info.return_value = SimpleNamespace(name="WINZ26", custom=False, expiration_time=4102444800, trade_mode=4)
         mt5.TIMEFRAME_M5 = 5
         mt5.TIMEFRAME_D1 = 16408
         return mt5
@@ -20,8 +23,8 @@ class ReaderTest(unittest.TestCase):
         mt5.copy_rates_from_pos.return_value = [self.row(6)]
         with patch.dict('sys.modules', MetaTrader5=mt5):
             result = mt5_reader.read_candles()
-        mt5.copy_rates_from_pos.assert_called_once_with('WINV26', 5, 0, 1000)
-        mt5.symbol_select.assert_not_called()
+        mt5.copy_rates_from_pos.assert_called_once_with('WINZ26', 5, 0, 1000)
+        mt5.symbol_select.assert_called_once_with('WINZ26', True)
         self.assertEqual(1000, result[0]['realVolume'])
         self.assertEqual(99, result[0]['tickVolume'])
         mt5.shutdown.assert_called_once()
@@ -46,7 +49,7 @@ class ReaderTest(unittest.TestCase):
             tick.time = 1; tick.time_msc = 1000
             tick.bid = 10; tick.ask = 11; tick.last = 10; tick.volume = 2
             result = mt5_reader.read_candles(tick_only=True)
-        mt5.symbol_info_tick.assert_called_once_with('WINV26')
+        mt5.symbol_info_tick.assert_called_once_with('WINZ26')
         self.assertEqual(1000, result['time_msc'])
         mt5.copy_rates_from_pos.assert_not_called()
 

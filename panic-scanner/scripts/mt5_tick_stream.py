@@ -3,19 +3,23 @@
 import json
 import sys
 import threading
+from mt5_live_symbol import configured_symbol, validate_live_symbol, validate_live_tick
 
 POLL_SECONDS = 0.02
 
 
 def stream_ticks(mt5, stop_event):
+    symbol = configured_symbol()
     try:
         if not mt5.initialize():
             raise RuntimeError(f"mt5.initialize() falhou: {mt5.last_error()}")
+        validate_live_symbol(mt5, symbol)
         previous_time_msc = None
         while not stop_event.is_set():
-            tick = mt5.symbol_info_tick("WINV26")
+            tick = mt5.symbol_info_tick(symbol)
             if tick is None:
-                raise RuntimeError(f"Sem tick para WINV26: {mt5.last_error()}")
+                raise RuntimeError(f"Sem tick para {symbol}: {mt5.last_error()}")
+            validate_live_tick(tick,symbol)
             if tick.time_msc != previous_time_msc:
                 data = {
                     "time": int(tick.time),

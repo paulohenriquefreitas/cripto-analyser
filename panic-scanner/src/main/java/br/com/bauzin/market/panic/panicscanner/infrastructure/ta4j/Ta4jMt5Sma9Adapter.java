@@ -8,12 +8,17 @@ import br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.M5Bucket;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Symbol;
 import org.ta4j.core.BarSeries;
 import org.ta4j.core.indicators.averages.SMAIndicator;
 import org.ta4j.core.indicators.helpers.ClosePriceIndicator;
 
 @Component
 public class Ta4jMt5Sma9Adapter {
+    private final String symbol;
+    public Ta4jMt5Sma9Adapter() { this(Mt5Symbol.defaults()); }
+    @Autowired public Ta4jMt5Sma9Adapter(Mt5Symbol symbol) { this.symbol = symbol.value(); }
     private final br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.LegacyShadowCapture shadowCapture =
             new br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.LegacyShadowCapture();
     private long syncGeneration;
@@ -66,7 +71,7 @@ public class Ta4jMt5Sma9Adapter {
             // Capture under the SAME adapter lock as the update. No IO, callback,
             // consumer code, or synchronization of the shadow engine on this path.
             shadowCapture.offer(new br.com.bauzin.market.panic.panicscanner.application.win.intrabar.ShadowObservation(
-                    "WINV26", tick.timeMsc(), tick.last(), candleSnapshot("WINV26"),
+                    symbol, tick.timeMsc(), tick.last(), candleSnapshot(symbol),
                     result == null ? null : result.value(), result == null ? null : result.sma21(),
                     tick.timeMsc() > syncReplayThrough, syncGeneration));
         }

@@ -19,9 +19,14 @@ const candleSchema = z.object({
 
 export type Mt5Candle = z.infer<typeof candleSchema>;
 
-export async function getMt5Candles(signal?: AbortSignal): Promise<Mt5Candle[]> {
+export async function getMt5LiveConfig(signal?: AbortSignal): Promise<{ symbol: string }> {
+  const response = await httpClient.get<unknown>('/api/mt5/config', { signal });
+  return z.object({ symbol: z.string().regex(/^WIN[A-Z][0-9]{2}$/) }).parse(response.data);
+}
+
+export async function getMt5Candles(signal?: AbortSignal, symbol?: string): Promise<Mt5Candle[]> {
   // Always calls the real endpoint, independently of VITE_USE_MOCK_API.
-  const response = await httpClient.get<unknown>('/api/mt5/candles', { timeout: 70_000, signal });
+  const response = await httpClient.get<unknown>('/api/mt5/candles', { timeout: 70_000, signal, params: symbol ? { symbol } : undefined });
   const candles = z.array(candleSchema).parse(response.data);
   if (candles.some((candle, i) => i > 0 && candle.time <= candles[i - 1].time)) {
     throw new Error('Candles fora de ordem temporal.');

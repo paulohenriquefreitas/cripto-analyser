@@ -20,7 +20,7 @@ export const monitoringFlowSchema: z.ZodType<MonitoringFlowSnapshot> = z.object(
 });
 
 const tickSchema = z.object({
-  type: z.literal('tick'), symbol: z.literal('WINV26'),
+  type: z.literal('tick'), symbol: z.string().regex(/^WIN[A-Z][0-9]{2}$/),
   time: z.number().int().safe(), timeMsc: z.number().int().safe(),
   last: z.number().finite(), bid: z.number().finite(), ask: z.number().finite(),
   volume: z.number().finite(),
@@ -51,6 +51,7 @@ export function connectMt5Ticks(
   onState: (state: LiveState) => void,
   createSocket: (url: string) => WebSocket = (address) => new WebSocket(address),
   onFlow?: (snapshot: MonitoringFlowSnapshot | null) => void,
+  expectedSymbol?: string,
 ): () => void {
   let disposed = false;
   let socket: WebSocket | null = null;
@@ -85,6 +86,8 @@ export function connectMt5Ticks(
       if (disposed) return;
       try {
         const message = messageSchema.parse(JSON.parse(event.data));
+        if (message.type !== 'status' && expectedSymbol && message.symbol !== expectedSymbol)
+          throw new Error('Contrato do stream difere da sessão do gráfico');
         if (message.type === 'FLOW') onFlow?.(message);
         else if (message.type === 'tick') onState({ status: 'live', tick: message });
         else onState({ status: message.available ? 'waiting' : 'unavailable', tick: null });

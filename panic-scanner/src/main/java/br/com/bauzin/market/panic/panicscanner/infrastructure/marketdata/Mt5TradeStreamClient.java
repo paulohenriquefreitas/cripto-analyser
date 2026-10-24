@@ -27,7 +27,9 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
             .enable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES);
 
     private final ProcessStarter starter;
+    private final String expectedSymbol;
     public record Cursor(long timeMsc, long ordinal) {}
+    public record Checkpoint(String symbol, Cursor cursor) {}
     private volatile Cursor cursor;
     private boolean cursorRequired;
     private Process process;
@@ -47,15 +49,24 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
     }
 
     public Mt5TradeStreamClient() {
-        this(Mt5TradeStreamClient::startPython);
+        this(Mt5Symbol.defaults(), null);
     }
 
-    public Mt5TradeStreamClient(Cursor resume) {
-        this(() -> startPython(resume), resume);
+    public Mt5TradeStreamClient(Mt5Symbol symbol, Checkpoint previous) {
+        this(symbol, previous, cursor -> startPython(symbol,cursor));
+    }
+
+    @FunctionalInterface interface CursorStarter { Process start(Cursor cursor) throws IOException; }
+    Mt5TradeStreamClient(Mt5Symbol symbol, Checkpoint previous, CursorStarter factory) {
+        this.cursor = previous != null && symbol.value().equals(previous.symbol()) ? previous.cursor() : null;
+        Cursor seed = this.cursor;
+        this.starter = () -> factory.start(seed);
+        this.expectedSymbol = symbol.value();
         cursorRequired = true;
     }
 
     public Cursor cursor() { return cursor; }
+    public Checkpoint checkpoint() { return new Checkpoint(expectedSymbol,cursor); }
 
     Mt5TradeStreamClient(ProcessStarter starter) {
         this(starter, null);
@@ -63,6 +74,7 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
 
     Mt5TradeStreamClient(ProcessStarter starter, Cursor resume) {
         this.starter = starter;
+        this.expectedSymbol = null; // Unbound legacy/test adapters; production always binds the live contract.
         this.cursor = resume;
     }
 
@@ -77,6 +89,14 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
 
     public void start(Consumer<MarketTrade> consumer, Consumer<Long> invalidVolume,
                       java.util.function.BiConsumer<Boolean, Long> status) throws IOException, InterruptedException {
+        Objects.requireNonNull(consumer, "consumer");
+        startWithCursor((trade, identity) -> consumer.accept(trade), invalidVolume, status);
+    }
+
+    /** Additional read-only subscriber metadata; acquisition and filtering are unchanged. */
+    public void startWithCursor(java.util.function.BiConsumer<MarketTrade, Cursor> consumer,
+                                Consumer<Long> invalidVolume,
+                                java.util.function.BiConsumer<Boolean, Long> status) throws IOException, InterruptedException {
         Objects.requireNonNull(consumer, "consumer");
         final Process running;
         synchronized (this) {
@@ -105,6 +125,8 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
                     try {
                         node = MAPPER.readTree(line);
                         nextCursor = parseCursor(node);
+                        if (expectedSymbol != null && !matchesSymbol(node.path("symbol").asText()))
+                            throw new IOException("Message symbol differs from capture session");
                     } catch (IOException ex) {
                         parseErrors.incrementAndGet();
                         throw ex;
@@ -114,12 +136,12 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
                     if ("trade_status".equals(node.path("type").asText())) {
                         if (!node.path("available").isBoolean() || !node.path("timeMsc").isIntegralNumber()
                                 || !node.path("timeMsc").canConvertToLong() || node.path("timeMsc").longValue() < 0
-                                || !"WINV26".equals(node.path("symbol").asText())) throw new IOException("Invalid status protocol");
+                                || !matchesSymbol(node.path("symbol").asText())) throw new IOException("Invalid status protocol");
                         status.accept(node.get("available").booleanValue(), node.get("timeMsc").longValue());
                         continue;
                     }
                     if ("invalid_trade".equals(node.path("type").asText())) {
-                        if (nextCursor == null || !"WINV26".equals(node.path("symbol").asText())
+                        if (nextCursor == null || !matchesSymbol(node.path("symbol").asText())
                                 || !"INVALID_VOLUME".equals(node.path("reason").asText())) throw new IOException("Invalid volume protocol");
                         invalidVolume.accept(nextCursor.timeMsc());
                         cursor = nextCursor;
@@ -129,6 +151,7 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
                     MarketTrade trade;
                     try {
                         trade = parseLine(line);
+                        if (!matchesSymbol(trade.symbol())) throw new IOException("Trade symbol differs from capture session");
                     } catch (IOException ex) {
                         parseErrors.incrementAndGet();
                         throw ex;
@@ -145,7 +168,7 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
                         case AMBIGUOUS -> ambiguousTrades.incrementAndGet();
                     }
                     lastTradeTimeMsc.set(trade.timeMsc());
-                    consumer.accept(trade);
+                    consumer.accept(trade, nextCursor);
                     if (nextCursor != null) cursor = nextCursor;
                 }
             }
@@ -258,18 +281,22 @@ public final class Mt5TradeStreamClient implements AutoCloseable {
         stop();
     }
 
-    private static Process startPython() throws IOException {
-        return startPython(null);
+    private boolean matchesSymbol(String symbol) {
+        return expectedSymbol == null ? symbol.matches("WIN[A-Z][0-9]{2}") : expectedSymbol.equals(symbol);
     }
 
-    private static Process startPython(Cursor resume) throws IOException {
+    private static Process startPython(Mt5Symbol symbol, Cursor resume) throws IOException {
         Path script = locateScript();
         ProcessBuilder builder = new ProcessBuilder("python", "-u", script.toString());
+        symbol.configure(builder);
         builder.environment().put("PYTHONIOENCODING", "utf-8");
         builder.environment().put("MT5_TRADE_MONITORING_PROTOCOL", "1");
+        for (String key : new String[]{"MT5_TRADE_CURSOR_MSC","MT5_TRADE_CURSOR_ORDINAL","MT5_TRADE_CURSOR_SYMBOL"})
+            builder.environment().remove(key);
         if (resume != null) {
             builder.environment().put("MT5_TRADE_CURSOR_MSC", Long.toString(resume.timeMsc()));
             builder.environment().put("MT5_TRADE_CURSOR_ORDINAL", Long.toString(resume.ordinal()));
+            builder.environment().put("MT5_TRADE_CURSOR_SYMBOL", symbol.value());
         }
         try {
             return builder.start();
