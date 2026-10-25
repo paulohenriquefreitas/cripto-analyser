@@ -16,13 +16,19 @@ public final class MonitoringFlowEngine {
     public record TimeBasis(long feedTimeShiftMinutes, boolean confirmed,
                             long rejectedOld, long rejectedFuture, long rejectedRegression) {}
     public record Snapshot(String type, String symbol, long timeMsc, Long lastTimeMsc,
-                           Double last, String volumeSource, List<Window> windows, TimeBasis timeBasis) {
+                           Double last, String volumeSource, List<Window> windows, TimeBasis timeBasis,
+                           VolumeDeltaTracker.FlowResult volumeDelta) {
+        public Snapshot(String type, String symbol, long timeMsc, Long lastTimeMsc,
+                        Double last, String volumeSource, List<Window> windows, TimeBasis timeBasis) {
+            this(type, symbol, timeMsc, lastTimeMsc, last, volumeSource, windows, timeBasis, null);
+        }
         public Snapshot(String type, String symbol, long timeMsc, Long lastTimeMsc,
                         Double last, String volumeSource, List<Window> windows) {
             this(type, symbol, timeMsc, lastTimeMsc, last, volumeSource, windows, null);
         }
     }
     private final TradeFlowEngine flow = new TradeFlowEngine();
+    private final VolumeDeltaTracker volumeDelta;
     private final NavigableMap<Long, Double> prices = new TreeMap<>();
     private final ArrayDeque<Long> invalidVolumes = new ArrayDeque<>();
     private final String symbol;
@@ -34,7 +40,11 @@ public final class MonitoringFlowEngine {
     private long healthySince = -1;
     private boolean connected;
 
-    public MonitoringFlowEngine(String symbol) { this.symbol = symbol; }
+    public MonitoringFlowEngine(String symbol) { this(symbol, new VolumeDeltaTracker(500, 5000)); }
+    public MonitoringFlowEngine(String symbol, VolumeDeltaTracker volumeDelta) {
+        this.symbol = symbol;
+        this.volumeDelta = java.util.Objects.requireNonNull(volumeDelta);
+    }
 
     public synchronized void connected(boolean value, long timeMsc) {
         if (value && !connected) healthySince = timeMsc;
@@ -48,6 +58,7 @@ public final class MonitoringFlowEngine {
         if (trade.timeMsc() < lastSequenceTime
                 || (trade.timeMsc() == lastSequenceTime && ordinal <= lastSequence)) return false;
         flow.onTrade(trade);
+        volumeDelta.appendTick(trade, Math.max(referenceTime, trade.timeMsc()));
         lastSequenceTime = trade.timeMsc();
         lastSequence = ordinal;
         lastTradeTime = trade.timeMsc();
@@ -66,7 +77,10 @@ public final class MonitoringFlowEngine {
         }
     }
 
-    public synchronized void invalidVolume(long timeMsc) { invalidVolumes.addLast(timeMsc); }
+    public synchronized void invalidVolume(long timeMsc) {
+        invalidVolumes.addLast(timeMsc);
+        volumeDelta.invalidVolume(timeMsc, Math.max(referenceTime, timeMsc));
+    }
 
     public synchronized Snapshot snapshot(long timeMsc) {
         long now = Math.max(timeMsc, referenceTime);
@@ -76,7 +90,7 @@ public final class MonitoringFlowEngine {
                 window(Duration.ofSeconds(30), now));
         var latest = prices.floorEntry(now);
         return new Snapshot("FLOW", symbol, now, latest == null ? null : latest.getKey(),
-                latest == null ? null : latest.getValue(), "MT5_VOLUME_REAL", windows);
+                latest == null ? null : latest.getValue(), "MT5_VOLUME_REAL", windows, null, volumeDelta.snapshot(now));
     }
 
     private Window window(Duration duration, long now) {

@@ -462,3 +462,47 @@ test('chart feeds LAST and only confirmed pivots into monitoring, retaining moni
   assert.equal(h.rawMarkers().filter(marker => marker.id.startsWith('MONITORING-')).length, 0);
   h.manager.close(); assert.equal(monitoring.getSnapshot().levels.length, 0); h.unmount();
 });
+
+
+test('structure reactions retain original candle, labels and arrows across updates and remount', async () => {
+  const h = harness(); await h.manager.load('2026-09-24'); h.mount();
+  const reaction = { levelPrice: 110, levelType: 'PIVOT_TOP', reactionType: 'TOUCH_REVERSAL', delta500ms: -1500 };
+  // Event before its candle frame: store but do not snap to another visible bar.
+  h.send({ type: 'MARKET_STATE', timeMsc: 6_001_234, structureReaction: reaction });
+  assert.equal(h.rawMarkers().length, 0);
+  const market = time => h.send({ type: 'MARKET_STATE', timeMsc: time * 1000,
+    candle: { time, open: 100, high: 120, low: 80, close: 110 } });
+  market(6000);
+  assert.equal(h.rawMarkers().length, 1);
+  assert.equal(h.rawMarkers()[0].time, 6000);
+  assert.equal(h.rawMarkers()[0].text, 'R: -1.5k');
+  assert.equal(h.rawMarkers()[0].shape, 'arrowDown');
+  assert.equal(h.rawMarkers()[0].position, 'aboveBar');
+  assert.equal(h.rawMarkers()[0].color, '#ef5350');
+  h.send({ type: 'MARKET_STATE', timeMsc: 6_001_234, structureReaction: reaction });
+  market(6000); market(6300);
+  assert.equal(h.rawMarkers().length, 1);
+  assert.equal(h.rawMarkers()[0].time, 6000);
+  h.send({ type: 'MARKET_STATE', timeMsc: 6_300_100,
+    structureReaction: { ...reaction, reactionType: 'BREAKOUT', delta500ms: 2500 } });
+  assert.equal(h.rawMarkers()[1].shape, 'arrowUp');
+  assert.equal(h.rawMarkers()[1].color, '#2e7d32');
+  assert.equal(h.rawMarkers()[1].price, 110);
+  assert.equal(h.rawMarkers()[1].text, 'B: 2.5k');
+  h.unmount(); h.mount();
+  assert.deepEqual(h.rawMarkers().map(m => m.time), [6000, 6300]);
+  h.manager.close(); assert.equal(h.rawMarkers().length, 0); h.unmount();
+});
+
+test('malformed structure reactions never reach chart markers', async () => {
+  const h = harness(); await h.manager.load('2026-09-24'); h.mount();
+  const reaction = { levelPrice: 110, levelType: 'PIVOT_TOP', reactionType: 'BREAKOUT', delta500ms: 300 };
+  for (const bad of [{ ...reaction, levelPrice: -1 }, { ...reaction, levelType: 'UNKNOWN' },
+    { ...reaction, delta500ms: 1.5 }, { ...reaction, reactionType: 'BUY' }]) {
+    h.send({ type: 'MARKET_STATE', timeMsc: 6_000_001, structureReaction: bad });
+  }
+  h.send({ type: 'MARKET_STATE', timeMsc: 6_000_002,
+    candle: { time: 6000, open: 100, high: 120, low: 80, close: 110 } });
+  assert.equal(h.rawMarkers().length, 0);
+  h.manager.close(); h.unmount();
+});

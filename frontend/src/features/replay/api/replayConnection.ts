@@ -1,9 +1,9 @@
 import { createReplayTradeStore, type ReplayTradeEvent } from './replayTradeStore';
 import type { Mt5Candle } from '@/features/win/api/mt5Api';
-import { M5_SECONDS, type ChartSink, type Ema9ReversalMarker } from '@/features/win/models/mt5Intrabar';
+import { M5_SECONDS, type ChartSink, type Ema9ReversalMarker, type StructureReaction } from '@/features/win/models/mt5Intrabar';
 import { createReplayOccurrenceStore } from './replayOccurrenceStore';
 import { createReplaySetupStore, isReplaySetupType, type ReplaySetupEventMessage } from './replaySetupStore';
-import type { MonitoringFlowSnapshot } from '@/features/win/models/monitoringFlow';
+import type { MonitoringFlowSnapshot, VolumeDeltaSnapshot } from '@/features/win/models/monitoringFlow';
 
 type Message = {
   type: 'CLOCK' | 'MARKET_STATE' | 'RULE_OCCURRENCE' | 'REPLAY_SETUP_EVENT' | 'COMPLETED' | 'ERROR' | 'FLOW';
@@ -12,6 +12,8 @@ type Message = {
   candle?: { time: number; open: number; high: number; low: number; close: number };
   sma9?: number | null;
   flow?: MonitoringFlowSnapshot | null;
+  volumeDelta?: VolumeDeltaSnapshot | null;
+  structureReaction?: StructureReaction | null;
   closedEma9?: { time: number; value: number; reversal?: 'UP' | 'DOWN' | null;
     previousValue?: number | null; availableAtTimeMsc?: number } | null;
   sma21?: number | null;
@@ -51,9 +53,11 @@ export function connectReplay(
   const occurrences = createReplayOccurrenceStore(M5_SECONDS);
   const setupEvents = createReplaySetupStore(M5_SECONDS);
   const tradeEvents = createReplayTradeStore();
+  const structureReactions = new Map<string, { timeMsc: number; reaction: StructureReaction }>();
   const emaReversals = new Map<number, Ema9ReversalMarker>();
   let closed = false;
   let flow: MonitoringFlowSnapshot | null = null;
+  let volumeDelta: VolumeDeltaSnapshot | null = null;
 
   const controller = {
     attachChart(next: ChartSink) {
@@ -61,6 +65,8 @@ export function connectReplay(
       sink = next;
       if (history.length) next.setHistory(history);
       next.onFlowSnapshot?.(flow);
+      next.onVolumeDelta?.(volumeDelta);
+      structureReactions.forEach(({ timeMsc, reaction }) => next.addStructureReactionMarker?.(timeMsc, reaction));
       emaReversals.forEach(marker => next.addEma9Reversal?.(marker));
       const detachOccurrences = occurrences.attach(marker => next.addRuleOccurrence?.(marker));
       const detachSetupEvents = setupEvents.attach(marker => next.addReplaySetupMarker?.(marker));
@@ -72,6 +78,7 @@ export function connectReplay(
         if (sink === next) sink = undefined;
       };
     },
+    getVolumeDelta: () => volumeDelta,
     play() {
       if (closed) return;
       if (socket.readyState === WebSocket.OPEN) socket.send('PLAY');
@@ -101,10 +108,13 @@ export function connectReplay(
       setupEvents.clear();
       tradeEvents.clear();
       emaReversals.clear();
+      structureReactions.clear();
       history = [];
       last = undefined;
       flow = null;
+      volumeDelta = null;
       if (sink) {
+        sink.onVolumeDelta?.(null);
         sink.setHistory([]);
         sink = undefined;
       }
@@ -130,6 +140,31 @@ export function connectReplay(
       return;
     }
     const message = parsed as Message;
+    const delta = message.volumeDelta ?? message.flow?.volumeDelta;
+    if (delta != null) {
+      if (!validVolumeDelta(delta)) {
+        onError('Dados inválidos de Delta/CVD no replay.');
+      } else if (!volumeDelta || delta.timeMsc > volumeDelta.timeMsc
+        || (delta.timeMsc === volumeDelta.timeMsc && delta.processedTicks >= volumeDelta.processedTicks)) {
+        volumeDelta = delta;
+        sink?.onVolumeDelta?.(volumeDelta);
+      }
+    }
+    if (message.type === 'MARKET_STATE' && message.structureReaction != null) {
+      const r = message.structureReaction;
+      if (Number.isSafeInteger(message.timeMsc) && message.timeMsc >= 0
+        && Number.isFinite(r.levelPrice) && r.levelPrice > 0
+        && ['PIVOT_TOP', 'PIVOT_BOTTOM', 'VWAP', 'POC'].includes(r.levelType)
+        && (r.reactionType === 'TOUCH_REVERSAL' || r.reactionType === 'BREAKOUT')
+        && Number.isSafeInteger(r.delta500ms)) {
+        const key = JSON.stringify([message.timeMsc, r.levelPrice, r.levelType, r.reactionType, r.delta500ms]);
+        if (!structureReactions.has(key)) {
+          const reaction = { ...r };
+          structureReactions.set(key, { timeMsc: message.timeMsc, reaction });
+          sink?.addStructureReactionMarker?.(message.timeMsc, reaction);
+        }
+      } else onError('Invalid structure reaction in replay.');
+    }
     if (typeof message.status === 'string') onClock(message.timeMsc, message.status);
     if (message.type === 'ERROR') onError(message.message ?? 'Replay error');
     if (message.flow && (!flow || message.flow.timeMsc >= flow.timeMsc)) {
@@ -205,3 +240,14 @@ export function connectReplay(
 }
 
 export type ReplayController = ReturnType<typeof connectReplay>;
+
+function validVolumeDelta(value: unknown): value is VolumeDeltaSnapshot {
+  if (!value || typeof value !== 'object') return false;
+  const v = value as VolumeDeltaSnapshot;
+  return [v.timeMsc, v.buyVolume, v.sellVolume, v.ambiguousVolume, v.events, v.processedTicks]
+    .every(n => Number.isSafeInteger(n) && n >= 0)
+    && Number.isSafeInteger(v.delta) && Number.isSafeInteger(v.cumulativeDelta)
+    && v.windowMillis === 500 && v.delta === v.buyVolume - v.sellVolume
+    && ['GOOD', 'NO_TRADES', 'INVALID_VOLUME', 'CAPACITY_EXCEEDED'].includes(v.quality)
+    && typeof v.complete === 'boolean' && typeof v.cumulativeComplete === 'boolean';
+}

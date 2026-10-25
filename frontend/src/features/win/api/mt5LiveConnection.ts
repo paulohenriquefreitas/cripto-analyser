@@ -6,6 +6,14 @@ export const monitoringFlowSchema: z.ZodType<MonitoringFlowSnapshot> = z.object(
   type: z.literal('FLOW'), symbol: z.string(), timeMsc: z.number().int().safe(),
   lastTimeMsc: z.number().int().safe().nullable(), last: nullableNumber,
   volumeSource: z.literal('MT5_VOLUME_REAL'),
+  volumeDelta: z.object({
+    timeMsc: z.number().int().safe().nonnegative(), windowMillis: z.literal(500),
+    buyVolume: z.number().int().safe().nonnegative(), sellVolume: z.number().int().safe().nonnegative(),
+    ambiguousVolume: z.number().int().safe().nonnegative(), delta: z.number().int().safe(),
+    cumulativeDelta: z.number().int().safe(), events: z.number().int().nonnegative(),
+    processedTicks: z.number().int().safe().nonnegative(), complete: z.boolean(), cumulativeComplete: z.boolean(),
+    quality: z.enum(['GOOD', 'NO_TRADES', 'INVALID_VOLUME', 'CAPACITY_EXCEEDED']),
+  }).refine(v => v.delta === v.buyVolume - v.sellVolume).nullable().optional(),
   windows: z.array(z.object({
     seconds: z.union([z.literal(5), z.literal(10), z.literal(30)]),
     fromTimeMsc: z.number().int().safe(), toTimeMsc: z.number().int().safe(),

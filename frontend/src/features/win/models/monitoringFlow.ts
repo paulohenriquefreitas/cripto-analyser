@@ -1,3 +1,11 @@
+export type VolumeDeltaSnapshot = {
+  timeMsc: number; windowMillis: number; buyVolume: number; sellVolume: number;
+  ambiguousVolume: number; delta: number; cumulativeDelta: number;
+  events: number; processedTicks: number;
+  quality: 'GOOD' | 'NO_TRADES' | 'INVALID_VOLUME' | 'CAPACITY_EXCEEDED';
+  complete: boolean; cumulativeComplete: boolean;
+};
+
 export type MonitoringFlowWindow = {
   seconds: 5 | 10 | 30; fromTimeMsc: number; toTimeMsc: number; events: number;
   buyVolume: number; sellVolume: number; unknownVolume: number; delta: number;
@@ -10,4 +18,5 @@ export type MonitoringFlowWindow = {
 export type MonitoringFlowSnapshot = {
   type: 'FLOW'; symbol: string; timeMsc: number; lastTimeMsc: number | null;
   last: number | null; volumeSource: 'MT5_VOLUME_REAL'; windows: MonitoringFlowWindow[];
+  volumeDelta?: VolumeDeltaSnapshot | null;
 };

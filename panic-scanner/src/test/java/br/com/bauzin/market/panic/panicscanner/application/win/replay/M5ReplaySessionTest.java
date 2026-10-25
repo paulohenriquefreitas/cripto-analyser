@@ -2,6 +2,8 @@ package br.com.bauzin.market.panic.panicscanner.application.win.replay;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,6 +15,136 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class M5ReplaySessionTest {
+    @Test
+    void structureReactionsReachJsonIndividuallyDespiteVisualThrottling(@TempDir Path temp) throws Exception {
+        Path history = temp.resolve("structure-wire.ndjson");
+        var mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+        String original = historyWithTicks(new long[]{1, 2, 3}, new double[]{100, 135, 155});
+        String[] lines = original.split("\\R");
+        var header = mapper.readTree(lines[0]);
+        ((com.fasterxml.jackson.databind.node.ObjectNode) header.get("warmup").get(12)).put("high", 110);
+        ((com.fasterxml.jackson.databind.node.ObjectNode) header.get("warmup").get(17)).put("high", 130);
+        StringBuilder text = new StringBuilder(mapper.writeValueAsString(header)).append('\n');
+        for (int i = 1; i < lines.length; i++) {
+            var row = mapper.readTree(lines[i]);
+            if ("tick".equals(row.path("type").asText())) {
+                ((com.fasterxml.jackson.databind.node.ObjectNode) row).put("flags", 40).put("volumeReal", 400);
+            }
+            text.append(mapper.writeValueAsString(row)).append('\n');
+        }
+        Files.writeString(history, text);
+        var session = new M5ReplaySession(history, "WINV26", Long.MAX_VALUE);
+        var frames = new java.util.concurrent.CopyOnWriteArrayList<M5ReplaySession.Snapshot>();
+        var callbacks = new java.util.concurrent.CopyOnWriteArrayList<br.com.bauzin.market.panic.panicscanner.application.win.strategy.StructureReactionEvent>();
+        var completed = new CountDownLatch(1);
+        session.onStructureReaction(callbacks::add);
+        session.addListener(frame -> {
+            frames.add(frame);
+            if ("COMPLETED".equals(frame.type())) completed.countDown();
+        });
+        try {
+            session.play();
+            assertThat(completed.await(3, TimeUnit.SECONDS)).isTrue();
+            assertThat(session.status()).isEqualTo(M5ReplaySession.Status.COMPLETED);
+            var reactions = frames.stream().filter(f -> f.structureReaction() != null).toList();
+            assertThat(reactions).hasSize(2);
+            assertThat(reactions.stream().map(M5ReplaySession.Snapshot::structureReaction).toList())
+                    .containsExactlyElementsOf(callbacks);
+            assertThat(reactions).extracting(M5ReplaySession.Snapshot::timeMsc)
+                    .containsExactly(6_000_002L, 6_000_003L);
+            for (var frame : reactions) {
+                assertThat(frame.type()).isEqualTo("MARKET_STATE");
+                assertThat(frame.candle()).isNull();
+                var json = mapper.readTree(mapper.writeValueAsString(frame));
+                assertThat(json.path("timeMsc").asLong()).isEqualTo(frame.structureReaction().timeMsc());
+                assertThat(json.path("structureReaction").path("reactionType").asText()).isEqualTo("BREAKOUT");
+                assertThat(json.path("structureReaction").path("levelType").asText()).isEqualTo("PIVOT_TOP");
+                assertThat(json.path("structureReaction").path("delta500ms").asLong()).isPositive();
+            }
+            assertThat(frames.stream().filter(f -> f.candle() != null).toList().getLast().candle().close()).isEqualTo(155);
+        } finally { session.close(); }
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void drainsEveryQueuedReactionOnceWithoutRetimestamping(@TempDir Path temp) throws Exception {
+        var session = new M5ReplaySession(temp.resolve("unused"), "WINV26", Long.MAX_VALUE);
+        var field = M5ReplaySession.class.getDeclaredField("pendingStructureReactions"); field.setAccessible(true);
+        var queue = (java.util.Queue<br.com.bauzin.market.panic.panicscanner.application.win.strategy.StructureReactionEvent>) field.get(session);
+        var first = new br.com.bauzin.market.panic.panicscanner.application.win.strategy.StructureReactionEvent(6000001, 110, "PIVOT_TOP", "TOUCH_REVERSAL", -400);
+        var second = new br.com.bauzin.market.panic.panicscanner.application.win.strategy.StructureReactionEvent(6000002, 90, "PIVOT_BOTTOM", "BREAKOUT", -500);
+        queue.add(first); queue.add(second);
+        var frames = new ArrayList<M5ReplaySession.Snapshot>(); session.addListener(frames::add);
+        var publish = M5ReplaySession.class.getDeclaredMethod("publishLatestMarketState", M5ReplaySession.Status.class);
+        publish.setAccessible(true);
+        publish.invoke(session, M5ReplaySession.Status.PAUSED);
+        publish.invoke(session, M5ReplaySession.Status.COMPLETED);
+        assertThat(queue).isEmpty();
+        assertThat(frames).extracting(M5ReplaySession.Snapshot::structureReaction).containsExactly(first, second);
+        assertThat(frames).extracting(M5ReplaySession.Snapshot::timeMsc).containsExactly(6000001L, 6000002L);
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void closeReleasesWorkerWaitingForClockOrResume(boolean paused, @TempDir Path temp) throws Exception {
+        Path history = temp.resolve("close-waiting.ndjson");
+        Files.writeString(history, historyWithTicks(new long[]{1, 60_001}, new double[]{100, 101}));
+        var session = new M5ReplaySession(history, "WINV26");
+        var first = new CountDownLatch(1);
+        session.addListener(snapshot -> {
+            if ("MARKET_STATE".equals(snapshot.type())) {
+                if (paused) session.pause();
+                first.countDown();
+            }
+        });
+        try {
+            session.play();
+            assertThat(first.await(2, TimeUnit.SECONDS)).isTrue();
+            // Inspect the actual worker without adding a production test API.
+            var field = M5ReplaySession.class.getDeclaredField("worker");
+            field.setAccessible(true);
+            Thread worker = (Thread) field.get(session);
+            assertThat(worker.isVirtual()).isTrue();
+            Thread.State expected = paused ? Thread.State.WAITING : Thread.State.TIMED_WAITING;
+            long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(2);
+            while (worker.getState() != expected && System.nanoTime() < deadline) Thread.sleep(5);
+            assertThat(worker.getState()).isEqualTo(expected);
+
+            session.close();
+            worker.join(2000);
+            assertThat(worker.isAlive()).isFalse();
+            assertThat(session.status()).isEqualTo(M5ReplaySession.Status.CLOSED);
+            assertThat(session.metrics().eventsProcessed()).isEqualTo(1);
+            assertThat(session.currentTimeMsc()).isEqualTo(6_000_001L);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    void speedChangeWhilePlayingReleasesClockWaitWithoutChangingEventTime(@TempDir Path temp) throws Exception {
+        Path history = temp.resolve("speed-waiting.ndjson");
+        Files.writeString(history, historyWithTicks(new long[]{1, 60_001}, new double[]{100, 101}));
+        var session = new M5ReplaySession(history, "WINV26");
+        var first = new CountDownLatch(1);
+        var completed = new CountDownLatch(1);
+        session.addListener(snapshot -> {
+            if ("MARKET_STATE".equals(snapshot.type())) first.countDown();
+            if ("COMPLETED".equals(snapshot.type())) completed.countDown();
+        });
+        try {
+            session.play();
+            assertThat(first.await(2, TimeUnit.SECONDS)).isTrue();
+            session.setSpeed(100);
+            assertThat(completed.await(2, TimeUnit.SECONDS)).isTrue();
+            assertThat(session.metrics().eventsProcessed()).isEqualTo(2);
+            assertThat(session.currentTimeMsc()).isEqualTo(6_060_001L);
+            assertThat(session.speed()).isEqualTo(100);
+        } finally {
+            session.close();
+        }
+    }
+
     @Test
     void timesAndTradesIncludesVolumeOnlyEventsWithoutChangingCandleSelection(@TempDir Path temp) throws Exception {
         Path history = temp.resolve("flow-integration.ndjson");
@@ -43,7 +175,48 @@ class M5ReplaySessionTest {
             assertThat(five.sellVolume()).isEqualTo(5);
             assertThat(five.delta()).isEqualTo(-2);
             assertThat(five.unknownVolume()).isZero();
+            // Four trades, including VOLUME-only, but only three candle events.
+            // The sell at 6001500 expires exactly at the 500ms left boundary.
+            assertThat(last.volumeDelta().processedTicks()).isEqualTo(4);
+            assertThat(last.volumeDelta().delta()).isEqualTo(1);
+            assertThat(last.volumeDelta().cumulativeDelta()).isEqualTo(-2);
+            assertThat(last.flow().volumeDelta()).isEqualTo(last.volumeDelta());
+            assertThat(session.volumeDelta()).isPresent();
+            var json = new com.fasterxml.jackson.databind.ObjectMapper().readTree(
+                    new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(last));
+            assertThat(json.path("volumeDelta").path("delta").asLong()).isEqualTo(1);
         } finally { session.close(); }
+    }
+
+    @Test
+    void microFlowMatchesSharedLiveEngineAtAllSpeedsDespiteVisualCoalescing(@TempDir Path temp) throws Exception {
+        Path history = temp.resolve("micro-flow.ndjson");
+        Files.writeString(history, historyWithTicks(new long[]{0, 100, 200}, new double[]{100, 101, 102})
+                .replace("\"flags\":12", "\"flags\":40"));
+        var live = new br.com.bauzin.market.panic.panicscanner.application.win.flow.MonitoringFlowEngine("WINV26");
+        for (int i = 0; i < 3; i++) live.onTrade(new br.com.bauzin.market.panic.panicscanner.domain.win.flow.MarketTrade(
+                "WINV26", 6_000_000L+i*100, 100+i, 1,
+                br.com.bauzin.market.panic.panicscanner.domain.win.flow.AggressorSide.BUY), i);
+        var expected = live.snapshot(6_000_200L).volumeDelta();
+        for (double speed : new double[]{0, 1, 100}) {
+            var session = speed == 0 ? new M5ReplaySession(history, "WINV26", Long.MAX_VALUE)
+                    : new M5ReplaySession(history, "WINV26");
+            if (speed > 0) session.setSpeed(speed);
+            var completed = new CountDownLatch(1);
+            var lastFlow = new java.util.concurrent.atomic.AtomicReference<M5ReplaySession.Snapshot>();
+            session.addListener(s -> {
+                if ("FLOW".equals(s.type())) lastFlow.set(s);
+                if ("COMPLETED".equals(s.type())) completed.countDown();
+            });
+            try {
+                session.play();
+                assertThat(completed.await(3, TimeUnit.SECONDS)).isTrue();
+                assertThat(session.volumeDelta()).contains(expected);
+                assertThat(lastFlow.get().volumeDelta()).isEqualTo(expected);
+                assertThat(session.metrics().eventsProcessed()).isEqualTo(3);
+                if (speed == 0) assertThat(session.metrics().coalescedMarketStates()).isGreaterThan(0);
+            } finally { session.close(); }
+        }
     }
     @Test
     void defaultsToRealTimeAndChangesSpeedWhilePaused(@TempDir Path temp) throws Exception {

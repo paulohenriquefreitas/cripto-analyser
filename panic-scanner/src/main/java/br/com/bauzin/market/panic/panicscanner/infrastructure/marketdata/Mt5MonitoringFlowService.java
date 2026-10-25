@@ -96,7 +96,7 @@ public final class Mt5MonitoringFlowService {
         return new MonitoringFlowEngine.Snapshot(value.type(), value.symbol(), value.timeMsc(),
                 value.lastTimeMsc(), value.last(), value.volumeSource(), value.windows(),
                 new MonitoringFlowEngine.TimeBasis(shiftMillis / 60_000, timeBasisConfirmed,
-                        rejectedOld, rejectedFuture, rejectedRegression));
+                        rejectedOld, rejectedFuture, rejectedRegression), value.volumeDelta());
     }
     private long now() {
         // +180 converts raw feed -> UTC, hence UTC -180 is the matching raw-feed reference.

@@ -1,7 +1,7 @@
 import type { ReplayTradeMarker } from '@/features/replay/api/replayTradeStore';
 import type { Mt5Candle } from '@/features/win/api/mt5Api';
 import type { LiveTick } from '@/features/win/api/mt5LiveConnection';
-import type { MonitoringFlowSnapshot } from './monitoringFlow';
+import type { MonitoringFlowSnapshot, VolumeDeltaSnapshot } from './monitoringFlow';
 
 export const M5_SECONDS = 300;
 export const RESYNC_RETRY_MS = 5000;
@@ -29,7 +29,16 @@ export function updateLastCandle(candle: Mt5Candle, tick: LiveTick): Change {
   } };
 }
 
+export type StructureReaction = {
+  levelPrice: number;
+  levelType: string;
+  reactionType: 'TOUCH_REVERSAL' | 'BREAKOUT';
+  delta500ms: number;
+};
+
 export type ChartSink = {
+  addStructureReactionMarker?: (timeMsc: number, reaction: StructureReaction) => void;
+  onVolumeDelta?: (snapshot: VolumeDeltaSnapshot | null) => void;
   onFlowSnapshot?: (snapshot: MonitoringFlowSnapshot | null) => void;
   onLastPrice?: (price: number, timeMsc: number) => void;
   addEma9Reversal?: (marker: Ema9ReversalMarker) => void;
@@ -154,6 +163,7 @@ export function createMt5Intrabar(load: (signal: AbortSignal) => Promise<Mt5Cand
       if (next && flow && next.timeMsc < flow.timeMsc) return;
       flow = next;
       chart?.onFlowSnapshot?.(flow);
+      chart?.onVolumeDelta?.(flow?.volumeDelta ?? null);
     },
     receiveTick(tick: LiveTick) {
       if (!active || (latest && tick.timeMsc < latest.timeMsc)) return;
@@ -170,6 +180,7 @@ export function createMt5Intrabar(load: (signal: AbortSignal) => Promise<Mt5Cand
       }
       if (latest) sink.onLastPrice?.(latest.last, latest.timeMsc);
       sink.onFlowSnapshot?.(flow);
+      sink.onVolumeDelta?.(flow?.volumeDelta ?? null);
       return () => { if (chart === sink) chart = undefined; };
     },
   };

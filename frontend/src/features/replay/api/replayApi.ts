@@ -8,6 +8,10 @@ const responseSchema = z.object({
 });
 
 export async function createReplay(symbol: string, date: string, signal?: AbortSignal) {
-  const response = await httpClient.post('/api/replay/sessions', { symbol, date }, { signal });
+  // Creating a replay may export and validate the full trading day's MT5 history.
+  const response = await httpClient.post('/api/replay/sessions', { symbol, date }, {
+    signal,
+    timeout: 5 * 60_000,
+  });
   return responseSchema.parse(response.data);
 }
