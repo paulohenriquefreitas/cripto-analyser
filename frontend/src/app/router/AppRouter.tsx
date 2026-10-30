@@ -8,6 +8,7 @@ import { StockDetailPage } from '@/features/stock/pages/StockDetailPage';
 import { WinScannerPage } from '@/features/win/pages/WinScannerPage';
 
 import { WinMt5Page } from '@/features/win/pages/WinMt5Page';
+import { ThreeCandlesPage } from '@/features/threecandles/pages/ThreeCandlesPage';
 import { ReplayPage } from '@/features/replay/pages/ReplayPage';
 
 import { ExperimentalScannerPage } from '@/features/scanner/pages/ExperimentalScannerPage';
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: 'scanner-experimental', element: <ExperimentalScannerPage /> },
       { path: 'win-m5', element: <WinMt5Page /> },
       { path: 'replay', element: <ReplayPage /> },
+      { path: 'three-candles', element: <ThreeCandlesPage /> },
       { path: 'win-scanner', element: <WinScannerPage /> },
       { path: 'stock/:ticker', element: <StockDetailPage /> },
       { path: 'settings', element: <SettingsPage /> },

@@ -1,0 +1,67 @@
+import type { StructuralChartLevel } from '@/features/win/models/mt5Intrabar';
+
+export type M5DisplayPivot = StructuralChartLevel & {
+  state?: 'CONFIRMED' | 'BROKEN';
+  brokenAtMsc?: number | null;
+};
+export type M5DisplayGroup = {
+  id: string;
+  type: M5DisplayPivot['type'];
+  price: number;
+  low: number;
+  high: number;
+  members: readonly M5DisplayPivot[];
+  movementCount: number;
+};
+
+const day = (level: M5DisplayPivot) => Math.floor(level.extremeTimeMsc / 86_400_000);
+const symbol = (level: M5DisplayPivot) => level.id.includes(':5:') ? level.id.split(':5:')[0] : '';
+const order = (a: M5DisplayPivot, b: M5DisplayPivot) => a.confirmedAtMsc - b.confirmedAtMsc
+  || a.extremeTimeMsc - b.extremeTimeMsc || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+const brokenBefore = (member: M5DisplayPivot, next: M5DisplayPivot) => member.brokenAtMsc != null
+  && member.brokenAtMsc <= next.extremeTimeMsc;
+
+/** Display only. Full-span tolerance prevents chains; the first confirmed price stays fixed.
+ * Rebuild in confirmation order so streaming, reconnect and replay prefixes agree.
+ * A later break never changes an earlier association: compare break time with the new origin.
+ */
+export function groupM5ForDisplay(
+  levels: readonly M5DisplayPivot[], tolerance: number, availableAtMsc = Infinity, separateMovements = false,
+): M5DisplayGroup[] {
+  if (!Number.isFinite(tolerance) || tolerance < 0) throw new Error('Tolerancia M5 deve ser finita e nao negativa.');
+  const groups: M5DisplayGroup[] = [];
+  const ids = new Set<string>();
+  const pivots = levels.filter(l => (l.timeframeMinutes ?? 5) === 5 && l.confirmedAtMsc <= availableAtMsc).slice().sort(order);
+  for (const pivot of pivots) {
+    if (ids.has(pivot.id)) continue;
+    ids.add(pivot.id);
+    // Zero is an explicit ungrouped comparison, even for equal prices.
+    const candidates = tolerance === 0 ? [] : groups.filter(g => {
+      const anchor = g.members[0];
+      return g.type === pivot.type && day(anchor) === day(pivot) && symbol(anchor) === symbol(pivot)
+        && Math.max(g.high, pivot.price) - Math.min(g.low, pivot.price) <= tolerance
+        && (!separateMovements || !g.members.some(m => brokenBefore(m, pivot)));
+    }).sort((a, b) => Math.abs(a.price - pivot.price) - Math.abs(b.price - pivot.price)
+      || order(a.members[0], b.members[0]));
+    const group = candidates[0];
+    if (group) {
+      group.members = [...group.members, pivot];
+      group.low = Math.min(group.low, pivot.price);
+      group.high = Math.max(group.high, pivot.price);
+    } else groups.push({ id: `m5-region:${pivot.id}`, type: pivot.type, price: pivot.price,
+      low: pivot.price, high: pivot.price, members: [pivot], movementCount: 1 });
+  }
+  for (const group of groups) {
+    let episode: M5DisplayPivot[] = [];
+    for (const pivot of group.members) {
+      if (episode.some(m => brokenBefore(m, pivot))) { group.movementCount++; episode = []; }
+      episode.push(pivot);
+    }
+  }
+  return groups;
+}
+
+/** Only chart delivery uses representative levels. Original pivots are never replaced. */
+export function m5GroupLine(group: M5DisplayGroup): StructuralChartLevel {
+  return group.members[0]; // Its price is the immutable representative; keep its original chart ID.
+}

@@ -1,0 +1,238 @@
+{
+  "symbol": "WINZ26",
+  "timeframeMinutes": 5,
+  "status": "LIVE",
+  "lastTickMsc": 1793032358373,
+  "candles": [
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793032200000,
+        "open": 180020.0,
+        "high": 180080.0,
+        "low": 179160.0,
+        "close": 179700.0
+      },
+      "timeframeMinutes": 5,
+      "closed": false,
+      "availableAtMsc": 1793032358373
+    }
+  ],
+  "structure": {
+    "levels": [
+      {
+        "id": "WINZ26:5:1793024400000:TOP",
+        "type": "TOP",
+        "price": 179185.0,
+        "extremeTimeMsc": 1793024400000,
+        "confirmedAtMsc": 1793025300000,
+        "region": {
+          "high": 179185.0,
+          "low": 178710.0,
+          "midpoint": 178947.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793032200000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793019300000:TOP",
+        "type": "TOP",
+        "price": 179030.0,
+        "extremeTimeMsc": 1793019300000,
+        "confirmedAtMsc": 1793020200000,
+        "region": {
+          "high": 179030.0,
+          "low": 177830.0,
+          "midpoint": 178430.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793024700000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793028300000:TOP",
+        "type": "TOP",
+        "price": 178740.0,
+        "extremeTimeMsc": 1793028300000,
+        "confirmedAtMsc": 1793029200000,
+        "region": {
+          "high": 178740.0,
+          "low": 177640.0,
+          "midpoint": 178190.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793031900000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793026200000:TOP",
+        "type": "TOP",
+        "price": 177895.0,
+        "extremeTimeMsc": 1793026200000,
+        "confirmedAtMsc": 1793027100000,
+        "region": {
+          "high": 177895.0,
+          "low": 176270.0,
+          "midpoint": 177082.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793028600000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793027100000:TOP",
+        "type": "TOP",
+        "price": 177755.0,
+        "extremeTimeMsc": 1793027100000,
+        "confirmedAtMsc": 1793028000000,
+        "region": {
+          "high": 177755.0,
+          "low": 176850.0,
+          "midpoint": 177302.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793028300000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793031000000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 176820.0,
+        "extremeTimeMsc": 1793031000000,
+        "confirmedAtMsc": 1793031900000,
+        "region": {
+          "high": 177655.0,
+          "low": 176820.0,
+          "midpoint": 177237.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:60:1793005200000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 166790.0,
+        "extremeTimeMsc": 1793005200000,
+        "confirmedAtMsc": 1793016000000,
+        "region": {
+          "high": 177215.0,
+          "low": 166790.0,
+          "midpoint": 172002.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792692000000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 205865.0,
+        "extremeTimeMsc": 1792692000000,
+        "confirmedAtMsc": 1792753200000,
+        "region": {
+          "high": 207510.0,
+          "low": 205865.0,
+          "midpoint": 206687.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793008800000,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792670400000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 206755.0,
+        "extremeTimeMsc": 1792670400000,
+        "confirmedAtMsc": 1792681200000,
+        "region": {
+          "high": 207675.0,
+          "low": 206755.0,
+          "midpoint": 207215.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1792746300000,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792764000000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 206995.0,
+        "extremeTimeMsc": 1792764000000,
+        "confirmedAtMsc": 1792774800000,
+        "region": {
+          "high": 208470.0,
+          "low": 206995.0,
+          "midpoint": 207732.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793008800000,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792058400000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 207235.0,
+        "extremeTimeMsc": 1792058400000,
+        "confirmedAtMsc": 1792069200000,
+        "region": {
+          "high": 209560.0,
+          "low": 207235.0,
+          "midpoint": 208397.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1792674000000,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792080000000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 207440.0,
+        "extremeTimeMsc": 1792080000000,
+        "confirmedAtMsc": 1792141500000,
+        "region": {
+          "high": 209945.0,
+          "low": 207440.0,
+          "midpoint": 208692.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1792670400000,
+        "timeframeMinutes": 60
+      }
+    ],
+    "totalActive": 278,
+    "maxLevels": 6,
+    "selection": "NEAREST_LAST_CLOSED_THEN_LATEST_CONFIRMED",
+    "supported": true,
+    "h1History": {
+      "previousSessions": 9,
+      "sufficient": true,
+      "alignment": "NATIVE_FEED_HOUR_NO_SHIFT"
+    }
+  }
+}

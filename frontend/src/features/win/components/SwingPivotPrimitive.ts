@@ -3,6 +3,10 @@ import type { SwingPivot } from '../models/mt5SwingPivots';
 
 /** Canvas rays start at each wick, extend right, and follow chart pan/zoom. */
 export class SwingPivotPrimitive implements ISeriesPrimitive<Time> {
+  private readonly style: { color: string; opacity: number; width: number; dash: number[] };
+  constructor(style: Partial<{ color: string; opacity: number; width: number; dash: number[] }> = {}) {
+    this.style = { color: '#ff5252', opacity: 0.55, width: 1, dash: [6, 4], ...style };
+  }
   private attachment?: SeriesAttachedParameter<Time>;
   private levels: readonly SwingPivot[] = [];
   private firstTime = Infinity;
@@ -12,10 +16,10 @@ export class SwingPivotPrimitive implements ISeriesPrimitive<Time> {
       if (!attachment) return;
       target.useMediaCoordinateSpace(({ context, mediaSize }) => {
         context.save();
-        context.strokeStyle = '#ff5252';
-        context.globalAlpha = 0.55;
-        context.lineWidth = 1;
-        context.setLineDash([6, 4]);
+        context.strokeStyle = this.style.color;
+        context.globalAlpha = this.style.opacity;
+        context.lineWidth = this.style.width;
+        context.setLineDash(this.style.dash);
         for (const level of this.levels) {
           const coordinate = attachment.chart.timeScale().timeToCoordinate(level.time as UTCTimestamp);
           const x = coordinate ?? (level.time < this.firstTime ? 0 : null);

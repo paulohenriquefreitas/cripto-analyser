@@ -1,0 +1,5 @@
+{
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroDowEngine.java": "b2714d84fa22199fdfe57b770056745de7d9825619d588fa497d666ccd68f1ae",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroZigZag.java": "9bacb6ac25e973ad85a5fc70bc2898a9f3a8dd829b0cf00e35c52c639e7936e4",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowStructureEngine.java": "f5aa118e5005b1ef2a77f2c10c238ef7aa6d8979b8a6b09c03f772af50df003f"
+}

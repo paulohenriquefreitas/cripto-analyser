@@ -1,0 +1,22 @@
+{
+  "symbolInvestigated": "WINZ26",
+  "captureSymbolConfirmedByUser": false,
+  "date": "2026-10-28",
+  "source": "Native MetaTrader5 copy_rates_range through panic-scanner/scripts/mt5_reader.py",
+  "command": "python panic-scanner/scripts/mt5_reader.py --symbol WINZ26 --from 2026-10-28 --to 2026-10-28",
+  "timestampConvention": "MT5 civil clock encoded as epoch; no timezone shift",
+  "sessionOpening": "09:00",
+  "firstAvailableBar": "09:00",
+  "openingOHLC": {
+    "open": 178290,
+    "high": 178700,
+    "low": 177240,
+    "close": 177365
+  },
+  "rawBarCount": 46,
+  "closedBarsUsedInPrefixTests": 45,
+  "lastRawBarExcluded": "Conservatively excluded: native snapshot can include a forming candle",
+  "comparisonCursor": "10:40",
+  "comparisonBarCount": 20,
+  "sha256": "72f573898faffd148f3e2f6bde8a10e52b7b6a0c7b07870e071e906c1d5030e8"
+}

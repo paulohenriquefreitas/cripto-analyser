@@ -1,0 +1,215 @@
+{
+  "verifiedAtUTC": "2026-10-30T15:12:47.802740+00:00",
+  "protectedSourcesUnchanged": true,
+  "legacySnapshotFieldsUnchanged": true,
+  "nativeM5Prefixes": 131,
+  "nativeM1Steps": 520,
+  "frontendTestsPassed": 84,
+  "newJavaTestsPassed": 3,
+  "snapshots": [
+    {
+      "snapshot": "29-1600",
+      "waveId": "WINZ26:5:micro:1793287500000:BOTTOM->WINZ26:5:micro:1793288100000:TOP",
+      "initial": {
+        "id": "WINZ26:5:micro:1793287500000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 170985.0,
+        "extremeTimeMsc": 1793287500000,
+        "confirmedAtMsc": 1793288100000,
+        "region": {
+          "high": 171225.0,
+          "low": 170985.0,
+          "midpoint": 171105.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "MICRO_1_1",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      "terminal": {
+        "id": "WINZ26:5:micro:1793288100000:TOP",
+        "type": "TOP",
+        "price": 171550.0,
+        "extremeTimeMsc": 1793288100000,
+        "confirmedAtMsc": 1793288700000,
+        "region": {
+          "high": 171550.0,
+          "low": 171200.0,
+          "midpoint": 171375.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "MICRO_1_1",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      "micro50": 171267.5,
+      "availableAtMsc": 1793288700000,
+      "historySize": 34,
+      "browserErrors": [],
+      "defaultCheckboxes": {
+        "Dow principal": true,
+        "Dow micro": true,
+        "50% Dow principal": true,
+        "50% Dow micro": true,
+        "Abertura experimental": true,
+        "H1 - f\u00facsia": false,
+        "M5 - amarelo": false
+      }
+    },
+    {
+      "snapshot": "29-1610",
+      "waveId": "WINZ26:5:micro:1793287500000:BOTTOM->WINZ26:5:micro:1793289300000:TOP",
+      "initial": {
+        "id": "WINZ26:5:micro:1793287500000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 170985.0,
+        "extremeTimeMsc": 1793287500000,
+        "confirmedAtMsc": 1793288100000,
+        "region": {
+          "high": 171225.0,
+          "low": 170985.0,
+          "midpoint": 171105.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "MICRO_1_1",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      "terminal": {
+        "id": "WINZ26:5:micro:1793289300000:TOP",
+        "type": "TOP",
+        "price": 172845.0,
+        "extremeTimeMsc": 1793289300000,
+        "confirmedAtMsc": 1793289900000,
+        "region": {
+          "high": 172845.0,
+          "low": 171970.0,
+          "midpoint": 172407.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "MICRO_1_1",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      "micro50": 171915.0,
+      "availableAtMsc": 1793289900000,
+      "historySize": 35,
+      "browserErrors": [],
+      "defaultCheckboxes": {
+        "Dow principal": true,
+        "Dow micro": true,
+        "50% Dow principal": true,
+        "50% Dow micro": true,
+        "Abertura experimental": true,
+        "H1 - f\u00facsia": false,
+        "M5 - amarelo": false
+      }
+    },
+    {
+      "snapshot": "30-1015",
+      "waveId": "WINZ26:5:micro:1793353500000:BOTTOM->WINZ26:5:micro:1793354400000:TOP",
+      "initial": {
+        "id": "WINZ26:5:micro:1793353500000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 169070.0,
+        "extremeTimeMsc": 1793353500000,
+        "confirmedAtMsc": 1793354100000,
+        "region": {
+          "high": 169605.0,
+          "low": 169070.0,
+          "midpoint": 169337.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "MICRO_1_1",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      "terminal": {
+        "id": "WINZ26:5:micro:1793354400000:TOP",
+        "type": "TOP",
+        "price": 169785.0,
+        "extremeTimeMsc": 1793354400000,
+        "confirmedAtMsc": 1793355000000,
+        "region": {
+          "high": 169785.0,
+          "low": 169450.0,
+          "midpoint": 169617.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "MICRO_1_1",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      "micro50": 169427.5,
+      "availableAtMsc": 1793355000000,
+      "historySize": 3,
+      "browserErrors": [],
+      "defaultCheckboxes": {
+        "Dow principal": true,
+        "Dow micro": true,
+        "50% Dow principal": true,
+        "50% Dow micro": true,
+        "Abertura experimental": true,
+        "H1 - f\u00facsia": false,
+        "M5 - amarelo": false
+      }
+    },
+    {
+      "snapshot": "30-1025",
+      "waveId": "WINZ26:5:micro:1793354400000:TOP->WINZ26:5:micro:1793355300000:BOTTOM",
+      "initial": {
+        "id": "WINZ26:5:micro:1793354400000:TOP",
+        "type": "TOP",
+        "price": 169785.0,
+        "extremeTimeMsc": 1793354400000,
+        "confirmedAtMsc": 1793355000000,
+        "region": {
+          "high": 169785.0,
+          "low": 169450.0,
+          "midpoint": 169617.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "MICRO_1_1",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      "terminal": {
+        "id": "WINZ26:5:micro:1793355300000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 169160.0,
+        "extremeTimeMsc": 1793355300000,
+        "confirmedAtMsc": 1793355900000,
+        "region": {
+          "high": 169550.0,
+          "low": 169160.0,
+          "midpoint": 169355.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "MICRO_1_1",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      "micro50": 169472.5,
+      "availableAtMsc": 1793355900000,
+      "historySize": 4,
+      "browserErrors": [],
+      "defaultCheckboxes": {
+        "Dow principal": true,
+        "Dow micro": true,
+        "50% Dow principal": true,
+        "50% Dow micro": true,
+        "Abertura experimental": true,
+        "H1 - f\u00facsia": false,
+        "M5 - amarelo": false
+      }
+    }
+  ]
+}

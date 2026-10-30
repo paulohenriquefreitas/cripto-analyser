@@ -1,0 +1,35 @@
+{
+  "source": "real frontend; native MT5 history processed by Java; API intercepted",
+  "runtimeErrors": [],
+  "preparedReferences": 8,
+  "defaultM5Hidden": true,
+  "restoredMatchesDefault": true,
+  "pixels": {
+    "default": {
+      "yellow": 0,
+      "fuchsia": 3924,
+      "pixelBands": 7
+    },
+    "none": {
+      "yellow": 0,
+      "fuchsia": 0,
+      "pixelBands": 0
+    },
+    "m5": {
+      "yellow": 288,
+      "fuchsia": 0,
+      "pixelBands": 0
+    },
+    "both": {
+      "yellow": 368,
+      "fuchsia": 3924,
+      "pixelBands": 7
+    },
+    "restored": {
+      "yellow": 0,
+      "fuchsia": 3924,
+      "pixelBands": 7
+    }
+  },
+  "note": "Eight rays are delivered; nearby prices may occupy adjacent raster rows at this scale."
+}

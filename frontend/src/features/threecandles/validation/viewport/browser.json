@@ -1,0 +1,42 @@
+{
+  "symbol": "WIN$N",
+  "date": "2026-10-16",
+  "initialAxis": {
+    "min": 207250,
+    "max": 210250
+  },
+  "manualAxis": {
+    "min": 206400,
+    "max": 211200
+  },
+  "nextAxis": {
+    "min": 206400,
+    "max": 211200
+  },
+  "adjustedAxis": {
+    "min": 207250,
+    "max": 210250
+  },
+  "resetAxis": {
+    "min": 207250,
+    "max": 210250
+  },
+  "releasedCandles": 338,
+  "visibleCandleLow": 207440,
+  "visibleCandleHigh": 210095,
+  "h1Min": 206075,
+  "h1Max": 211750,
+  "controls": {
+    "adjust": true,
+    "h1": true
+  },
+  "captures": [
+    "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\viewport\\initial.png",
+    "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\viewport\\manual.png",
+    "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\viewport\\next-manual.png",
+    "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\viewport\\adjusted.png",
+    "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\viewport\\reset.png"
+  ],
+  "errors": [],
+  "source": "real native chart, Java Replay prefix, API intercepted"
+}

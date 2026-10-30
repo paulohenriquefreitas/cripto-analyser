@@ -1,0 +1,588 @@
+{
+  "id": "h1-preparation-preview",
+  "symbol": "WINZ26",
+  "speed": 1,
+  "candles": [
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793022900000,
+        "open": 176075.0,
+        "high": 176805.0,
+        "low": 175895.0,
+        "close": 176760.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793023200000
+    }
+  ],
+  "structure": {
+    "levels": [
+      {
+        "id": "WINZ26:5:1793021400000:TOP",
+        "type": "TOP",
+        "price": 176070.0,
+        "extremeTimeMsc": 1793021400000,
+        "confirmedAtMsc": 1793022300000,
+        "region": {
+          "high": 176070.0,
+          "low": 175155.0,
+          "midpoint": 175612.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793022900000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793011800000:TOP",
+        "type": "TOP",
+        "price": 175305.0,
+        "extremeTimeMsc": 1793011800000,
+        "confirmedAtMsc": 1793012700000,
+        "region": {
+          "high": 175305.0,
+          "low": 174350.0,
+          "midpoint": 174827.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793016300000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793022300000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 174755.0,
+        "extremeTimeMsc": 1793022300000,
+        "confirmedAtMsc": 1793023200000,
+        "region": {
+          "high": 175350.0,
+          "low": 174755.0,
+          "midpoint": 175052.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793020800000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 174695.0,
+        "extremeTimeMsc": 1793020800000,
+        "confirmedAtMsc": 1793021700000,
+        "region": {
+          "high": 175790.0,
+          "low": 174695.0,
+          "midpoint": 175242.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793019300000:TOP",
+        "type": "TOP",
+        "price": 179030.0,
+        "extremeTimeMsc": 1793019300000,
+        "confirmedAtMsc": 1793020200000,
+        "region": {
+          "high": 179030.0,
+          "low": 177830.0,
+          "midpoint": 178430.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793009400000:TOP",
+        "type": "TOP",
+        "price": 173920.0,
+        "extremeTimeMsc": 1793009400000,
+        "confirmedAtMsc": 1793010300000,
+        "region": {
+          "high": 173920.0,
+          "low": 172020.0,
+          "midpoint": 172970.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793011200000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:60:1792576800000:TOP",
+        "type": "TOP",
+        "price": 213385.0,
+        "extremeTimeMsc": 1792576800000,
+        "confirmedAtMsc": 1792587600000,
+        "region": {
+          "high": 213385.0,
+          "low": 211545.0,
+          "midpoint": 212465.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "STRICT_H1_PREOPEN",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792602000000:TOP",
+        "type": "TOP",
+        "price": 210670.0,
+        "extremeTimeMsc": 1792602000000,
+        "confirmedAtMsc": 1792663200000,
+        "region": {
+          "high": 210670.0,
+          "low": 209885.0,
+          "midpoint": 210277.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "STRICT_H1_PREOPEN",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792670400000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 206755.0,
+        "extremeTimeMsc": 1792670400000,
+        "confirmedAtMsc": 1792681200000,
+        "region": {
+          "high": 207675.0,
+          "low": 206755.0,
+          "midpoint": 207215.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "STRICT_H1_PREOPEN",
+        "state": "BROKEN",
+        "brokenAtMsc": 1792695600000,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792681200000:TOP",
+        "type": "TOP",
+        "price": 208235.0,
+        "extremeTimeMsc": 1792681200000,
+        "confirmedAtMsc": 1792692000000,
+        "region": {
+          "high": 208235.0,
+          "low": 207600.0,
+          "midpoint": 207917.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "STRICT_H1_PREOPEN",
+        "state": "BROKEN",
+        "brokenAtMsc": 1792767600000,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792692000000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 205865.0,
+        "extremeTimeMsc": 1792692000000,
+        "confirmedAtMsc": 1792753200000,
+        "region": {
+          "high": 207510.0,
+          "low": 205865.0,
+          "midpoint": 206687.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "STRICT_H1_PREOPEN",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792749600000:TOP",
+        "type": "TOP",
+        "price": 208630.0,
+        "extremeTimeMsc": 1792749600000,
+        "confirmedAtMsc": 1792760400000,
+        "region": {
+          "high": 208630.0,
+          "low": 207560.0,
+          "midpoint": 208095.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "STRICT_H1_PREOPEN",
+        "state": "BROKEN",
+        "brokenAtMsc": 1792771200000,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792764000000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 206995.0,
+        "extremeTimeMsc": 1792764000000,
+        "confirmedAtMsc": 1792774800000,
+        "region": {
+          "high": 208470.0,
+          "low": 206995.0,
+          "midpoint": 207732.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "STRICT_H1_PREOPEN",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1792767600000:TOP",
+        "type": "TOP",
+        "price": 209485.0,
+        "extremeTimeMsc": 1792767600000,
+        "confirmedAtMsc": 1792778400000,
+        "region": {
+          "high": 209485.0,
+          "low": 208305.0,
+          "midpoint": 208895.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "STRICT_H1_PREOPEN",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      }
+    ],
+    "totalActive": 536,
+    "maxLevels": 6,
+    "selection": "PREOPEN_THREE_SESSIONS_STRICT_PIVOTS_GROUP_5_POINTS",
+    "supported": true,
+    "h1History": {
+      "previousSessions": 16,
+      "sufficient": true,
+      "alignment": "NATIVE_FEED_HOUR_NO_SHIFT"
+    },
+    "preparation": {
+      "symbol": "WINZ26",
+      "sessionDate": "2026-10-26",
+      "sessionOpenMsc": 1793005200000,
+      "sourceSessions": [
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23"
+      ],
+      "sufficient": true,
+      "criterion": "PREOPEN_THREE_SESSIONS_STRICT_PIVOTS_GROUP_5_POINTS",
+      "candidates": [
+        {
+          "id": "WINZ26:60:1792576800000:TOP",
+          "type": "TOP",
+          "price": 213385.0,
+          "extremeTimeMsc": 1792576800000,
+          "confirmedAtMsc": 1792587600000,
+          "region": {
+            "high": 213385.0,
+            "low": 211545.0,
+            "midpoint": 212465.0,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792602000000:TOP",
+          "type": "TOP",
+          "price": 210670.0,
+          "extremeTimeMsc": 1792602000000,
+          "confirmedAtMsc": 1792663200000,
+          "region": {
+            "high": 210670.0,
+            "low": 209885.0,
+            "midpoint": 210277.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792670400000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 206755.0,
+          "extremeTimeMsc": 1792670400000,
+          "confirmedAtMsc": 1792681200000,
+          "region": {
+            "high": 207675.0,
+            "low": 206755.0,
+            "midpoint": 207215.0,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "BROKEN",
+          "brokenAtMsc": 1792695600000,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792681200000:TOP",
+          "type": "TOP",
+          "price": 208235.0,
+          "extremeTimeMsc": 1792681200000,
+          "confirmedAtMsc": 1792692000000,
+          "region": {
+            "high": 208235.0,
+            "low": 207600.0,
+            "midpoint": 207917.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "BROKEN",
+          "brokenAtMsc": 1792767600000,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792692000000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 205865.0,
+          "extremeTimeMsc": 1792692000000,
+          "confirmedAtMsc": 1792753200000,
+          "region": {
+            "high": 207510.0,
+            "low": 205865.0,
+            "midpoint": 206687.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792749600000:TOP",
+          "type": "TOP",
+          "price": 208630.0,
+          "extremeTimeMsc": 1792749600000,
+          "confirmedAtMsc": 1792760400000,
+          "region": {
+            "high": 208630.0,
+            "low": 207560.0,
+            "midpoint": 208095.0,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "BROKEN",
+          "brokenAtMsc": 1792771200000,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792764000000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 206995.0,
+          "extremeTimeMsc": 1792764000000,
+          "confirmedAtMsc": 1792774800000,
+          "region": {
+            "high": 208470.0,
+            "low": 206995.0,
+            "midpoint": 207732.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792767600000:TOP",
+          "type": "TOP",
+          "price": 209485.0,
+          "extremeTimeMsc": 1792767600000,
+          "confirmedAtMsc": 1792778400000,
+          "region": {
+            "high": 209485.0,
+            "low": 208305.0,
+            "midpoint": 208895.0,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        }
+      ],
+      "levels": [
+        {
+          "id": "WINZ26:60:1792576800000:TOP",
+          "type": "TOP",
+          "price": 213385.0,
+          "extremeTimeMsc": 1792576800000,
+          "confirmedAtMsc": 1792587600000,
+          "region": {
+            "high": 213385.0,
+            "low": 211545.0,
+            "midpoint": 212465.0,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792602000000:TOP",
+          "type": "TOP",
+          "price": 210670.0,
+          "extremeTimeMsc": 1792602000000,
+          "confirmedAtMsc": 1792663200000,
+          "region": {
+            "high": 210670.0,
+            "low": 209885.0,
+            "midpoint": 210277.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792670400000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 206755.0,
+          "extremeTimeMsc": 1792670400000,
+          "confirmedAtMsc": 1792681200000,
+          "region": {
+            "high": 207675.0,
+            "low": 206755.0,
+            "midpoint": 207215.0,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "BROKEN",
+          "brokenAtMsc": 1792695600000,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792681200000:TOP",
+          "type": "TOP",
+          "price": 208235.0,
+          "extremeTimeMsc": 1792681200000,
+          "confirmedAtMsc": 1792692000000,
+          "region": {
+            "high": 208235.0,
+            "low": 207600.0,
+            "midpoint": 207917.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "BROKEN",
+          "brokenAtMsc": 1792767600000,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792692000000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 205865.0,
+          "extremeTimeMsc": 1792692000000,
+          "confirmedAtMsc": 1792753200000,
+          "region": {
+            "high": 207510.0,
+            "low": 205865.0,
+            "midpoint": 206687.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792749600000:TOP",
+          "type": "TOP",
+          "price": 208630.0,
+          "extremeTimeMsc": 1792749600000,
+          "confirmedAtMsc": 1792760400000,
+          "region": {
+            "high": 208630.0,
+            "low": 207560.0,
+            "midpoint": 208095.0,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "BROKEN",
+          "brokenAtMsc": 1792771200000,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792764000000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 206995.0,
+          "extremeTimeMsc": 1792764000000,
+          "confirmedAtMsc": 1792774800000,
+          "region": {
+            "high": 208470.0,
+            "low": 206995.0,
+            "midpoint": 207732.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        },
+        {
+          "id": "WINZ26:60:1792767600000:TOP",
+          "type": "TOP",
+          "price": 209485.0,
+          "extremeTimeMsc": 1792767600000,
+          "confirmedAtMsc": 1792778400000,
+          "region": {
+            "high": 209485.0,
+            "low": 208305.0,
+            "midpoint": 208895.0,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "STRICT_H1_PREOPEN",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 60
+        }
+      ],
+      "groups": {
+        "WINZ26:60:1792576800000:TOP": [
+          "WINZ26:60:1792576800000:TOP"
+        ],
+        "WINZ26:60:1792602000000:TOP": [
+          "WINZ26:60:1792602000000:TOP"
+        ],
+        "WINZ26:60:1792670400000:BOTTOM": [
+          "WINZ26:60:1792670400000:BOTTOM"
+        ],
+        "WINZ26:60:1792681200000:TOP": [
+          "WINZ26:60:1792681200000:TOP"
+        ],
+        "WINZ26:60:1792692000000:BOTTOM": [
+          "WINZ26:60:1792692000000:BOTTOM"
+        ],
+        "WINZ26:60:1792749600000:TOP": [
+          "WINZ26:60:1792749600000:TOP"
+        ],
+        "WINZ26:60:1792764000000:BOTTOM": [
+          "WINZ26:60:1792764000000:BOTTOM"
+        ],
+        "WINZ26:60:1792767600000:TOP": [
+          "WINZ26:60:1792767600000:TOP"
+        ]
+      }
+    }
+  },
+  "status": "PAUSED",
+  "availableAtMsc": 1793023200000,
+  "timeframeMinutes": 5
+}

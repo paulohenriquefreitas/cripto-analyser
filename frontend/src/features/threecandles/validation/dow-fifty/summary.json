@@ -1,0 +1,46 @@
+[
+  {
+    "symbol": "WINZ26",
+    "prefixes": 103,
+    "waves": 17,
+    "cutoff": "17:35",
+    "events": {
+      "WAVE_CONFIRMED": 17,
+      "MONITOR_STARTED": 17,
+      "APPROACH": 13,
+      "FIRST_TOUCH": 9,
+      "BREAK_ATTEMPT": 27,
+      "BREAK_CANDIDATE": 12,
+      "BREAK_CONFIRMED_EXPERIMENTAL_M5_CLOSE": 12,
+      "REJECTION_CANDIDATE": 12,
+      "BREAK_INVALIDATED_FALSE_BREAK": 5,
+      "REJECTION_INVALIDATED": 6,
+      "BREAK_DESTINATION_OBSERVED": 4,
+      "WAVE_EXTREME_OBSERVED": 44,
+      "REFERENCE_ENDED": 16,
+      "RETURN_DESTINATION_OBSERVED": 1
+    }
+  },
+  {
+    "symbol": "WIN$N",
+    "prefixes": 113,
+    "waves": 21,
+    "cutoff": "18:25",
+    "events": {
+      "WAVE_CONFIRMED": 21,
+      "MONITOR_STARTED": 21,
+      "WAVE_EXTREME_OBSERVED": 69,
+      "APPROACH": 7,
+      "FIRST_TOUCH": 7,
+      "BREAK_ATTEMPT": 20,
+      "BREAK_CANDIDATE": 8,
+      "BREAK_CONFIRMED_EXPERIMENTAL_M5_CLOSE": 8,
+      "BREAK_DESTINATION_OBSERVED": 3,
+      "REJECTION_CANDIDATE": 7,
+      "REJECTION_INVALIDATED": 3,
+      "REFERENCE_ENDED": 20,
+      "RETURN_DESTINATION_OBSERVED": 2,
+      "BREAK_INVALIDATED_FALSE_BREAK": 3
+    }
+  }
+]

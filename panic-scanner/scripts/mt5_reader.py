@@ -34,8 +34,8 @@ def read_candles(tick_only=False, symbol=None, timeframe="M5", from_date=None, t
                 "last": float(tick.last),
                 "volume": float(tick.volume),
             }
-        if timeframe not in ("M5", "D1"):
-            raise ValueError("Timeframe suportado: M5 ou D1")
+        if timeframe not in ("M1", "M5", "D1"):
+            raise ValueError("Timeframe suportado: M1, M5 ou D1")
         period = getattr(mt5, "TIMEFRAME_" + timeframe)
         if from_date is not None or not symbol.startswith("WIN"):
             if not mt5.symbol_select(symbol, True):
@@ -71,7 +71,7 @@ if __name__ == "__main__":
         parser = argparse.ArgumentParser()
         parser.add_argument("--tick", action="store_true")
         parser.add_argument("--symbol", default=None)
-        parser.add_argument("--timeframe", choices=("M5", "D1"), default="M5")
+        parser.add_argument("--timeframe", choices=("M1", "M5", "D1"), default="M5")
         parser.add_argument("--from", dest="from_date", type=date.fromisoformat)
         parser.add_argument("--to", dest="to_date", type=date.fromisoformat)
         args = parser.parse_args()

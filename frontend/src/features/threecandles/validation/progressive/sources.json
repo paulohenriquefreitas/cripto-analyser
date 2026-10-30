@@ -1,0 +1,11 @@
+{
+  "source": "Native MT5 M1 via mt5_reader.py; original terminal timestamps; no symbol mapping",
+  "queriedAt": "2026-10-29T01:40:08.286519+00:00",
+  "files": {
+    "WINZ26-m1.json": "2e116ecc7c073203a08003300ef6519a0e2125f03b5ee1db5a43304e8c4efa2a",
+    "WIN_N-m1.json": "2ca431c5edf65e52dc5f75b38b96b07ec84cfd13f1d53b4eadfe1018ff444c46"
+  },
+  "WINZ26Cutoff": "2026-10-28 17:35",
+  "WIN_NCutoff": "2026-10-16 18:25",
+  "gap": "WINZ26 15:01 absent in original M1 response and a second bounded native query; no assumption of no trades"
+}

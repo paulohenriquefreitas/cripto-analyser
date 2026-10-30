@@ -1,0 +1,19 @@
+{
+  "symbol": "WINZ26",
+  "description": "IBOVESPA MINI",
+  "source": "Native MT5 copy_rates_range / mt5_reader.read_candles",
+  "timeframe": "M5",
+  "date": "2026-10-28",
+  "retrievedAtUtc": "2026-10-28T20:39:00.846223+00:00",
+  "nativeLastTickTime": 1793209140,
+  "nativeLastTickCivil": "2026-10-28T17:39:00+00:00",
+  "timestampConvention": "Feed civil epoch; no timezone shift",
+  "terminalName": "MetaTrader 5",
+  "terminalBuild": 6230,
+  "captureSourceConfirmed": false,
+  "captureRegionsConfirmed": false,
+  "rawBarCount": 104,
+  "closedBarCount": 103,
+  "sha256": "568db80bb4d3222e2594aaa5ed0f0ac36c9450137bf985b3763d2d2d4c8497f6",
+  "previousClosedPrefixMatches": true
+}

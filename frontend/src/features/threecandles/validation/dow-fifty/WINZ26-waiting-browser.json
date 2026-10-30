@@ -1,0 +1,11 @@
+{
+  "symbol": "WINZ26",
+  "atMsc": 1793180700000,
+  "current": null,
+  "state": "AGUARDANDO_ONDA",
+  "label": null,
+  "fibonacciPreserved": true,
+  "autoScale": true,
+  "errors": [],
+  "source": "Real React/native chart with Java Replay snapshot over separate historical source; HTTP intercepted"
+}

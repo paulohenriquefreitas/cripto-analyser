@@ -1,0 +1,26 @@
+{
+  "labels": [
+    {
+      "text": "Fractais"
+    },
+    {
+      "text": "Mostrar 50% Dow principal",
+      "checked": true
+    },
+    {
+      "text": "Abertura experimental",
+      "checked": true
+    },
+    {
+      "text": "H1 - fucsia",
+      "checked": false
+    },
+    {
+      "text": "M5 - amarelo",
+      "checked": false
+    }
+  ],
+  "summary": "Dow: TRANSIÇÃO\n\nÚltimo rompimento conhecido: R↑ Resistência rompida · 29/10/2026, 15:55\n\nDOW 50% — 171.915 / Monitorando 50% / confirmada em 29/10/2026, 16:10\n\nLado observado: BOTTOM_SIDE / Rompimento: NONE / Retorno: NONE. Referencias possiveis: topo 172.845 e fundo 170.985.\n\nReplay: PAUSED\n\nInstante do Replay: 29/10/2026, 16:10:00\n\nCandle M5: Fechado · origem 29/10/2026, 16:05:00\n\nReação aos 50% experimental; hipóteses de estudo, sem ordens ou destinos garantidos.",
+  "errors": [],
+  "source": "Actual React/canvas, native MT5 Java snapshots via intercepted API; unchanged cursor and viewport"
+}

@@ -1,0 +1,16 @@
+{
+  "symbol": "WINZ26",
+  "atMsc": 1793208900000,
+  "current": "WINZ26:5:1793206500000:BOTTOM→WINZ26:5:1793206800000:TOP",
+  "state": "MONITORANDO_50",
+  "label": {
+    "text": "DOW 50% — 173.692,5",
+    "width": 2.5,
+    "color": "#ffffff"
+  },
+  "fibonacciPreserved": true,
+  "autoScale": true,
+  "selected": "Onda WINZ26:5:1793206500000:BOTTOM→WINZ26:5:1793206800000:TOP / UP / Monitorando 50%.Inicial: WINZ26:5:1793206500000:BOTTOM, 173.150, formacao 28/10/2026, 16:55, confirmacao 28/10/2026, 17:10.Final: WINZ26:5:1793206800000:TOP, 174.235, formacao 28/10/2026, 17:00, confirmacao 28/10/2026, 17:15.Maxima 174.235, minima 173.150, 50% 173.692,5. Conclusao reconhecida 28/10/2026, 17:25 / evento WINZ26:dow:67.Ultima reacao: Nenhuma. Consultar historico nao reativa referencias encerradas.",
+  "errors": [],
+  "source": "Real React/native chart with Java Replay snapshot over separate historical source; HTTP intercepted"
+}

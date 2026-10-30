@@ -1,0 +1,205 @@
+{
+  "branch": "feat/three-candles-foundation",
+  "frontend": {
+    "passed": 63,
+    "typescript": "passed"
+  },
+  "java": {
+    "uniquePassed": 28,
+    "conditionalSkipped": 3
+  },
+  "pythonBridge": {
+    "passed": 6
+  },
+  "nativeReplay": [
+    {
+      "missingM1Times": [
+        1793199660000
+      ],
+      "cutoff": 1793208900000,
+      "officialM5": 103,
+      "steps": 514,
+      "symbol": "WINZ26",
+      "partialUpdates": 411,
+      "allClosesEqual": true,
+      "causalReconstruction": true
+    },
+    {
+      "missingM1Times": [],
+      "cutoff": 1792175100000,
+      "officialM5": 113,
+      "steps": 565,
+      "symbol": "WIN$N",
+      "partialUpdates": 452,
+      "allClosesEqual": true,
+      "causalReconstruction": true
+    }
+  ],
+  "detectorFingerprintsPreserved": {
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroDowEngine.java": "b2714d84fa22199fdfe57b770056745de7d9825619d588fa497d666ccd68f1ae",
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroZigZag.java": "9bacb6ac25e973ad85a5fc70bc2898a9f3a8dd829b0cf00e35c52c639e7936e4",
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowStructureEngine.java": "f5aa118e5005b1ef2a77f2c10c238ef7aa6d8979b8a6b09c03f772af50df003f"
+  },
+  "captures": [
+    {
+      "name": "WINZ26-confirmed-after",
+      "atMsc": 1793181000000,
+      "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 177.360",
+        "x": 451.66666666666674,
+        "y": 295.9088,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "name": "WIN_N-confirmed-after",
+      "atMsc": 1792144800000,
+      "currentWaveId": "WIN$N:5:1792142700000:TOP\u2192WIN$N:5:1792143000000:BOTTOM",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 209.025",
+        "x": 477.9411764705882,
+        "y": 167.33378378378376,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "name": "WINZ26-closed-1000",
+      "atMsc": 1793181600000,
+      "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 177.360",
+        "x": 399.1176470588234,
+        "y": 295.9088,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "name": "WINZ26-0956",
+      "atMsc": 1793181360000,
+      "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 177.360",
+        "x": 399.1176470588234,
+        "y": 295.9088,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "name": "WINZ26-0957",
+      "atMsc": 1793181420000,
+      "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 177.360",
+        "x": 399.1176470588234,
+        "y": 295.9088,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "name": "WINZ26-0958",
+      "atMsc": 1793181480000,
+      "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 177.360",
+        "x": 399.1176470588234,
+        "y": 295.9088,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "name": "WINZ26-0959",
+      "atMsc": 1793181540000,
+      "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 177.360",
+        "x": 399.1176470588234,
+        "y": 295.9088,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "name": "WINZ26-1000",
+      "atMsc": 1793181600000,
+      "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 177.360",
+        "x": 399.1176470588234,
+        "y": 295.9088,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "name": "WIN_N-closed-1000",
+      "atMsc": 1792144800000,
+      "currentWaveId": "WIN$N:5:1792142700000:TOP\u2192WIN$N:5:1792143000000:BOTTOM",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 209.025",
+        "x": 477.9411764705882,
+        "y": 167.33378378378376,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "name": "WIN_N-0959",
+      "atMsc": 1792144740000,
+      "currentWaveId": null,
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": null
+    },
+    {
+      "name": "WIN_N-1000",
+      "atMsc": 1792144800000,
+      "currentWaveId": "WIN$N:5:1792142700000:TOP\u2192WIN$N:5:1792143000000:BOTTOM",
+      "errors": [],
+      "fibonacciPreserved": true,
+      "autoScale": true,
+      "label": {
+        "text": "DOW 50% \u2014 209.025",
+        "x": 477.9411764705882,
+        "y": 167.33378378378376,
+        "width": 2.5,
+        "color": "#ffffff"
+      }
+    }
+  ],
+  "captureMethod": "Real React and native chart; intercepted Java Replay snapshots; M1 queried from native MT5"
+}

@@ -1,0 +1,1503 @@
+{
+  "symbol": "WIN$N",
+  "date": "2026-10-16",
+  "closedBars": 113,
+  "originalM5": 31,
+  "causalPrefixes": 113,
+  "deterministicReconstruction": true,
+  "structuralMemoryUnchanged": true,
+  "h1IntradayAvailable": true,
+  "lanes": [
+    {
+      "timeframeMinutes": 5,
+      "versions": [
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1",
+          "mode": "EXPERIMENTAL",
+          "timeframeMinutes": 5,
+          "decidedAtMsc": 1792143900000,
+          "high": {
+            "id": "WIN$N:5:1792142700000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209375,
+            "extremeTimeMsc": 1792142700000,
+            "confirmedAtMsc": 1792143600000
+          },
+          "low": {
+            "id": "WIN$N:5:1792143000000:BOTTOM",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "BOTTOM",
+            "price": 208675,
+            "extremeTimeMsc": 1792143000000,
+            "confirmedAtMsc": 1792143900000
+          },
+          "fib50": 209025,
+          "direction": "DOWN",
+          "reason": "INITIAL_OPPOSITE_PAIR_HYPOTHESIS",
+          "previous": null
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792146300000:2",
+          "mode": "EXPERIMENTAL",
+          "timeframeMinutes": 5,
+          "decidedAtMsc": 1792146300000,
+          "high": {
+            "id": "WIN$N:5:1792142700000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209375,
+            "extremeTimeMsc": 1792142700000,
+            "confirmedAtMsc": 1792143600000
+          },
+          "low": {
+            "id": "WIN$N:5:1792145400000:BOTTOM",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "BOTTOM",
+            "price": 208640,
+            "extremeTimeMsc": 1792145400000,
+            "confirmedAtMsc": 1792146300000
+          },
+          "fib50": 209007.5,
+          "direction": "DOWN",
+          "reason": "CONFIRMED_LOWER_BOTTOM_HYPOTHESIS",
+          "previous": {
+            "highId": "WIN$N:5:1792142700000:TOP",
+            "lowId": "WIN$N:5:1792143000000:BOTTOM",
+            "high": {
+              "id": "WIN$N:5:1792142700000:TOP",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 5,
+              "type": "TOP",
+              "price": 209375,
+              "extremeTimeMsc": 1792142700000,
+              "confirmedAtMsc": 1792143600000
+            },
+            "low": {
+              "id": "WIN$N:5:1792143000000:BOTTOM",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 5,
+              "type": "BOTTOM",
+              "price": 208675,
+              "extremeTimeMsc": 1792143000000,
+              "confirmedAtMsc": 1792143900000
+            }
+          }
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3",
+          "mode": "EXPERIMENTAL",
+          "timeframeMinutes": 5,
+          "decidedAtMsc": 1792152000000,
+          "high": {
+            "id": "WIN$N:5:1792142700000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209375,
+            "extremeTimeMsc": 1792142700000,
+            "confirmedAtMsc": 1792143600000
+          },
+          "low": {
+            "id": "WIN$N:5:1792151100000:BOTTOM",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "BOTTOM",
+            "price": 208340,
+            "extremeTimeMsc": 1792151100000,
+            "confirmedAtMsc": 1792152000000
+          },
+          "fib50": 208857.5,
+          "direction": "DOWN",
+          "reason": "CONFIRMED_LOWER_BOTTOM_HYPOTHESIS",
+          "previous": {
+            "highId": "WIN$N:5:1792142700000:TOP",
+            "lowId": "WIN$N:5:1792145400000:BOTTOM",
+            "high": {
+              "id": "WIN$N:5:1792142700000:TOP",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 5,
+              "type": "TOP",
+              "price": 209375,
+              "extremeTimeMsc": 1792142700000,
+              "confirmedAtMsc": 1792143600000
+            },
+            "low": {
+              "id": "WIN$N:5:1792145400000:BOTTOM",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 5,
+              "type": "BOTTOM",
+              "price": 208640,
+              "extremeTimeMsc": 1792145400000,
+              "confirmedAtMsc": 1792146300000
+            }
+          }
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792156800000:4",
+          "mode": "EXPERIMENTAL",
+          "timeframeMinutes": 5,
+          "decidedAtMsc": 1792156800000,
+          "high": {
+            "id": "WIN$N:5:1792142700000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209375,
+            "extremeTimeMsc": 1792142700000,
+            "confirmedAtMsc": 1792143600000
+          },
+          "low": {
+            "id": "WIN$N:5:1792155900000:BOTTOM",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "BOTTOM",
+            "price": 208280,
+            "extremeTimeMsc": 1792155900000,
+            "confirmedAtMsc": 1792156800000
+          },
+          "fib50": 208827.5,
+          "direction": "DOWN",
+          "reason": "CONFIRMED_LOWER_BOTTOM_HYPOTHESIS",
+          "previous": {
+            "highId": "WIN$N:5:1792142700000:TOP",
+            "lowId": "WIN$N:5:1792151100000:BOTTOM",
+            "high": {
+              "id": "WIN$N:5:1792142700000:TOP",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 5,
+              "type": "TOP",
+              "price": 209375,
+              "extremeTimeMsc": 1792142700000,
+              "confirmedAtMsc": 1792143600000
+            },
+            "low": {
+              "id": "WIN$N:5:1792151100000:BOTTOM",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 5,
+              "type": "BOTTOM",
+              "price": 208340,
+              "extremeTimeMsc": 1792151100000,
+              "confirmedAtMsc": 1792152000000
+            }
+          }
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5",
+          "mode": "EXPERIMENTAL",
+          "timeframeMinutes": 5,
+          "decidedAtMsc": 1792160400000,
+          "high": {
+            "id": "WIN$N:5:1792142700000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209375,
+            "extremeTimeMsc": 1792142700000,
+            "confirmedAtMsc": 1792143600000
+          },
+          "low": {
+            "id": "WIN$N:5:1792159500000:BOTTOM",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "BOTTOM",
+            "price": 208215,
+            "extremeTimeMsc": 1792159500000,
+            "confirmedAtMsc": 1792160400000
+          },
+          "fib50": 208795,
+          "direction": "DOWN",
+          "reason": "CONFIRMED_LOWER_BOTTOM_HYPOTHESIS",
+          "previous": {
+            "highId": "WIN$N:5:1792142700000:TOP",
+            "lowId": "WIN$N:5:1792155900000:BOTTOM",
+            "high": {
+              "id": "WIN$N:5:1792142700000:TOP",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 5,
+              "type": "TOP",
+              "price": 209375,
+              "extremeTimeMsc": 1792142700000,
+              "confirmedAtMsc": 1792143600000
+            },
+            "low": {
+              "id": "WIN$N:5:1792155900000:BOTTOM",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 5,
+              "type": "BOTTOM",
+              "price": 208280,
+              "extremeTimeMsc": 1792155900000,
+              "confirmedAtMsc": 1792156800000
+            }
+          }
+        }
+      ],
+      "ambiguities": [
+        {
+          "id": "ambiguity:WIN$N:5:1792143900000:TOP",
+          "atMsc": 1792144800000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792143900000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209435,
+            "extremeTimeMsc": 1792143900000,
+            "confirmedAtMsc": 1792144800000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792144800000:TOP",
+          "atMsc": 1792145700000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792144800000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209690,
+            "extremeTimeMsc": 1792144800000,
+            "confirmedAtMsc": 1792145700000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792147200000:TOP",
+          "atMsc": 1792148100000,
+          "versionId": "EXPERIMENTAL:5:1792146300000:2",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792147200000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 210210,
+            "extremeTimeMsc": 1792147200000,
+            "confirmedAtMsc": 1792148100000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792148400000:TOP",
+          "atMsc": 1792149300000,
+          "versionId": "EXPERIMENTAL:5:1792146300000:2",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792148400000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 210095,
+            "extremeTimeMsc": 1792148400000,
+            "confirmedAtMsc": 1792149300000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792149600000:TOP",
+          "atMsc": 1792150500000,
+          "versionId": "EXPERIMENTAL:5:1792146300000:2",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792149600000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 210535,
+            "extremeTimeMsc": 1792149600000,
+            "confirmedAtMsc": 1792150500000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792151700000:TOP",
+          "atMsc": 1792152600000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792151700000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209680,
+            "extremeTimeMsc": 1792151700000,
+            "confirmedAtMsc": 1792152600000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792165500000:TOP",
+          "atMsc": 1792166400000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792165500000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209605,
+            "extremeTimeMsc": 1792165500000,
+            "confirmedAtMsc": 1792166400000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792167300000:TOP",
+          "atMsc": 1792168200000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792167300000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209550,
+            "extremeTimeMsc": 1792167300000,
+            "confirmedAtMsc": 1792168200000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792168200000:TOP",
+          "atMsc": 1792169100000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792168200000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209480,
+            "extremeTimeMsc": 1792168200000,
+            "confirmedAtMsc": 1792169100000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792169100000:TOP",
+          "atMsc": 1792170000000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792169100000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 209415,
+            "extremeTimeMsc": 1792169100000,
+            "confirmedAtMsc": 1792170000000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792172400000:TOP",
+          "atMsc": 1792173300000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792172400000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 210150,
+            "extremeTimeMsc": 1792172400000,
+            "confirmedAtMsc": 1792173300000
+          }
+        },
+        {
+          "id": "ambiguity:WIN$N:5:1792173300000:TOP",
+          "atMsc": 1792174200000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "AMBIGUOUS_RANGE",
+          "detail": "Extremo contrario fora da amplitude: reversao/troca de ancora sem regra validada; amplitude mantida.",
+          "anchor": {
+            "id": "WIN$N:5:1792173300000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 5,
+            "type": "TOP",
+            "price": 210250,
+            "extremeTimeMsc": 1792173300000,
+            "confirmedAtMsc": 1792174200000
+          }
+        }
+      ],
+      "observations": [
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792144500000:TEST_50",
+          "atMsc": 1792144500000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792144500000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792144500000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792144800000:TEST_50",
+          "atMsc": 1792144800000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792144800000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792144800000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792145400000:TEST_50",
+          "atMsc": 1792145400000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792145400000:POSSIBLE_BREAK_50",
+          "atMsc": 1792145400000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792145700000:TEST_50",
+          "atMsc": 1792145700000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792145700000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792145700000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792146000000:TEST_50",
+          "atMsc": 1792146000000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792143900000:1:1792146000000:POSSIBLE_BREAK_50",
+          "atMsc": 1792146000000,
+          "versionId": "EXPERIMENTAL:5:1792143900000:1",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792146300000:2:1792150800000:TEST_50",
+          "atMsc": 1792150800000,
+          "versionId": "EXPERIMENTAL:5:1792146300000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792146300000:2:1792150800000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792150800000,
+          "versionId": "EXPERIMENTAL:5:1792146300000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792146300000:2:1792151100000:TEST_50",
+          "atMsc": 1792151100000,
+          "versionId": "EXPERIMENTAL:5:1792146300000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792146300000:2:1792151100000:POSSIBLE_BREAK_50",
+          "atMsc": 1792151100000,
+          "versionId": "EXPERIMENTAL:5:1792146300000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792146300000:2:1792151700000:TEST_50",
+          "atMsc": 1792151700000,
+          "versionId": "EXPERIMENTAL:5:1792146300000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792146300000:2:1792151700000:POSSIBLE_BREAK_50",
+          "atMsc": 1792151700000,
+          "versionId": "EXPERIMENTAL:5:1792146300000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792152900000:TEST_50",
+          "atMsc": 1792152900000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792152900000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792152900000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792153200000:TEST_50",
+          "atMsc": 1792153200000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792153200000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792153200000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792153500000:TEST_50",
+          "atMsc": 1792153500000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792153500000:POSSIBLE_BREAK_50",
+          "atMsc": 1792153500000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792153800000:TEST_50",
+          "atMsc": 1792153800000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792153800000:POSSIBLE_BREAK_50",
+          "atMsc": 1792153800000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792154100000:TEST_50",
+          "atMsc": 1792154100000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792154100000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792154100000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792155000000:TEST_50",
+          "atMsc": 1792155000000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792155000000:POSSIBLE_BREAK_50",
+          "atMsc": 1792155000000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792155300000:TEST_50",
+          "atMsc": 1792155300000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792155300000:POSSIBLE_BREAK_50",
+          "atMsc": 1792155300000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792155600000:TEST_50",
+          "atMsc": 1792155600000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792152000000:3:1792155600000:POSSIBLE_BREAK_50",
+          "atMsc": 1792155600000,
+          "versionId": "EXPERIMENTAL:5:1792152000000:3",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792156800000:4:1792158600000:TEST_50",
+          "atMsc": 1792158600000,
+          "versionId": "EXPERIMENTAL:5:1792156800000:4",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792156800000:4:1792158600000:POSSIBLE_BREAK_50",
+          "atMsc": 1792158600000,
+          "versionId": "EXPERIMENTAL:5:1792156800000:4",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792156800000:4:1792158900000:TEST_50",
+          "atMsc": 1792158900000,
+          "versionId": "EXPERIMENTAL:5:1792156800000:4",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792156800000:4:1792158900000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792158900000,
+          "versionId": "EXPERIMENTAL:5:1792156800000:4",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792156800000:4:1792159200000:TEST_50",
+          "atMsc": 1792159200000,
+          "versionId": "EXPERIMENTAL:5:1792156800000:4",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792156800000:4:1792159200000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792159200000,
+          "versionId": "EXPERIMENTAL:5:1792156800000:4",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792156800000:4:1792159500000:TEST_50",
+          "atMsc": 1792159500000,
+          "versionId": "EXPERIMENTAL:5:1792156800000:4",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792156800000:4:1792159500000:POSSIBLE_BREAK_50",
+          "atMsc": 1792159500000,
+          "versionId": "EXPERIMENTAL:5:1792156800000:4",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792161900000:TEST_50",
+          "atMsc": 1792161900000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792161900000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792161900000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792162200000:TEST_50",
+          "atMsc": 1792162200000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792162200000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792162200000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792162500000:TEST_50",
+          "atMsc": 1792162500000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792162500000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792162500000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792162800000:TEST_50",
+          "atMsc": 1792162800000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792162800000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792162800000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792163100000:TEST_50",
+          "atMsc": 1792163100000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792163100000:POSSIBLE_BREAK_50",
+          "atMsc": 1792163100000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792163400000:TEST_50",
+          "atMsc": 1792163400000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792163400000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792163400000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792163700000:TEST_50",
+          "atMsc": 1792163700000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:5:1792160400000:5:1792163700000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792163700000,
+          "versionId": "EXPERIMENTAL:5:1792160400000:5",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        }
+      ]
+    },
+    {
+      "timeframeMinutes": 60,
+      "versions": [
+        {
+          "id": "EXPERIMENTAL:60:1791979200000:1",
+          "mode": "EXPERIMENTAL",
+          "timeframeMinutes": 60,
+          "decidedAtMsc": 1791979200000,
+          "high": {
+            "id": "WIN$N:60:1791968400000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 60,
+            "type": "TOP",
+            "price": 211115,
+            "extremeTimeMsc": 1791968400000,
+            "confirmedAtMsc": 1791979200000
+          },
+          "low": {
+            "id": "WIN$N:60:1791885600000:BOTTOM",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 60,
+            "type": "BOTTOM",
+            "price": 206075,
+            "extremeTimeMsc": 1791885600000,
+            "confirmedAtMsc": 1791896400000
+          },
+          "fib50": 208595,
+          "direction": "UP",
+          "reason": "INITIAL_OPPOSITE_PAIR_HYPOTHESIS",
+          "previous": null
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2",
+          "mode": "EXPERIMENTAL",
+          "timeframeMinutes": 60,
+          "decidedAtMsc": 1792000800000,
+          "high": {
+            "id": "WIN$N:60:1791990000000:TOP",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 60,
+            "type": "TOP",
+            "price": 211750,
+            "extremeTimeMsc": 1791990000000,
+            "confirmedAtMsc": 1792000800000
+          },
+          "low": {
+            "id": "WIN$N:60:1791885600000:BOTTOM",
+            "symbol": "WIN$N",
+            "timeframeMinutes": 60,
+            "type": "BOTTOM",
+            "price": 206075,
+            "extremeTimeMsc": 1791885600000,
+            "confirmedAtMsc": 1791896400000
+          },
+          "fib50": 208912.5,
+          "direction": "UP",
+          "reason": "CONFIRMED_HIGHER_TOP_HYPOTHESIS",
+          "previous": {
+            "highId": "WIN$N:60:1791968400000:TOP",
+            "lowId": "WIN$N:60:1791885600000:BOTTOM",
+            "high": {
+              "id": "WIN$N:60:1791968400000:TOP",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 60,
+              "type": "TOP",
+              "price": 211115,
+              "extremeTimeMsc": 1791968400000,
+              "confirmedAtMsc": 1791979200000
+            },
+            "low": {
+              "id": "WIN$N:60:1791885600000:BOTTOM",
+              "symbol": "WIN$N",
+              "timeframeMinutes": 60,
+              "type": "BOTTOM",
+              "price": 206075,
+              "extremeTimeMsc": 1791885600000,
+              "confirmedAtMsc": 1791896400000
+            }
+          }
+        }
+      ],
+      "ambiguities": [],
+      "observations": [
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792002300000:TEST_50",
+          "atMsc": 1792002300000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792002300000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792002300000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792055400000:TEST_50",
+          "atMsc": 1792055400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792061400000:TEST_50",
+          "atMsc": 1792061400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792061400000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792061400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792061700000:TEST_50",
+          "atMsc": 1792061700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792061700000:POSSIBLE_BREAK_50",
+          "atMsc": 1792061700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792062000000:TEST_50",
+          "atMsc": 1792062000000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792062000000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792062000000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792062300000:TEST_50",
+          "atMsc": 1792062300000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792062300000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792062300000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792080900000:TEST_50",
+          "atMsc": 1792080900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792080900000:POSSIBLE_BREAK_50",
+          "atMsc": 1792080900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792081200000:TEST_50",
+          "atMsc": 1792081200000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792081200000:POSSIBLE_BREAK_50",
+          "atMsc": 1792081200000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792081500000:TEST_50",
+          "atMsc": 1792081500000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792081500000:POSSIBLE_BREAK_50",
+          "atMsc": 1792081500000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792141500000:TEST_50",
+          "atMsc": 1792141500000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792141800000:TEST_50",
+          "atMsc": 1792141800000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792141800000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792141800000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792142100000:TEST_50",
+          "atMsc": 1792142100000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792142100000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792142100000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792142400000:TEST_50",
+          "atMsc": 1792142400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792142400000:POSSIBLE_BREAK_50",
+          "atMsc": 1792142400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792142700000:TEST_50",
+          "atMsc": 1792142700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792142700000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792142700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792143000000:TEST_50",
+          "atMsc": 1792143000000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792143000000:POSSIBLE_BREAK_50",
+          "atMsc": 1792143000000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792143300000:TEST_50",
+          "atMsc": 1792143300000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792143300000:POSSIBLE_BREAK_50",
+          "atMsc": 1792143300000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792143600000:TEST_50",
+          "atMsc": 1792143600000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792143600000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792143600000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792143900000:TEST_50",
+          "atMsc": 1792143900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792143900000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792143900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792144800000:TEST_50",
+          "atMsc": 1792144800000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792144800000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792144800000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792145400000:TEST_50",
+          "atMsc": 1792145400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792145400000:POSSIBLE_BREAK_50",
+          "atMsc": 1792145400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792145700000:TEST_50",
+          "atMsc": 1792145700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792145700000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792145700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792146000000:TEST_50",
+          "atMsc": 1792146000000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792146000000:POSSIBLE_BREAK_50",
+          "atMsc": 1792146000000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792150800000:TEST_50",
+          "atMsc": 1792150800000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792150800000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792150800000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792151100000:TEST_50",
+          "atMsc": 1792151100000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792151100000:POSSIBLE_BREAK_50",
+          "atMsc": 1792151100000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792151400000:TEST_50",
+          "atMsc": 1792151400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792151400000:POSSIBLE_BREAK_50",
+          "atMsc": 1792151400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792151700000:TEST_50",
+          "atMsc": 1792151700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792151700000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792151700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792152600000:TEST_50",
+          "atMsc": 1792152600000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792152600000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792152600000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792152900000:TEST_50",
+          "atMsc": 1792152900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792152900000:POSSIBLE_BREAK_50",
+          "atMsc": 1792152900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792153200000:TEST_50",
+          "atMsc": 1792153200000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792153200000:POSSIBLE_BREAK_50",
+          "atMsc": 1792153200000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792153500000:TEST_50",
+          "atMsc": 1792153500000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792153500000:POSSIBLE_BREAK_50",
+          "atMsc": 1792153500000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792153800000:TEST_50",
+          "atMsc": 1792153800000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792153800000:POSSIBLE_BREAK_50",
+          "atMsc": 1792153800000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792154100000:TEST_50",
+          "atMsc": 1792154100000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792154100000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792154100000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792155000000:TEST_50",
+          "atMsc": 1792155000000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792155000000:POSSIBLE_BREAK_50",
+          "atMsc": 1792155000000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792155300000:TEST_50",
+          "atMsc": 1792155300000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792155300000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792155300000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792155600000:TEST_50",
+          "atMsc": 1792155600000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792155600000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792155600000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792158900000:TEST_50",
+          "atMsc": 1792158900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792158900000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792158900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792159200000:TEST_50",
+          "atMsc": 1792159200000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792159200000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792159200000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792159500000:TEST_50",
+          "atMsc": 1792159500000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792159500000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792159500000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792161900000:TEST_50",
+          "atMsc": 1792161900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792161900000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792161900000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792162200000:TEST_50",
+          "atMsc": 1792162200000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792162200000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792162200000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792163400000:TEST_50",
+          "atMsc": 1792163400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792163400000:POSSIBLE_REJECTION_50",
+          "atMsc": 1792163400000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_REJECTION_50",
+          "detail": "Candle testa 50% e fecha no lado anterior; rejeicao apenas candidata."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792163700000:TEST_50",
+          "atMsc": 1792163700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "TEST_50",
+          "detail": "O intervalo do candle inclui 50%; ordem intrabar desconhecida."
+        },
+        {
+          "id": "EXPERIMENTAL:60:1792000800000:2:1792163700000:POSSIBLE_BREAK_50",
+          "atMsc": 1792163700000,
+          "versionId": "EXPERIMENTAL:60:1792000800000:2",
+          "kind": "POSSIBLE_BREAK_50",
+          "detail": "Fechamentos consecutivos em lados opostos; nao confirma rompimento operacional."
+        }
+      ]
+    }
+  ],
+  "manualExample": {
+    "id": "MANUAL:5:1792148400000:1",
+    "mode": "MANUAL",
+    "timeframeMinutes": 5,
+    "decidedAtMsc": 1792148400000,
+    "high": {
+      "id": "WIN$N:5:1792147200000:TOP",
+      "symbol": "WIN$N",
+      "timeframeMinutes": 5,
+      "type": "TOP",
+      "price": 210210,
+      "extremeTimeMsc": 1792147200000,
+      "confirmedAtMsc": 1792148100000
+    },
+    "low": {
+      "id": "WIN$N:5:1792143000000:BOTTOM",
+      "symbol": "WIN$N",
+      "timeframeMinutes": 5,
+      "type": "BOTTOM",
+      "price": 208675,
+      "extremeTimeMsc": 1792143000000,
+      "confirmedAtMsc": 1792143900000
+    },
+    "fib50": 209442.5,
+    "direction": "UP",
+    "reason": "USER_SELECTED_ANCHORS",
+    "previous": null
+  },
+  "policy": "Experimental: first opposite pair; only higher confirmed top in UP or lower confirmed bottom in DOWN extends. Opposite escape remains ambiguous; midpoint interactions do not change anchors."
+}

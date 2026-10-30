@@ -1,0 +1,41 @@
+{
+  "captures": [
+    {
+      "name": "before",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\grouping\\before.png",
+      "pivots": 31,
+      "lines": 31
+    },
+    {
+      "name": "15",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\grouping\\15.png",
+      "pivots": 31,
+      "lines": 28
+    },
+    {
+      "name": "30",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\grouping\\30.png",
+      "pivots": 31,
+      "lines": 26
+    },
+    {
+      "name": "50",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\grouping\\50.png",
+      "pivots": 31,
+      "lines": 23
+    },
+    {
+      "name": "30-separated",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\grouping\\30-separated.png",
+      "pivots": 31,
+      "lines": 30
+    }
+  ],
+  "controls": {
+    "cursor": "18:25",
+    "originalPivots": true,
+    "h1": true
+  },
+  "errors": [],
+  "source": "real page, Java Replay snapshot from MT5 cache, API intercepted"
+}

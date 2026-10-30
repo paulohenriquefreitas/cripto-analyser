@@ -1,0 +1,7 @@
+{
+  "state": "Dow experimental · M5 · TRANSIÇÃO",
+  "selected": "Topo · 210.535 · origem 16/10/2026, 11:20 · confirmação 16/10/2026, 11:35 · HH · Estrutura Dow · comparação WIN$N:5:1792148400000:TOP (210.095) · Confirmed same-side extension replaces the structural terminal",
+  "errors": [],
+  "fibonacciPreserved": true,
+  "source": "Real frontend with Java Dow events over separate MT5 source; API intercepted"
+}

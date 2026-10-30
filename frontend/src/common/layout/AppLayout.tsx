@@ -25,6 +25,7 @@ export function AppLayout() {
     { to: '/scanner', label: t('navigation.scanner'), icon: <InsightsRoundedIcon /> },
     { to: '/scanner-experimental', label: 'Scanner experimental', icon: <InsightsRoundedIcon /> },
     { to: '/win-m5', label: 'WIN M5', icon: <ShowChartRoundedIcon /> },
+    { to: '/three-candles', label: 'Padrão de 3 Candles', icon: <ShowChartRoundedIcon /> },
     { to: '/win-scanner', label: t('navigation.winScanner'), icon: <SsidChartRoundedIcon /> },
     { to: '/stock/PETR4', label: t('navigation.stock'), icon: <ShowChartRoundedIcon /> },
     { to: '/settings', label: t('navigation.settings'), icon: <SettingsRoundedIcon /> },

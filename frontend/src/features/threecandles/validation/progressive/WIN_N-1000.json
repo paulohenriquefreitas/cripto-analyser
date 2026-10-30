@@ -1,0 +1,835 @@
+{
+  "symbol" : "WIN$N",
+  "timeframeMinutes" : 5,
+  "id" : "progressive-audit",
+  "status" : "PAUSED",
+  "speed" : 1,
+  "availableAtMsc" : 1792144800000,
+  "replayMode" : "PROGRESSIVE_M1",
+  "missingM1Times" : [ ],
+  "candles" : [ {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792141200000,
+      "open" : 209500.0,
+      "high" : 209555.0,
+      "low" : 208075.0,
+      "close" : 208375.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792141500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792141500000,
+      "open" : 208370.0,
+      "high" : 208950.0,
+      "low" : 208355.0,
+      "close" : 208735.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792141800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792141800000,
+      "open" : 208735.0,
+      "high" : 209180.0,
+      "low" : 208695.0,
+      "close" : 208860.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792142100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792142100000,
+      "open" : 208860.0,
+      "high" : 209150.0,
+      "low" : 208760.0,
+      "close" : 209020.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792142400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792142400000,
+      "open" : 209020.0,
+      "high" : 209120.0,
+      "low" : 208885.0,
+      "close" : 209090.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792142700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792142700000,
+      "open" : 209090.0,
+      "high" : 209375.0,
+      "low" : 208845.0,
+      "close" : 208870.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792143000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792143000000,
+      "open" : 208875.0,
+      "high" : 209120.0,
+      "low" : 208675.0,
+      "close" : 209065.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792143300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792143300000,
+      "open" : 209060.0,
+      "high" : 209150.0,
+      "low" : 208730.0,
+      "close" : 208930.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792143600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792143600000,
+      "open" : 208925.0,
+      "high" : 209320.0,
+      "low" : 208890.0,
+      "close" : 209145.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792143900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792143900000,
+      "open" : 209145.0,
+      "high" : 209435.0,
+      "low" : 209120.0,
+      "close" : 209150.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792144200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792144200000,
+      "open" : 209150.0,
+      "high" : 209285.0,
+      "low" : 208960.0,
+      "close" : 209120.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792144500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1792144500000,
+      "open" : 209125.0,
+      "high" : 209375.0,
+      "low" : 208910.0,
+      "close" : 209285.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1792144800000
+  } ],
+  "structure" : {
+    "levels" : [ {
+      "id" : "WIN$N:5:1792142700000:TOP",
+      "type" : "TOP",
+      "price" : 209375.0,
+      "extremeTimeMsc" : 1792142700000,
+      "confirmedAtMsc" : 1792143600000,
+      "region" : {
+        "high" : 209375.0,
+        "low" : 208845.0,
+        "midpoint" : 209110.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 5
+    }, {
+      "id" : "WIN$N:5:1792143000000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 208675.0,
+      "extremeTimeMsc" : 1792143000000,
+      "confirmedAtMsc" : 1792143900000,
+      "region" : {
+        "high" : 209120.0,
+        "low" : 208675.0,
+        "midpoint" : 208897.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 5
+    }, {
+      "id" : "WIN$N:5:1792143900000:TOP",
+      "type" : "TOP",
+      "price" : 209435.0,
+      "extremeTimeMsc" : 1792143900000,
+      "confirmedAtMsc" : 1792144800000,
+      "region" : {
+        "high" : 209435.0,
+        "low" : 209120.0,
+        "midpoint" : 209277.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 5
+    } ],
+    "totalActive" : 3,
+    "maxLevels" : 6,
+    "selection" : "NEAREST_LAST_CLOSED_THEN_LATEST_CONFIRMED",
+    "supported" : true,
+    "h1History" : {
+      "previousSessions" : 0,
+      "sufficient" : false,
+      "alignment" : "NATIVE_FEED_HOUR_NO_SHIFT"
+    },
+    "preparation" : null,
+    "confirmedPivots" : [ {
+      "id" : "WIN$N:5:1792142700000:TOP",
+      "type" : "TOP",
+      "price" : 209375.0,
+      "extremeTimeMsc" : 1792142700000,
+      "confirmedAtMsc" : 1792143600000,
+      "region" : {
+        "high" : 209375.0,
+        "low" : 208845.0,
+        "midpoint" : 209110.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 5
+    }, {
+      "id" : "WIN$N:5:1792143000000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 208675.0,
+      "extremeTimeMsc" : 1792143000000,
+      "confirmedAtMsc" : 1792143900000,
+      "region" : {
+        "high" : 209120.0,
+        "low" : 208675.0,
+        "midpoint" : 208897.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 5
+    }, {
+      "id" : "WIN$N:5:1792143900000:TOP",
+      "type" : "TOP",
+      "price" : 209435.0,
+      "extremeTimeMsc" : 1792143900000,
+      "confirmedAtMsc" : 1792144800000,
+      "region" : {
+        "high" : 209435.0,
+        "low" : 209120.0,
+        "midpoint" : 209277.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 5
+    } ]
+  },
+  "dow" : {
+    "symbol" : "WIN$N",
+    "timeframeMinutes" : 5,
+    "availableAtMsc" : 1792144800000,
+    "state" : "UNDEFINED",
+    "criterion" : "EXPERIMENTAL_PAIRED_PIVOTS_CLOSE_BREAK_V1",
+    "pivots" : [ {
+      "extreme" : {
+        "id" : "WIN$N:5:1792142700000:TOP",
+        "type" : "TOP",
+        "price" : 209375.0,
+        "extremeTimeMsc" : 1792142700000,
+        "confirmedAtMsc" : 1792143600000,
+        "region" : {
+          "high" : 209375.0,
+          "low" : 208845.0,
+          "midpoint" : 209110.0,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "PROXIMITY",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 5
+      },
+      "classification" : "FIRST",
+      "comparisonId" : null,
+      "comparisonPrice" : null,
+      "reason" : "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+      "participation" : "STRUCTURE"
+    }, {
+      "extreme" : {
+        "id" : "WIN$N:5:1792143000000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 208675.0,
+        "extremeTimeMsc" : 1792143000000,
+        "confirmedAtMsc" : 1792143900000,
+        "region" : {
+          "high" : 209120.0,
+          "low" : 208675.0,
+          "midpoint" : 208897.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "PROXIMITY",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 5
+      },
+      "classification" : "FIRST",
+      "comparisonId" : null,
+      "comparisonPrice" : null,
+      "reason" : "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+      "participation" : "STRUCTURE"
+    }, {
+      "extreme" : {
+        "id" : "WIN$N:5:1792143900000:TOP",
+        "type" : "TOP",
+        "price" : 209435.0,
+        "extremeTimeMsc" : 1792143900000,
+        "confirmedAtMsc" : 1792144800000,
+        "region" : {
+          "high" : 209435.0,
+          "low" : 209120.0,
+          "midpoint" : 209277.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "PROXIMITY",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 5
+      },
+      "classification" : "HH",
+      "comparisonId" : "WIN$N:5:1792142700000:TOP",
+      "comparisonPrice" : 209375.0,
+      "reason" : "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+      "participation" : "STRUCTURE"
+    } ],
+    "movements" : [ {
+      "id" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "fromId" : "WIN$N:5:1792142700000:TOP",
+      "toId" : "WIN$N:5:1792143000000:BOTTOM",
+      "knownAtMsc" : 1792143900000,
+      "kind" : "DOWN"
+    }, {
+      "id" : "WIN$N:5:1792143000000:BOTTOM→WIN$N:5:1792143900000:TOP",
+      "fromId" : "WIN$N:5:1792143000000:BOTTOM",
+      "toId" : "WIN$N:5:1792143900000:TOP",
+      "knownAtMsc" : 1792144800000,
+      "kind" : "UP"
+    } ],
+    "events" : [ {
+      "id" : "WIN$N:dow:0",
+      "atMsc" : 1792143600000,
+      "kind" : "PIVOT_DETECTED",
+      "pivotId" : "WIN$N:5:1792142700000:TOP",
+      "affectedMovementId" : null,
+      "stateBefore" : "UNDEFINED",
+      "stateAfter" : "UNDEFINED",
+      "reason" : "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+      "candleTimeMsc" : null,
+      "observedClose" : null
+    }, {
+      "id" : "WIN$N:dow:1",
+      "atMsc" : 1792143600000,
+      "kind" : "STRUCTURE_PIVOT_SELECTED",
+      "pivotId" : "WIN$N:5:1792142700000:TOP",
+      "affectedMovementId" : null,
+      "stateBefore" : "UNDEFINED",
+      "stateAfter" : "UNDEFINED",
+      "reason" : "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+      "candleTimeMsc" : null,
+      "observedClose" : null
+    }, {
+      "id" : "WIN$N:dow:2",
+      "atMsc" : 1792143900000,
+      "kind" : "PIVOT_DETECTED",
+      "pivotId" : "WIN$N:5:1792143000000:BOTTOM",
+      "affectedMovementId" : null,
+      "stateBefore" : "UNDEFINED",
+      "stateAfter" : "UNDEFINED",
+      "reason" : "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+      "candleTimeMsc" : null,
+      "observedClose" : null
+    }, {
+      "id" : "WIN$N:dow:3",
+      "atMsc" : 1792143900000,
+      "kind" : "STRUCTURE_PIVOT_SELECTED",
+      "pivotId" : "WIN$N:5:1792143000000:BOTTOM",
+      "affectedMovementId" : null,
+      "stateBefore" : "UNDEFINED",
+      "stateAfter" : "UNDEFINED",
+      "reason" : "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+      "candleTimeMsc" : null,
+      "observedClose" : null
+    }, {
+      "id" : "WIN$N:dow:4",
+      "atMsc" : 1792144800000,
+      "kind" : "PIVOT_DETECTED",
+      "pivotId" : "WIN$N:5:1792143900000:TOP",
+      "affectedMovementId" : null,
+      "stateBefore" : "UNDEFINED",
+      "stateAfter" : "UNDEFINED",
+      "reason" : "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+      "candleTimeMsc" : null,
+      "observedClose" : null
+    }, {
+      "id" : "WIN$N:dow:5",
+      "atMsc" : 1792144800000,
+      "kind" : "STRUCTURE_PIVOT_SELECTED",
+      "pivotId" : "WIN$N:5:1792143900000:TOP",
+      "affectedMovementId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "stateBefore" : "UNDEFINED",
+      "stateAfter" : "UNDEFINED",
+      "reason" : "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+      "candleTimeMsc" : null,
+      "observedClose" : null
+    } ]
+  },
+  "dowFifty" : {
+    "symbol" : "WIN$N",
+    "timeframeMinutes" : 5,
+    "availableAtMsc" : 1792144800000,
+    "criterion" : "CONFIRMED_MOVEMENT_V2",
+    "approachTolerancePoints" : 5.0,
+    "breakPolicy" : "EXPERIMENTAL_M5_CLOSE",
+    "rejectionPolicy" : "UNVALIDATED_RANGE_TOUCH_CLOSE_SAME_SIDE",
+    "state" : "MONITORANDO_50",
+    "currentWaveId" : "WIN$N:5:1792143000000:BOTTOM→WIN$N:5:1792143900000:TOP",
+    "references" : [ {
+      "wave" : {
+        "id" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+        "direction" : "DOWN",
+        "initial" : {
+          "id" : "WIN$N:5:1792142700000:TOP",
+          "type" : "TOP",
+          "price" : 209375.0,
+          "extremeTimeMsc" : 1792142700000,
+          "confirmedAtMsc" : 1792143600000,
+          "region" : {
+            "high" : 209375.0,
+            "low" : 208845.0,
+            "midpoint" : 209110.0,
+            "basis" : "PIVOT_CANDLE"
+          },
+          "relevance" : "PROXIMITY",
+          "state" : "CONFIRMED",
+          "brokenAtMsc" : null,
+          "timeframeMinutes" : 5
+        },
+        "terminal" : {
+          "id" : "WIN$N:5:1792143000000:BOTTOM",
+          "type" : "BOTTOM",
+          "price" : 208675.0,
+          "extremeTimeMsc" : 1792143000000,
+          "confirmedAtMsc" : 1792143900000,
+          "region" : {
+            "high" : 209120.0,
+            "low" : 208675.0,
+            "midpoint" : 208897.5,
+            "basis" : "PIVOT_CANDLE"
+          },
+          "relevance" : "PROXIMITY",
+          "state" : "CONFIRMED",
+          "brokenAtMsc" : null,
+          "timeframeMinutes" : 5
+        },
+        "high" : 209375.0,
+        "low" : 208675.0,
+        "level50" : 209025.0,
+        "recognizedAtMsc" : 1792143900000,
+        "sourceEventId" : "WIN$N:dow:3",
+        "sealingPivotId" : "WIN$N:5:1792143000000:BOTTOM"
+      },
+      "state" : "ONDA_ENCERRADA",
+      "endedAtMsc" : 1792144800000,
+      "lastEvent" : "REFERENCE_ENDED",
+      "approachSide" : "TOP_SIDE",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "CANDIDATE_UNVALIDATED"
+    }, {
+      "wave" : {
+        "id" : "WIN$N:5:1792143000000:BOTTOM→WIN$N:5:1792143900000:TOP",
+        "direction" : "UP",
+        "initial" : {
+          "id" : "WIN$N:5:1792143000000:BOTTOM",
+          "type" : "BOTTOM",
+          "price" : 208675.0,
+          "extremeTimeMsc" : 1792143000000,
+          "confirmedAtMsc" : 1792143900000,
+          "region" : {
+            "high" : 209120.0,
+            "low" : 208675.0,
+            "midpoint" : 208897.5,
+            "basis" : "PIVOT_CANDLE"
+          },
+          "relevance" : "PROXIMITY",
+          "state" : "CONFIRMED",
+          "brokenAtMsc" : null,
+          "timeframeMinutes" : 5
+        },
+        "terminal" : {
+          "id" : "WIN$N:5:1792143900000:TOP",
+          "type" : "TOP",
+          "price" : 209435.0,
+          "extremeTimeMsc" : 1792143900000,
+          "confirmedAtMsc" : 1792144800000,
+          "region" : {
+            "high" : 209435.0,
+            "low" : 209120.0,
+            "midpoint" : 209277.5,
+            "basis" : "PIVOT_CANDLE"
+          },
+          "relevance" : "PROXIMITY",
+          "state" : "CONFIRMED",
+          "brokenAtMsc" : null,
+          "timeframeMinutes" : 5
+        },
+        "high" : 209435.0,
+        "low" : 208675.0,
+        "level50" : 209055.0,
+        "recognizedAtMsc" : 1792144800000,
+        "sourceEventId" : "WIN$N:dow:5",
+        "sealingPivotId" : "WIN$N:5:1792143900000:TOP"
+      },
+      "state" : "MONITORANDO_50",
+      "endedAtMsc" : null,
+      "lastEvent" : "MONITOR_STARTED",
+      "approachSide" : "TOP_SIDE",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE"
+    } ],
+    "events" : [ {
+      "id" : "WIN$N:dow50:0",
+      "atMsc" : 1792143900000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "WAVE_CONFIRMED",
+      "stateBefore" : "AGUARDANDO_ONDA",
+      "stateAfter" : "ONDA_CONFIRMADA",
+      "candleTimeMsc" : null,
+      "close" : null,
+      "detail" : "CONFIRMED_MOVEMENT_V2; source=WIN$N:dow:3; sealing pivot=WIN$N:5:1792143000000:BOTTOM"
+    }, {
+      "id" : "WIN$N:dow50:1",
+      "atMsc" : 1792143900000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "MONITOR_STARTED",
+      "stateBefore" : "ONDA_CONFIRMADA",
+      "stateAfter" : "MONITORANDO_50",
+      "candleTimeMsc" : null,
+      "close" : null,
+      "detail" : "Only candles opening after recognition may be monitored"
+    }, {
+      "id" : "WIN$N:dow50:2",
+      "atMsc" : 1792144200000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "WAVE_EXTREME_OBSERVED",
+      "stateBefore" : "MONITORANDO_50",
+      "stateAfter" : "MONITORANDO_50",
+      "candleTimeMsc" : 1792143900000,
+      "close" : 209150.0,
+      "detail" : "Top reached=true; bottom reached=false; both in one bar do not establish an intrabar path"
+    }, {
+      "id" : "WIN$N:dow50:3",
+      "atMsc" : 1792144500000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "APPROACH",
+      "stateBefore" : "MONITORANDO_50",
+      "stateAfter" : "MONITORANDO_50",
+      "candleTimeMsc" : 1792144200000,
+      "close" : 209120.0,
+      "detail" : "Range distance to 50 = 0.0 points; independent tolerance=5.0"
+    }, {
+      "id" : "WIN$N:dow50:4",
+      "atMsc" : 1792144500000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "FIRST_TOUCH",
+      "stateBefore" : "MONITORANDO_50",
+      "stateAfter" : "MONITORANDO_50",
+      "candleTimeMsc" : 1792144200000,
+      "close" : 209120.0,
+      "detail" : "Closed M5 range includes 50; intrabar order not inferred"
+    }, {
+      "id" : "WIN$N:dow50:5",
+      "atMsc" : 1792144500000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "BREAK_ATTEMPT",
+      "stateBefore" : "MONITORANDO_50",
+      "stateAfter" : "MONITORANDO_50",
+      "candleTimeMsc" : 1792144200000,
+      "close" : 209120.0,
+      "detail" : "Range penetrated 50 from TOP_SIDE; no intrabar chronology assumed"
+    }, {
+      "id" : "WIN$N:dow50:6",
+      "atMsc" : 1792144500000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "REJECTION_CANDIDATE",
+      "stateBefore" : "MONITORANDO_50",
+      "stateAfter" : "REJEICAO_EM_AVALIACAO",
+      "candleTimeMsc" : 1792144200000,
+      "close" : 209120.0,
+      "detail" : "Explicit RANGE_TOUCH_CLOSE_SAME_SIDE hypothesis only; no validated rejection criterion. Possible return=209375.0"
+    }, {
+      "id" : "WIN$N:dow50:7",
+      "atMsc" : 1792144800000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "RETURN_DESTINATION_OBSERVED",
+      "stateBefore" : "REJEICAO_EM_AVALIACAO",
+      "stateAfter" : "MONITORANDO_50",
+      "candleTimeMsc" : 1792144500000,
+      "close" : 209285.0,
+      "detail" : "Return extreme observed; this does not validate a definitive rejection rule"
+    }, {
+      "id" : "WIN$N:dow50:8",
+      "atMsc" : 1792144800000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "BREAK_ATTEMPT",
+      "stateBefore" : "MONITORANDO_50",
+      "stateAfter" : "MONITORANDO_50",
+      "candleTimeMsc" : 1792144500000,
+      "close" : 209285.0,
+      "detail" : "Range penetrated 50 from TOP_SIDE; no intrabar chronology assumed"
+    }, {
+      "id" : "WIN$N:dow50:9",
+      "atMsc" : 1792144800000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "REJECTION_CANDIDATE",
+      "stateBefore" : "MONITORANDO_50",
+      "stateAfter" : "REJEICAO_EM_AVALIACAO",
+      "candleTimeMsc" : 1792144500000,
+      "close" : 209285.0,
+      "detail" : "Explicit RANGE_TOUCH_CLOSE_SAME_SIDE hypothesis only; no validated rejection criterion. Possible return=209375.0"
+    }, {
+      "id" : "WIN$N:dow50:10",
+      "atMsc" : 1792144800000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "WAVE_EXTREME_OBSERVED",
+      "stateBefore" : "REJEICAO_EM_AVALIACAO",
+      "stateAfter" : "REJEICAO_EM_AVALIACAO",
+      "candleTimeMsc" : 1792144500000,
+      "close" : 209285.0,
+      "detail" : "Top reached=true; bottom reached=false; both in one bar do not establish an intrabar path"
+    }, {
+      "id" : "WIN$N:dow50:11",
+      "atMsc" : 1792144800000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "kind" : "REFERENCE_ENDED",
+      "stateBefore" : "REJEICAO_EM_AVALIACAO",
+      "stateAfter" : "ONDA_ENCERRADA",
+      "candleTimeMsc" : null,
+      "close" : null,
+      "detail" : "New confirmed principal movement WIN$N:5:1792143000000:BOTTOM→WIN$N:5:1792143900000:TOP supersedes the former reference"
+    }, {
+      "id" : "WIN$N:dow50:12",
+      "atMsc" : 1792144800000,
+      "waveId" : "WIN$N:5:1792143000000:BOTTOM→WIN$N:5:1792143900000:TOP",
+      "kind" : "WAVE_CONFIRMED",
+      "stateBefore" : "AGUARDANDO_ONDA",
+      "stateAfter" : "ONDA_CONFIRMADA",
+      "candleTimeMsc" : null,
+      "close" : null,
+      "detail" : "CONFIRMED_MOVEMENT_V2; source=WIN$N:dow:5; sealing pivot=WIN$N:5:1792143900000:TOP"
+    }, {
+      "id" : "WIN$N:dow50:13",
+      "atMsc" : 1792144800000,
+      "waveId" : "WIN$N:5:1792143000000:BOTTOM→WIN$N:5:1792143900000:TOP",
+      "kind" : "MONITOR_STARTED",
+      "stateBefore" : "ONDA_CONFIRMADA",
+      "stateAfter" : "MONITORANDO_50",
+      "candleTimeMsc" : null,
+      "close" : null,
+      "detail" : "Only candles opening after recognition may be monitored"
+    } ],
+    "observations" : [ {
+      "atMsc" : 1792141500000,
+      "candleTimeMsc" : 1792141200000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 208375.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    }, {
+      "atMsc" : 1792141800000,
+      "candleTimeMsc" : 1792141500000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 208735.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    }, {
+      "atMsc" : 1792142100000,
+      "candleTimeMsc" : 1792141800000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 208860.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    }, {
+      "atMsc" : 1792142400000,
+      "candleTimeMsc" : 1792142100000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 209020.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    }, {
+      "atMsc" : 1792142700000,
+      "candleTimeMsc" : 1792142400000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 209090.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    }, {
+      "atMsc" : 1792143000000,
+      "candleTimeMsc" : 1792142700000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 208870.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    }, {
+      "atMsc" : 1792143300000,
+      "candleTimeMsc" : 1792143000000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 209065.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    }, {
+      "atMsc" : 1792143600000,
+      "candleTimeMsc" : 1792143300000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 208930.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    }, {
+      "atMsc" : 1792143900000,
+      "candleTimeMsc" : 1792143600000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 209145.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    }, {
+      "atMsc" : 1792144200000,
+      "candleTimeMsc" : 1792143900000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "state" : "MONITORANDO_50",
+      "close" : 209150.0,
+      "distance50" : 125.0,
+      "distanceTop" : 225.0,
+      "distanceBottom" : 475.0,
+      "approachSide" : "TOP_SIDE",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "MONITORED"
+    }, {
+      "atMsc" : 1792144500000,
+      "candleTimeMsc" : 1792144200000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "state" : "REJEICAO_EM_AVALIACAO",
+      "close" : 209120.0,
+      "distance50" : 95.0,
+      "distanceTop" : 255.0,
+      "distanceBottom" : 445.0,
+      "approachSide" : "TOP_SIDE",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "CANDIDATE_UNVALIDATED",
+      "reason" : "MONITORED"
+    }, {
+      "atMsc" : 1792144800000,
+      "candleTimeMsc" : 1792144500000,
+      "waveId" : "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+      "state" : "REJEICAO_EM_AVALIACAO",
+      "close" : 209285.0,
+      "distance50" : 260.0,
+      "distanceTop" : 90.0,
+      "distanceBottom" : 610.0,
+      "approachSide" : "TOP_SIDE",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "CANDIDATE_UNVALIDATED",
+      "reason" : "MONITORED"
+    } ],
+    "formingWave" : null
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "causalPrefixes" : true,
+  "closedBars" : 113,
+  "symbol" : "WIN$N",
+  "pivots" : 31,
+  "resetAndReconnect" : true,
+  "h1GoldenUnchanged" : true,
+  "checkpoints" : [ {
+    "h1" : 9,
+    "m5" : 3,
+    "clock" : "10:00",
+    "broken" : 0
+  }, {
+    "h1" : 9,
+    "m5" : 10,
+    "clock" : "12:00",
+    "broken" : 8
+  }, {
+    "h1" : 9,
+    "m5" : 22,
+    "clock" : "16:00",
+    "broken" : 15
+  }, {
+    "h1" : 9,
+    "m5" : 29,
+    "clock" : "18:00",
+    "broken" : 21
+  } ],
+  "date" : "2026-10-16",
+  "liveReplayEquality" : true
+}

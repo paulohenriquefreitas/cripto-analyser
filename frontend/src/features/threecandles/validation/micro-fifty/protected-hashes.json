@@ -1,0 +1,21 @@
+{
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\CandleAggregation.java": "7409d376b5270cf065dda66ca7ce46765d9aaa0597d5e06f73503b0121752029",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\CandlePipeline.java": "40ff748401451630bfd504c94d2284a280398ad79ee08f4fff53433f12fe8cf1",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowFiftyEngine.java": "ff41ccc8a1b51f78d7799d5cf1afe3c12e5824b89bb477a52f73c8902d8d5315",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowStructureEngine.java": "f5aa118e5005b1ef2a77f2c10c238ef7aa6d8979b8a6b09c03f772af50df003f",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1CandleAggregator.java": "e8aeb82e76480ffa4bd74f2f3572a9751892d5df74070403eeb5881ca4ec677b",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1DetectionMode.java": "af1d4eac5b937fa8326d0bdc1ee1f5806a2ad0f63e8ac507982ed37168409baf",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1ExperimentalComparison.java": "41a2c8b61ec94c7b740bec19410cfb248b4d2269f0fd708ab8d99fdfbaa8915f",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1SessionPreparation.java": "e56d05d7bdc1fa22cfa1329e4d88c96cf82ecee28294182b8a65456e7973e402",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroDowEngine.java": "b2714d84fa22199fdfe57b770056745de7d9825619d588fa497d666ccd68f1ae",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroZigZag.java": "9bacb6ac25e973ad85a5fc70bc2898a9f3a8dd829b0cf00e35c52c639e7936e4",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\OpeningStructureContext.java": "d34394c2ca40f0c8880b420bc430ba7d8a5306f0f30173dea62510309d4fa71c",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\OpeningWave.java": "35e30eff3dd1931b0ee0d3994808107000b3e2e96bdaa7167617438a597044c7",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\ThreeCandleMarketFeed.java": "2eccce6c81cd184da21d59e96d5508d1ac1a5bca3401a25bc20ede862745d40a",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\ThreeCandlePatternDetector.java": "bd04adc8bd010bf9549d6c88e8582d26a8db45d24b38969bf930107e2230d3ba",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\ThreeCandleStructure.java": "c4fc901f6a44dc77ef302512c14e4ba3abca01e451cbfb92ea3a49d76e996e73",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\application\\win\\strategy\\ConfirmedPivotDetector.java": "094f3a3388bde7673dd5a2fe0bc2923569b2c49729684cae809029330f0cc01d",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\application\\win\\strategy\\StructureReactionEvent.java": "93c5b23bfd0558e3ce9f686f46843df3e15f835645eb1927e95d1441f1703a93",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\application\\win\\strategy\\StructureReactionScanner.java": "49304c53ef93a8703af46686b8459794c86ecf6a61cc1c1cfc617d31160b4bcf",
+  "frontend\\src\\features\\threecandles\\models\\FibonacciMovementEngine.ts": "58bbdd272d9f3227c569000582f26560201e66e13954016957126fcba18fa57c"
+}

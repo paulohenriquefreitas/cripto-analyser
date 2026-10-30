@@ -1,0 +1,7 @@
+{
+  "state": "Dow experimental · M5 · INDEFINIDO",
+  "selected": "Fundo · 208.640 · origem 16/10/2026, 10:10 · confirmação 16/10/2026, 10:25 · LL · Estrutura Dow · comparação WIN$N:5:1792143000000:BOTTOM (208.675) · Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+  "errors": [],
+  "fibonacciPreserved": true,
+  "source": "Real frontend with Java Dow events over separate MT5 source; API intercepted"
+}

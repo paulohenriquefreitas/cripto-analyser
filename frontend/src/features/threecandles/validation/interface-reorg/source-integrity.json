@@ -1,0 +1,30 @@
+{
+  "protectedFiles": 397,
+  "protectedHashesUnchanged": true,
+  "analyticalExpressionsUnchanged": [
+    "analysis",
+    "lane",
+    "automatic",
+    "manualKnown",
+    "manualCurrent",
+    "anchors",
+    "primary",
+    "comparison",
+    "overlay",
+    "selectAnchor",
+    "applyManual",
+    "audit",
+    "manualObservations",
+    "observations"
+  ],
+  "feedExpressionsUnchanged": [
+    "loadReplay",
+    "command",
+    "m5Groups",
+    "m5Pivots",
+    "reusedM5Regions",
+    "contextSessions",
+    "gaps"
+  ],
+  "feedEffectsUnchanged": true
+}

@@ -1,0 +1,7 @@
+{
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowStructureEngine.java": "f5aa118e5005b1ef2a77f2c10c238ef7aa6d8979b8a6b09c03f772af50df003f",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroDowEngine.java": "b2714d84fa22199fdfe57b770056745de7d9825619d588fa497d666ccd68f1ae",
+  "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowFiftyEngine.java": "7ae129520364577d3a4a4fcf4e29f1005c3b4401e62857131cb1496f8f35e561",
+  "frontend\\src\\features\\threecandles\\models\\FibonacciMovementEngine.ts": "58bbdd272d9f3227c569000582f26560201e66e13954016957126fcba18fa57c",
+  "frontend\\src\\features\\threecandles\\components\\FibonacciPrimitive.ts": "bc0396a339e95ed71be188518394d5efbc33069173c82f85dc84e01c121bc66c"
+}

@@ -1,0 +1,39 @@
+{
+  "saved": [
+    {
+      "name": "initial",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\fibonacci\\initial.png",
+      "fibonacci": "FIBO 50% — 209.025 · Hipótese automática · Micro M5 · Baixa · máxima 209.375 · mínima 208.675 · decisão 16/10/2026, 09:45"
+    },
+    {
+      "name": "expanded",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\fibonacci\\expanded.png",
+      "fibonacci": "FIBO 50% — 209.007,5 · Hipótese automática · Micro M5 · Baixa · máxima 209.375 · mínima 208.640 · decisão 16/10/2026, 10:25"
+    },
+    {
+      "name": "manual",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\fibonacci\\manual.png",
+      "fibonacci": "FIBO 50% — 209.442,5 · Manual · Micro M5 · Alta · máxima 210.210 · mínima 208.675 · decisão 16/10/2026, 11:00"
+    },
+    {
+      "name": "manual-preserved",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\fibonacci\\manual-preserved.png",
+      "fibonacci": "FIBO 50% — 209.442,5 · Manual · Micro M5 · Alta · máxima 210.210 · mínima 208.675 · decisão 16/10/2026, 11:00"
+    },
+    {
+      "name": "macro",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\fibonacci\\macro.png",
+      "fibonacci": "FIBO 50% — 208.912,5 · Hipótese automática · Macro H1 · Alta · máxima 211.750 · mínima 206.075 · decisão 14/10/2026, 18:00"
+    },
+    {
+      "name": "reset-pending-manual",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\fibonacci\\reset-pending-manual.png",
+      "fibonacci": "Fibonacci manual aguardando duas âncoras confirmadas."
+    }
+  ],
+  "manualGraphSelection": true,
+  "manualPreserved": true,
+  "resetDoesNotBackdate": true,
+  "errors": [],
+  "source": "real frontend, Java Replay prefix snapshots; API intercepted"
+}

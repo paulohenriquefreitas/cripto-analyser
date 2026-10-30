@@ -1,0 +1,16 @@
+{
+  "symbol": "WIN$N",
+  "atMsc": 1792144800000,
+  "current": "WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM",
+  "state": "MONITORANDO_50",
+  "label": {
+    "text": "DOW 50% — 209.025",
+    "width": 2.5,
+    "color": "#ffffff"
+  },
+  "fibonacciPreserved": true,
+  "autoScale": true,
+  "selected": "Onda WIN$N:5:1792142700000:TOP→WIN$N:5:1792143000000:BOTTOM / DOWN / Monitorando 50%.Inicial: WIN$N:5:1792142700000:TOP, 209.375, formacao 16/10/2026, 09:25, confirmacao 16/10/2026, 09:40.Final: WIN$N:5:1792143000000:BOTTOM, 208.675, formacao 16/10/2026, 09:30, confirmacao 16/10/2026, 09:45.Maxima 209.375, minima 208.675, 50% 209.025. Conclusao reconhecida 16/10/2026, 10:00 / evento WIN$N:dow:5.Ultima reacao: Nenhuma. Consultar historico nao reativa referencias encerradas.",
+  "errors": [],
+  "source": "Real React/native chart with Java Replay snapshot over separate historical source; HTTP intercepted"
+}

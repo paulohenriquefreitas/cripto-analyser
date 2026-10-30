@@ -1,0 +1,76 @@
+{
+  "snapshots": [
+    {
+      "name": "WINZ26-waiting",
+      "cursor": "09:45",
+      "whiteLinePresent": false,
+      "fibonacciPreserved": true,
+      "errors": 0
+    },
+    {
+      "name": "WINZ26-confirmed",
+      "cursor": "09:50",
+      "whiteLinePresent": true,
+      "fibonacciPreserved": true,
+      "errors": 0
+    },
+    {
+      "name": "WINZ26-touch",
+      "cursor": "10:00",
+      "whiteLinePresent": true,
+      "fibonacciPreserved": true,
+      "errors": 0
+    },
+    {
+      "name": "WINZ26-false-break",
+      "cursor": "10:10",
+      "whiteLinePresent": true,
+      "fibonacciPreserved": true,
+      "errors": 0
+    },
+    {
+      "name": "WINZ26-replaced",
+      "cursor": "10:15",
+      "whiteLinePresent": true,
+      "fibonacciPreserved": true,
+      "errors": 0
+    },
+    {
+      "name": "WINZ26-final",
+      "cursor": "17:35",
+      "whiteLinePresent": true,
+      "fibonacciPreserved": true,
+      "errors": 0
+    },
+    {
+      "name": "WIN_N-confirmed",
+      "cursor": "10:00",
+      "whiteLinePresent": true,
+      "fibonacciPreserved": true,
+      "errors": 0
+    },
+    {
+      "name": "WIN_N-false-break",
+      "cursor": "16:40",
+      "whiteLinePresent": true,
+      "fibonacciPreserved": true,
+      "errors": 0
+    },
+    {
+      "name": "WIN_N-final",
+      "cursor": "18:25",
+      "whiteLinePresent": true,
+      "fibonacciPreserved": true,
+      "errors": 0
+    }
+  ],
+  "sources": {
+    "WINZ26": "../oct28/WINZ26-m5.json / closed cutoff 17:35 on 2026-10-28",
+    "WIN$N": "WIN_N-2026-10-16.json / MT5_CONTINUOUS_UNMAPPED / cutoff 18:25"
+  },
+  "productionFingerprint": {
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowFiftyEngine.java": "9bdd7c4e6019dda42b8ff2315f78f36dd99a67772da00b5e883903f8224818d3",
+    "frontend\\src\\features\\threecandles\\components\\DowFiftyPrimitive.ts": "a2bb7a5e0c29ba427ba3981da96657da6cde0784f51cf2629bfe126c68fc5b5c"
+  },
+  "originalDowAndMicroFingerprintsPreserved": true
+}

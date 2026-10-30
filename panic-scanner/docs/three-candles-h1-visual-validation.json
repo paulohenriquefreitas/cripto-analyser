@@ -1,0 +1,29 @@
+﻿{
+    "runtimeErrors":  [
+
+                      ],
+    "restoreMatchesOriginal":  true,
+    "source":  "Real frontend canvas with Java real-history Replay snapshot; API intercepted",
+    "chartPixelsByVisibility":  {
+                                    "both":  {
+                                                 "m5":  685,
+                                                 "h1":  3217
+                                             },
+                                    "m5":  {
+                                               "m5":  685,
+                                               "h1":  0
+                                           },
+                                    "none":  {
+                                                 "m5":  0,
+                                                 "h1":  0
+                                             },
+                                    "h1":  {
+                                               "m5":  0,
+                                               "h1":  3217
+                                           },
+                                    "restored":  {
+                                                     "m5":  685,
+                                                     "h1":  3217
+                                                 }
+                                }
+}

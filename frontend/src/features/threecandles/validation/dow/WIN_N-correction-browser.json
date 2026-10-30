@@ -1,0 +1,7 @@
+{
+  "state": "Dow experimental · M5 · ALTA",
+  "selected": "Topo · 210.095 · origem 16/10/2026, 11:00 · confirmação 16/10/2026, 11:15 · LH · Estrutura Dow · comparação WIN$N:5:1792147200000:TOP (210.210) · Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+  "errors": [],
+  "fibonacciPreserved": true,
+  "source": "Real frontend with Java Dow events over separate MT5 source; API intercepted"
+}

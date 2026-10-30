@@ -1,0 +1,698 @@
+{
+  "confirmedPivots" : 43,
+  "comparedHours" : 159,
+  "levels" : [ {
+    "id" : "WIN$N:60:1790856000000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 185400.0,
+    "extremeTimeMsc" : 1790856000000,
+    "confirmedAtMsc" : 1790866800000,
+    "region" : {
+      "high" : 186340.0,
+      "low" : 185400.0,
+      "midpoint" : 185870.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "CONFIRMED",
+    "brokenAtMsc" : null,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1790931600000:TOP",
+    "type" : "TOP",
+    "price" : 191585.0,
+    "extremeTimeMsc" : 1790931600000,
+    "confirmedAtMsc" : 1790942400000,
+    "region" : {
+      "high" : 191585.0,
+      "low" : 187625.0,
+      "midpoint" : 189605.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1790956800000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1790942400000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 186690.0,
+    "extremeTimeMsc" : 1790942400000,
+    "confirmedAtMsc" : 1790953200000,
+    "region" : {
+      "high" : 188080.0,
+      "low" : 186690.0,
+      "midpoint" : 187385.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "CONFIRMED",
+    "brokenAtMsc" : null,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791190800000:TOP",
+    "type" : "TOP",
+    "price" : 211115.0,
+    "extremeTimeMsc" : 1791190800000,
+    "confirmedAtMsc" : 1791201600000,
+    "region" : {
+      "high" : 211115.0,
+      "low" : 207245.0,
+      "midpoint" : 209180.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791990000000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791198000000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 206290.0,
+    "extremeTimeMsc" : 1791198000000,
+    "confirmedAtMsc" : 1791208800000,
+    "region" : {
+      "high" : 210065.0,
+      "low" : 206290.0,
+      "midpoint" : 208177.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791288000000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791212400000:TOP",
+    "type" : "TOP",
+    "price" : 210350.0,
+    "extremeTimeMsc" : 1791212400000,
+    "confirmedAtMsc" : 1791223200000,
+    "region" : {
+      "high" : 210350.0,
+      "low" : 209160.0,
+      "midpoint" : 209755.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791986400000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791280800000:TOP",
+    "type" : "TOP",
+    "price" : 210165.0,
+    "extremeTimeMsc" : 1791280800000,
+    "confirmedAtMsc" : 1791291600000,
+    "region" : {
+      "high" : 210165.0,
+      "low" : 206225.0,
+      "midpoint" : 208195.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791982800000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791284400000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 205095.0,
+    "extremeTimeMsc" : 1791284400000,
+    "confirmedAtMsc" : 1791295200000,
+    "region" : {
+      "high" : 207610.0,
+      "low" : 205095.0,
+      "midpoint" : 206352.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791392400000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791298800000:TOP",
+    "type" : "TOP",
+    "price" : 207645.0,
+    "extremeTimeMsc" : 1791298800000,
+    "confirmedAtMsc" : 1791309600000,
+    "region" : {
+      "high" : 207645.0,
+      "low" : 206815.0,
+      "midpoint" : 207230.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791543600000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791363600000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 204505.0,
+    "extremeTimeMsc" : 1791363600000,
+    "confirmedAtMsc" : 1791374400000,
+    "region" : {
+      "high" : 206475.0,
+      "low" : 204505.0,
+      "midpoint" : 205490.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791450300000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791367200000:TOP",
+    "type" : "TOP",
+    "price" : 207435.0,
+    "extremeTimeMsc" : 1791367200000,
+    "confirmedAtMsc" : 1791378000000,
+    "region" : {
+      "high" : 207435.0,
+      "low" : 205655.0,
+      "midpoint" : 206545.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791471600000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791374400000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 204550.0,
+    "extremeTimeMsc" : 1791374400000,
+    "confirmedAtMsc" : 1791385200000,
+    "region" : {
+      "high" : 205635.0,
+      "low" : 204550.0,
+      "midpoint" : 205092.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791450300000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791381600000:TOP",
+    "type" : "TOP",
+    "price" : 206370.0,
+    "extremeTimeMsc" : 1791381600000,
+    "confirmedAtMsc" : 1791392400000,
+    "region" : {
+      "high" : 206370.0,
+      "low" : 205365.0,
+      "midpoint" : 205867.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791460800000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791450000000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 203530.0,
+    "extremeTimeMsc" : 1791450000000,
+    "confirmedAtMsc" : 1791460800000,
+    "region" : {
+      "high" : 205175.0,
+      "low" : 203530.0,
+      "midpoint" : 204352.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "CONFIRMED",
+    "brokenAtMsc" : null,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791457200000:TOP",
+    "type" : "TOP",
+    "price" : 208205.0,
+    "extremeTimeMsc" : 1791457200000,
+    "confirmedAtMsc" : 1791468000000,
+    "region" : {
+      "high" : 208205.0,
+      "low" : 206045.0,
+      "midpoint" : 207125.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791543600000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791468000000:TOP",
+    "type" : "TOP",
+    "price" : 208385.0,
+    "extremeTimeMsc" : 1791468000000,
+    "confirmedAtMsc" : 1791478800000,
+    "region" : {
+      "high" : 208385.0,
+      "low" : 207020.0,
+      "midpoint" : 207702.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791543600000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791478800000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 206290.0,
+    "extremeTimeMsc" : 1791478800000,
+    "confirmedAtMsc" : 1791540000000,
+    "region" : {
+      "high" : 206790.0,
+      "low" : 206290.0,
+      "midpoint" : 206540.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791968700000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791543600000:TOP",
+    "type" : "TOP",
+    "price" : 209965.0,
+    "extremeTimeMsc" : 1791543600000,
+    "confirmedAtMsc" : 1791554400000,
+    "region" : {
+      "high" : 209965.0,
+      "low" : 207925.0,
+      "midpoint" : 208945.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791982800000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791558000000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 208475.0,
+    "extremeTimeMsc" : 1791558000000,
+    "confirmedAtMsc" : 1791568800000,
+    "region" : {
+      "high" : 209550.0,
+      "low" : 208475.0,
+      "midpoint" : 209012.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791885600000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791885600000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 206075.0,
+    "extremeTimeMsc" : 1791885600000,
+    "confirmedAtMsc" : 1791896400000,
+    "region" : {
+      "high" : 208185.0,
+      "low" : 206075.0,
+      "midpoint" : 207130.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "CONFIRMED",
+    "brokenAtMsc" : null,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791900000000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 206550.0,
+    "extremeTimeMsc" : 1791900000000,
+    "confirmedAtMsc" : 1791910800000,
+    "region" : {
+      "high" : 207290.0,
+      "low" : 206550.0,
+      "midpoint" : 206920.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791968700000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791914400000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 206230.0,
+    "extremeTimeMsc" : 1791914400000,
+    "confirmedAtMsc" : 1791975600000,
+    "region" : {
+      "high" : 206835.0,
+      "low" : 206230.0,
+      "midpoint" : 206532.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792746300000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791968400000:TOP",
+    "type" : "TOP",
+    "price" : 211115.0,
+    "extremeTimeMsc" : 1791968400000,
+    "confirmedAtMsc" : 1791979200000,
+    "region" : {
+      "high" : 211115.0,
+      "low" : 208890.0,
+      "midpoint" : 210002.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1791990000000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791975600000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 207615.0,
+    "extremeTimeMsc" : 1791975600000,
+    "confirmedAtMsc" : 1791986400000,
+    "region" : {
+      "high" : 209595.0,
+      "low" : 207615.0,
+      "midpoint" : 208605.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792670400000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1791990000000:TOP",
+    "type" : "TOP",
+    "price" : 211750.0,
+    "extremeTimeMsc" : 1791990000000,
+    "confirmedAtMsc" : 1792000800000,
+    "region" : {
+      "high" : 211750.0,
+      "low" : 211025.0,
+      "midpoint" : 211387.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792494000000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792058400000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 207235.0,
+    "extremeTimeMsc" : 1792058400000,
+    "confirmedAtMsc" : 1792069200000,
+    "region" : {
+      "high" : 209560.0,
+      "low" : 207235.0,
+      "midpoint" : 208397.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792674000000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792065600000:TOP",
+    "type" : "TOP",
+    "price" : 210800.0,
+    "extremeTimeMsc" : 1792065600000,
+    "confirmedAtMsc" : 1792076400000,
+    "region" : {
+      "high" : 210800.0,
+      "low" : 209815.0,
+      "midpoint" : 210307.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792490400000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792080000000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 207440.0,
+    "extremeTimeMsc" : 1792080000000,
+    "confirmedAtMsc" : 1792141500000,
+    "region" : {
+      "high" : 209945.0,
+      "low" : 207440.0,
+      "midpoint" : 208692.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792670400000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792148400000:TOP",
+    "type" : "TOP",
+    "price" : 210535.0,
+    "extremeTimeMsc" : 1792148400000,
+    "confirmedAtMsc" : 1792159200000,
+    "region" : {
+      "high" : 210535.0,
+      "low" : 208340.0,
+      "midpoint" : 209437.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792400700000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792159200000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 208215.0,
+    "extremeTimeMsc" : 1792159200000,
+    "confirmedAtMsc" : 1792170000000,
+    "region" : {
+      "high" : 209055.0,
+      "low" : 208215.0,
+      "midpoint" : 208635.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792670400000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792404000000:TOP",
+    "type" : "TOP",
+    "price" : 211540.0,
+    "extremeTimeMsc" : 1792404000000,
+    "confirmedAtMsc" : 1792414800000,
+    "region" : {
+      "high" : 211540.0,
+      "low" : 210225.0,
+      "midpoint" : 210882.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792490400000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792414800000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 208170.0,
+    "extremeTimeMsc" : 1792414800000,
+    "confirmedAtMsc" : 1792425600000,
+    "region" : {
+      "high" : 208870.0,
+      "low" : 208170.0,
+      "midpoint" : 208520.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792670400000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792432800000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 208520.0,
+    "extremeTimeMsc" : 1792432800000,
+    "confirmedAtMsc" : 1792494000000,
+    "region" : {
+      "high" : 209800.0,
+      "low" : 208520.0,
+      "midpoint" : 209160.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792670400000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792501200000:TOP",
+    "type" : "TOP",
+    "price" : 213035.0,
+    "extremeTimeMsc" : 1792501200000,
+    "confirmedAtMsc" : 1792512000000,
+    "region" : {
+      "high" : 213035.0,
+      "low" : 212465.0,
+      "midpoint" : 212750.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792573500000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792512000000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 211180.0,
+    "extremeTimeMsc" : 1792512000000,
+    "confirmedAtMsc" : 1792573500000,
+    "region" : {
+      "high" : 212590.0,
+      "low" : 211180.0,
+      "midpoint" : 211885.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792591200000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792576800000:TOP",
+    "type" : "TOP",
+    "price" : 213385.0,
+    "extremeTimeMsc" : 1792576800000,
+    "confirmedAtMsc" : 1792587600000,
+    "region" : {
+      "high" : 213385.0,
+      "low" : 211545.0,
+      "midpoint" : 212465.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "CONFIRMED",
+    "brokenAtMsc" : null,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792602000000:TOP",
+    "type" : "TOP",
+    "price" : 210670.0,
+    "extremeTimeMsc" : 1792602000000,
+    "confirmedAtMsc" : 1792663200000,
+    "region" : {
+      "high" : 210670.0,
+      "low" : 209885.0,
+      "midpoint" : 210277.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "CONFIRMED",
+    "brokenAtMsc" : null,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792670400000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 206755.0,
+    "extremeTimeMsc" : 1792670400000,
+    "confirmedAtMsc" : 1792681200000,
+    "region" : {
+      "high" : 207675.0,
+      "low" : 206755.0,
+      "midpoint" : 207215.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792746300000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792681200000:TOP",
+    "type" : "TOP",
+    "price" : 208235.0,
+    "extremeTimeMsc" : 1792681200000,
+    "confirmedAtMsc" : 1792692000000,
+    "region" : {
+      "high" : 208235.0,
+      "low" : 207600.0,
+      "midpoint" : 207917.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792767600000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792692000000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 205865.0,
+    "extremeTimeMsc" : 1792692000000,
+    "confirmedAtMsc" : 1792753200000,
+    "region" : {
+      "high" : 207510.0,
+      "low" : 205865.0,
+      "midpoint" : 206687.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "CONFIRMED",
+    "brokenAtMsc" : null,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792749600000:TOP",
+    "type" : "TOP",
+    "price" : 208630.0,
+    "extremeTimeMsc" : 1792749600000,
+    "confirmedAtMsc" : 1792760400000,
+    "region" : {
+      "high" : 208630.0,
+      "low" : 207560.0,
+      "midpoint" : 208095.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "BROKEN",
+    "brokenAtMsc" : 1792771200000,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792764000000:BOTTOM",
+    "type" : "BOTTOM",
+    "price" : 206995.0,
+    "extremeTimeMsc" : 1792764000000,
+    "confirmedAtMsc" : 1792774800000,
+    "region" : {
+      "high" : 208470.0,
+      "low" : 206995.0,
+      "midpoint" : 207732.5,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "CONFIRMED",
+    "brokenAtMsc" : null,
+    "timeframeMinutes" : 60
+  }, {
+    "id" : "WIN$N:60:1792767600000:TOP",
+    "type" : "TOP",
+    "price" : 209485.0,
+    "extremeTimeMsc" : 1792767600000,
+    "confirmedAtMsc" : 1792778400000,
+    "region" : {
+      "high" : 209485.0,
+      "low" : 208305.0,
+      "midpoint" : 208895.0,
+      "basis" : "PIVOT_CANDLE"
+    },
+    "relevance" : "PROXIMITY",
+    "state" : "CONFIRMED",
+    "brokenAtMsc" : null,
+    "timeframeMinutes" : 60
+  } ],
+  "discrepancies" : 0,
+  "source" : "MT5 native H1 compared with M5 aggregation",
+  "unprovenTrailingHours" : 1,
+  "nativeHours" : 160,
+  "symbol" : "WIN$N"
+}

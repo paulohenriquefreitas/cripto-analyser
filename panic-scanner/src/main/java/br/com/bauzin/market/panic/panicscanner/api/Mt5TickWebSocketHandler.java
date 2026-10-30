@@ -91,6 +91,15 @@ public class Mt5TickWebSocketHandler extends TextWebSocketHandler {
         sessions.values().forEach(connection -> connection.offer(latest));
     }
 
+    /** Read-only view for isolated candle consumers. No extra MT5 connection. */
+    public record SharedCandle(Mt5Tick tick,
+            br.com.bauzin.market.panic.panicscanner.domain.win.intrabar.IntrabarCandleSnapshot candle) {}
+    public synchronized java.util.Optional<SharedCandle> latestAvailableCandle() {
+        return available && latestTick != null
+                ? java.util.Optional.of(new SharedCandle(latestTick, sma9.candleSnapshot(symbol.value())))
+                : java.util.Optional.empty();
+    }
+
     /** Re-emit the latest tick after REST seeds the new official M5 window. */
     public synchronized void refreshSma9() {
         if (available && latestTick != null) broadcast(latestTick);

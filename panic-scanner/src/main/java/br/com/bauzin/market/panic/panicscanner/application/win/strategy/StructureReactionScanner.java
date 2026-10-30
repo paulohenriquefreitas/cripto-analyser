@@ -13,8 +13,8 @@ public final class StructureReactionScanner {
     private long[] touchedAt = new long[64];
     private int[] approaches = new int[64];
     private boolean[] emitted = new boolean[64];
-    private int size, candles;
-    private final double[] highs = new double[5], lows = new double[5];
+    private int size;
+    private final ConfirmedPivotDetector pivots = new ConfirmedPivotDetector();
     private long lastClosed = Long.MIN_VALUE, lastTime = Long.MIN_VALUE;
     private double previousPrice = Double.NaN;
 
@@ -33,22 +33,11 @@ public final class StructureReactionScanner {
         if (candle.bucketStartTimeMsc() <= lastClosed) return;
         lastClosed = candle.bucketStartTimeMsc();
         for (int i = size - 1; i >= 0; i--) {
-            if ((types[i].equals("PIVOT_TOP") && candle.close() > prices[i])
-                    || (types[i].equals("PIVOT_BOTTOM") && candle.close() < prices[i])) remove(i);
+            if (ConfirmedPivotDetector.isBroken(types[i].equals("PIVOT_TOP"), prices[i], candle.close())) remove(i);
         }
-        if (candles == 5) {
-            System.arraycopy(highs, 1, highs, 0, 4);
-            System.arraycopy(lows, 1, lows, 0, 4);
-            candles = 4;
+        for (var pivot : pivots.onCandleClosed(candle, candle.bucketStartTimeMsc() + 300000L)) {
+            add(pivot.price(), pivot.type() == ConfirmedPivotDetector.Type.TOP ? "PIVOT_TOP" : "PIVOT_BOTTOM");
         }
-        highs[candles] = candle.high(); lows[candles++] = candle.low();
-        if (candles != 5) return;
-        boolean top = true, bottom = true;
-        for (int i = 0; i < 5; i++) if (i != 2) {
-            top &= highs[2] > highs[i]; bottom &= lows[2] < lows[i];
-        }
-        if (top) add(highs[2], "PIVOT_TOP");
-        if (bottom) add(lows[2], "PIVOT_BOTTOM");
     }
 
     /** Price-only compatibility API: side inferred from the approach, not a known pivot type.

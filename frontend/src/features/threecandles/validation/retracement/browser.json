@@ -1,0 +1,74 @@
+{
+  "saved": [
+    {
+      "name": "initial",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\initial.png",
+      "fibonacci": "FIBO 50% — 209.025 · Hipótese automática · Micro M5 · Baixa · máxima 209.375 · mínima 208.675 · decisão 16/10/2026, 09:45"
+    },
+    {
+      "name": "expanded",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\expanded.png",
+      "fibonacci": "FIBO 50% — 209.007,5 · Hipótese automática · Micro M5 · Baixa · máxima 209.375 · mínima 208.640 · decisão 16/10/2026, 10:25"
+    },
+    {
+      "name": "complete",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\complete.png",
+      "fibonacci": "FIBO 50% — 209.007,5 · Hipótese automática · Micro M5 · Baixa · máxima 209.375 · mínima 208.640 · decisão 16/10/2026, 10:25"
+    },
+    {
+      "name": "manual",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\manual.png",
+      "fibonacci": "FIBO 50% — 209.442,5 · Manual · Micro M5 · Alta · máxima 210.210 · mínima 208.675 · decisão 16/10/2026, 11:00"
+    },
+    {
+      "name": "manual-preserved",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\manual-preserved.png",
+      "fibonacci": "FIBO 50% — 209.442,5 · Manual · Micro M5 · Alta · máxima 210.210 · mínima 208.675 · decisão 16/10/2026, 11:00"
+    },
+    {
+      "name": "macro",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\macro.png",
+      "fibonacci": "FIBO 50% — 208.912,5 · Hipótese automática · Macro H1 · Alta · máxima 211.750 · mínima 206.075 · decisão 14/10/2026, 18:00"
+    },
+    {
+      "name": "reset-pending-manual",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\reset-pending-manual.png",
+      "fibonacci": "Fibonacci manual aguardando duas âncoras confirmadas."
+    },
+    {
+      "name": "zoom-horizontal",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\zoom-horizontal.png",
+      "fibonacci": "FIBO 50% — 209.442,5 · Manual · Micro M5 · Alta · máxima 210.210 · mínima 208.675 · decisão 16/10/2026, 11:00"
+    },
+    {
+      "name": "zoom-vertical",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\zoom-vertical.png",
+      "fibonacci": "FIBO 50% — 209.442,5 · Manual · Micro M5 · Alta · máxima 210.210 · mínima 208.675 · decisão 16/10/2026, 11:00"
+    },
+    {
+      "name": "pan",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\pan.png",
+      "fibonacci": "FIBO 50% — 209.442,5 · Manual · Micro M5 · Alta · máxima 210.210 · mínima 208.675 · decisão 16/10/2026, 11:00"
+    },
+    {
+      "name": "resize",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\resize.png",
+      "fibonacci": "FIBO 50% — 209.442,5 · Manual · Micro M5 · Alta · máxima 210.210 · mínima 208.675 · decisão 16/10/2026, 11:00"
+    },
+    {
+      "name": "adjusted",
+      "path": "C:\\Users\\paulo\\project\\cripto-analyser\\frontend\\src\\features\\threecandles\\validation\\retracement\\adjusted.png",
+      "fibonacci": "FIBO 50% — 209.442,5 · Manual · Micro M5 · Alta · máxima 210.210 · mínima 208.675 · decisão 16/10/2026, 11:00"
+    }
+  ],
+  "zoomHorizontal": true,
+  "zoomVertical": true,
+  "pan": true,
+  "resize": true,
+  "anchorsUnchangedByViewport": true,
+  "manualGraphSelection": true,
+  "manualPreserved": true,
+  "resetDoesNotBackdate": true,
+  "errors": [],
+  "source": "real frontend, Java Replay prefix snapshots; API intercepted"
+}

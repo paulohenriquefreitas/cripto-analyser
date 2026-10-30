@@ -1,0 +1,35 @@
+{
+  "labels": [
+    {
+      "text": "Dow principal",
+      "checked": true
+    },
+    {
+      "text": "Dow micro",
+      "checked": true
+    },
+    {
+      "text": "50% Dow principal",
+      "checked": true
+    },
+    {
+      "text": "50% Dow micro",
+      "checked": true
+    },
+    {
+      "text": "Abertura experimental",
+      "checked": true
+    },
+    {
+      "text": "H1 - fúcsia",
+      "checked": false
+    },
+    {
+      "text": "M5 - amarelo",
+      "checked": false
+    }
+  ],
+  "summary": "Dow: INDEFINIDO\n\nÚltimo rompimento conhecido: R↓ Suporte rompido · 30/10/2026, 09:35\n\nDOW MICRO 50% — 169.427,5 / confirmada em 30/10/2026, 10:10\n\nDOW 50% — 169.427,5 / Monitorando 50% / confirmada em 30/10/2026, 10:15\n\nLado observado: BOTTOM_SIDE / Rompimento: NONE / Retorno: NONE. Referencias possiveis: topo 169.785 e fundo 169.070.\n\nReplay: PAUSED\n\nInstante do Replay: 30/10/2026, 10:15:00\n\nCandle M5: Fechado · origem 30/10/2026, 10:10:00\n\nReação aos 50% experimental; hipóteses de estudo, sem ordens ou destinos garantidos.",
+  "errors": [],
+  "source": "Actual React/canvas, native MT5 Java snapshots via intercepted API; unchanged cursor and viewport"
+}

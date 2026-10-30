@@ -2,7 +2,7 @@ import { tradeLabel, type ReplayTradeMarker } from '@/features/replay/api/replay
 import { Alert, Box, useTheme } from '@mui/material';
 import {
   CandlestickSeries, LineSeries, ColorType, createChart, createSeriesMarkers,
-  type ISeriesApi, type SeriesMarker, type UTCTimestamp,
+  type ISeriesApi, type SeriesMarker, type UTCTimestamp, type AutoscaleInfo,
 } from 'lightweight-charts';
 import { useEffect, useRef, useState } from 'react';
 
@@ -11,7 +11,7 @@ import { SwingPivotPrimitive } from './SwingPivotPrimitive';
 import { vwapSegments } from '@/features/win/models/mt5Vwap';
 import type { Mt5Candle } from '@/features/win/api/mt5Api';
 import type {
-  ChartSink, ReplaySetupMarker, Ema9ReversalMarker, StructureReaction,
+  ChartSink, ReplaySetupMarker, Ema9ReversalMarker, StructureReaction, StructuralChartLevel,
 } from '@/features/win/models/mt5Intrabar';
 
 import type { SwingLevelMonitoring } from '@/features/win/models/swingLevelMonitoring';
@@ -38,9 +38,14 @@ export function setup91Details(marker: ReplaySetupMarker): string {
   ].join('\n');
 }
 
-export function Mt5CandlestickChart({ controller, setup91Only = false, monitoring, absorption, symbol }: {
+export function Mt5CandlestickChart({ controller, setup91Only = false, monitoring, absorption, symbol, candlesOnly = false, candleDisplayTimeZone = 'America/Sao_Paulo', structuralLevels = false, visibleCandleViewport = false }: {
   controller: Mt5ChartController;
   setup91Only?: boolean;
+  candlesOnly?: boolean;
+  candleDisplayTimeZone?: string;
+  structuralLevels?: boolean;
+  /** Opt-in for /three-candles: native visible-bar autoscale, without structural levels. */
+  visibleCandleViewport?: boolean;
   monitoring?: SwingLevelMonitoring;
   absorption?: AbsorptionOverlay;
   symbol?: string;
@@ -72,8 +77,17 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
           vertLines: { color: theme.palette.divider },
           horzLines: { color: theme.palette.divider },
         },
-        timeScale: { timeVisible: true, secondsVisible: false, barSpacing: 8, rightOffset: 5 },
-        localization: { locale: 'pt-BR' },
+        ...(visibleCandleViewport ? { rightPriceScale: { autoScale: true, scaleMargins: { top: 0.1, bottom: 0.1 } } } : {}),
+        timeScale: { timeVisible: true, secondsVisible: false, barSpacing: 8, rightOffset: 5,
+          ...(candlesOnly ? { tickMarkFormatter: (time: number) => new Intl.DateTimeFormat('pt-BR', {
+            timeZone: candleDisplayTimeZone, hour: '2-digit', minute: '2-digit',
+          }).format(new Date(time * 1000)) } : {}),
+        },
+        localization: { locale: 'pt-BR', ...(candlesOnly ? {
+          timeFormatter: (time: number) => new Intl.DateTimeFormat('pt-BR', {
+            timeZone: candleDisplayTimeZone, dateStyle: 'short', timeStyle: 'short',
+          }).format(new Date(time * 1000)),
+        } : {}) },
       });
       const series = chart.addSeries(CandlestickSeries, {
         upColor: theme.palette.success.main,
@@ -108,9 +122,33 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
       }
       const flowPrimitive = monitoring ? new MonitoringFlowPrimitive(theme.palette.background.paper, theme.palette.text.primary) : undefined;
       if (flowPrimitive) series.attachPrimitive(flowPrimitive);
-      const swingPrimitive = setup91Only || absorption ? undefined : new SwingPivotPrimitive();
+      const swingPrimitive = candlesOnly || setup91Only || absorption ? undefined : new SwingPivotPrimitive();
       if (swingPrimitive) series.attachPrimitive(swingPrimitive);
+      const structuralPrimitive = structuralLevels ? new SwingPivotPrimitive({
+        color: '#EAB308', opacity: 1, width: 1.5, dash: [2, 3],
+      }) : undefined;
+      if (structuralPrimitive) series.attachPrimitive(structuralPrimitive);
+      const hourlyPrimitive = structuralLevels ? new SwingPivotPrimitive({
+        color: '#FF00FF', opacity: 1, width: 1.5, dash: [2, 3],
+      }) : undefined;
+      if (hourlyPrimitive) series.attachPrimitive(hourlyPrimitive);
+      let serverLevels: readonly StructuralChartLevel[] = [];
       let firstCandleTime = Infinity;
+      const updateStructure = () => {
+        if (structuralLevels && !visibleCandleViewport) series.applyOptions({ autoscaleInfoProvider: (original: () => AutoscaleInfo | null) => {
+          const info=original();
+          const prices=serverLevels.filter(l => l.timeframeMinutes===60).map(l => l.price);
+          if (!info?.priceRange || prices.length===0) return info;
+          return { ...info, priceRange: { minValue: Math.min(info.priceRange.minValue,...prices),
+            maxValue: Math.max(info.priceRange.maxValue,...prices) } };
+        } });
+        for (const [timeframe, primitive] of [[5, structuralPrimitive], [60, hourlyPrimitive]] as const) {
+          primitive?.setLevels(serverLevels.filter(level => (level.timeframeMinutes ?? 5) === timeframe).map(level => ({
+            type: level.type === 'TOP' ? 'HIGH' as const : 'LOW' as const,
+            price: level.price, time: level.extremeTimeMsc / 1000, confirmedAt: level.confirmedAtMsc / 1000,
+          })), firstCandleTime);
+        }
+      };
       const updateSwings = () => {
         swingPrimitive?.setLevels(swingTracker.getLevels(), firstCandleTime);
         monitoring?.addConfirmed(swingTracker.getConfirmedLevels());
@@ -195,7 +233,7 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
         tradeMarkers.set(marker.eventId, marker);
         // Keep trade management in data/hover details; plot only closed EMA9 reversal arrows.
       };
-      const smaSeries = setup91Only ? undefined : chart.addSeries(LineSeries, {
+      const smaSeries = candlesOnly || setup91Only ? undefined : chart.addSeries(LineSeries, {
         color: theme.palette.success.main,
         lineWidth: 2,
         priceScaleId: 'right',
@@ -203,11 +241,11 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
         title: '',
         lastValueVisible: false, priceLineVisible: false,
       });
-      const emaSeries = setup91Only ? chart.addSeries(LineSeries, {
+      const emaSeries = !candlesOnly && setup91Only ? chart.addSeries(LineSeries, {
         color: '#2e7d32', lineWidth: 1, priceScaleId: 'right', title: '',
         lastValueVisible: false, priceLineVisible: false,
       }) : undefined;
-      const sma21Series = setup91Only ? undefined : chart.addSeries(LineSeries, {
+      const sma21Series = candlesOnly || setup91Only ? undefined : chart.addSeries(LineSeries, {
         color: '#ff5252',
         lineWidth: 2,
         priceScaleId: 'right',
@@ -218,7 +256,7 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
       let vwapSeries: ISeriesApi<'Line'>[] = [];
       const vwapBySession = new Map<string, ISeriesApi<'Line'>>();
       const updateVwap = (candle: Mt5Candle) => {
-        if (setup91Only) return;
+        if (candlesOnly || setup91Only) return;
         if (candle.vwapSession && candle.vwap != null) {
           let segment = vwapBySession.get(candle.vwapSession);
           if (!segment) {
@@ -253,6 +291,21 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
         initialized = true;
       };
       detach = controller.attachChart({
+        focusTime(time) {
+          if (visibleCandleViewport) {
+            const count = candleTimes.size;
+            if (!count) return;
+            // Only released candles exist in this series. Leave four slots on the right,
+            // keep about forty known bars readable, and retain all history for navigation.
+            chart?.timeScale().setVisibleLogicalRange({ from: Math.max(0, count - 40), to: Math.max(40, count + 4) });
+            chart?.priceScale('right').applyOptions({ autoScale: true, scaleMargins: { top: 0.1, bottom: 0.1 } });
+            return;
+          }
+          const index = [...candleTimes].findIndex(t => t >= time);
+          const anchor = index < 0 ? candleTimes.size : index;
+          chart?.timeScale().setVisibleLogicalRange({ from: anchor - 20, to: anchor + 60 });
+        },
+        setStructureLevels(levels) { serverLevels = levels; updateStructure(); },
         onFlowSnapshot: snapshot => monitoring?.receiveFlow(snapshot),
         onLastPrice: (price, timeMsc) => monitoring?.receiveLast(price, timeMsc),
         setHistory(candles) {
@@ -269,6 +322,7 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
             setup91Markers.clear();
             emaReversals.clear();
             tradeMarkers.clear();
+            serverLevels = []; structuralPrimitive?.setLevels([], Infinity); hourlyPrimitive?.setLevels([], Infinity);
             if (setupDetails.current) setupDetails.current.textContent = '';
             markerApi.setMarkers([]);
           }
@@ -276,7 +330,8 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
           refreshAbsorption();
           publishMarkers();
           firstCandleTime = candles[0]?.time ?? Infinity;
-          swingTracker.setHistory(candles);
+          updateStructure();
+          if (!candlesOnly) swingTracker.setHistory(candles);
           updateSwings();
           const latest = candles.at(-1);
           if (latest) monitoring?.receiveLast(latest.close, latest.time * 1000);
@@ -294,7 +349,7 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
           vwapBySession.clear();
           // Whitespace points alone do not break line series in this library.
           // Independent series guarantee no diagonal across sessions; REST only.
-          const segments = setup91Only ? [] : vwapSegments(candles);
+          const segments = candlesOnly || setup91Only ? [] : vwapSegments(candles);
           vwapSeries = segments.map(({ session, points }) => {
             const segment = chart!.addSeries(LineSeries, {
               color: theme.palette.warning.main, lineWidth: 2, priceScaleId: 'right', title: '',
@@ -319,7 +374,8 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
           currentCandleHigh = candle.high;
           publishMarkers();
           firstCandleTime = Math.min(firstCandleTime, candle.time);
-          swingTracker.updateLast(candle);
+          updateStructure();
+          if (!candlesOnly) swingTracker.updateLast(candle);
           monitoring?.receiveLast(candle.close, candle.time * 1000);
           updateSwings();
           initializeViewport();
@@ -328,20 +384,17 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
           updateVwap(candle);
           showSma(candle);
         },
-        addStructureReactionMarker,
-        addReplaySetupMarker,
-        addEma9Reversal,
-        addReplayTradeMarker,
+        ...(!candlesOnly ? { addStructureReactionMarker, addReplaySetupMarker, addEma9Reversal, addReplayTradeMarker } : {}),
       });
     } catch {
       setFailed(true);
     }
     return () => { unsubscribeAbsorption?.(); unsubscribeMonitoring?.(); detach?.(); chart?.remove(); };
-  }, [controller, theme, setup91Only, monitoring, absorption]);
+  }, [controller, theme, setup91Only, monitoring, absorption, candlesOnly, candleDisplayTimeZone, structuralLevels, visibleCandleViewport]);
 
   return (
     <>
-      {!setup91Only && <>
+      {!candlesOnly && !setup91Only && <>
       <Box sx={{ color: 'success.main', fontSize: '0.875rem', mb: 1 }}>
         MM9: <span ref={smaLabel}>&mdash;</span>
       </Box>
@@ -356,15 +409,15 @@ export function Mt5CandlestickChart({ controller, setup91Only = false, monitorin
       </Box>
       </>}
       {failed ? <Alert severity="error">Não foi possível desenhar o gráfico de candles.</Alert> : null}
-      <Box ref={container} role="img" aria-label={absorption ? 'Candlesticks WINZ26, absorção por captura UTC' : `Candlesticks ${symbol ?? 'WIN'} M5, horários em UTC`}
+      <Box ref={container} role="img" aria-label={candlesOnly ? 'Candlesticks na referência temporal selecionada' : absorption ? 'Candlesticks WINZ26, absorção por captura UTC' : `Candlesticks ${symbol ?? 'WIN'} M5, horários em UTC`}
         sx={{ height: 480, width: '100%', minWidth: 0 }} />
-      <Box sx={{ color: 'text.secondary', fontSize: '0.75rem', mt: 1 }}>
+      {!candlesOnly && <><Box sx={{ color: 'text.secondary', fontSize: '0.75rem', mt: 1 }}>
         MME9: seta verde = inversão para alta; seta vermelha = inversão para baixa.
         Setas após dois candles fechados na nova direção da MME9, com deslocamento maior que 15 pontos.
         O fechamento também deve avançar mais de 15 pontos no sentido da seta. Valores em UTC.
       </Box>
       <Box component="pre" ref={setupDetails} aria-label="Setup91 event details"
-        sx={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', fontSize: '0.75rem', m: 0, mt: 1 }} />
+        sx={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', fontSize: '0.75rem', m: 0, mt: 1 }} /></>}
     </>
   );
 }

@@ -11,6 +11,7 @@ class ReaderTest(unittest.TestCase):
         mt5.terminal_info.return_value = SimpleNamespace(connected=True)
         mt5.symbol_info.return_value = SimpleNamespace(name="WINZ26", custom=False, expiration_time=4102444800, trade_mode=4)
         mt5.TIMEFRAME_M5 = 5
+        mt5.TIMEFRAME_M1 = 1
         mt5.TIMEFRAME_D1 = 16408
         return mt5
 
@@ -52,6 +53,16 @@ class ReaderTest(unittest.TestCase):
         mt5.symbol_info_tick.assert_called_once_with('WINZ26')
         self.assertEqual(1000, result['time_msc'])
         mt5.copy_rates_from_pos.assert_not_called()
+
+    def test_m1_range_uses_native_minutes_and_exact_symbol(self):
+        mt5 = self.mt5()
+        mt5.copy_rates_range.return_value = [self.row(16)]
+        with patch.dict('sys.modules', MetaTrader5=mt5):
+            result = mt5_reader.read_candles(symbol='WIN$N', timeframe='M1',
+                                           from_date=date(2026, 10, 16), to_date=date(2026, 10, 16))
+        self.assertEqual(1, mt5.copy_rates_range.call_args.args[1])
+        self.assertEqual('WIN$N', mt5.copy_rates_range.call_args.args[0])
+        self.assertEqual(self.row(16)['time'], result[0]['time'])
 
     def test_invalid_range(self):
         with self.assertRaises(ValueError):

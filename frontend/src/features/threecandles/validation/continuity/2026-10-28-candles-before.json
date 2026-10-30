@@ -1,0 +1,1095 @@
+{
+  "symbol": "WINZ26",
+  "date": "2026-10-28",
+  "source": "frontend\\src\\features\\threecandles\\validation\\opening\\WINZ26-2026-10-28.json",
+  "captureMatch": false,
+  "counts": {
+    "BOUNDARY": 4,
+    "NOT_STRICT_EXTREME": 70,
+    "CONFIRMED": 16,
+    "SAME_SIDE": 2,
+    "AMBIGUOUS": 2
+  },
+  "candles": [
+    {
+      "candle": {
+        "time": 1793178000,
+        "open": 178290.0,
+        "high": 178700.0,
+        "low": 177240.0,
+        "close": 177365.0,
+        "tickVolume": 73299,
+        "realVolume": 417393
+      },
+      "formation": "09:00",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "BOUNDARY",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "BOUNDARY",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793178300,
+        "open": 177375.0,
+        "high": 177725.0,
+        "low": 177355.0,
+        "close": 177565.0,
+        "tickVolume": 34297,
+        "realVolume": 258151
+      },
+      "formation": "09:05",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793178600,
+        "open": 177560.0,
+        "high": 177565.0,
+        "low": 177065.0,
+        "close": 177170.0,
+        "tickVolume": 38444,
+        "realVolume": 330139
+      },
+      "formation": "09:10",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793178900,
+        "open": 177170.0,
+        "high": 177445.0,
+        "low": 177010.0,
+        "close": 177235.0,
+        "tickVolume": 35114,
+        "realVolume": 312053
+      },
+      "formation": "09:15",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793179500000
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793179200,
+        "open": 177240.0,
+        "high": 177570.0,
+        "low": 177200.0,
+        "close": 177515.0,
+        "tickVolume": 31016,
+        "realVolume": 270668
+      },
+      "formation": "09:20",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793179500,
+        "open": 177520.0,
+        "high": 177610.0,
+        "low": 177240.0,
+        "close": 177605.0,
+        "tickVolume": 29850,
+        "realVolume": 268711
+      },
+      "formation": "09:25",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793179800,
+        "open": 177600.0,
+        "high": 177710.0,
+        "low": 177120.0,
+        "close": 177130.0,
+        "tickVolume": 36849,
+        "realVolume": 330790
+      },
+      "formation": "09:30",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793180400000
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793180100,
+        "open": 177130.0,
+        "high": 177270.0,
+        "low": 176825.0,
+        "close": 177000.0,
+        "tickVolume": 38425,
+        "realVolume": 377052
+      },
+      "formation": "09:35",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793180700000
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793180400,
+        "open": 176990.0,
+        "high": 177150.0,
+        "low": 176875.0,
+        "close": 176995.0,
+        "tickVolume": 26993,
+        "realVolume": 242422
+      },
+      "formation": "09:40",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793180700,
+        "open": 176990.0,
+        "high": 177235.0,
+        "low": 176925.0,
+        "close": 177215.0,
+        "tickVolume": 20904,
+        "realVolume": 186372
+      },
+      "formation": "09:45",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793181000,
+        "open": 177210.0,
+        "high": 177335.0,
+        "low": 177105.0,
+        "close": 177210.0,
+        "tickVolume": 25925,
+        "realVolume": 217761
+      },
+      "formation": "09:50",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793181300,
+        "open": 177210.0,
+        "high": 177485.0,
+        "low": 177145.0,
+        "close": 177410.0,
+        "tickVolume": 26882,
+        "realVolume": 229571
+      },
+      "formation": "09:55",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793181600,
+        "open": 177410.0,
+        "high": 177690.0,
+        "low": 177250.0,
+        "close": 177605.0,
+        "tickVolume": 37349,
+        "realVolume": 341121
+      },
+      "formation": "10:00",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793182200000
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793181900,
+        "open": 177605.0,
+        "high": 177645.0,
+        "low": 177025.0,
+        "close": 177175.0,
+        "tickVolume": 38927,
+        "realVolume": 372819
+      },
+      "formation": "10:05",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793182200,
+        "open": 177180.0,
+        "high": 177255.0,
+        "low": 176635.0,
+        "close": 176745.0,
+        "tickVolume": 42956,
+        "realVolume": 432307
+      },
+      "formation": "10:10",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793182500,
+        "open": 176745.0,
+        "high": 176825.0,
+        "low": 176275.0,
+        "close": 176325.0,
+        "tickVolume": 41723,
+        "realVolume": 429054
+      },
+      "formation": "10:15",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793182800,
+        "open": 176320.0,
+        "high": 176330.0,
+        "low": 175530.0,
+        "close": 175745.0,
+        "tickVolume": 52468,
+        "realVolume": 544344
+      },
+      "formation": "10:20",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793183100,
+        "open": 175740.0,
+        "high": 175950.0,
+        "low": 175340.0,
+        "close": 175935.0,
+        "tickVolume": 41471,
+        "realVolume": 406430
+      },
+      "formation": "10:25",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793183700000
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793183400,
+        "open": 175940.0,
+        "high": 176365.0,
+        "low": 175515.0,
+        "close": 175750.0,
+        "tickVolume": 50986,
+        "realVolume": 504904
+      },
+      "formation": "10:30",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793184000000
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793183700,
+        "open": 175750.0,
+        "high": 175800.0,
+        "low": 174815.0,
+        "close": 175305.0,
+        "tickVolume": 50919,
+        "realVolume": 531627
+      },
+      "formation": "10:35",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793184000,
+        "open": 175300.0,
+        "high": 175350.0,
+        "low": 174335.0,
+        "close": 174650.0,
+        "tickVolume": 50356,
+        "realVolume": 480816
+      },
+      "formation": "10:40",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793184300,
+        "open": 174655.0,
+        "high": 174840.0,
+        "low": 174055.0,
+        "close": 174305.0,
+        "tickVolume": 52711,
+        "realVolume": 487805
+      },
+      "formation": "10:45",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793184600,
+        "open": 174310.0,
+        "high": 174310.0,
+        "low": 173515.0,
+        "close": 174250.0,
+        "tickVolume": 46032,
+        "realVolume": 427383
+      },
+      "formation": "10:50",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793185200000
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793184900,
+        "open": 174255.0,
+        "high": 174530.0,
+        "low": 173945.0,
+        "close": 174190.0,
+        "tickVolume": 40480,
+        "realVolume": 361378
+      },
+      "formation": "10:55",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793185200,
+        "open": 174185.0,
+        "high": 174710.0,
+        "low": 173785.0,
+        "close": 174570.0,
+        "tickVolume": 40944,
+        "realVolume": 371818
+      },
+      "formation": "11:00",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793185800000
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793185500,
+        "open": 174570.0,
+        "high": 174735.0,
+        "low": 174000.0,
+        "close": 174210.0,
+        "tickVolume": 37330,
+        "realVolume": 328517
+      },
+      "formation": "11:05",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793186100000
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793185800,
+        "open": 174205.0,
+        "high": 174425.0,
+        "low": 173735.0,
+        "close": 173800.0,
+        "tickVolume": 32713,
+        "realVolume": 296891
+      },
+      "formation": "11:10",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793186100,
+        "open": 173805.0,
+        "high": 174035.0,
+        "low": 173605.0,
+        "close": 173785.0,
+        "tickVolume": 34139,
+        "realVolume": 311095
+      },
+      "formation": "11:15",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793186400,
+        "open": 173785.0,
+        "high": 173935.0,
+        "low": 173445.0,
+        "close": 173620.0,
+        "tickVolume": 29630,
+        "realVolume": 266464
+      },
+      "formation": "11:20",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793186700,
+        "open": 173615.0,
+        "high": 173650.0,
+        "low": 173265.0,
+        "close": 173475.0,
+        "tickVolume": 26555,
+        "realVolume": 230325
+      },
+      "formation": "11:25",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793187000,
+        "open": 173475.0,
+        "high": 173540.0,
+        "low": 172715.0,
+        "close": 172720.0,
+        "tickVolume": 37225,
+        "realVolume": 366276
+      },
+      "formation": "11:30",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793187300,
+        "open": 172715.0,
+        "high": 173085.0,
+        "low": 172700.0,
+        "close": 172870.0,
+        "tickVolume": 27894,
+        "realVolume": 277647
+      },
+      "formation": "11:35",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793187600,
+        "open": 172875.0,
+        "high": 173030.0,
+        "low": 172550.0,
+        "close": 173015.0,
+        "tickVolume": 29690,
+        "realVolume": 284653
+      },
+      "formation": "11:40",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793188200000
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793187900,
+        "open": 173020.0,
+        "high": 173255.0,
+        "low": 172880.0,
+        "close": 173015.0,
+        "tickVolume": 27551,
+        "realVolume": 264939
+      },
+      "formation": "11:45",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793188200,
+        "open": 173015.0,
+        "high": 173370.0,
+        "low": 172765.0,
+        "close": 173255.0,
+        "tickVolume": 27355,
+        "realVolume": 248782
+      },
+      "formation": "11:50",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793188800000
+        },
+        {
+          "side": "low",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793188800000
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793188500,
+        "open": 173255.0,
+        "high": 173335.0,
+        "low": 172960.0,
+        "close": 173125.0,
+        "tickVolume": 24141,
+        "realVolume": 232452
+      },
+      "formation": "11:55",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793188800,
+        "open": 173125.0,
+        "high": 173330.0,
+        "low": 172885.0,
+        "close": 173055.0,
+        "tickVolume": 22665,
+        "realVolume": 219940
+      },
+      "formation": "12:00",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793189400000
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793189100,
+        "open": 173055.0,
+        "high": 173325.0,
+        "low": 172940.0,
+        "close": 173220.0,
+        "tickVolume": 16792,
+        "realVolume": 142992
+      },
+      "formation": "12:05",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793189400,
+        "open": 173225.0,
+        "high": 173625.0,
+        "low": 173210.0,
+        "close": 173485.0,
+        "tickVolume": 22820,
+        "realVolume": 216942
+      },
+      "formation": "12:10",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793189700,
+        "open": 173485.0,
+        "high": 174060.0,
+        "low": 173450.0,
+        "close": 173600.0,
+        "tickVolume": 29357,
+        "realVolume": 293927
+      },
+      "formation": "12:15",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793190300000
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793190000,
+        "open": 173600.0,
+        "high": 173695.0,
+        "low": 173240.0,
+        "close": 173360.0,
+        "tickVolume": 23581,
+        "realVolume": 215444
+      },
+      "formation": "12:20",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793190300,
+        "open": 173360.0,
+        "high": 173395.0,
+        "low": 172965.0,
+        "close": 173040.0,
+        "tickVolume": 22897,
+        "realVolume": 236381
+      },
+      "formation": "12:25",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793190900000
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793190600,
+        "open": 173045.0,
+        "high": 173565.0,
+        "low": 172985.0,
+        "close": 173150.0,
+        "tickVolume": 25464,
+        "realVolume": 243942
+      },
+      "formation": "12:30",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "CONFIRMED",
+          "confirmedAtMsc": 1793191200000
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793190900,
+        "open": 173145.0,
+        "high": 173375.0,
+        "low": 173120.0,
+        "close": 173325.0,
+        "tickVolume": 14620,
+        "realVolume": 121919
+      },
+      "formation": "12:35",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "NOT_STRICT_EXTREME",
+          "confirmedAtMsc": null
+        }
+      ]
+    },
+    {
+      "candle": {
+        "time": 1793191200,
+        "open": 173320.0,
+        "high": 173445.0,
+        "low": 173275.0,
+        "close": 173360.0,
+        "tickVolume": 12155,
+        "realVolume": 103267
+      },
+      "formation": "12:40",
+      "evaluations": [
+        {
+          "side": "high",
+          "decision": "BOUNDARY",
+          "confirmedAtMsc": null
+        },
+        {
+          "side": "low",
+          "decision": "BOUNDARY",
+          "confirmedAtMsc": null
+        }
+      ]
+    }
+  ]
+}

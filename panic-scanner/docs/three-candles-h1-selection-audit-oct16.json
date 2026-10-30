@@ -1,0 +1,723 @@
+{
+  "symbol": "WIN$N",
+  "session": "2026-10-16",
+  "sourceSessions": [
+    "2026-10-13",
+    "2026-10-14",
+    "2026-10-15"
+  ],
+  "runtime": true,
+  "candidateCount": 9,
+  "selectedCount": 9,
+  "discardedConfirmed": 0,
+  "scoreImplemented": false,
+  "pivots": [
+    {
+      "type": "BOTTOM",
+      "price": 206075.0,
+      "origin": "13/10 10:00",
+      "confirmed": "13/10 13:00",
+      "state": "CONFIRMED",
+      "selected": true,
+      "score": null,
+      "reason": "EXIBIDO: confirmado antes da abertura; sem filtro de score/limite/dist?ncia/rompimento"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206550.0,
+      "origin": "13/10 14:00",
+      "confirmed": "13/10 17:00",
+      "state": "BROKEN",
+      "selected": true,
+      "score": null,
+      "reason": "EXIBIDO: confirmado antes da abertura; sem filtro de score/limite/dist?ncia/rompimento"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206230.0,
+      "origin": "13/10 18:00",
+      "confirmed": "14/10 11:00",
+      "state": "CONFIRMED",
+      "selected": true,
+      "score": null,
+      "reason": "EXIBIDO: confirmado antes da abertura; sem filtro de score/limite/dist?ncia/rompimento"
+    },
+    {
+      "type": "TOP",
+      "price": 211115.0,
+      "origin": "14/10 09:00",
+      "confirmed": "14/10 12:00",
+      "state": "BROKEN",
+      "selected": true,
+      "score": null,
+      "reason": "EXIBIDO: confirmado antes da abertura; sem filtro de score/limite/dist?ncia/rompimento"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 207615.0,
+      "origin": "14/10 11:00",
+      "confirmed": "14/10 14:00",
+      "state": "CONFIRMED",
+      "selected": true,
+      "score": null,
+      "reason": "EXIBIDO: confirmado antes da abertura; sem filtro de score/limite/dist?ncia/rompimento"
+    },
+    {
+      "type": "TOP",
+      "price": 211750.0,
+      "origin": "14/10 15:00",
+      "confirmed": "14/10 18:00",
+      "state": "CONFIRMED",
+      "selected": true,
+      "score": null,
+      "reason": "EXIBIDO: confirmado antes da abertura; sem filtro de score/limite/dist?ncia/rompimento"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 207235.0,
+      "origin": "15/10 10:00",
+      "confirmed": "15/10 13:00",
+      "state": "CONFIRMED",
+      "selected": true,
+      "score": null,
+      "reason": "EXIBIDO: confirmado antes da abertura; sem filtro de score/limite/dist?ncia/rompimento"
+    },
+    {
+      "type": "TOP",
+      "price": 210800.0,
+      "origin": "15/10 12:00",
+      "confirmed": "15/10 15:00",
+      "state": "CONFIRMED",
+      "selected": true,
+      "score": null,
+      "reason": "EXIBIDO: confirmado antes da abertura; sem filtro de score/limite/dist?ncia/rompimento"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 207440.0,
+      "origin": "15/10 16:00",
+      "confirmed": "15/10 19:00",
+      "state": "CONFIRMED",
+      "selected": true,
+      "score": null,
+      "reason": "EXIBIDO: confirmado antes da abertura; sem filtro de score/limite/dist?ncia/rompimento"
+    }
+  ],
+  "hourlyEvaluations": [
+    {
+      "type": "TOP",
+      "price": 208515.0,
+      "origin": "13/10 09:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 09/10 17:00 (209405.0), 09/10 18:00 (209085.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206785.0,
+      "origin": "13/10 09:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 10:00 (206075.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 208185.0,
+      "origin": "13/10 10:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 09/10 18:00 (209085.0), 13/10 09:00 (208515.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206075.0,
+      "origin": "13/10 10:00",
+      "reason": "DETECTADO E EXIBIDO"
+    },
+    {
+      "type": "TOP",
+      "price": 208035.0,
+      "origin": "13/10 11:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 09:00 (208515.0), 13/10 10:00 (208185.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206895.0,
+      "origin": "13/10 11:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 09:00 (206785.0), 13/10 10:00 (206075.0), 13/10 13:00 (206865.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 207890.0,
+      "origin": "13/10 12:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 10:00 (208185.0), 13/10 11:00 (208035.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 207130.0,
+      "origin": "13/10 12:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 10:00 (206075.0), 13/10 11:00 (206895.0), 13/10 13:00 (206865.0), 13/10 14:00 (206550.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 207820.0,
+      "origin": "13/10 13:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 11:00 (208035.0), 13/10 12:00 (207890.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206865.0,
+      "origin": "13/10 13:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 14:00 (206550.0), 13/10 15:00 (206620.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 207290.0,
+      "origin": "13/10 14:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 12:00 (207890.0), 13/10 13:00 (207820.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206550.0,
+      "origin": "13/10 14:00",
+      "reason": "DETECTADO E EXIBIDO"
+    },
+    {
+      "type": "TOP",
+      "price": 207285.0,
+      "origin": "13/10 15:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 13:00 (207820.0), 13/10 14:00 (207290.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206620.0,
+      "origin": "13/10 15:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 14:00 (206550.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 207085.0,
+      "origin": "13/10 16:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 14:00 (207290.0), 13/10 15:00 (207285.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206640.0,
+      "origin": "13/10 16:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 14:00 (206550.0), 13/10 15:00 (206620.0), 13/10 18:00 (206230.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 206975.0,
+      "origin": "13/10 17:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 15:00 (207285.0), 13/10 16:00 (207085.0), 14/10 09:00 (211115.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206680.0,
+      "origin": "13/10 17:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 15:00 (206620.0), 13/10 16:00 (206640.0), 13/10 18:00 (206230.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 206835.0,
+      "origin": "13/10 18:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 16:00 (207085.0), 13/10 17:00 (206975.0), 14/10 09:00 (211115.0), 14/10 10:00 (209325.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206230.0,
+      "origin": "13/10 18:00",
+      "reason": "DETECTADO E EXIBIDO"
+    },
+    {
+      "type": "TOP",
+      "price": 211115.0,
+      "origin": "14/10 09:00",
+      "reason": "DETECTADO E EXIBIDO"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 208890.0,
+      "origin": "14/10 09:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 17:00 (206680.0), 13/10 18:00 (206230.0), 14/10 10:00 (208160.0), 14/10 11:00 (207615.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 209325.0,
+      "origin": "14/10 10:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 09:00 (211115.0), 14/10 11:00 (209595.0), 14/10 12:00 (210325.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 208160.0,
+      "origin": "14/10 10:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 13/10 18:00 (206230.0), 14/10 11:00 (207615.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 209595.0,
+      "origin": "14/10 11:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 09:00 (211115.0), 14/10 12:00 (210325.0), 14/10 13:00 (211005.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 207615.0,
+      "origin": "14/10 11:00",
+      "reason": "DETECTADO E EXIBIDO"
+    },
+    {
+      "type": "TOP",
+      "price": 210325.0,
+      "origin": "14/10 12:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 13:00 (211005.0), 14/10 14:00 (211635.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 208705.0,
+      "origin": "14/10 12:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 10:00 (208160.0), 14/10 11:00 (207615.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 211005.0,
+      "origin": "14/10 13:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 14:00 (211635.0), 14/10 15:00 (211750.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 209785.0,
+      "origin": "14/10 13:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 11:00 (207615.0), 14/10 12:00 (208705.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 211635.0,
+      "origin": "14/10 14:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 15:00 (211750.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 210785.0,
+      "origin": "14/10 14:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 12:00 (208705.0), 14/10 13:00 (209785.0), 14/10 16:00 (210480.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 211750.0,
+      "origin": "14/10 15:00",
+      "reason": "DETECTADO E EXIBIDO"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 211025.0,
+      "origin": "14/10 15:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 13:00 (209785.0), 14/10 14:00 (210785.0), 14/10 16:00 (210480.0), 14/10 17:00 (210785.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 211365.0,
+      "origin": "14/10 16:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 14:00 (211635.0), 14/10 15:00 (211750.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 210480.0,
+      "origin": "14/10 16:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 18:00 (208380.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 211050.0,
+      "origin": "14/10 17:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 15:00 (211750.0), 14/10 16:00 (211365.0), 14/10 18:00 (211210.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 210785.0,
+      "origin": "14/10 17:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 16:00 (210480.0), 14/10 18:00 (208380.0), 15/10 09:00 (207435.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 211210.0,
+      "origin": "14/10 18:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 16:00 (211365.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 208380.0,
+      "origin": "14/10 18:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 09:00 (207435.0), 15/10 10:00 (207235.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 209285.0,
+      "origin": "15/10 09:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 17:00 (211050.0), 14/10 18:00 (211210.0), 15/10 10:00 (209560.0), 15/10 11:00 (210610.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 207435.0,
+      "origin": "15/10 09:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 10:00 (207235.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 209560.0,
+      "origin": "15/10 10:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 14/10 18:00 (211210.0), 15/10 11:00 (210610.0), 15/10 12:00 (210800.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 207235.0,
+      "origin": "15/10 10:00",
+      "reason": "DETECTADO E EXIBIDO"
+    },
+    {
+      "type": "TOP",
+      "price": 210610.0,
+      "origin": "15/10 11:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 12:00 (210800.0), 15/10 13:00 (210710.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 208785.0,
+      "origin": "15/10 11:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 09:00 (207435.0), 15/10 10:00 (207235.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 210800.0,
+      "origin": "15/10 12:00",
+      "reason": "DETECTADO E EXIBIDO"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 209815.0,
+      "origin": "15/10 12:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 10:00 (207235.0), 15/10 11:00 (208785.0), 15/10 13:00 (209730.0), 15/10 14:00 (209215.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 210710.0,
+      "origin": "15/10 13:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 12:00 (210800.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 209730.0,
+      "origin": "15/10 13:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 11:00 (208785.0), 15/10 14:00 (209215.0), 15/10 15:00 (209365.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 209930.0,
+      "origin": "15/10 14:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 12:00 (210800.0), 15/10 13:00 (210710.0), 15/10 15:00 (210095.0), 15/10 16:00 (209945.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 209215.0,
+      "origin": "15/10 14:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 16:00 (207440.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 210095.0,
+      "origin": "15/10 15:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 13:00 (210710.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 209365.0,
+      "origin": "15/10 15:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 14:00 (209215.0), 15/10 16:00 (207440.0), 15/10 17:00 (208080.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 209945.0,
+      "origin": "15/10 16:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 15:00 (210095.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 207440.0,
+      "origin": "15/10 16:00",
+      "reason": "DETECTADO E EXIBIDO"
+    },
+    {
+      "type": "TOP",
+      "price": 208800.0,
+      "origin": "15/10 17:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 15:00 (210095.0), 15/10 16:00 (209945.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 208080.0,
+      "origin": "15/10 17:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 16:00 (207440.0), 15/10 18:00 (208050.0)"
+    },
+    {
+      "type": "TOP",
+      "price": 208495.0,
+      "origin": "15/10 18:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 16:00 (209945.0), 15/10 17:00 (208800.0)"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 208050.0,
+      "origin": "15/10 18:00",
+      "reason": "OUTRO: não é extremo estrito 2+2; impedimentos: 15/10 16:00 (207440.0)"
+    }
+  ],
+  "outsideWindow": [
+    {
+      "type": "BOTTOM",
+      "price": 185880.0,
+      "origin": "18/09 11:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 186530.0,
+      "origin": "18/09 17:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 189225.0,
+      "origin": "21/09 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 186840.0,
+      "origin": "21/09 11:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 188990.0,
+      "origin": "21/09 14:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 186195.0,
+      "origin": "22/09 10:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 189145.0,
+      "origin": "22/09 16:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 186365.0,
+      "origin": "23/09 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 190140.0,
+      "origin": "23/09 10:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 185730.0,
+      "origin": "24/09 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 187555.0,
+      "origin": "24/09 10:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 185400.0,
+      "origin": "25/09 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 183125.0,
+      "origin": "25/09 11:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 185355.0,
+      "origin": "25/09 13:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 182735.0,
+      "origin": "28/09 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 185195.0,
+      "origin": "28/09 13:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 185115.0,
+      "origin": "29/09 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 182330.0,
+      "origin": "29/09 10:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 184975.0,
+      "origin": "29/09 16:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 188860.0,
+      "origin": "30/09 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 184500.0,
+      "origin": "30/09 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 188760.0,
+      "origin": "30/09 15:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 189365.0,
+      "origin": "01/10 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 185400.0,
+      "origin": "01/10 12:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 191585.0,
+      "origin": "02/10 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 186690.0,
+      "origin": "02/10 12:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 211115.0,
+      "origin": "05/10 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206290.0,
+      "origin": "05/10 11:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 210350.0,
+      "origin": "05/10 15:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 210165.0,
+      "origin": "06/10 10:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 205095.0,
+      "origin": "06/10 11:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 207645.0,
+      "origin": "06/10 15:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 204505.0,
+      "origin": "07/10 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 207435.0,
+      "origin": "07/10 10:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 204550.0,
+      "origin": "07/10 12:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 206370.0,
+      "origin": "07/10 14:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 203530.0,
+      "origin": "08/10 09:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 208205.0,
+      "origin": "08/10 11:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 208385.0,
+      "origin": "08/10 14:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 206290.0,
+      "origin": "08/10 17:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "TOP",
+      "price": 209965.0,
+      "origin": "09/10 11:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    },
+    {
+      "type": "BOTTOM",
+      "price": 208475.0,
+      "origin": "09/10 15:00",
+      "reason": "FORA DA JANELA: origem anterior aos três pregões"
+    }
+  ],
+  "screenshotMapping": "Não confirmada: prints recortados, sem ativo, preço, data ou eixo H1 identific?vel. Aguardando preços/horários das setas."
+}

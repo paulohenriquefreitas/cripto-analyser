@@ -37,6 +37,8 @@ export type StructureReaction = {
 };
 
 export type ChartSink = {
+  focusTime?: (time: number) => void;
+  setStructureLevels?: (levels: readonly StructuralChartLevel[]) => void;
   addStructureReactionMarker?: (timeMsc: number, reaction: StructureReaction) => void;
   onVolumeDelta?: (snapshot: VolumeDeltaSnapshot | null) => void;
   onFlowSnapshot?: (snapshot: MonitoringFlowSnapshot | null) => void;
@@ -47,6 +49,11 @@ export type ChartSink = {
   addRuleOccurrence?: (marker: ReplayRuleMarker) => void;
   addReplayTradeMarker?: (marker: ReplayTradeMarker) => void;
   addReplaySetupMarker?: (marker: ReplaySetupMarker) => void;
+};
+
+/** Rendering-only contract: detection and selection remain on the server. */
+export type StructuralChartLevel = {
+  id: string; type: 'TOP' | 'BOTTOM'; price: number; extremeTimeMsc: number; confirmedAtMsc: number; timeframeMinutes?: 5 | 60;
 };
 
 export type Ema9ReversalMarker = {

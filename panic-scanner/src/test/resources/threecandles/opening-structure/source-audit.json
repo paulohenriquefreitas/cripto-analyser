@@ -1,0 +1,28 @@
+{
+  "capturedAtUTC": "2026-10-30T14:22:15.327669+00:00",
+  "source": "native MetaTrader5 copy_rates_range through existing mt5_reader.py; explicit WINZ26, no continuous symbol or rollover",
+  "timeBasis": "MT5 civil feed axis; epoch UTC fields are used as wall-clock labels, not converted to Brasilia",
+  "units": "WIN index points; no BRL conversion",
+  "sourceHashes": {
+    "panic-scanner\\src\\test\\resources\\threecandles\\opening-structure\\WINZ26-2026-10-21-M5.json": "1c391a34a91c1145ebf71448d20acfd53e1649244e0b89c297fd3b0d197ae306",
+    "panic-scanner\\src\\test\\resources\\threecandles\\opening-structure\\WINZ26-2026-10-22-M5.json": "90a8f08bf553fcd1da7300fd1aa03c8d1675523a5cf9f49ccce2e827605d426a",
+    "panic-scanner\\src\\test\\resources\\threecandles\\opening-structure\\WINZ26-2026-10-23-M5.json": "cf44a1c2512c396fedf03201afc7ec9a41ae8c9a577dabcef0bdba3f8f14e94f",
+    "panic-scanner\\src\\test\\resources\\threecandles\\opening-structure\\WINZ26-2026-10-29-D1.json": "6d13fffcc7167c740e3184e95e8372ee14bb77f20cc20057e534b6a7ee6bab02",
+    "panic-scanner\\src\\test\\resources\\threecandles\\opening-structure\\WINZ26-2026-10-29-M5.json": "6a75685c0dc9a018d13246a41dd88a3b404399ee78c4c99dadff637dac0c54c7",
+    "panic-scanner\\src\\test\\resources\\threecandles\\opening-structure\\WINZ26-2026-10-30-M1.json": "ca1837f523b9a183f6454f4c8a0bf5e13597a38b47ea7894f127f36660750bbe",
+    "panic-scanner\\src\\test\\resources\\threecandles\\opening-structure\\WINZ26-2026-10-30-M5.json": "1e6d2fb1e51b491a90d1094786ac5cab6c75f7e1c07fc80af77fa76547569e27"
+  },
+  "protectedSourceHashes": {
+    "panic-scanner/src/main/java/br/com/bauzin/market/panic/panicscanner/strategy/threecandles/application/DowStructureEngine.java": "f5aa118e5005b1ef2a77f2c10c238ef7aa6d8979b8a6b09c03f772af50df003f",
+    "panic-scanner/src/main/java/br/com/bauzin/market/panic/panicscanner/strategy/threecandles/application/MicroDowEngine.java": "b2714d84fa22199fdfe57b770056745de7d9825619d588fa497d666ccd68f1ae",
+    "panic-scanner/src/main/java/br/com/bauzin/market/panic/panicscanner/strategy/threecandles/application/MicroZigZag.java": "9bacb6ac25e973ad85a5fc70bc2898a9f3a8dd829b0cf00e35c52c639e7936e4",
+    "panic-scanner/src/main/java/br/com/bauzin/market/panic/panicscanner/strategy/threecandles/application/OpeningWave.java": "35e30eff3dd1931b0ee0d3994808107000b3e2e96bdaa7167617438a597044c7",
+    "panic-scanner/src/main/java/br/com/bauzin/market/panic/panicscanner/strategy/threecandles/application/DowFiftyEngine.java": "ff41ccc8a1b51f78d7799d5cf1afe3c12e5824b89bb477a52f73c8902d8d5315",
+    "panic-scanner/src/main/java/br/com/bauzin/market/panic/panicscanner/strategy/threecandles/application/ThreeCandleStructure.java": "c4fc901f6a44dc77ef302512c14e4ba3abca01e451cbfb92ea3a49d76e996e73",
+    "panic-scanner/src/main/java/br/com/bauzin/market/panic/panicscanner/application/win/strategy/ConfirmedPivotDetector.java": "094f3a3388bde7673dd5a2fe0bc2923569b2c49729684cae809029330f0cc01d",
+    "panic-scanner/src/main/java/br/com/bauzin/market/panic/panicscanner/application/win/strategy/StructureReactionScanner.java": "49304c53ef93a8703af46686b8459794c86ecf6a61cc1c1cfc617d31160b4bcf"
+  },
+  "previousCloseVerification": "29 Oct last native M5 close 171050 equals native D1 close 171050; D1 OHLC is not an official adjustment source",
+  "officialSettlement": null,
+  "availability": "Closed M5 uses bucketStart + 5 minutes; source did not preserve historical ingestion timestamps; current opening exposed conservatively only after first M5 close. D-1 references describe observed M5 coverage, not certified session coverage."
+}

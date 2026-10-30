@@ -47,7 +47,7 @@ public class Mt5ProcessClient {
         String normalizedSymbol = symbol.trim().toUpperCase(Locale.ROOT);
         String normalizedTimeframe = timeframe.trim().toUpperCase(Locale.ROOT);
         if (!normalizedSymbol.matches("[A-Z0-9_$]{1,24}")
-                || !List.of("M5", "D1").contains(normalizedTimeframe) || from.isAfter(to)) {
+                || !List.of("M1", "M5", "D1").contains(normalizedTimeframe) || from.isAfter(to)) {
             throw new IllegalArgumentException("Invalid MT5 historical query");
         }
         return parseResponse(0, execute("--symbol", normalizedSymbol, "--timeframe", normalizedTimeframe,

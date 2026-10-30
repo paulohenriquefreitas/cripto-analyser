@@ -1,0 +1,56 @@
+[
+  {
+    "name": "WINZ26-waiting",
+    "symbol": "WINZ26",
+    "cursor": "09:45",
+    "currentWaveId": null
+  },
+  {
+    "name": "WINZ26-confirmed",
+    "symbol": "WINZ26",
+    "cursor": "09:50",
+    "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP"
+  },
+  {
+    "name": "WINZ26-touch",
+    "symbol": "WINZ26",
+    "cursor": "10:00",
+    "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP"
+  },
+  {
+    "name": "WINZ26-false-break",
+    "symbol": "WINZ26",
+    "cursor": "10:10",
+    "currentWaveId": "WINZ26:5:1793178900000:BOTTOM\u2192WINZ26:5:1793179800000:TOP"
+  },
+  {
+    "name": "WINZ26-replaced",
+    "symbol": "WINZ26",
+    "cursor": "10:15",
+    "currentWaveId": "WINZ26:5:1793179800000:TOP\u2192WINZ26:5:1793180100000:BOTTOM"
+  },
+  {
+    "name": "WINZ26-final",
+    "symbol": "WINZ26",
+    "cursor": "17:35",
+    "currentWaveId": "WINZ26:5:1793206500000:BOTTOM\u2192WINZ26:5:1793206800000:TOP"
+  },
+  {
+    "name": "WIN_N-confirmed",
+    "symbol": "WIN$N",
+    "cursor": "10:00",
+    "currentWaveId": "WIN$N:5:1792142700000:TOP\u2192WIN$N:5:1792143000000:BOTTOM"
+  },
+  {
+    "name": "WIN_N-false-break",
+    "symbol": "WIN$N",
+    "cursor": "16:40",
+    "currentWaveId": "WIN$N:5:1792165500000:TOP\u2192WIN$N:5:1792166700000:BOTTOM"
+  },
+  {
+    "name": "WIN_N-final",
+    "symbol": "WIN$N",
+    "cursor": "18:25",
+    "currentWaveId": "WIN$N:5:1792167300000:TOP\u2192WIN$N:5:1792170000000:BOTTOM"
+  }
+]

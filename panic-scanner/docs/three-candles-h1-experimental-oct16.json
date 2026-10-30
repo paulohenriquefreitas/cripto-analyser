@@ -1,0 +1,1152 @@
+{
+  "symbol": "WIN$N",
+  "asOf": 1792141200000,
+  "sourceSessions": [
+    "2026-10-13",
+    "2026-10-14",
+    "2026-10-15"
+  ],
+  "nativeDiscrepancies": 0,
+  "strictCount": 9,
+  "oneOneCount": 13,
+  "additionalCount": 4,
+  "strictCandidates": [
+    {
+      "id": "WIN$N:60:1791885600000:BOTTOM",
+      "type": "BOTTOM",
+      "price": 206075,
+      "extremeTimeMsc": 1791885600000,
+      "confirmedAtMsc": 1791896400000,
+      "region": {
+        "high": 208185,
+        "low": 206075,
+        "midpoint": 207130,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "STRICT_H1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791900000000:BOTTOM",
+      "type": "BOTTOM",
+      "price": 206550,
+      "extremeTimeMsc": 1791900000000,
+      "confirmedAtMsc": 1791910800000,
+      "region": {
+        "high": 207290,
+        "low": 206550,
+        "midpoint": 206920,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "STRICT_H1_PREOPEN",
+      "state": "BROKEN",
+      "brokenAtMsc": 1791918000000,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791914400000:BOTTOM",
+      "type": "BOTTOM",
+      "price": 206230,
+      "extremeTimeMsc": 1791914400000,
+      "confirmedAtMsc": 1791975600000,
+      "region": {
+        "high": 206835,
+        "low": 206230,
+        "midpoint": 206532.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "STRICT_H1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791968400000:TOP",
+      "type": "TOP",
+      "price": 211115,
+      "extremeTimeMsc": 1791968400000,
+      "confirmedAtMsc": 1791979200000,
+      "region": {
+        "high": 211115,
+        "low": 208890,
+        "midpoint": 210002.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "STRICT_H1_PREOPEN",
+      "state": "BROKEN",
+      "brokenAtMsc": 1791990000000,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791975600000:BOTTOM",
+      "type": "BOTTOM",
+      "price": 207615,
+      "extremeTimeMsc": 1791975600000,
+      "confirmedAtMsc": 1791986400000,
+      "region": {
+        "high": 209595,
+        "low": 207615,
+        "midpoint": 208605,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "STRICT_H1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791990000000:TOP",
+      "type": "TOP",
+      "price": 211750,
+      "extremeTimeMsc": 1791990000000,
+      "confirmedAtMsc": 1792000800000,
+      "region": {
+        "high": 211750,
+        "low": 211025,
+        "midpoint": 211387.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "STRICT_H1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792058400000:BOTTOM",
+      "type": "BOTTOM",
+      "price": 207235,
+      "extremeTimeMsc": 1792058400000,
+      "confirmedAtMsc": 1792069200000,
+      "region": {
+        "high": 209560,
+        "low": 207235,
+        "midpoint": 208397.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "STRICT_H1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792065600000:TOP",
+      "type": "TOP",
+      "price": 210800,
+      "extremeTimeMsc": 1792065600000,
+      "confirmedAtMsc": 1792076400000,
+      "region": {
+        "high": 210800,
+        "low": 209815,
+        "midpoint": 210307.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "STRICT_H1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792080000000:BOTTOM",
+      "type": "BOTTOM",
+      "price": 207440,
+      "extremeTimeMsc": 1792080000000,
+      "confirmedAtMsc": 1792090800000,
+      "region": {
+        "high": 209945,
+        "low": 207440,
+        "midpoint": 208692.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "STRICT_H1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    }
+  ],
+  "oneOneCandidates": [
+    {
+      "id": "WIN$N:60:1791885600000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 206075,
+      "extremeTimeMsc": 1791885600000,
+      "confirmedAtMsc": 1791892800000,
+      "region": {
+        "high": 208185,
+        "low": 206075,
+        "midpoint": 207130,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791900000000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 206550,
+      "extremeTimeMsc": 1791900000000,
+      "confirmedAtMsc": 1791907200000,
+      "region": {
+        "high": 207290,
+        "low": 206550,
+        "midpoint": 206920,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "BROKEN",
+      "brokenAtMsc": 1791918000000,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791914400000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 206230,
+      "extremeTimeMsc": 1791914400000,
+      "confirmedAtMsc": 1791972000000,
+      "region": {
+        "high": 206835,
+        "low": 206230,
+        "midpoint": 206532.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791968400000:TOP:1+1",
+      "type": "TOP",
+      "price": 211115,
+      "extremeTimeMsc": 1791968400000,
+      "confirmedAtMsc": 1791975600000,
+      "region": {
+        "high": 211115,
+        "low": 208890,
+        "midpoint": 210002.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "BROKEN",
+      "brokenAtMsc": 1791990000000,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791975600000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 207615,
+      "extremeTimeMsc": 1791975600000,
+      "confirmedAtMsc": 1791982800000,
+      "region": {
+        "high": 209595,
+        "low": 207615,
+        "midpoint": 208605,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791990000000:TOP:1+1",
+      "type": "TOP",
+      "price": 211750,
+      "extremeTimeMsc": 1791990000000,
+      "confirmedAtMsc": 1791997200000,
+      "region": {
+        "high": 211750,
+        "low": 211025,
+        "midpoint": 211387.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1791993600000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 210480,
+      "extremeTimeMsc": 1791993600000,
+      "confirmedAtMsc": 1792000800000,
+      "region": {
+        "high": 211365,
+        "low": 210480,
+        "midpoint": 210922.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "BROKEN",
+      "brokenAtMsc": 1792004400000,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792000800000:TOP:1+1",
+      "type": "TOP",
+      "price": 211210,
+      "extremeTimeMsc": 1792000800000,
+      "confirmedAtMsc": 1792058400000,
+      "region": {
+        "high": 211210,
+        "low": 208380,
+        "midpoint": 209795,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792058400000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 207235,
+      "extremeTimeMsc": 1792058400000,
+      "confirmedAtMsc": 1792065600000,
+      "region": {
+        "high": 209560,
+        "low": 207235,
+        "midpoint": 208397.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792065600000:TOP:1+1",
+      "type": "TOP",
+      "price": 210800,
+      "extremeTimeMsc": 1792065600000,
+      "confirmedAtMsc": 1792072800000,
+      "region": {
+        "high": 210800,
+        "low": 209815,
+        "midpoint": 210307.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792072800000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 209215,
+      "extremeTimeMsc": 1792072800000,
+      "confirmedAtMsc": 1792080000000,
+      "region": {
+        "high": 209930,
+        "low": 209215,
+        "midpoint": 209572.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "BROKEN",
+      "brokenAtMsc": 1792083600000,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792076400000:TOP:1+1",
+      "type": "TOP",
+      "price": 210095,
+      "extremeTimeMsc": 1792076400000,
+      "confirmedAtMsc": 1792083600000,
+      "region": {
+        "high": 210095,
+        "low": 209365,
+        "midpoint": 209730,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792080000000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 207440,
+      "extremeTimeMsc": 1792080000000,
+      "confirmedAtMsc": 1792087200000,
+      "region": {
+        "high": 209945,
+        "low": 207440,
+        "midpoint": 208692.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    }
+  ],
+  "additionalCandidates": [
+    {
+      "id": "WIN$N:60:1791993600000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 210480,
+      "extremeTimeMsc": 1791993600000,
+      "confirmedAtMsc": 1792000800000,
+      "region": {
+        "high": 211365,
+        "low": 210480,
+        "midpoint": 210922.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "BROKEN",
+      "brokenAtMsc": 1792004400000,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792000800000:TOP:1+1",
+      "type": "TOP",
+      "price": 211210,
+      "extremeTimeMsc": 1792000800000,
+      "confirmedAtMsc": 1792058400000,
+      "region": {
+        "high": 211210,
+        "low": 208380,
+        "midpoint": 209795,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792072800000:BOTTOM:1+1",
+      "type": "BOTTOM",
+      "price": 209215,
+      "extremeTimeMsc": 1792072800000,
+      "confirmedAtMsc": 1792080000000,
+      "region": {
+        "high": 209930,
+        "low": 209215,
+        "midpoint": 209572.5,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "BROKEN",
+      "brokenAtMsc": 1792083600000,
+      "timeframeMinutes": 60
+    },
+    {
+      "id": "WIN$N:60:1792076400000:TOP:1+1",
+      "type": "TOP",
+      "price": 210095,
+      "extremeTimeMsc": 1792076400000,
+      "confirmedAtMsc": 1792083600000,
+      "region": {
+        "high": 210095,
+        "low": 209365,
+        "midpoint": 209730,
+        "basis": "PIVOT_CANDLE"
+      },
+      "relevance": "EXPERIMENTAL_H1_1_1_PREOPEN",
+      "state": "CONFIRMED",
+      "brokenAtMsc": null,
+      "timeframeMinutes": 60
+    }
+  ],
+  "baselineMatches": {
+    "WIN$N:60:1791885600000:BOTTOM:1+1": "WIN$N:60:1791885600000:BOTTOM",
+    "WIN$N:60:1791900000000:BOTTOM:1+1": "WIN$N:60:1791900000000:BOTTOM",
+    "WIN$N:60:1791914400000:BOTTOM:1+1": "WIN$N:60:1791914400000:BOTTOM",
+    "WIN$N:60:1791968400000:TOP:1+1": "WIN$N:60:1791968400000:TOP",
+    "WIN$N:60:1791975600000:BOTTOM:1+1": "WIN$N:60:1791975600000:BOTTOM",
+    "WIN$N:60:1791990000000:TOP:1+1": "WIN$N:60:1791990000000:TOP",
+    "WIN$N:60:1792058400000:BOTTOM:1+1": "WIN$N:60:1792058400000:BOTTOM",
+    "WIN$N:60:1792065600000:TOP:1+1": "WIN$N:60:1792065600000:TOP",
+    "WIN$N:60:1792080000000:BOTTOM:1+1": "WIN$N:60:1792080000000:BOTTOM"
+  },
+  "evaluations": [
+    {
+      "originMsc": 1791882000000,
+      "type": "TOP",
+      "price": 208515,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=209085.0, right=208185.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791882000000,
+      "type": "BOTTOM",
+      "price": 206785,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=208725.0, right=206075.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791885600000,
+      "type": "TOP",
+      "price": 208185,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=208515.0, right=208035.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791885600000,
+      "type": "BOTTOM",
+      "price": 206075,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1791892800000
+    },
+    {
+      "originMsc": 1791889200000,
+      "type": "TOP",
+      "price": 208035,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=208185.0, right=207890.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791889200000,
+      "type": "BOTTOM",
+      "price": 206895,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=206075.0, right=207130.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791892800000,
+      "type": "TOP",
+      "price": 207890,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=208035.0, right=207820.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791892800000,
+      "type": "BOTTOM",
+      "price": 207130,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=206895.0, right=206865.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791896400000,
+      "type": "TOP",
+      "price": 207820,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=207890.0, right=207290.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791896400000,
+      "type": "BOTTOM",
+      "price": 206865,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=207130.0, right=206550.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791900000000,
+      "type": "TOP",
+      "price": 207290,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=207820.0, right=207285.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791900000000,
+      "type": "BOTTOM",
+      "price": 206550,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1791907200000
+    },
+    {
+      "originMsc": 1791903600000,
+      "type": "TOP",
+      "price": 207285,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=207290.0, right=207085.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791903600000,
+      "type": "BOTTOM",
+      "price": 206620,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=206550.0, right=206640.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791907200000,
+      "type": "TOP",
+      "price": 207085,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=207285.0, right=206975.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791907200000,
+      "type": "BOTTOM",
+      "price": 206640,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=206620.0, right=206680.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791910800000,
+      "type": "TOP",
+      "price": 206975,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=207085.0, right=206835.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791910800000,
+      "type": "BOTTOM",
+      "price": 206680,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=206640.0, right=206230.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791914400000,
+      "type": "TOP",
+      "price": 206835,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=206975.0, right=211115.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791914400000,
+      "type": "BOTTOM",
+      "price": 206230,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1791972000000
+    },
+    {
+      "originMsc": 1791968400000,
+      "type": "TOP",
+      "price": 211115,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1791975600000
+    },
+    {
+      "originMsc": 1791968400000,
+      "type": "BOTTOM",
+      "price": 208890,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=206230.0, right=208160.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791972000000,
+      "type": "TOP",
+      "price": 209325,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=211115.0, right=209595.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791972000000,
+      "type": "BOTTOM",
+      "price": 208160,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=208890.0, right=207615.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791975600000,
+      "type": "TOP",
+      "price": 209595,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=209325.0, right=210325.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791975600000,
+      "type": "BOTTOM",
+      "price": 207615,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1791982800000
+    },
+    {
+      "originMsc": 1791979200000,
+      "type": "TOP",
+      "price": 210325,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=209595.0, right=211005.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791979200000,
+      "type": "BOTTOM",
+      "price": 208705,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=207615.0, right=209785.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791982800000,
+      "type": "TOP",
+      "price": 211005,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=210325.0, right=211635.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791982800000,
+      "type": "BOTTOM",
+      "price": 209785,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=208705.0, right=210785.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791986400000,
+      "type": "TOP",
+      "price": 211635,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=211005.0, right=211750.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791986400000,
+      "type": "BOTTOM",
+      "price": 210785,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=209785.0, right=211025.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791990000000,
+      "type": "TOP",
+      "price": 211750,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1791997200000
+    },
+    {
+      "originMsc": 1791990000000,
+      "type": "BOTTOM",
+      "price": 211025,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=210785.0, right=210480.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791993600000,
+      "type": "TOP",
+      "price": 211365,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=211750.0, right=211050.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791993600000,
+      "type": "BOTTOM",
+      "price": 210480,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1792000800000
+    },
+    {
+      "originMsc": 1791997200000,
+      "type": "TOP",
+      "price": 211050,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=211365.0, right=211210.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1791997200000,
+      "type": "BOTTOM",
+      "price": 210785,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=210480.0, right=208380.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792000800000,
+      "type": "TOP",
+      "price": 211210,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1792058400000
+    },
+    {
+      "originMsc": 1792000800000,
+      "type": "BOTTOM",
+      "price": 208380,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=210785.0, right=207435.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792054800000,
+      "type": "TOP",
+      "price": 209285,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=211210.0, right=209560.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792054800000,
+      "type": "BOTTOM",
+      "price": 207435,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=208380.0, right=207235.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792058400000,
+      "type": "TOP",
+      "price": 209560,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=209285.0, right=210610.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792058400000,
+      "type": "BOTTOM",
+      "price": 207235,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1792065600000
+    },
+    {
+      "originMsc": 1792062000000,
+      "type": "TOP",
+      "price": 210610,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=209560.0, right=210800.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792062000000,
+      "type": "BOTTOM",
+      "price": 208785,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=207235.0, right=209815.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792065600000,
+      "type": "TOP",
+      "price": 210800,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1792072800000
+    },
+    {
+      "originMsc": 1792065600000,
+      "type": "BOTTOM",
+      "price": 209815,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=208785.0, right=209730.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792069200000,
+      "type": "TOP",
+      "price": 210710,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=210800.0, right=209930.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792069200000,
+      "type": "BOTTOM",
+      "price": 209730,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=209815.0, right=209215.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792072800000,
+      "type": "TOP",
+      "price": 209930,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=210710.0, right=210095.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792072800000,
+      "type": "BOTTOM",
+      "price": 209215,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1792080000000
+    },
+    {
+      "originMsc": 1792076400000,
+      "type": "TOP",
+      "price": 210095,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1792083600000
+    },
+    {
+      "originMsc": 1792076400000,
+      "type": "BOTTOM",
+      "price": 209365,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=209215.0, right=207440.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792080000000,
+      "type": "TOP",
+      "price": 209945,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=210095.0, right=208800.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792080000000,
+      "type": "BOTTOM",
+      "price": 207440,
+      "decision": "CONFIRMED_1_1",
+      "reason": "Strict 1-left/1-right, available after right H1 close",
+      "confirmedAtMsc": 1792087200000
+    },
+    {
+      "originMsc": 1792083600000,
+      "type": "TOP",
+      "price": 208800,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict high > both neighbors; left=209945.0, right=208495.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792083600000,
+      "type": "BOTTOM",
+      "price": 208080,
+      "decision": "NOT_EXTREME_1_1",
+      "reason": "Requires strict low < both neighbors; left=207440.0, right=208050.0",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792087200000,
+      "type": "TOP",
+      "price": 208495,
+      "decision": "UNCONFIRMED_1_1",
+      "reason": "Missing closed left/right H1 before cutoff",
+      "confirmedAtMsc": null
+    },
+    {
+      "originMsc": 1792087200000,
+      "type": "BOTTOM",
+      "price": 208050,
+      "decision": "UNCONFIRMED_1_1",
+      "reason": "Missing closed left/right H1 before cutoff",
+      "confirmedAtMsc": null
+    }
+  ],
+  "regions": [
+    {
+      "id": "WIN$N:60:1791885600000:BOTTOM:region",
+      "low": 206075,
+      "high": 206075,
+      "pivotIds": [
+        "WIN$N:60:1791885600000:BOTTOM"
+      ],
+      "tests": []
+    },
+    {
+      "id": "WIN$N:60:1791914400000:BOTTOM:region",
+      "low": 206230,
+      "high": 206230,
+      "pivotIds": [
+        "WIN$N:60:1791914400000:BOTTOM"
+      ],
+      "tests": []
+    },
+    {
+      "id": "WIN$N:60:1791900000000:BOTTOM:region",
+      "low": 206550,
+      "high": 206550,
+      "pivotIds": [
+        "WIN$N:60:1791900000000:BOTTOM"
+      ],
+      "tests": [
+        {
+          "startMsc": 1791914400000,
+          "endMsc": 1791914400000,
+          "knownAtMsc": 1791918000000,
+          "hours": 1,
+          "reactionUpPoints": 4565,
+          "reactionDownPoints": 0,
+          "measuredThroughMsc": 1791975600000
+        }
+      ]
+    },
+    {
+      "id": "WIN$N:60:1792058400000:BOTTOM:region",
+      "low": 207235,
+      "high": 207235,
+      "pivotIds": [
+        "WIN$N:60:1792058400000:BOTTOM"
+      ],
+      "tests": []
+    },
+    {
+      "id": "WIN$N:60:1792080000000:BOTTOM:region",
+      "low": 207440,
+      "high": 207440,
+      "pivotIds": [
+        "WIN$N:60:1792080000000:BOTTOM"
+      ],
+      "tests": []
+    },
+    {
+      "id": "WIN$N:60:1791975600000:BOTTOM:region",
+      "low": 207615,
+      "high": 207615,
+      "pivotIds": [
+        "WIN$N:60:1791975600000:BOTTOM"
+      ],
+      "tests": [
+        {
+          "startMsc": 1792054800000,
+          "endMsc": 1792058400000,
+          "knownAtMsc": 1792062000000,
+          "hours": 2,
+          "reactionUpPoints": 3185,
+          "reactionDownPoints": 0,
+          "measuredThroughMsc": 1792069200000
+        },
+        {
+          "startMsc": 1792080000000,
+          "endMsc": 1792080000000,
+          "knownAtMsc": 1792083600000,
+          "hours": 1,
+          "reactionUpPoints": 1185,
+          "reactionDownPoints": 0,
+          "measuredThroughMsc": 1792090800000
+        }
+      ]
+    },
+    {
+      "id": "WIN$N:60:1792072800000:BOTTOM:1+1:region",
+      "low": 209215,
+      "high": 209215,
+      "pivotIds": [
+        "WIN$N:60:1792072800000:BOTTOM:1+1"
+      ],
+      "tests": [
+        {
+          "startMsc": 1792080000000,
+          "endMsc": 1792080000000,
+          "knownAtMsc": 1792083600000,
+          "hours": 1,
+          "reactionUpPoints": 0,
+          "reactionDownPoints": 1165,
+          "measuredThroughMsc": 1792090800000
+        }
+      ]
+    },
+    {
+      "id": "WIN$N:60:1792076400000:TOP:1+1:region",
+      "low": 210095,
+      "high": 210095,
+      "pivotIds": [
+        "WIN$N:60:1792076400000:TOP:1+1"
+      ],
+      "tests": []
+    },
+    {
+      "id": "WIN$N:60:1791993600000:BOTTOM:1+1:region",
+      "low": 210480,
+      "high": 210480,
+      "pivotIds": [
+        "WIN$N:60:1791993600000:BOTTOM:1+1"
+      ],
+      "tests": [
+        {
+          "startMsc": 1792000800000,
+          "endMsc": 1792000800000,
+          "knownAtMsc": 1792004400000,
+          "hours": 1,
+          "reactionUpPoints": 0,
+          "reactionDownPoints": 3245,
+          "measuredThroughMsc": 1792062000000
+        },
+        {
+          "startMsc": 1792062000000,
+          "endMsc": 1792069200000,
+          "knownAtMsc": 1792072800000,
+          "hours": 3,
+          "reactionUpPoints": 0,
+          "reactionDownPoints": 1265,
+          "measuredThroughMsc": 1792080000000
+        }
+      ]
+    },
+    {
+      "id": "WIN$N:60:1792065600000:TOP:region",
+      "low": 210800,
+      "high": 210800,
+      "pivotIds": [
+        "WIN$N:60:1792065600000:TOP"
+      ],
+      "tests": []
+    },
+    {
+      "id": "WIN$N:60:1791968400000:TOP:region",
+      "low": 211115,
+      "high": 211115,
+      "pivotIds": [
+        "WIN$N:60:1791968400000:TOP"
+      ],
+      "tests": [
+        {
+          "startMsc": 1791986400000,
+          "endMsc": 1791993600000,
+          "knownAtMsc": 1791997200000,
+          "hours": 3,
+          "reactionUpPoints": 95,
+          "reactionDownPoints": 2735,
+          "measuredThroughMsc": 1792004400000
+        },
+        {
+          "startMsc": 1792000800000,
+          "endMsc": 1792000800000,
+          "knownAtMsc": 1792004400000,
+          "hours": 1,
+          "reactionUpPoints": 0,
+          "reactionDownPoints": 3880,
+          "measuredThroughMsc": 1792062000000
+        }
+      ]
+    },
+    {
+      "id": "WIN$N:60:1792000800000:TOP:1+1:region",
+      "low": 211210,
+      "high": 211210,
+      "pivotIds": [
+        "WIN$N:60:1792000800000:TOP:1+1"
+      ],
+      "tests": []
+    },
+    {
+      "id": "WIN$N:60:1791990000000:TOP:region",
+      "low": 211750,
+      "high": 211750,
+      "pivotIds": [
+        "WIN$N:60:1791990000000:TOP"
+      ],
+      "tests": []
+    }
+  ],
+  "regionWidthPoints": 50,
+  "outsideWindowCandidates": 70
+}

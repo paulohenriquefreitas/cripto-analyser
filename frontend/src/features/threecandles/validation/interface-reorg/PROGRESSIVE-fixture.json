@@ -1,0 +1,1003 @@
+{
+  "symbol": "WINZ26",
+  "timeframeMinutes": 5,
+  "id": "ui-audit-session",
+  "status": "PAUSED",
+  "speed": 1,
+  "availableAtMsc": 1793181540000,
+  "replayMode": "PROGRESSIVE_M1",
+  "missingM1Times": [
+    1793199660000
+  ],
+  "candles": [
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793178000000,
+        "open": 178290,
+        "high": 178700,
+        "low": 177240,
+        "close": 177365
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793178300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793178300000,
+        "open": 177375,
+        "high": 177725,
+        "low": 177355,
+        "close": 177565
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793178600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793178600000,
+        "open": 177560,
+        "high": 177565,
+        "low": 177065,
+        "close": 177170
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793178900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793178900000,
+        "open": 177170,
+        "high": 177445,
+        "low": 177010,
+        "close": 177235
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793179200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793179200000,
+        "open": 177240,
+        "high": 177570,
+        "low": 177200,
+        "close": 177515
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793179500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793179500000,
+        "open": 177520,
+        "high": 177610,
+        "low": 177240,
+        "close": 177605
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793179800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793179800000,
+        "open": 177600,
+        "high": 177710,
+        "low": 177120,
+        "close": 177130
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793180100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793180100000,
+        "open": 177130,
+        "high": 177270,
+        "low": 176825,
+        "close": 177000
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793180400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793180400000,
+        "open": 176990,
+        "high": 177150,
+        "low": 176875,
+        "close": 176995
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793180700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793180700000,
+        "open": 176990,
+        "high": 177235,
+        "low": 176925,
+        "close": 177215
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793181000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793181000000,
+        "open": 177210,
+        "high": 177335,
+        "low": 177105,
+        "close": 177210
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793181300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793181300000,
+        "open": 177210,
+        "high": 177470,
+        "low": 177145,
+        "close": 177425
+      },
+      "timeframeMinutes": 5,
+      "closed": false,
+      "availableAtMsc": 1793181540000
+    }
+  ],
+  "structure": {
+    "levels": [
+      {
+        "id": "WINZ26:5:1793178900000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 177010,
+        "extremeTimeMsc": 1793178900000,
+        "confirmedAtMsc": 1793179800000,
+        "region": {
+          "high": 177445,
+          "low": 177010,
+          "midpoint": 177227.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793180400000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793179800000:TOP",
+        "type": "TOP",
+        "price": 177710,
+        "extremeTimeMsc": 1793179800000,
+        "confirmedAtMsc": 1793180700000,
+        "region": {
+          "high": 177710,
+          "low": 177120,
+          "midpoint": 177415,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793180100000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 176825,
+        "extremeTimeMsc": 1793180100000,
+        "confirmedAtMsc": 1793181000000,
+        "region": {
+          "high": 177270,
+          "low": 176825,
+          "midpoint": 177047.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      }
+    ],
+    "totalActive": 3,
+    "maxLevels": 6,
+    "selection": "NEAREST_LAST_CLOSED_THEN_LATEST_CONFIRMED",
+    "supported": true,
+    "h1History": {
+      "previousSessions": 0,
+      "sufficient": false,
+      "alignment": "NATIVE_FEED_HOUR_NO_SHIFT"
+    },
+    "preparation": null,
+    "confirmedPivots": [
+      {
+        "id": "WINZ26:5:1793178900000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 177010,
+        "extremeTimeMsc": 1793178900000,
+        "confirmedAtMsc": 1793179800000,
+        "region": {
+          "high": 177445,
+          "low": 177010,
+          "midpoint": 177227.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "BROKEN",
+        "brokenAtMsc": 1793180400000,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793179800000:TOP",
+        "type": "TOP",
+        "price": 177710,
+        "extremeTimeMsc": 1793179800000,
+        "confirmedAtMsc": 1793180700000,
+        "region": {
+          "high": 177710,
+          "low": 177120,
+          "midpoint": 177415,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      },
+      {
+        "id": "WINZ26:5:1793180100000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 176825,
+        "extremeTimeMsc": 1793180100000,
+        "confirmedAtMsc": 1793181000000,
+        "region": {
+          "high": 177270,
+          "low": 176825,
+          "midpoint": 177047.5,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 5
+      }
+    ]
+  },
+  "dow": {
+    "symbol": "WINZ26",
+    "timeframeMinutes": 5,
+    "availableAtMsc": 1793181540000,
+    "state": "UNDEFINED",
+    "criterion": "EXPERIMENTAL_PAIRED_PIVOTS_CLOSE_BREAK_V1",
+    "pivots": [
+      {
+        "extreme": {
+          "id": "WINZ26:5:1793178900000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 177010,
+          "extremeTimeMsc": 1793178900000,
+          "confirmedAtMsc": 1793179800000,
+          "region": {
+            "high": 177445,
+            "low": 177010,
+            "midpoint": 177227.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "PROXIMITY",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        },
+        "classification": "FIRST",
+        "comparisonId": null,
+        "comparisonPrice": null,
+        "reason": "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+        "participation": "STRUCTURE"
+      },
+      {
+        "extreme": {
+          "id": "WINZ26:5:1793179800000:TOP",
+          "type": "TOP",
+          "price": 177710,
+          "extremeTimeMsc": 1793179800000,
+          "confirmedAtMsc": 1793180700000,
+          "region": {
+            "high": 177710,
+            "low": 177120,
+            "midpoint": 177415,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "PROXIMITY",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        },
+        "classification": "FIRST",
+        "comparisonId": null,
+        "comparisonPrice": null,
+        "reason": "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+        "participation": "STRUCTURE"
+      },
+      {
+        "extreme": {
+          "id": "WINZ26:5:1793180100000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 176825,
+          "extremeTimeMsc": 1793180100000,
+          "confirmedAtMsc": 1793181000000,
+          "region": {
+            "high": 177270,
+            "low": 176825,
+            "midpoint": 177047.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "PROXIMITY",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        },
+        "classification": "LL",
+        "comparisonId": "WINZ26:5:1793178900000:BOTTOM",
+        "comparisonPrice": 177010,
+        "reason": "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+        "participation": "STRUCTURE"
+      }
+    ],
+    "movements": [
+      {
+        "id": "WINZ26:5:1793178900000:BOTTOM→WINZ26:5:1793179800000:TOP",
+        "fromId": "WINZ26:5:1793178900000:BOTTOM",
+        "toId": "WINZ26:5:1793179800000:TOP",
+        "knownAtMsc": 1793180700000,
+        "kind": "UP"
+      },
+      {
+        "id": "WINZ26:5:1793179800000:TOP→WINZ26:5:1793180100000:BOTTOM",
+        "fromId": "WINZ26:5:1793179800000:TOP",
+        "toId": "WINZ26:5:1793180100000:BOTTOM",
+        "knownAtMsc": 1793181000000,
+        "kind": "DOWN"
+      }
+    ],
+    "events": [
+      {
+        "id": "WINZ26:dow:0",
+        "atMsc": 1793179800000,
+        "kind": "PIVOT_DETECTED",
+        "pivotId": "WINZ26:5:1793178900000:BOTTOM",
+        "affectedMovementId": null,
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+        "candleTimeMsc": null,
+        "observedClose": null
+      },
+      {
+        "id": "WINZ26:dow:1",
+        "atMsc": 1793179800000,
+        "kind": "STRUCTURE_PIVOT_SELECTED",
+        "pivotId": "WINZ26:5:1793178900000:BOTTOM",
+        "affectedMovementId": null,
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+        "candleTimeMsc": null,
+        "observedClose": null
+      },
+      {
+        "id": "WINZ26:dow:2",
+        "atMsc": 1793180400000,
+        "kind": "SUPPORT_BROKEN",
+        "pivotId": "WINZ26:5:1793178900000:BOTTOM",
+        "affectedMovementId": null,
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Fechamento M5 em 177000.0 rompeu a referência confirmada 177010.0; pavio isolado não basta",
+        "candleTimeMsc": 1793180100000,
+        "observedClose": 177000
+      },
+      {
+        "id": "WINZ26:dow:3",
+        "atMsc": 1793180700000,
+        "kind": "PIVOT_DETECTED",
+        "pivotId": "WINZ26:5:1793179800000:TOP",
+        "affectedMovementId": null,
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+        "candleTimeMsc": null,
+        "observedClose": null
+      },
+      {
+        "id": "WINZ26:dow:4",
+        "atMsc": 1793180700000,
+        "kind": "STRUCTURE_PIVOT_SELECTED",
+        "pivotId": "WINZ26:5:1793179800000:TOP",
+        "affectedMovementId": null,
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+        "candleTimeMsc": null,
+        "observedClose": null
+      },
+      {
+        "id": "WINZ26:dow:5",
+        "atMsc": 1793181000000,
+        "kind": "PIVOT_DETECTED",
+        "pivotId": "WINZ26:5:1793180100000:BOTTOM",
+        "affectedMovementId": null,
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+        "candleTimeMsc": null,
+        "observedClose": null
+      },
+      {
+        "id": "WINZ26:dow:6",
+        "atMsc": 1793181000000,
+        "kind": "STRUCTURE_PIVOT_SELECTED",
+        "pivotId": "WINZ26:5:1793180100000:BOTTOM",
+        "affectedMovementId": "WINZ26:5:1793178900000:BOTTOM→WINZ26:5:1793179800000:TOP",
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Confirmed alternating pivot; strict comparison with the preceding structural extreme of the same type",
+        "candleTimeMsc": null,
+        "observedClose": null
+      }
+    ]
+  },
+  "dowFifty": {
+    "symbol": "WINZ26",
+    "timeframeMinutes": 5,
+    "availableAtMsc": 1793181540000,
+    "criterion": "SEALED_BY_NEXT_STRUCTURAL_PIVOT_V1",
+    "approachTolerancePoints": 5,
+    "breakPolicy": "EXPERIMENTAL_M5_CLOSE",
+    "rejectionPolicy": "UNVALIDATED_RANGE_TOUCH_CLOSE_SAME_SIDE",
+    "state": "MONITORANDO_50",
+    "currentWaveId": "WINZ26:5:1793178900000:BOTTOM→WINZ26:5:1793179800000:TOP",
+    "references": [
+      {
+        "wave": {
+          "id": "WINZ26:5:1793178900000:BOTTOM→WINZ26:5:1793179800000:TOP",
+          "direction": "UP",
+          "initial": {
+            "id": "WINZ26:5:1793178900000:BOTTOM",
+            "type": "BOTTOM",
+            "price": 177010,
+            "extremeTimeMsc": 1793178900000,
+            "confirmedAtMsc": 1793179800000,
+            "region": {
+              "high": 177445,
+              "low": 177010,
+              "midpoint": 177227.5,
+              "basis": "PIVOT_CANDLE"
+            },
+            "relevance": "PROXIMITY",
+            "state": "CONFIRMED",
+            "brokenAtMsc": null,
+            "timeframeMinutes": 5
+          },
+          "terminal": {
+            "id": "WINZ26:5:1793179800000:TOP",
+            "type": "TOP",
+            "price": 177710,
+            "extremeTimeMsc": 1793179800000,
+            "confirmedAtMsc": 1793180700000,
+            "region": {
+              "high": 177710,
+              "low": 177120,
+              "midpoint": 177415,
+              "basis": "PIVOT_CANDLE"
+            },
+            "relevance": "PROXIMITY",
+            "state": "CONFIRMED",
+            "brokenAtMsc": null,
+            "timeframeMinutes": 5
+          },
+          "high": 177710,
+          "low": 177010,
+          "level50": 177360,
+          "recognizedAtMsc": 1793181000000,
+          "sourceEventId": "WINZ26:dow:6",
+          "sealingPivotId": "WINZ26:5:1793180100000:BOTTOM"
+        },
+        "state": "MONITORANDO_50",
+        "endedAtMsc": null,
+        "lastEvent": "MONITOR_STARTED",
+        "approachSide": "BOTTOM_SIDE",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE"
+      }
+    ],
+    "events": [
+      {
+        "id": "WINZ26:dow50:0",
+        "atMsc": 1793181000000,
+        "waveId": "WINZ26:5:1793178900000:BOTTOM→WINZ26:5:1793179800000:TOP",
+        "kind": "WAVE_CONFIRMED",
+        "stateBefore": "AGUARDANDO_ONDA",
+        "stateAfter": "ONDA_CONFIRMADA",
+        "candleTimeMsc": null,
+        "close": null,
+        "detail": "SEALED_BY_NEXT_STRUCTURAL_PIVOT_V1; source=WINZ26:dow:6; sealing pivot=WINZ26:5:1793180100000:BOTTOM"
+      },
+      {
+        "id": "WINZ26:dow50:1",
+        "atMsc": 1793181000000,
+        "waveId": "WINZ26:5:1793178900000:BOTTOM→WINZ26:5:1793179800000:TOP",
+        "kind": "MONITOR_STARTED",
+        "stateBefore": "ONDA_CONFIRMADA",
+        "stateAfter": "MONITORANDO_50",
+        "candleTimeMsc": null,
+        "close": null,
+        "detail": "Only candles opening after recognition may be monitored"
+      }
+    ],
+    "observations": [
+      {
+        "atMsc": 1793178300000,
+        "candleTimeMsc": 1793178000000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 177365,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793178600000,
+        "candleTimeMsc": 1793178300000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 177565,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793178900000,
+        "candleTimeMsc": 1793178600000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 177170,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793179200000,
+        "candleTimeMsc": 1793178900000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 177235,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793179500000,
+        "candleTimeMsc": 1793179200000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 177515,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793179800000,
+        "candleTimeMsc": 1793179500000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 177605,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793180100000,
+        "candleTimeMsc": 1793179800000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 177130,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793180400000,
+        "candleTimeMsc": 1793180100000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 177000,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793180700000,
+        "candleTimeMsc": 1793180400000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 176995,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793181000000,
+        "candleTimeMsc": 1793180700000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 177215,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793181300000,
+        "candleTimeMsc": 1793181000000,
+        "waveId": "WINZ26:5:1793178900000:BOTTOM→WINZ26:5:1793179800000:TOP",
+        "state": "MONITORANDO_50",
+        "close": 177210,
+        "distance50": 150,
+        "distanceTop": 500,
+        "distanceBottom": 200,
+        "approachSide": "BOTTOM_SIDE",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "MONITORED"
+      }
+    ]
+  },
+  "microDow": {
+    "symbol": "WINZ26",
+    "timeframeMinutes": 5,
+    "availableAtMsc": 1793181540000,
+    "state": "UNDEFINED",
+    "criterion": "EXPERIMENTAL_MICRO_STRICT_1_1_V1",
+    "pivots": [
+      {
+        "extreme": {
+          "id": "WINZ26:5:micro:1793178900000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 177010,
+          "extremeTimeMsc": 1793178900000,
+          "confirmedAtMsc": 1793179500000,
+          "region": {
+            "high": 177445,
+            "low": 177010,
+            "midpoint": 177227.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        },
+        "classification": "FIRST",
+        "comparisonId": null,
+        "comparisonPrice": null,
+        "reason": "Strict experimental 1+1; right bar closed",
+        "participation": "STRUCTURE"
+      },
+      {
+        "extreme": {
+          "id": "WINZ26:5:micro:1793179800000:TOP",
+          "type": "TOP",
+          "price": 177710,
+          "extremeTimeMsc": 1793179800000,
+          "confirmedAtMsc": 1793180400000,
+          "region": {
+            "high": 177710,
+            "low": 177120,
+            "midpoint": 177415,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        },
+        "classification": "FIRST",
+        "comparisonId": null,
+        "comparisonPrice": null,
+        "reason": "Strict experimental 1+1; right bar closed",
+        "participation": "STRUCTURE"
+      },
+      {
+        "extreme": {
+          "id": "WINZ26:5:micro:1793180100000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 176825,
+          "extremeTimeMsc": 1793180100000,
+          "confirmedAtMsc": 1793180700000,
+          "region": {
+            "high": 177270,
+            "low": 176825,
+            "midpoint": 177047.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        },
+        "classification": "LL",
+        "comparisonId": "WINZ26:5:micro:1793178900000:BOTTOM",
+        "comparisonPrice": 177010,
+        "reason": "Strict experimental 1+1; right bar closed",
+        "participation": "STRUCTURE"
+      }
+    ],
+    "movements": [
+      {
+        "id": "WINZ26:5:micro:1793178900000:BOTTOM->WINZ26:5:micro:1793179800000:TOP",
+        "fromId": "WINZ26:5:micro:1793178900000:BOTTOM",
+        "toId": "WINZ26:5:micro:1793179800000:TOP",
+        "knownAtMsc": 1793180400000,
+        "kind": "UP"
+      },
+      {
+        "id": "WINZ26:5:micro:1793179800000:TOP->WINZ26:5:micro:1793180100000:BOTTOM",
+        "fromId": "WINZ26:5:micro:1793179800000:TOP",
+        "toId": "WINZ26:5:micro:1793180100000:BOTTOM",
+        "knownAtMsc": 1793180700000,
+        "kind": "DOWN"
+      }
+    ],
+    "events": [
+      {
+        "id": "WINZ26:micro:0",
+        "atMsc": 1793179500000,
+        "kind": "MICRO_PIVOT_CONFIRMED",
+        "pivotId": "WINZ26:5:micro:1793178900000:BOTTOM",
+        "affectedMovementId": null,
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Strict experimental 1+1; right bar closed",
+        "candleTimeMsc": null,
+        "observedClose": null
+      },
+      {
+        "id": "WINZ26:micro:1",
+        "atMsc": 1793180400000,
+        "kind": "MICRO_PIVOT_CONFIRMED",
+        "pivotId": "WINZ26:5:micro:1793179800000:TOP",
+        "affectedMovementId": null,
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Strict experimental 1+1; right bar closed",
+        "candleTimeMsc": null,
+        "observedClose": null
+      },
+      {
+        "id": "WINZ26:micro:2",
+        "atMsc": 1793180700000,
+        "kind": "MICRO_PIVOT_CONFIRMED",
+        "pivotId": "WINZ26:5:micro:1793180100000:BOTTOM",
+        "affectedMovementId": null,
+        "stateBefore": "UNDEFINED",
+        "stateAfter": "UNDEFINED",
+        "reason": "Strict experimental 1+1; right bar closed",
+        "candleTimeMsc": null,
+        "observedClose": null
+      }
+    ],
+    "opening": {
+      "status": "CONNECTED",
+      "anchors": [
+        {
+          "id": "WINZ26:opening:TOP:1793178000000",
+          "type": "TOP",
+          "price": 178700,
+          "formationTimeMsc": 1793178000000,
+          "observedAtMsc": 1793178300000
+        },
+        {
+          "id": "WINZ26:opening:BOTTOM:1793178000000",
+          "type": "BOTTOM",
+          "price": 177240,
+          "formationTimeMsc": 1793178000000,
+          "observedAtMsc": 1793178300000
+        }
+      ],
+      "fromId": "WINZ26:opening:TOP:1793178000000",
+      "toId": "WINZ26:5:micro:1793178900000:BOTTOM",
+      "knownAtMsc": 1793179500000,
+      "reason": "Opening boundary supported through opposite confirmation; remains a reference, never a detector pivot",
+      "events": [
+        {
+          "atMsc": 1793178300000,
+          "kind": "OPENING_OBSERVED",
+          "reason": "First closed candle range; neither endpoint is a confirmed pivot"
+        },
+        {
+          "atMsc": 1793179500000,
+          "kind": "OPENING_CONNECTED",
+          "reason": "Opening boundary supported through opposite confirmation; remains a reference, never a detector pivot"
+        }
+      ]
+    },
+    "selectedPivotIds": [
+      "WINZ26:5:micro:1793178900000:BOTTOM",
+      "WINZ26:5:micro:1793179800000:TOP",
+      "WINZ26:5:micro:1793180100000:BOTTOM"
+    ],
+    "movementHistory": [
+      {
+        "id": "WINZ26:5:micro:1793178900000:BOTTOM->WINZ26:5:micro:1793179800000:TOP",
+        "fromId": "WINZ26:5:micro:1793178900000:BOTTOM",
+        "toId": "WINZ26:5:micro:1793179800000:TOP",
+        "knownAtMsc": 1793180400000,
+        "kind": "UP"
+      },
+      {
+        "id": "WINZ26:5:micro:1793179800000:TOP->WINZ26:5:micro:1793180100000:BOTTOM",
+        "fromId": "WINZ26:5:micro:1793179800000:TOP",
+        "toId": "WINZ26:5:micro:1793180100000:BOTTOM",
+        "knownAtMsc": 1793180700000,
+        "kind": "DOWN"
+      }
+    ],
+    "decisions": [
+      {
+        "pivotId": "WINZ26:5:micro:1793178900000:BOTTOM",
+        "atMsc": 1793179500000,
+        "action": "START",
+        "reason": "First selected extreme; no prior endpoint",
+        "previousTerminalId": null,
+        "replacedMovementId": null,
+        "movementId": null
+      },
+      {
+        "pivotId": "WINZ26:5:micro:1793179800000:TOP",
+        "atMsc": 1793180400000,
+        "action": "SEGMENT_CREATED",
+        "reason": "Confirmed alternating chronological endpoints; no amplitude threshold",
+        "previousTerminalId": "WINZ26:5:micro:1793178900000:BOTTOM",
+        "replacedMovementId": null,
+        "movementId": "WINZ26:5:micro:1793178900000:BOTTOM->WINZ26:5:micro:1793179800000:TOP"
+      },
+      {
+        "pivotId": "WINZ26:5:micro:1793180100000:BOTTOM",
+        "atMsc": 1793180700000,
+        "action": "SEGMENT_CREATED",
+        "reason": "Confirmed alternating chronological endpoints; no amplitude threshold",
+        "previousTerminalId": "WINZ26:5:micro:1793179800000:TOP",
+        "replacedMovementId": null,
+        "movementId": "WINZ26:5:micro:1793179800000:TOP->WINZ26:5:micro:1793180100000:BOTTOM"
+      }
+    ],
+    "openingHistory": [
+      {
+        "status": "WAITING",
+        "anchors": [
+          {
+            "id": "WINZ26:opening:TOP:1793178000000",
+            "type": "TOP",
+            "price": 178700,
+            "formationTimeMsc": 1793178000000,
+            "observedAtMsc": 1793178300000
+          },
+          {
+            "id": "WINZ26:opening:BOTTOM:1793178000000",
+            "type": "BOTTOM",
+            "price": 177240,
+            "formationTimeMsc": 1793178000000,
+            "observedAtMsc": 1793178300000
+          }
+        ],
+        "fromId": null,
+        "toId": null,
+        "knownAtMsc": null,
+        "reason": "Waiting for first unambiguous confirmed extreme",
+        "events": [
+          {
+            "atMsc": 1793178300000,
+            "kind": "OPENING_OBSERVED",
+            "reason": "First closed candle range; neither endpoint is a confirmed pivot"
+          }
+        ]
+      },
+      {
+        "status": "CONNECTED",
+        "anchors": [
+          {
+            "id": "WINZ26:opening:TOP:1793178000000",
+            "type": "TOP",
+            "price": 178700,
+            "formationTimeMsc": 1793178000000,
+            "observedAtMsc": 1793178300000
+          },
+          {
+            "id": "WINZ26:opening:BOTTOM:1793178000000",
+            "type": "BOTTOM",
+            "price": 177240,
+            "formationTimeMsc": 1793178000000,
+            "observedAtMsc": 1793178300000
+          }
+        ],
+        "fromId": "WINZ26:opening:TOP:1793178000000",
+        "toId": "WINZ26:5:micro:1793178900000:BOTTOM",
+        "knownAtMsc": 1793179500000,
+        "reason": "Opening boundary supported through opposite confirmation; remains a reference, never a detector pivot",
+        "events": [
+          {
+            "atMsc": 1793178300000,
+            "kind": "OPENING_OBSERVED",
+            "reason": "First closed candle range; neither endpoint is a confirmed pivot"
+          },
+          {
+            "atMsc": 1793179500000,
+            "kind": "OPENING_CONNECTED",
+            "reason": "Opening boundary supported through opposite confirmation; remains a reference, never a detector pivot"
+          }
+        ]
+      }
+    ]
+  }
+}

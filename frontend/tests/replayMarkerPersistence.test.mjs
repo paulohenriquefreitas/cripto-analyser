@@ -20,14 +20,17 @@ function harness() {
   const createdSeries = [];
   const rendered = [];
   let primitive;
+  const primitives = [];
+  let chartSink;
   const bars = new Map();
   let zoom = 1;
   const series = {
+    applyOptions() {},
     setData(data) { bars.clear(); data.forEach(bar => bars.set(bar.time, bar)); },
     update(bar) { bars.set(bar.time, bar); },
     dataByIndex(time) { return bars.get(time); },
     priceToCoordinate(price) { return 240 - (price - 182000) / 20; },
-    attachPrimitive(p) { primitive = p; p.attached({ chart, series, requestUpdate() {} }); },
+    attachPrimitive(p) { primitive = p; primitives.push(p); p.attached({ chart, series, requestUpdate() {} }); },
   };
   const chart = {
     addSeries: (_kind, options) => {
@@ -92,26 +95,30 @@ function harness() {
   });
   return {
     manager,
-    mount: (setup91Only = true, monitoring) => Mt5CandlestickChart({ controller: manager.getSnapshot().controller, setup91Only, monitoring }),
+    mount: (setup91Only = true, monitoring, candlesOnly = false, structuralLevels = false) => Mt5CandlestickChart({
+      controller: { attachChart(sink) { chartSink = sink; return manager.getSnapshot().controller.attachChart(sink); } },
+      setup91Only, monitoring, candlesOnly, structuralLevels,
+    }),
+    setLevels: levels => chartSink.setStructureLevels(levels),
     unmount: () => cleanup(),
     visible: () => visible.map(marker => ({ ...marker, text: primitive?.markers.get(marker.id)?.text ?? '' })),
     rawMarkers: () => visible,
     primitive: () => primitive,
     zoom: value => { zoom = value; },
-    paint: () => {
+    paint: (all = false) => {
       const texts = [], paths = [], rectangles = [];
       let path = [], dash = [], color;
       const ctx = {
         save() {}, restore() {}, beginPath() { path = []; },
         moveTo(x, y) { path.push([x, y]); }, lineTo(x, y) { path.push([x, y]); },
-        stroke() { paths.push({ path, dash, color }); }, arc() {}, fill() {},
+        stroke() { paths.push({ path, dash, color, width: this.lineWidth }); }, arc() {}, fill() {},
         setLineDash(value) { dash = value; },
         set strokeStyle(value) { color = value; }, get strokeStyle() { return color; },
         measureText(text) { return { width: text.length * 6 }; },
         fillRect(x, y, width, height) { rectangles.push({ x, y, width, height }); },
         fillText(text, x, y) { texts.push({ text, x, y, color: this.fillStyle }); },
       };
-      primitive?.paneViews()[0].renderer().draw({ useMediaCoordinateSpace(draw) {
+      for (const layer of all ? primitives : [primitive]) layer?.paneViews()[0].renderer().draw({ useMediaCoordinateSpace(draw) {
         draw({ context: ctx, mediaSize: { width: 800, height: 480 } });
       } });
       return { texts, paths, rectangles };
@@ -505,4 +512,63 @@ test('malformed structure reactions never reach chart markers', async () => {
     candle: { time: 6000, open: 100, high: 120, low: 80, close: 110 } });
   assert.equal(h.rawMarkers().length, 0);
   h.manager.close(); h.unmount();
+});
+
+
+test('three-candles clean chart creates no indicators, pivots, markers or strategy instructions', async () => {
+  const h = harness(); await h.manager.load('2026-09-24'); h.mount(false, undefined, true);
+  h.send({ type: 'MARKET_STATE', timeMsc: 6_000_001,
+    candle: { time: 6000, open: 100, high: 120, low: 80, close: 110 }, sma9: 101, sma21: 102, vwap: 103, vwapSession: 'day' });
+  assert.equal(h.createdSeries().length, 1, 'only candle series');
+  assert.equal(h.primitive(), undefined, 'no pivot/flow overlays');
+  h.send({ type: 'MARKET_STATE', timeMsc: 6_000_002,
+    structureReaction: { levelPrice: 110, levelType: 'PIVOT_TOP', reactionType: 'BREAKOUT', delta500ms: 500 } });
+  assert.equal(h.rawMarkers().length, 0);
+  assert.equal(h.rendered().some(node => node.props?.['aria-label'] === 'Setup91 event details'), false);
+  h.manager.close(); h.unmount();
+});
+
+
+test('server structural levels draw yellow dotted rays at origin, follow zoom, clear on reset, and draw no midpoint', async () => {
+  const h=harness(); await h.manager.load('2026-09-24'); h.mount(false,undefined,true,true);
+  for(const time of [36000,36300,36600]) h.send({type:'MARKET_STATE',timeMsc:time*1000,
+    candle:{time,open:182000,high:182100,low:181900,close:182000}});
+  h.setLevels([{id:'top',type:'TOP',price:182100,extremeTimeMsc:36300000,confirmedAtMsc:36900000}]);
+  let paint=h.paint(true); assert.equal(paint.paths.length,1); assert.equal(paint.texts.length,0); assert.equal(paint.rectangles.length,0);
+  assert.equal(paint.paths[0].color,'#EAB308'); assert.equal(paint.paths[0].width,1.5);
+  assert.deepEqual(Array.from(paint.paths[0].dash),[2,3]); assert.equal(paint.paths[0].path[0][0],50); assert.equal(paint.paths[0].path[1][0],800);
+  h.zoom(2); paint=h.paint(true); assert.equal(paint.paths[0].path[0][0],60);
+  assert.equal(h.rawMarkers().length,0); assert.equal(h.createdSeries().length,1);
+  h.setLevels([]); assert.equal(h.paint(true).paths.length,0);
+  h.manager.close(); h.unmount();
+});
+
+
+test('M5 and H1 origins draw simultaneous yellow and fuchsia dotted rays even at the same price', async () => {
+  const h=harness(); await h.manager.load('2026-09-24'); h.mount(false,undefined,true,true);
+  for(const time of [36000,36300,36600]) h.send({type:'MARKET_STATE',timeMsc:time*1000,
+    candle:{time,open:182000,high:182100,low:181900,close:182000}});
+  const m5={id:'m5',type:'TOP',price:182100,extremeTimeMsc:36300000,confirmedAtMsc:36900000,timeframeMinutes:5};
+  const h1={...m5,id:'h1',timeframeMinutes:60};
+  h.setLevels([m5,h1]);
+  const paint=h.paint(true);
+  assert.equal(paint.paths.length,2);
+  assert.deepEqual(paint.paths.map(p=>p.color),['#EAB308','#FF00FF']);
+  for(const path of paint.paths) assert.deepEqual(Array.from(path.dash),[2,3]);
+  h.setLevels([h1]);assert.deepEqual(h.paint(true).paths.map(p=>p.color),['#FF00FF']);
+  h.setLevels([m5]);assert.deepEqual(h.paint(true).paths.map(p=>p.color),['#EAB308']);
+  h.setLevels([m5,h1]);assert.equal(h.paint(true).paths.length,2);
+  h.setLevels([]);assert.equal(h.paint(true).paths.length,0);
+  h.manager.close();h.unmount();
+});
+
+
+test('all eight prepared H1 references draw as fuchsia rays without M5 or a quantity cap', async () => {
+  const h=harness();await h.manager.load('2026-09-24');h.mount(false,undefined,true,true);
+  h.send({type:'MARKET_STATE',timeMsc:36000000,candle:{time:36000,open:182000,high:182100,low:181900,close:182000}});
+  h.setLevels(Array.from({length:8},(_,i)=>({id:`h1-${i}`,type:'TOP',price:182000+i*10,
+    extremeTimeMsc:36000000-86400000,confirmedAtMsc:35000000,timeframeMinutes:60})));
+  const rays=h.paint(true).paths;assert.equal(rays.length,8);
+  assert.equal(rays.every(p=>p.color==='#FF00FF'),true);
+  h.manager.close();h.unmount();
 });

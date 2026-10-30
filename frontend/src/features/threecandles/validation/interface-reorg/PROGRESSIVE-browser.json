@@ -1,0 +1,43 @@
+{
+  "kind": "PROGRESSIVE",
+  "symbol": "WINZ26",
+  "atMsc": 1793181540000,
+  "defaults": {
+    "Mostrar Dow principal": true,
+    "Mostrar 50% Dow principal": true,
+    "H1 - fucsia": false,
+    "M5 - amarelo": false,
+    "Mostrar etiquetas HH/HL/LH/LL": false,
+    "Mostrar ondas Dow micro (1+1 experimental)": false,
+    "Mostrar todos os fractais micro confirmados": false,
+    "Mostrar etiquetas HH/HL/LH/LL micro": false,
+    "Separar movimentos apos rompimento": false,
+    "Fibonacci": false,
+    "Comparar manual e automático": false
+  },
+  "chartTop": 465.546875,
+  "viewportPreserved": true,
+  "keyboardExpansion": true,
+  "layerIndependence": true,
+  "manualApplied": true,
+  "dowClick": true,
+  "fiftyClick": true,
+  "commands": [
+    "PLAY",
+    "PAUSE",
+    "NEXT",
+    "SPEED",
+    "RESET"
+  ],
+  "creates": 2,
+  "errors": [],
+  "cancelledInterceptions": 0,
+  "mobileNoOverflow": true,
+  "snapshotUnchanged": true,
+  "liveM5": true,
+  "m15Candles": true,
+  "progressiveClosure": true,
+  "replayCursorPreserved": true,
+  "inputsLabelled": true,
+  "source": "Real React/native chart and intercepted recorded Java snapshots; error is a labelled HTTP fixture"
+}
