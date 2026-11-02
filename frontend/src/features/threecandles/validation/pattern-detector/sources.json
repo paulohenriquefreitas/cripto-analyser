@@ -1,0 +1,37 @@
+[
+  {
+    "path": "C:\\Users\\paulo\\Downloads\\Caderno_3_Candles_Aulas_01_02_03.md",
+    "bytes": 35503,
+    "sha256": "dfb650e2d48c4f8ba4fb14a037e33ddca61aa207ed8f38ea7c5410c08407346e"
+  },
+  {
+    "path": "C:\\Users\\paulo\\Videos\\AulaFinal\\Aula01_transcricao.txt",
+    "bytes": 145247,
+    "sha256": "105559474472f875eeb42f31ded112a3c7b6cda4c830415af92147c3dec740c2"
+  },
+  {
+    "path": "C:\\Users\\paulo\\Videos\\AulaFinal\\Aula02_transcricao.txt",
+    "bytes": 135931,
+    "sha256": "cabfc2b8a04616427cd362e655442dcfa20f98d94ca930a494cb2bc8cd76314e"
+  },
+  {
+    "path": "C:\\Users\\paulo\\Videos\\AulaFinal\\Aula03_transcricao.txt",
+    "bytes": 156737,
+    "sha256": "ef59e3e5fc9771c408ec2f30d19b8cb5a5d56b431ae9591e7363dd9b2b9005e9"
+  },
+  {
+    "path": "panic-scanner\\src\\test\\resources\\threecandles\\pattern-detector\\WINZ26-2026-10-30-M1.json",
+    "bytes": 76559,
+    "sha256": "475071d8a4ad6334fbee486569ed97dd0bea13f49a33cd85825a75a70e2a01d6"
+  },
+  {
+    "path": "panic-scanner\\src\\test\\resources\\threecandles\\pattern-detector\\WINZ26-2026-10-30-M5.json",
+    "bytes": 15484,
+    "sha256": "9df850ebf5209440869f86fec01d91729caa79a3cd85d5bc9ea0a0ac2b9fcc19"
+  },
+  {
+    "path": "panic-scanner\\src\\test\\resources\\threecandles\\pattern-detector\\WINZ26-warmup-M5.json",
+    "bytes": 101664,
+    "sha256": "2e15368e8dd611290a728faf8bd9bed40c73ceea405fae5a3d8eb296dd67d0b0"
+  }
+]

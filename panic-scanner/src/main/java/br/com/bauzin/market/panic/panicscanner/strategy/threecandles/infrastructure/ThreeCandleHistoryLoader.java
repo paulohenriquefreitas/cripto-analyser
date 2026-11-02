@@ -111,33 +111,49 @@ public final class ThreeCandleHistoryLoader {
         atomic(file.resolveSibling(file.getFileName()+".metadata.json"),json.writeValueAsBytes(new Manifest(sha(bytes))));
         return CandleAggregation.aggregate(bars,timeframe);
     }
-    /** Separate exact-symbol M1 cache; the official M5 cutoff remains authoritative. */
-    public synchronized List<CandleUpdate> progressive(String symbol, LocalDate date, List<CandleUpdate> official) throws IOException {
-        if(symbol==null || !symbol.matches("WIN(?:[A-Z][0-9]{2}|\\$N)")) throw new IllegalArgumentException("Invalid WIN symbol");
+    /** Native prefixes and official M5 closes, with explicit source gaps. */
+    public synchronized List<CandleUpdate> progressive(String symbol,LocalDate date,List<CandleUpdate> official) throws IOException {
+        return progressiveHistory(symbol,date,official).updates();
+    }
+    public synchronized br.com.bauzin.market.panic.panicscanner.strategy.threecandles.replay.ProgressiveM1History.Result progressiveHistory(
+            String symbol,LocalDate date,List<CandleUpdate> official) throws IOException {
+        var minutes=nativeMinutes(symbol,date);
+        long opening=date.atTime(9,0).toInstant(ZoneOffset.UTC).toEpochMilli();
+        try { return br.com.bauzin.market.panic.panicscanner.strategy.threecandles.replay.ProgressiveM1History.buildDetailed(symbol,official,minutes,opening); }
+        catch(IllegalArgumentException e) { throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,"Replay progressivo indisponivel: "+e.getMessage(),e); }
+    }
+    /** Cache genuine M1 even when isolated gaps prevent construction of the progressive replay. */
+    private List<Mt5Candle> nativeMinutes(String symbol,LocalDate date) throws IOException {
+        validateRequest(symbol,date);
         Path target=file(symbol,date).getParent().getParent().resolve("three-candles-m1").resolve(date+".json");
         Dataset data=null;
         try {
             byte[] bytes=Files.readAllBytes(target);
             var manifest=json.readValue(target.resolveSibling(target.getFileName()+".metadata.json").toFile(),Manifest.class);
-            if(sha(bytes).equals(manifest.sha256())) data=json.readValue(bytes,Dataset.class);
-        } catch(IOException ignored) { /* Query missing M1 cache only. */ }
+            if(sha(bytes).equals(manifest.sha256()))data=json.readValue(bytes,Dataset.class);
+        } catch(IOException ignored) { /* Fetch missing/corrupted cache only. */ }
         boolean fetched=data==null;
         if(fetched) {
             try { data=new Dataset(1,symbol,kind(symbol),"M1",date,date,Instant.now().toString(),mt5.readCandles(symbol,"M1",date,date)); }
-            catch(InterruptedException e) { Thread.currentThread().interrupt(); throw new IOException("Consulta M1 interrompida",e); }
+            catch(InterruptedException e) { Thread.currentThread().interrupt();throw new IOException("Consulta M1 interrompida",e); }
         }
-        if(data.version()!=1 || !symbol.equals(data.symbol()) || !kind(symbol).equals(data.seriesKind())
-                || !"M1".equals(data.timeframe()) || !date.equals(data.from()) || !date.equals(data.through()))
+        if(data.version()!=1||!symbol.equals(data.symbol())||!kind(symbol).equals(data.seriesKind())
+                ||!"M1".equals(data.timeframe())||!date.equals(data.from())||!date.equals(data.through())||data.candles()==null)
             throw new IOException("Identidade/cobertura M1 invalida");
-        long opening=date.atTime(9,0).toInstant(ZoneOffset.UTC).toEpochMilli();
-        List<CandleUpdate> updates;
-        try { updates=br.com.bauzin.market.panic.panicscanner.strategy.threecandles.replay.ProgressiveM1History.build(symbol,official,data.candles(),opening); }
-        catch(IllegalArgumentException e) { throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,"Replay progressivo indisponivel: "+e.getMessage(),e); }
-        if(fetched) {
-            Files.createDirectories(target.getParent()); byte[] bytes=json.writeValueAsBytes(data);
-            atomic(target,bytes); atomic(target.resolveSibling(target.getFileName()+".metadata.json"),json.writeValueAsBytes(new Manifest(sha(bytes))));
+        long previous=-1;
+        for(var m:data.candles()) {
+            long t=m.time()*1000;
+            if(t%60000!=0||t<=previous||!Instant.ofEpochSecond(m.time()).atOffset(ZoneOffset.UTC).toLocalDate().equals(date))
+                throw new IOException("M1 fora de ordem/alinhamento/sessao");
+            try { new IntrabarCandleSnapshot(symbol,t/300000*300000,m.open(),m.high(),m.low(),m.close()); }
+            catch(IllegalArgumentException invalid) { throw new IOException("OHLC M1 invalido",invalid); }
+            previous=t;
         }
-        return updates;
+        if(fetched) {
+            Files.createDirectories(target.getParent());byte[] bytes=json.writeValueAsBytes(data);
+            atomic(target,bytes);atomic(target.resolveSibling(target.getFileName()+".metadata.json"),json.writeValueAsBytes(new Manifest(sha(bytes))));
+        }
+        return List.copyOf(data.candles());
     }
     private void atomic(Path target,byte[] bytes) throws IOException {
         Path temporary=Files.createTempFile(target.getParent(),"history-",".part");
@@ -146,5 +162,9 @@ public final class ThreeCandleHistoryLoader {
             try { Files.move(temporary,target,StandardCopyOption.ATOMIC_MOVE,StandardCopyOption.REPLACE_EXISTING); }
             catch (AtomicMoveNotSupportedException e) { Files.move(temporary,target,StandardCopyOption.REPLACE_EXISTING); }
         } finally { Files.deleteIfExists(temporary); }
+    }
+    /** Pattern analysis handles gaps locally; never require an entirely reconstructible progressive session. */
+    public synchronized List<Mt5Candle> patternMinutes(String symbol,LocalDate date,List<CandleUpdate> official) throws IOException {
+        return nativeMinutes(symbol,date);
     }
 }

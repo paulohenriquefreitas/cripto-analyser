@@ -1,0 +1,187 @@
+{
+  "criterion": "CONTEXT_CLOSE_NEGATION_TEST_RETURN_M1_V2",
+  "symbol": "WINZ26",
+  "sessionDate": "2026-10-30",
+  "availableAtMsc": 1793376600000,
+  "source": "Frozen native MT5 M1/M5 from src/test/resources/threecandles/pattern-detector",
+  "candidateReferences": 258,
+  "recognizedReferences": 93,
+  "hypotheticalReachedReferences": 40,
+  "distinctReachedCandleDirectionLevel": 11,
+  "states": {
+    "REJEICAO_OBSERVADA": 75,
+    "REJEITADO": 160,
+    "TESTANDO": 18,
+    "CANDIDATO_ALVO": 5
+  },
+  "triggerStates": {
+    "ALCANCADO_HIPOTETICO": 40,
+    "NAO_POSICIONADO": 165,
+    "INDETERMINADO": 35,
+    "EXPIRADO": 18
+  },
+  "rejectedContacts": 236,
+  "causalChecksPassed": true,
+  "noPerformanceClaim": true,
+  "examples": [
+    {
+      "id": "WINZ26:3c:1793351400000:BUY:WINZ26:5:1793009700000:BOTTOM",
+      "context": {
+        "flow": "DOWN",
+        "principalState": "UNDEFINED",
+        "microState": "UNDEFINED",
+        "source": "TWO_PRIOR_CLOSED_M5_CLOSES",
+        "availableAtMsc": 1793351400000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1793350800000,
+            "open": 170910,
+            "high": 171600,
+            "low": 170605,
+            "close": 170725
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1793351100000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1793351100000,
+            "open": 170730,
+            "high": 171115,
+            "low": 170420,
+            "close": 170545
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1793351400000
+        }
+      },
+      "recognized": 1793352000000,
+      "trigger": {
+        "state": "ALCANCADO_HIPOTETICO",
+        "referencePrice": 170360,
+        "level": 170380,
+        "referenceKnownAtMsc": 1793352060000,
+        "placedAtMsc": 1793352060000,
+        "reachedAtMsc": 1793352180000,
+        "evidence": {
+          "startTimeMsc": 1793352120000,
+          "open": 170270,
+          "high": 170505,
+          "low": 170255,
+          "close": 170425
+        },
+        "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+      }
+    },
+    {
+      "id": "WINZ26:3c:1793351400000:BUY:WINZ26:sessionLow:170420.0",
+      "context": {
+        "flow": "DOWN",
+        "principalState": "UNDEFINED",
+        "microState": "UNDEFINED",
+        "source": "TWO_PRIOR_CLOSED_M5_CLOSES",
+        "availableAtMsc": 1793351400000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1793350800000,
+            "open": 170910,
+            "high": 171600,
+            "low": 170605,
+            "close": 170725
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1793351100000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1793351100000,
+            "open": 170730,
+            "high": 171115,
+            "low": 170420,
+            "close": 170545
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1793351400000
+        }
+      },
+      "recognized": 1793352000000,
+      "trigger": {
+        "state": "ALCANCADO_HIPOTETICO",
+        "referencePrice": 170360,
+        "level": 170380,
+        "referenceKnownAtMsc": 1793352060000,
+        "placedAtMsc": 1793352060000,
+        "reachedAtMsc": 1793352180000,
+        "evidence": {
+          "startTimeMsc": 1793352120000,
+          "open": 170270,
+          "high": 170505,
+          "low": 170255,
+          "close": 170425
+        },
+        "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+      }
+    },
+    {
+      "id": "WINZ26:3c:1793351400000:BUY:WINZ26:5:1793013900000:BOTTOM",
+      "context": {
+        "flow": "DOWN",
+        "principalState": "UNDEFINED",
+        "microState": "UNDEFINED",
+        "source": "TWO_PRIOR_CLOSED_M5_CLOSES",
+        "availableAtMsc": 1793351400000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1793350800000,
+            "open": 170910,
+            "high": 171600,
+            "low": 170605,
+            "close": 170725
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1793351100000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1793351100000,
+            "open": 170730,
+            "high": 171115,
+            "low": 170420,
+            "close": 170545
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1793351400000
+        }
+      },
+      "recognized": 1793352000000,
+      "trigger": {
+        "state": "ALCANCADO_HIPOTETICO",
+        "referencePrice": 170360,
+        "level": 170380,
+        "referenceKnownAtMsc": 1793352060000,
+        "placedAtMsc": 1793352060000,
+        "reachedAtMsc": 1793352180000,
+        "evidence": {
+          "startTimeMsc": 1793352120000,
+          "open": 170270,
+          "high": 170505,
+          "low": 170255,
+          "close": 170425
+        },
+        "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+      }
+    }
+  ]
+}

@@ -41,12 +41,15 @@ export function ThreeCandlesPage() {
   // Presentation preferences survive workspace/session remounts, without persistent storage.
   const presentation = useRef({
     fibonacci: false,
-    dow: true,
-    dowFifty: true,
+    dow: false,
+    dowFifty: false,
     dowLabels: false,
-    micro: true,
-    microFifty: true,
-    opening: true,
+    micro: false,
+    microFifty: false,
+    opening: false,
+    patternMarks: false,
+    patternNumbers: false,
+    patternHighlights: false,
     microLabels: false,
     allMicroFractals: false,
   });
@@ -55,8 +58,8 @@ export function ThreeCandlesPage() {
   const [m5GroupingPoints, setM5GroupingPoints] = useState(30);
   const [showH1, setShowH1] = useState(false);
   const [h1DetectionMode, setH1DetectionMode] = useState<api.H1DetectionMode>('STRICT_2_2');
-  const [showStrict, setShowStrict] = useState(true);
-  const [showAdditional, setShowAdditional] = useState(true);
+  const [showStrict, setShowStrict] = useState(false);
+  const [showAdditional, setShowAdditional] = useState(false);
   useEffect(() => {
     controller.setVisibility?.(showM5, showH1);
   }, [controller, showM5, showH1]);
@@ -79,10 +82,12 @@ export function ThreeCandlesPage() {
   const [configError, setConfigError] = useState<string>();
   const [busy, setBusy] = useState(false);
   const session = useRef<string | undefined>(undefined);
+  const replayPlaying = useRef(false);
   const busyRef = useRef(false);
   const requestVersion = useRef(0);
   const revision = useRef(0);
   const accept = (next: api.CandleView) => {
+    replayPlaying.current = next.status === 'PLAYING';
     controller.apply(next);
     setView(next);
   };
@@ -115,6 +120,7 @@ export function ThreeCandlesPage() {
     const generation = ++revision.current;
     const previous = session.current;
     session.current = undefined;
+    replayPlaying.current = false;
     if (previous) void api.close(previous).catch(() => {});
     controller.reset();
     setView(undefined);
@@ -136,7 +142,7 @@ export function ThreeCandlesPage() {
             accept(next);
             setError(undefined);
           }
-        } else if (session.current && !busyRef.current) {
+        } else if (session.current && !busyRef.current && replayPlaying.current) {
           const ticket = requestVersion.current;
           const next = await api.replay(session.current, abort.signal, maxLevelsRef.current);
           if (
@@ -630,9 +636,9 @@ export function ThreeCandlesPage() {
       )}
       {view?.replayMode === 'PROGRESSIVE_M1' && !!view.missingM1Times?.length && (
         <Alert severity="warning">
-          Fonte M1 com {view.missingM1Times.length} minuto(s) interno(s) ausente(s):{' '}
+          Fonte M1 com {view.missingM1Times.length} minuto(s) ausente(s):{' '}
           {view.missingM1Times.map((t) => formatCandleTime(t, timeBasis)).join(', ')}. Esses minutos
-          não geram passos nem candles artificiais. Os M1 disponíveis reproduzem o OHLC M5 oficial.
+          não são preenchidos. Após uma lacuna, o M5 afetado aguarda seu fechamento oficial; a progressão retoma nos próximos trechos completos.
         </Alert>
       )}
       <Typography>
@@ -869,8 +875,8 @@ export function ThreeCandlesPage() {
         {replayLoading && historyProgress && <Alert severity="info">{historyProgress}</Alert>}
         {view?.replayMode === 'PROGRESSIVE_M1' && !!view.missingM1Times?.length && (
           <Alert severity="warning">
-            Fonte M1: {view.missingM1Times.length} minuto(s) interno(s) ausente(s), sem
-            preenchimento artificial. Detalhes em Dados e Replay.
+            Fonte M1: {view.missingM1Times.length} minuto(s) ausente(s), sem
+            preenchimento artificial. Nos trechos incompletos, o M5 aparece completo somente ao fechar. Detalhes em Dados e Replay.
           </Alert>
         )}
         {error && <Alert severity="error">{error}</Alert>}

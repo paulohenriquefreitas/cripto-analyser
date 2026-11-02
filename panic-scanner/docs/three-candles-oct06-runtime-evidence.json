@@ -1,0 +1,12 @@
+{
+  "session": "ThreeCandlesApplication",
+  "method": "ThreeCandlesController.create",
+  "line": 98,
+  "capturedAt": "2026-11-01T03:29:07.459Z",
+  "logpoint": "2026-10-06 symbol=WINZ26 M5=2374 M1=0",
+  "progressiveHttpStatus": 422,
+  "detail": "Replay progressivo indisponivel: M1 inicial/final ausente em WINZ26 @ 1791290040000",
+  "firstFatalMissingMinute": "2026-10-06T12:34:00 terminal wall clock",
+  "nativeM1FetchedSeparately": 537,
+  "beforeSnapshot": "three-candles-oct06-runtime-before.json"
+}

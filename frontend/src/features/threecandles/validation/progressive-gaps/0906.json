@@ -1,0 +1,5999 @@
+{
+  "id" : "9784b654-f9f0-4c28-a043-94bce1236f8a",
+  "symbol" : "WIN$N",
+  "timeframeMinutes" : 5,
+  "status" : "PAUSED",
+  "speed" : 1,
+  "candles" : [ {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789117200000,
+      "open" : 191060.0,
+      "high" : 191345.0,
+      "low" : 190480.0,
+      "close" : 190610.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789117500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789117500000,
+      "open" : 190610.0,
+      "high" : 190610.0,
+      "low" : 189660.0,
+      "close" : 189780.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789117800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789117800000,
+      "open" : 189775.0,
+      "high" : 189870.0,
+      "low" : 189560.0,
+      "close" : 189715.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789118100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789118100000,
+      "open" : 189715.0,
+      "high" : 189825.0,
+      "low" : 189575.0,
+      "close" : 189735.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789118400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789118400000,
+      "open" : 189735.0,
+      "high" : 189935.0,
+      "low" : 189615.0,
+      "close" : 189710.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789118700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789118700000,
+      "open" : 189705.0,
+      "high" : 189760.0,
+      "low" : 189285.0,
+      "close" : 189415.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789119000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789119000000,
+      "open" : 189415.0,
+      "high" : 189475.0,
+      "low" : 188810.0,
+      "close" : 189120.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789119300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789119300000,
+      "open" : 189120.0,
+      "high" : 189425.0,
+      "low" : 189055.0,
+      "close" : 189375.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789119600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789119600000,
+      "open" : 189380.0,
+      "high" : 189585.0,
+      "low" : 189050.0,
+      "close" : 189150.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789119900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789119900000,
+      "open" : 189150.0,
+      "high" : 189370.0,
+      "low" : 189070.0,
+      "close" : 189225.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789120200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789120200000,
+      "open" : 189230.0,
+      "high" : 189435.0,
+      "low" : 189160.0,
+      "close" : 189235.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789120500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789120500000,
+      "open" : 189235.0,
+      "high" : 190075.0,
+      "low" : 189185.0,
+      "close" : 189945.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789120800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789120800000,
+      "open" : 189950.0,
+      "high" : 190585.0,
+      "low" : 189940.0,
+      "close" : 190295.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789121100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789121100000,
+      "open" : 190295.0,
+      "high" : 190485.0,
+      "low" : 189555.0,
+      "close" : 189755.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789121400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789121400000,
+      "open" : 189755.0,
+      "high" : 189770.0,
+      "low" : 189325.0,
+      "close" : 189430.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789121700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789121700000,
+      "open" : 189425.0,
+      "high" : 189565.0,
+      "low" : 189030.0,
+      "close" : 189500.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789122000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789122000000,
+      "open" : 189495.0,
+      "high" : 189650.0,
+      "low" : 189275.0,
+      "close" : 189595.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789122300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789122300000,
+      "open" : 189595.0,
+      "high" : 189985.0,
+      "low" : 189510.0,
+      "close" : 189705.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789122600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789122600000,
+      "open" : 189695.0,
+      "high" : 189760.0,
+      "low" : 189125.0,
+      "close" : 189430.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789122900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789122900000,
+      "open" : 189430.0,
+      "high" : 189645.0,
+      "low" : 188820.0,
+      "close" : 189245.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789123200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789123200000,
+      "open" : 189245.0,
+      "high" : 189475.0,
+      "low" : 189005.0,
+      "close" : 189245.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789123500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789123500000,
+      "open" : 189240.0,
+      "high" : 189520.0,
+      "low" : 189120.0,
+      "close" : 189200.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789123800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789123800000,
+      "open" : 189200.0,
+      "high" : 189375.0,
+      "low" : 188990.0,
+      "close" : 189225.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789124100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789124100000,
+      "open" : 189225.0,
+      "high" : 189420.0,
+      "low" : 189145.0,
+      "close" : 189370.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789124400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789124400000,
+      "open" : 189370.0,
+      "high" : 189380.0,
+      "low" : 188575.0,
+      "close" : 188940.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789124700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789124700000,
+      "open" : 188935.0,
+      "high" : 189225.0,
+      "low" : 188825.0,
+      "close" : 189145.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789125000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789125000000,
+      "open" : 189140.0,
+      "high" : 189400.0,
+      "low" : 189005.0,
+      "close" : 189155.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789125300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789125300000,
+      "open" : 189160.0,
+      "high" : 189325.0,
+      "low" : 188905.0,
+      "close" : 189305.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789125600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789125600000,
+      "open" : 189300.0,
+      "high" : 189380.0,
+      "low" : 188770.0,
+      "close" : 188860.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789125900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789125900000,
+      "open" : 188865.0,
+      "high" : 188910.0,
+      "low" : 188640.0,
+      "close" : 188875.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789126200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789126200000,
+      "open" : 188870.0,
+      "high" : 189025.0,
+      "low" : 188825.0,
+      "close" : 188885.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789126500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789126500000,
+      "open" : 188880.0,
+      "high" : 188960.0,
+      "low" : 188555.0,
+      "close" : 188715.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789126800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789126800000,
+      "open" : 188715.0,
+      "high" : 188940.0,
+      "low" : 188670.0,
+      "close" : 188900.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789127100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789127100000,
+      "open" : 188900.0,
+      "high" : 189500.0,
+      "low" : 188890.0,
+      "close" : 189325.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789127400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789127400000,
+      "open" : 189325.0,
+      "high" : 189410.0,
+      "low" : 189135.0,
+      "close" : 189320.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789127700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789127700000,
+      "open" : 189325.0,
+      "high" : 189425.0,
+      "low" : 189275.0,
+      "close" : 189335.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789128000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789128000000,
+      "open" : 189335.0,
+      "high" : 189595.0,
+      "low" : 189230.0,
+      "close" : 189290.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789128300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789128300000,
+      "open" : 189290.0,
+      "high" : 189465.0,
+      "low" : 189140.0,
+      "close" : 189200.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789128600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789128600000,
+      "open" : 189205.0,
+      "high" : 189240.0,
+      "low" : 188910.0,
+      "close" : 189090.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789128900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789128900000,
+      "open" : 189090.0,
+      "high" : 189425.0,
+      "low" : 189090.0,
+      "close" : 189420.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789129200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789129200000,
+      "open" : 189420.0,
+      "high" : 189470.0,
+      "low" : 189305.0,
+      "close" : 189390.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789129500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789129500000,
+      "open" : 189385.0,
+      "high" : 189520.0,
+      "low" : 189340.0,
+      "close" : 189355.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789129800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789129800000,
+      "open" : 189360.0,
+      "high" : 189530.0,
+      "low" : 189350.0,
+      "close" : 189410.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789130100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789130100000,
+      "open" : 189415.0,
+      "high" : 189465.0,
+      "low" : 189275.0,
+      "close" : 189400.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789130400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789130400000,
+      "open" : 189395.0,
+      "high" : 189520.0,
+      "low" : 189350.0,
+      "close" : 189445.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789130700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789130700000,
+      "open" : 189450.0,
+      "high" : 189505.0,
+      "low" : 189235.0,
+      "close" : 189495.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789131000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789131000000,
+      "open" : 189495.0,
+      "high" : 189540.0,
+      "low" : 189170.0,
+      "close" : 189260.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789131300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789131300000,
+      "open" : 189265.0,
+      "high" : 189330.0,
+      "low" : 189195.0,
+      "close" : 189315.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789131600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789131600000,
+      "open" : 189315.0,
+      "high" : 189615.0,
+      "low" : 189295.0,
+      "close" : 189550.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789131900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789131900000,
+      "open" : 189555.0,
+      "high" : 189570.0,
+      "low" : 189360.0,
+      "close" : 189455.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789132200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789132200000,
+      "open" : 189455.0,
+      "high" : 189620.0,
+      "low" : 189455.0,
+      "close" : 189600.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789132500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789132500000,
+      "open" : 189595.0,
+      "high" : 189665.0,
+      "low" : 189305.0,
+      "close" : 189420.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789132800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789132800000,
+      "open" : 189415.0,
+      "high" : 189495.0,
+      "low" : 189350.0,
+      "close" : 189465.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789133100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789133100000,
+      "open" : 189460.0,
+      "high" : 189610.0,
+      "low" : 189460.0,
+      "close" : 189540.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789133400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789133400000,
+      "open" : 189540.0,
+      "high" : 189875.0,
+      "low" : 189525.0,
+      "close" : 189740.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789133700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789133700000,
+      "open" : 189740.0,
+      "high" : 189795.0,
+      "low" : 189335.0,
+      "close" : 189345.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789134000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789134000000,
+      "open" : 189350.0,
+      "high" : 189425.0,
+      "low" : 189260.0,
+      "close" : 189365.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789134300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789134300000,
+      "open" : 189365.0,
+      "high" : 189405.0,
+      "low" : 189275.0,
+      "close" : 189370.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789134600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789134600000,
+      "open" : 189370.0,
+      "high" : 189410.0,
+      "low" : 189205.0,
+      "close" : 189270.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789134900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789134900000,
+      "open" : 189270.0,
+      "high" : 189420.0,
+      "low" : 189240.0,
+      "close" : 189360.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789135200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789135200000,
+      "open" : 189360.0,
+      "high" : 189410.0,
+      "low" : 189275.0,
+      "close" : 189350.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789135500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789135500000,
+      "open" : 189355.0,
+      "high" : 189435.0,
+      "low" : 189290.0,
+      "close" : 189350.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789135800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789135800000,
+      "open" : 189345.0,
+      "high" : 189400.0,
+      "low" : 189275.0,
+      "close" : 189370.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789136100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789136100000,
+      "open" : 189375.0,
+      "high" : 189400.0,
+      "low" : 189180.0,
+      "close" : 189265.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789136400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789136400000,
+      "open" : 189270.0,
+      "high" : 189380.0,
+      "low" : 189255.0,
+      "close" : 189320.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789136700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789136700000,
+      "open" : 189315.0,
+      "high" : 189360.0,
+      "low" : 189265.0,
+      "close" : 189270.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789137000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789137000000,
+      "open" : 189270.0,
+      "high" : 189280.0,
+      "low" : 188805.0,
+      "close" : 188905.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789137300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789137300000,
+      "open" : 188905.0,
+      "high" : 188930.0,
+      "low" : 188640.0,
+      "close" : 188890.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789137600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789137600000,
+      "open" : 188890.0,
+      "high" : 188930.0,
+      "low" : 188520.0,
+      "close" : 188695.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789137900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789137900000,
+      "open" : 188695.0,
+      "high" : 188700.0,
+      "low" : 188320.0,
+      "close" : 188385.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789138200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789138200000,
+      "open" : 188380.0,
+      "high" : 188775.0,
+      "low" : 188355.0,
+      "close" : 188660.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789138500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789138500000,
+      "open" : 188665.0,
+      "high" : 188700.0,
+      "low" : 188425.0,
+      "close" : 188560.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789138800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789138800000,
+      "open" : 188560.0,
+      "high" : 188820.0,
+      "low" : 188455.0,
+      "close" : 188765.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789139100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789139100000,
+      "open" : 188770.0,
+      "high" : 188800.0,
+      "low" : 188575.0,
+      "close" : 188665.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789139400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789139400000,
+      "open" : 188665.0,
+      "high" : 188725.0,
+      "low" : 188580.0,
+      "close" : 188640.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789139700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789139700000,
+      "open" : 188640.0,
+      "high" : 188695.0,
+      "low" : 188550.0,
+      "close" : 188675.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789140000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789140000000,
+      "open" : 188670.0,
+      "high" : 188690.0,
+      "low" : 188320.0,
+      "close" : 188455.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789140300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789140300000,
+      "open" : 188455.0,
+      "high" : 188610.0,
+      "low" : 188370.0,
+      "close" : 188400.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789140600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789140600000,
+      "open" : 188405.0,
+      "high" : 188435.0,
+      "low" : 188075.0,
+      "close" : 188220.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789140900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789140900000,
+      "open" : 188220.0,
+      "high" : 188370.0,
+      "low" : 188145.0,
+      "close" : 188305.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789141200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789141200000,
+      "open" : 188300.0,
+      "high" : 188430.0,
+      "low" : 188235.0,
+      "close" : 188415.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789141500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789141500000,
+      "open" : 188415.0,
+      "high" : 188550.0,
+      "low" : 188360.0,
+      "close" : 188530.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789141800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789141800000,
+      "open" : 188530.0,
+      "high" : 188530.0,
+      "low" : 188385.0,
+      "close" : 188405.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789142100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789142100000,
+      "open" : 188410.0,
+      "high" : 188500.0,
+      "low" : 188365.0,
+      "close" : 188430.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789142400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789142400000,
+      "open" : 188435.0,
+      "high" : 188585.0,
+      "low" : 188380.0,
+      "close" : 188580.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789142700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789142700000,
+      "open" : 188575.0,
+      "high" : 188770.0,
+      "low" : 188510.0,
+      "close" : 188630.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789143000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789143000000,
+      "open" : 188635.0,
+      "high" : 188770.0,
+      "low" : 188600.0,
+      "close" : 188755.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789143300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789143300000,
+      "open" : 188755.0,
+      "high" : 188895.0,
+      "low" : 188600.0,
+      "close" : 188705.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789143600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789143600000,
+      "open" : 188705.0,
+      "high" : 188755.0,
+      "low" : 188620.0,
+      "close" : 188675.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789143900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789143900000,
+      "open" : 188675.0,
+      "high" : 188810.0,
+      "low" : 188660.0,
+      "close" : 188760.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789144200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789144200000,
+      "open" : 188760.0,
+      "high" : 188955.0,
+      "low" : 188750.0,
+      "close" : 188885.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789144500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789144500000,
+      "open" : 188880.0,
+      "high" : 188905.0,
+      "low" : 188725.0,
+      "close" : 188750.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789144800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789144800000,
+      "open" : 188745.0,
+      "high" : 188830.0,
+      "low" : 188680.0,
+      "close" : 188805.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789145100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789145100000,
+      "open" : 188805.0,
+      "high" : 188860.0,
+      "low" : 188715.0,
+      "close" : 188830.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789145400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789145400000,
+      "open" : 188830.0,
+      "high" : 189030.0,
+      "low" : 188795.0,
+      "close" : 189015.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789145700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789145700000,
+      "open" : 189010.0,
+      "high" : 189100.0,
+      "low" : 188910.0,
+      "close" : 189040.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789146000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789146000000,
+      "open" : 189035.0,
+      "high" : 189135.0,
+      "low" : 188985.0,
+      "close" : 189075.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789146300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789146300000,
+      "open" : 189075.0,
+      "high" : 189160.0,
+      "low" : 189025.0,
+      "close" : 189075.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789146600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789146600000,
+      "open" : 189075.0,
+      "high" : 189080.0,
+      "low" : 188810.0,
+      "close" : 188940.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789146900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789146900000,
+      "open" : 188935.0,
+      "high" : 188965.0,
+      "low" : 188830.0,
+      "close" : 188900.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789147200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789147200000,
+      "open" : 188900.0,
+      "high" : 189000.0,
+      "low" : 188890.0,
+      "close" : 188975.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789147500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789147500000,
+      "open" : 188970.0,
+      "high" : 189015.0,
+      "low" : 188855.0,
+      "close" : 188880.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789147800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789147800000,
+      "open" : 188885.0,
+      "high" : 188915.0,
+      "low" : 188400.0,
+      "close" : 188670.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789148100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789148100000,
+      "open" : 188670.0,
+      "high" : 188690.0,
+      "low" : 188615.0,
+      "close" : 188630.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789148400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789148400000,
+      "open" : 188630.0,
+      "high" : 188740.0,
+      "low" : 188550.0,
+      "close" : 188700.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789148700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789148700000,
+      "open" : 188695.0,
+      "high" : 188740.0,
+      "low" : 188650.0,
+      "close" : 188685.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789149000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789149000000,
+      "open" : 188680.0,
+      "high" : 188735.0,
+      "low" : 188620.0,
+      "close" : 188730.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789149300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789149300000,
+      "open" : 188730.0,
+      "high" : 188960.0,
+      "low" : 188715.0,
+      "close" : 188920.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789149600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789149600000,
+      "open" : 188925.0,
+      "high" : 189035.0,
+      "low" : 188800.0,
+      "close" : 188925.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789149900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789149900000,
+      "open" : 188930.0,
+      "high" : 188930.0,
+      "low" : 188730.0,
+      "close" : 188820.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789150200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789150200000,
+      "open" : 188820.0,
+      "high" : 188970.0,
+      "low" : 188650.0,
+      "close" : 188745.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789150500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789150500000,
+      "open" : 188750.0,
+      "high" : 188790.0,
+      "low" : 188620.0,
+      "close" : 188640.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789150800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789150800000,
+      "open" : 188640.0,
+      "high" : 188720.0,
+      "low" : 188550.0,
+      "close" : 188720.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789151100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789376400000,
+      "open" : 186900.0,
+      "high" : 187335.0,
+      "low" : 186550.0,
+      "close" : 186765.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789376700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789376700000,
+      "open" : 186765.0,
+      "high" : 186945.0,
+      "low" : 185945.0,
+      "close" : 186090.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789377000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789377000000,
+      "open" : 186085.0,
+      "high" : 186320.0,
+      "low" : 185325.0,
+      "close" : 185420.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789377300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789377300000,
+      "open" : 185415.0,
+      "high" : 185545.0,
+      "low" : 185220.0,
+      "close" : 185385.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789377600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789377600000,
+      "open" : 185385.0,
+      "high" : 185520.0,
+      "low" : 185190.0,
+      "close" : 185325.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789377900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789377900000,
+      "open" : 185325.0,
+      "high" : 185370.0,
+      "low" : 185040.0,
+      "close" : 185280.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789378200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789378200000,
+      "open" : 185280.0,
+      "high" : 185725.0,
+      "low" : 185255.0,
+      "close" : 185350.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789378500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789378500000,
+      "open" : 185350.0,
+      "high" : 185425.0,
+      "low" : 185190.0,
+      "close" : 185290.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789378800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789378800000,
+      "open" : 185295.0,
+      "high" : 185445.0,
+      "low" : 185160.0,
+      "close" : 185370.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789379100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789379100000,
+      "open" : 185375.0,
+      "high" : 185725.0,
+      "low" : 185370.0,
+      "close" : 185690.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789379400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789379400000,
+      "open" : 185690.0,
+      "high" : 185860.0,
+      "low" : 185580.0,
+      "close" : 185790.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789379700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789379700000,
+      "open" : 185790.0,
+      "high" : 186135.0,
+      "low" : 185700.0,
+      "close" : 185840.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789380000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789380000000,
+      "open" : 185845.0,
+      "high" : 185975.0,
+      "low" : 185350.0,
+      "close" : 185520.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789380300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789380300000,
+      "open" : 185520.0,
+      "high" : 186190.0,
+      "low" : 185310.0,
+      "close" : 185895.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789380600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789380600000,
+      "open" : 185900.0,
+      "high" : 186070.0,
+      "low" : 185595.0,
+      "close" : 185850.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789380900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789380900000,
+      "open" : 185850.0,
+      "high" : 187280.0,
+      "low" : 185635.0,
+      "close" : 187005.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789381200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789381200000,
+      "open" : 187005.0,
+      "high" : 187110.0,
+      "low" : 186290.0,
+      "close" : 186545.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789381500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789381500000,
+      "open" : 186545.0,
+      "high" : 186665.0,
+      "low" : 185905.0,
+      "close" : 185930.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789381800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789381800000,
+      "open" : 185935.0,
+      "high" : 186250.0,
+      "low" : 185620.0,
+      "close" : 185650.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789382100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789382100000,
+      "open" : 185645.0,
+      "high" : 186090.0,
+      "low" : 185560.0,
+      "close" : 185750.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789382400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789382400000,
+      "open" : 185750.0,
+      "high" : 186135.0,
+      "low" : 185570.0,
+      "close" : 186015.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789382700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789382700000,
+      "open" : 186015.0,
+      "high" : 186585.0,
+      "low" : 185975.0,
+      "close" : 186455.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789383000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789383000000,
+      "open" : 186460.0,
+      "high" : 186750.0,
+      "low" : 186340.0,
+      "close" : 186450.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789383300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789383300000,
+      "open" : 186455.0,
+      "high" : 186595.0,
+      "low" : 186265.0,
+      "close" : 186430.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789383600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789383600000,
+      "open" : 186430.0,
+      "high" : 186790.0,
+      "low" : 186340.0,
+      "close" : 186465.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789383900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789383900000,
+      "open" : 186465.0,
+      "high" : 186565.0,
+      "low" : 186140.0,
+      "close" : 186265.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789384200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789384200000,
+      "open" : 186265.0,
+      "high" : 186580.0,
+      "low" : 186200.0,
+      "close" : 186505.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789384500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789384500000,
+      "open" : 186500.0,
+      "high" : 186715.0,
+      "low" : 186215.0,
+      "close" : 186270.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789384800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789384800000,
+      "open" : 186265.0,
+      "high" : 186415.0,
+      "low" : 185900.0,
+      "close" : 185945.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789385100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789385100000,
+      "open" : 185950.0,
+      "high" : 186320.0,
+      "low" : 185920.0,
+      "close" : 186295.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789385400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789385400000,
+      "open" : 186300.0,
+      "high" : 186470.0,
+      "low" : 186030.0,
+      "close" : 186375.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789385700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789385700000,
+      "open" : 186375.0,
+      "high" : 186830.0,
+      "low" : 186370.0,
+      "close" : 186630.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789386000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789386000000,
+      "open" : 186630.0,
+      "high" : 187015.0,
+      "low" : 186575.0,
+      "close" : 186940.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789386300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789386300000,
+      "open" : 186935.0,
+      "high" : 187355.0,
+      "low" : 186920.0,
+      "close" : 187090.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789386600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789386600000,
+      "open" : 187085.0,
+      "high" : 187105.0,
+      "low" : 186785.0,
+      "close" : 186865.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789386900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789386900000,
+      "open" : 186860.0,
+      "high" : 187160.0,
+      "low" : 186720.0,
+      "close" : 187040.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789387200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789387200000,
+      "open" : 187040.0,
+      "high" : 187245.0,
+      "low" : 186790.0,
+      "close" : 187195.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789387500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789387500000,
+      "open" : 187200.0,
+      "high" : 187795.0,
+      "low" : 187200.0,
+      "close" : 187555.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789387800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789387800000,
+      "open" : 187555.0,
+      "high" : 187680.0,
+      "low" : 187300.0,
+      "close" : 187355.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789388100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789388100000,
+      "open" : 187355.0,
+      "high" : 187390.0,
+      "low" : 187190.0,
+      "close" : 187230.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789388400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789388400000,
+      "open" : 187225.0,
+      "high" : 187380.0,
+      "low" : 187190.0,
+      "close" : 187315.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789388700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789388700000,
+      "open" : 187315.0,
+      "high" : 187340.0,
+      "low" : 187060.0,
+      "close" : 187195.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789389000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789389000000,
+      "open" : 187195.0,
+      "high" : 187380.0,
+      "low" : 187150.0,
+      "close" : 187205.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789389300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789389300000,
+      "open" : 187200.0,
+      "high" : 187400.0,
+      "low" : 187135.0,
+      "close" : 187185.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789389600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789389600000,
+      "open" : 187190.0,
+      "high" : 187590.0,
+      "low" : 187135.0,
+      "close" : 187505.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789389900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789389900000,
+      "open" : 187500.0,
+      "high" : 187510.0,
+      "low" : 187180.0,
+      "close" : 187185.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789390200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789390200000,
+      "open" : 187180.0,
+      "high" : 187385.0,
+      "low" : 187155.0,
+      "close" : 187360.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789390500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789390500000,
+      "open" : 187360.0,
+      "high" : 187420.0,
+      "low" : 187280.0,
+      "close" : 187370.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789390800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789390800000,
+      "open" : 187365.0,
+      "high" : 187505.0,
+      "low" : 187280.0,
+      "close" : 187480.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789391100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789391100000,
+      "open" : 187480.0,
+      "high" : 187635.0,
+      "low" : 187425.0,
+      "close" : 187585.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789391400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789391400000,
+      "open" : 187585.0,
+      "high" : 187710.0,
+      "low" : 187530.0,
+      "close" : 187635.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789391700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789391700000,
+      "open" : 187635.0,
+      "high" : 187735.0,
+      "low" : 187575.0,
+      "close" : 187695.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789392000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789392000000,
+      "open" : 187700.0,
+      "high" : 187965.0,
+      "low" : 187670.0,
+      "close" : 187950.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789392300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789392300000,
+      "open" : 187945.0,
+      "high" : 188020.0,
+      "low" : 187800.0,
+      "close" : 187870.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789392600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789392600000,
+      "open" : 187865.0,
+      "high" : 188065.0,
+      "low" : 187840.0,
+      "close" : 187900.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789392900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789392900000,
+      "open" : 187905.0,
+      "high" : 188100.0,
+      "low" : 187800.0,
+      "close" : 188080.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789393200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789393200000,
+      "open" : 188085.0,
+      "high" : 188260.0,
+      "low" : 188040.0,
+      "close" : 188220.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789393500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789393500000,
+      "open" : 188225.0,
+      "high" : 188235.0,
+      "low" : 187840.0,
+      "close" : 187855.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789393800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789393800000,
+      "open" : 187855.0,
+      "high" : 187975.0,
+      "low" : 187800.0,
+      "close" : 187895.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789394100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789394100000,
+      "open" : 187895.0,
+      "high" : 187945.0,
+      "low" : 187710.0,
+      "close" : 187790.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789394400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789394400000,
+      "open" : 187795.0,
+      "high" : 187820.0,
+      "low" : 187575.0,
+      "close" : 187625.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789394700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789394700000,
+      "open" : 187620.0,
+      "high" : 187680.0,
+      "low" : 187445.0,
+      "close" : 187530.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789395000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789395000000,
+      "open" : 187530.0,
+      "high" : 187610.0,
+      "low" : 187430.0,
+      "close" : 187490.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789395300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789395300000,
+      "open" : 187490.0,
+      "high" : 187510.0,
+      "low" : 187270.0,
+      "close" : 187315.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789395600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789395600000,
+      "open" : 187320.0,
+      "high" : 187445.0,
+      "low" : 187305.0,
+      "close" : 187340.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789395900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789395900000,
+      "open" : 187335.0,
+      "high" : 187515.0,
+      "low" : 187290.0,
+      "close" : 187415.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789396200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789396200000,
+      "open" : 187410.0,
+      "high" : 187565.0,
+      "low" : 187385.0,
+      "close" : 187505.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789396500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789396500000,
+      "open" : 187500.0,
+      "high" : 187590.0,
+      "low" : 187370.0,
+      "close" : 187550.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789396800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789396800000,
+      "open" : 187555.0,
+      "high" : 187605.0,
+      "low" : 187380.0,
+      "close" : 187450.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789397100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789397100000,
+      "open" : 187450.0,
+      "high" : 187460.0,
+      "low" : 187300.0,
+      "close" : 187375.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789397400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789397400000,
+      "open" : 187370.0,
+      "high" : 187500.0,
+      "low" : 187305.0,
+      "close" : 187465.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789397700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789397700000,
+      "open" : 187470.0,
+      "high" : 187530.0,
+      "low" : 187280.0,
+      "close" : 187315.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789398000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789398000000,
+      "open" : 187310.0,
+      "high" : 187420.0,
+      "low" : 187240.0,
+      "close" : 187355.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789398300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789398300000,
+      "open" : 187355.0,
+      "high" : 187495.0,
+      "low" : 187315.0,
+      "close" : 187415.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789398600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789398600000,
+      "open" : 187410.0,
+      "high" : 187565.0,
+      "low" : 187385.0,
+      "close" : 187545.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789398900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789398900000,
+      "open" : 187540.0,
+      "high" : 187670.0,
+      "low" : 187465.0,
+      "close" : 187480.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789399200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789399200000,
+      "open" : 187480.0,
+      "high" : 187590.0,
+      "low" : 187440.0,
+      "close" : 187515.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789399500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789399500000,
+      "open" : 187520.0,
+      "high" : 187530.0,
+      "low" : 187425.0,
+      "close" : 187480.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789399800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789399800000,
+      "open" : 187480.0,
+      "high" : 187665.0,
+      "low" : 187435.0,
+      "close" : 187640.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789400100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789400100000,
+      "open" : 187640.0,
+      "high" : 187695.0,
+      "low" : 187395.0,
+      "close" : 187445.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789400400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789400400000,
+      "open" : 187440.0,
+      "high" : 187475.0,
+      "low" : 187250.0,
+      "close" : 187315.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789400700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789400700000,
+      "open" : 187310.0,
+      "high" : 187430.0,
+      "low" : 187140.0,
+      "close" : 187350.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789401000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789401000000,
+      "open" : 187355.0,
+      "high" : 187425.0,
+      "low" : 187285.0,
+      "close" : 187380.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789401300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789401300000,
+      "open" : 187380.0,
+      "high" : 187415.0,
+      "low" : 187305.0,
+      "close" : 187385.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789401600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789401600000,
+      "open" : 187390.0,
+      "high" : 187420.0,
+      "low" : 187215.0,
+      "close" : 187300.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789401900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789401900000,
+      "open" : 187295.0,
+      "high" : 187360.0,
+      "low" : 187205.0,
+      "close" : 187255.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789402200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789402200000,
+      "open" : 187255.0,
+      "high" : 187345.0,
+      "low" : 187240.0,
+      "close" : 187300.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789402500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789402500000,
+      "open" : 187305.0,
+      "high" : 187455.0,
+      "low" : 187270.0,
+      "close" : 187400.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789402800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789402800000,
+      "open" : 187395.0,
+      "high" : 187450.0,
+      "low" : 187355.0,
+      "close" : 187420.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789403100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789403100000,
+      "open" : 187425.0,
+      "high" : 187550.0,
+      "low" : 187410.0,
+      "close" : 187495.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789403400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789403400000,
+      "open" : 187500.0,
+      "high" : 188170.0,
+      "low" : 187495.0,
+      "close" : 187820.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789403700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789403700000,
+      "open" : 187825.0,
+      "high" : 188055.0,
+      "low" : 187800.0,
+      "close" : 187950.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789404000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789404000000,
+      "open" : 187955.0,
+      "high" : 187990.0,
+      "low" : 187865.0,
+      "close" : 187945.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789404300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789404300000,
+      "open" : 187940.0,
+      "high" : 187945.0,
+      "low" : 187820.0,
+      "close" : 187845.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789404600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789404600000,
+      "open" : 187840.0,
+      "high" : 187935.0,
+      "low" : 187780.0,
+      "close" : 187825.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789404900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789404900000,
+      "open" : 187820.0,
+      "high" : 187840.0,
+      "low" : 187600.0,
+      "close" : 187635.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789405200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789405200000,
+      "open" : 187635.0,
+      "high" : 187650.0,
+      "low" : 187385.0,
+      "close" : 187450.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789405500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789405500000,
+      "open" : 187450.0,
+      "high" : 187525.0,
+      "low" : 187410.0,
+      "close" : 187480.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789405800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789405800000,
+      "open" : 187480.0,
+      "high" : 187570.0,
+      "low" : 187475.0,
+      "close" : 187510.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789406100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789406100000,
+      "open" : 187505.0,
+      "high" : 187540.0,
+      "low" : 187440.0,
+      "close" : 187480.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789406400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789406400000,
+      "open" : 187480.0,
+      "high" : 187565.0,
+      "low" : 187455.0,
+      "close" : 187465.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789406700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789406700000,
+      "open" : 187465.0,
+      "high" : 187490.0,
+      "low" : 187410.0,
+      "close" : 187430.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789407000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789407000000,
+      "open" : 187430.0,
+      "high" : 187485.0,
+      "low" : 187355.0,
+      "close" : 187410.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789407300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789407300000,
+      "open" : 187405.0,
+      "high" : 187455.0,
+      "low" : 187285.0,
+      "close" : 187330.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789407600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789407600000,
+      "open" : 187330.0,
+      "high" : 187420.0,
+      "low" : 187300.0,
+      "close" : 187385.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789407900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789407900000,
+      "open" : 187380.0,
+      "high" : 187390.0,
+      "low" : 187320.0,
+      "close" : 187355.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789408200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789408200000,
+      "open" : 187350.0,
+      "high" : 187445.0,
+      "low" : 187340.0,
+      "close" : 187410.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789408500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789408500000,
+      "open" : 187405.0,
+      "high" : 187465.0,
+      "low" : 187365.0,
+      "close" : 187440.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789408800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789408800000,
+      "open" : 187440.0,
+      "high" : 187565.0,
+      "low" : 187380.0,
+      "close" : 187540.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789409100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789409100000,
+      "open" : 187545.0,
+      "high" : 187585.0,
+      "low" : 187320.0,
+      "close" : 187465.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789409400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789409400000,
+      "open" : 187470.0,
+      "high" : 187540.0,
+      "low" : 187395.0,
+      "close" : 187490.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789409700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789409700000,
+      "open" : 187490.0,
+      "high" : 187535.0,
+      "low" : 187420.0,
+      "close" : 187435.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789410000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789410000000,
+      "open" : 187435.0,
+      "high" : 187455.0,
+      "low" : 187250.0,
+      "close" : 187250.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789410300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789462800000,
+      "open" : 186910.0,
+      "high" : 188240.0,
+      "low" : 186910.0,
+      "close" : 188175.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789463100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789463100000,
+      "open" : 188180.0,
+      "high" : 188275.0,
+      "low" : 187505.0,
+      "close" : 187725.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789463400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789463400000,
+      "open" : 187725.0,
+      "high" : 187990.0,
+      "low" : 187425.0,
+      "close" : 187930.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789463700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789463700000,
+      "open" : 187930.0,
+      "high" : 188000.0,
+      "low" : 187700.0,
+      "close" : 187950.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789464000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789464000000,
+      "open" : 187955.0,
+      "high" : 187995.0,
+      "low" : 187650.0,
+      "close" : 187725.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789464300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789464300000,
+      "open" : 187720.0,
+      "high" : 188190.0,
+      "low" : 187680.0,
+      "close" : 188150.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789464600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789464600000,
+      "open" : 188160.0,
+      "high" : 188205.0,
+      "low" : 187970.0,
+      "close" : 188050.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789464900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789464900000,
+      "open" : 188045.0,
+      "high" : 188185.0,
+      "low" : 188010.0,
+      "close" : 188035.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789465200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789465200000,
+      "open" : 188035.0,
+      "high" : 188255.0,
+      "low" : 188015.0,
+      "close" : 188060.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789465500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789465500000,
+      "open" : 188065.0,
+      "high" : 188220.0,
+      "low" : 187950.0,
+      "close" : 188120.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789465800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789465800000,
+      "open" : 188120.0,
+      "high" : 188455.0,
+      "low" : 188085.0,
+      "close" : 188265.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789466100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789466100000,
+      "open" : 188260.0,
+      "high" : 188350.0,
+      "low" : 188070.0,
+      "close" : 188130.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789466400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789466400000,
+      "open" : 188125.0,
+      "high" : 188655.0,
+      "low" : 188110.0,
+      "close" : 188225.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789466700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789466700000,
+      "open" : 188220.0,
+      "high" : 188260.0,
+      "low" : 187870.0,
+      "close" : 187940.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789467000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789467000000,
+      "open" : 187935.0,
+      "high" : 188050.0,
+      "low" : 187580.0,
+      "close" : 187850.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789467300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789467300000,
+      "open" : 187850.0,
+      "high" : 187925.0,
+      "low" : 187300.0,
+      "close" : 187350.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789467600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789467600000,
+      "open" : 187345.0,
+      "high" : 187350.0,
+      "low" : 186855.0,
+      "close" : 187030.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789467900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789467900000,
+      "open" : 187035.0,
+      "high" : 187190.0,
+      "low" : 186775.0,
+      "close" : 186930.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789468200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789468200000,
+      "open" : 186925.0,
+      "high" : 188100.0,
+      "low" : 186895.0,
+      "close" : 187830.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789468500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789468500000,
+      "open" : 187835.0,
+      "high" : 187995.0,
+      "low" : 187610.0,
+      "close" : 187690.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789468800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789468800000,
+      "open" : 187690.0,
+      "high" : 188190.0,
+      "low" : 187575.0,
+      "close" : 187880.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789469100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789469100000,
+      "open" : 187880.0,
+      "high" : 188215.0,
+      "low" : 187630.0,
+      "close" : 187815.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789469400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789469400000,
+      "open" : 187810.0,
+      "high" : 187910.0,
+      "low" : 187320.0,
+      "close" : 187730.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789469700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789469700000,
+      "open" : 187730.0,
+      "high" : 187940.0,
+      "low" : 187585.0,
+      "close" : 187635.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789470000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789470000000,
+      "open" : 187640.0,
+      "high" : 188080.0,
+      "low" : 187605.0,
+      "close" : 187790.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789470300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789470300000,
+      "open" : 187795.0,
+      "high" : 187805.0,
+      "low" : 187590.0,
+      "close" : 187665.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789470600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789470600000,
+      "open" : 187665.0,
+      "high" : 188015.0,
+      "low" : 187635.0,
+      "close" : 187690.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789470900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789470900000,
+      "open" : 187690.0,
+      "high" : 187910.0,
+      "low" : 187490.0,
+      "close" : 187870.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789471200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789471200000,
+      "open" : 187870.0,
+      "high" : 187940.0,
+      "low" : 187715.0,
+      "close" : 187905.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789471500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789471500000,
+      "open" : 187900.0,
+      "high" : 188015.0,
+      "low" : 187410.0,
+      "close" : 187455.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789471800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789471800000,
+      "open" : 187450.0,
+      "high" : 188040.0,
+      "low" : 187415.0,
+      "close" : 187990.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789472100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789472100000,
+      "open" : 187990.0,
+      "high" : 188210.0,
+      "low" : 187855.0,
+      "close" : 187990.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789472400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789472400000,
+      "open" : 187995.0,
+      "high" : 188045.0,
+      "low" : 187665.0,
+      "close" : 187700.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789472700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789472700000,
+      "open" : 187700.0,
+      "high" : 187715.0,
+      "low" : 187560.0,
+      "close" : 187685.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789473000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789473000000,
+      "open" : 187685.0,
+      "high" : 187805.0,
+      "low" : 187370.0,
+      "close" : 187700.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789473300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789473300000,
+      "open" : 187705.0,
+      "high" : 187730.0,
+      "low" : 187425.0,
+      "close" : 187440.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789473600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789473600000,
+      "open" : 187445.0,
+      "high" : 187880.0,
+      "low" : 187430.0,
+      "close" : 187750.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789473900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789473900000,
+      "open" : 187750.0,
+      "high" : 187785.0,
+      "low" : 187650.0,
+      "close" : 187775.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789474200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789474200000,
+      "open" : 187775.0,
+      "high" : 188040.0,
+      "low" : 187635.0,
+      "close" : 188015.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789474500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789474500000,
+      "open" : 188015.0,
+      "high" : 188435.0,
+      "low" : 187985.0,
+      "close" : 188415.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789474800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789474800000,
+      "open" : 188420.0,
+      "high" : 188920.0,
+      "low" : 188405.0,
+      "close" : 188850.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789475100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789475100000,
+      "open" : 188855.0,
+      "high" : 189015.0,
+      "low" : 188810.0,
+      "close" : 188945.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789475400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789475400000,
+      "open" : 188950.0,
+      "high" : 189150.0,
+      "low" : 188900.0,
+      "close" : 188965.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789475700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789475700000,
+      "open" : 188970.0,
+      "high" : 189090.0,
+      "low" : 188840.0,
+      "close" : 189035.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789476000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789476000000,
+      "open" : 189035.0,
+      "high" : 189105.0,
+      "low" : 188965.0,
+      "close" : 189030.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789476300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789476300000,
+      "open" : 189025.0,
+      "high" : 189035.0,
+      "low" : 188805.0,
+      "close" : 188860.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789476600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789476600000,
+      "open" : 188855.0,
+      "high" : 188960.0,
+      "low" : 188750.0,
+      "close" : 188780.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789476900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789476900000,
+      "open" : 188785.0,
+      "high" : 188790.0,
+      "low" : 188410.0,
+      "close" : 188415.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789477200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789477200000,
+      "open" : 188415.0,
+      "high" : 188520.0,
+      "low" : 188315.0,
+      "close" : 188345.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789477500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789477500000,
+      "open" : 188350.0,
+      "high" : 188440.0,
+      "low" : 188185.0,
+      "close" : 188245.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789477800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789477800000,
+      "open" : 188245.0,
+      "high" : 188370.0,
+      "low" : 188145.0,
+      "close" : 188290.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789478100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789478100000,
+      "open" : 188290.0,
+      "high" : 188405.0,
+      "low" : 188225.0,
+      "close" : 188330.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789478400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789478400000,
+      "open" : 188330.0,
+      "high" : 188545.0,
+      "low" : 188300.0,
+      "close" : 188510.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789478700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789478700000,
+      "open" : 188505.0,
+      "high" : 188540.0,
+      "low" : 188425.0,
+      "close" : 188535.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789479000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789479000000,
+      "open" : 188535.0,
+      "high" : 188695.0,
+      "low" : 188525.0,
+      "close" : 188680.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789479300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789479300000,
+      "open" : 188685.0,
+      "high" : 188785.0,
+      "low" : 188640.0,
+      "close" : 188740.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789479600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789479600000,
+      "open" : 188735.0,
+      "high" : 188910.0,
+      "low" : 188680.0,
+      "close" : 188880.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789479900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789479900000,
+      "open" : 188885.0,
+      "high" : 189120.0,
+      "low" : 188875.0,
+      "close" : 189045.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789480200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789480200000,
+      "open" : 189045.0,
+      "high" : 189400.0,
+      "low" : 189020.0,
+      "close" : 189360.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789480500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789480500000,
+      "open" : 189355.0,
+      "high" : 189390.0,
+      "low" : 189265.0,
+      "close" : 189355.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789480800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789480800000,
+      "open" : 189355.0,
+      "high" : 189555.0,
+      "low" : 189065.0,
+      "close" : 189070.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789481100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789481100000,
+      "open" : 189075.0,
+      "high" : 189130.0,
+      "low" : 188955.0,
+      "close" : 188990.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789481400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789481400000,
+      "open" : 188985.0,
+      "high" : 189180.0,
+      "low" : 188875.0,
+      "close" : 189005.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789481700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789481700000,
+      "open" : 189005.0,
+      "high" : 189065.0,
+      "low" : 188895.0,
+      "close" : 189030.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789482000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789482000000,
+      "open" : 189030.0,
+      "high" : 189055.0,
+      "low" : 188930.0,
+      "close" : 188930.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789482300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789482300000,
+      "open" : 188935.0,
+      "high" : 188970.0,
+      "low" : 188715.0,
+      "close" : 188835.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789482600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789482600000,
+      "open" : 188835.0,
+      "high" : 188950.0,
+      "low" : 188820.0,
+      "close" : 188930.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789482900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789482900000,
+      "open" : 188925.0,
+      "high" : 188970.0,
+      "low" : 188875.0,
+      "close" : 188935.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789483200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789483200000,
+      "open" : 188935.0,
+      "high" : 188970.0,
+      "low" : 188725.0,
+      "close" : 188845.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789483500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789483500000,
+      "open" : 188845.0,
+      "high" : 188875.0,
+      "low" : 188645.0,
+      "close" : 188835.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789483800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789483800000,
+      "open" : 188830.0,
+      "high" : 188860.0,
+      "low" : 188610.0,
+      "close" : 188790.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789484100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789484100000,
+      "open" : 188790.0,
+      "high" : 188885.0,
+      "low" : 188775.0,
+      "close" : 188810.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789484400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789484400000,
+      "open" : 188810.0,
+      "high" : 189190.0,
+      "low" : 188810.0,
+      "close" : 189080.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789484700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789484700000,
+      "open" : 189080.0,
+      "high" : 189130.0,
+      "low" : 188970.0,
+      "close" : 189020.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789485000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789485000000,
+      "open" : 189025.0,
+      "high" : 189120.0,
+      "low" : 189005.0,
+      "close" : 189090.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789485300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789485300000,
+      "open" : 189085.0,
+      "high" : 189115.0,
+      "low" : 188945.0,
+      "close" : 188990.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789485600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789485600000,
+      "open" : 188995.0,
+      "high" : 189105.0,
+      "low" : 188930.0,
+      "close" : 189045.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789485900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789485900000,
+      "open" : 189045.0,
+      "high" : 189060.0,
+      "low" : 188945.0,
+      "close" : 188955.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789486200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789486200000,
+      "open" : 188950.0,
+      "high" : 188970.0,
+      "low" : 188815.0,
+      "close" : 188925.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789486500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789486500000,
+      "open" : 188925.0,
+      "high" : 188965.0,
+      "low" : 188675.0,
+      "close" : 188710.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789486800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789486800000,
+      "open" : 188710.0,
+      "high" : 188860.0,
+      "low" : 188630.0,
+      "close" : 188680.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789487100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789487100000,
+      "open" : 188680.0,
+      "high" : 188705.0,
+      "low" : 188565.0,
+      "close" : 188675.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789487400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789487400000,
+      "open" : 188675.0,
+      "high" : 188680.0,
+      "low" : 188550.0,
+      "close" : 188580.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789487700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789487700000,
+      "open" : 188585.0,
+      "high" : 188640.0,
+      "low" : 188525.0,
+      "close" : 188635.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789488000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789488000000,
+      "open" : 188635.0,
+      "high" : 188805.0,
+      "low" : 188625.0,
+      "close" : 188705.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789488300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789488300000,
+      "open" : 188710.0,
+      "high" : 188800.0,
+      "low" : 188685.0,
+      "close" : 188760.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789488600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789488600000,
+      "open" : 188760.0,
+      "high" : 188855.0,
+      "low" : 188720.0,
+      "close" : 188815.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789488900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789488900000,
+      "open" : 188820.0,
+      "high" : 188920.0,
+      "low" : 188785.0,
+      "close" : 188875.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789489200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789489200000,
+      "open" : 188880.0,
+      "high" : 188940.0,
+      "low" : 188700.0,
+      "close" : 188790.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789489500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789489500000,
+      "open" : 188790.0,
+      "high" : 188820.0,
+      "low" : 188720.0,
+      "close" : 188795.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789489800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789489800000,
+      "open" : 188795.0,
+      "high" : 188890.0,
+      "low" : 188770.0,
+      "close" : 188835.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789490100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789490100000,
+      "open" : 188840.0,
+      "high" : 188840.0,
+      "low" : 188680.0,
+      "close" : 188695.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789490400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789490400000,
+      "open" : 188695.0,
+      "high" : 188725.0,
+      "low" : 188625.0,
+      "close" : 188655.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789490700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789490700000,
+      "open" : 188660.0,
+      "high" : 188680.0,
+      "low" : 188565.0,
+      "close" : 188645.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789491000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789491000000,
+      "open" : 188645.0,
+      "high" : 188725.0,
+      "low" : 188500.0,
+      "close" : 188575.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789491300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789491300000,
+      "open" : 188575.0,
+      "high" : 188600.0,
+      "low" : 188320.0,
+      "close" : 188335.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789491600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789491600000,
+      "open" : 188335.0,
+      "high" : 188505.0,
+      "low" : 188270.0,
+      "close" : 188410.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789491900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789491900000,
+      "open" : 188405.0,
+      "high" : 188560.0,
+      "low" : 188405.0,
+      "close" : 188485.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789492200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789492200000,
+      "open" : 188480.0,
+      "high" : 188520.0,
+      "low" : 188430.0,
+      "close" : 188510.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789492500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789492500000,
+      "open" : 188510.0,
+      "high" : 188610.0,
+      "low" : 188500.0,
+      "close" : 188595.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789492800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789492800000,
+      "open" : 188600.0,
+      "high" : 188675.0,
+      "low" : 188575.0,
+      "close" : 188620.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789493100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789493100000,
+      "open" : 188620.0,
+      "high" : 188625.0,
+      "low" : 188525.0,
+      "close" : 188595.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789493400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789493400000,
+      "open" : 188600.0,
+      "high" : 188670.0,
+      "low" : 188575.0,
+      "close" : 188620.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789493700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789493700000,
+      "open" : 188620.0,
+      "high" : 188635.0,
+      "low" : 188420.0,
+      "close" : 188475.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789494000000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789494000000,
+      "open" : 188475.0,
+      "high" : 188480.0,
+      "low" : 188375.0,
+      "close" : 188435.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789494300000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789494300000,
+      "open" : 188440.0,
+      "high" : 188465.0,
+      "low" : 188400.0,
+      "close" : 188425.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789494600000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789494600000,
+      "open" : 188420.0,
+      "high" : 188540.0,
+      "low" : 188400.0,
+      "close" : 188510.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789494900000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789494900000,
+      "open" : 188510.0,
+      "high" : 188575.0,
+      "low" : 188435.0,
+      "close" : 188480.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789495200000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789495200000,
+      "open" : 188485.0,
+      "high" : 188565.0,
+      "low" : 188360.0,
+      "close" : 188385.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789495500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789495500000,
+      "open" : 188385.0,
+      "high" : 188525.0,
+      "low" : 188365.0,
+      "close" : 188400.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789495800000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789495800000,
+      "open" : 188405.0,
+      "high" : 188520.0,
+      "low" : 188380.0,
+      "close" : 188480.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789496100000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789496100000,
+      "open" : 188475.0,
+      "high" : 188520.0,
+      "low" : 188420.0,
+      "close" : 188460.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789496400000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789496400000,
+      "open" : 188475.0,
+      "high" : 188525.0,
+      "low" : 188425.0,
+      "close" : 188510.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789496700000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789549200000,
+      "open" : 189320.0,
+      "high" : 189730.0,
+      "low" : 188290.0,
+      "close" : 188635.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : true,
+    "availableAtMsc" : 1789549500000
+  }, {
+    "candle" : {
+      "symbol" : "WIN$N",
+      "bucketStartTimeMsc" : 1789549500000,
+      "open" : 188640.0,
+      "high" : 188760.0,
+      "low" : 188265.0,
+      "close" : 188300.0
+    },
+    "timeframeMinutes" : 5,
+    "closed" : false,
+    "availableAtMsc" : 1789549560000
+  } ],
+  "structure" : {
+    "levels" : [ {
+      "id" : "WIN$N:60:1789117200000:TOP",
+      "type" : "TOP",
+      "price" : 191345.0,
+      "extremeTimeMsc" : 1789117200000,
+      "confirmedAtMsc" : 1789128000000,
+      "region" : {
+        "high" : 191345.0,
+        "low" : 188810.0,
+        "midpoint" : 190077.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789124400000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 188555.0,
+      "extremeTimeMsc" : 1789124400000,
+      "confirmedAtMsc" : 1789135200000,
+      "region" : {
+        "high" : 189500.0,
+        "low" : 188555.0,
+        "midpoint" : 189027.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789142400000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789131600000:TOP",
+      "type" : "TOP",
+      "price" : 189875.0,
+      "extremeTimeMsc" : 1789131600000,
+      "confirmedAtMsc" : 1789142400000,
+      "region" : {
+        "high" : 189875.0,
+        "low" : 189205.0,
+        "midpoint" : 189540.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789138800000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 188075.0,
+      "extremeTimeMsc" : 1789138800000,
+      "confirmedAtMsc" : 1789149600000,
+      "region" : {
+        "high" : 188820.0,
+        "low" : 188075.0,
+        "midpoint" : 188447.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789380000000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789146000000:TOP",
+      "type" : "TOP",
+      "price" : 189160.0,
+      "extremeTimeMsc" : 1789146000000,
+      "confirmedAtMsc" : 1789380000000,
+      "region" : {
+        "high" : 189160.0,
+        "low" : 188400.0,
+        "midpoint" : 188780.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789480800000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789376400000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 185040.0,
+      "extremeTimeMsc" : 1789376400000,
+      "confirmedAtMsc" : 1789387200000,
+      "region" : {
+        "high" : 187335.0,
+        "low" : 185040.0,
+        "midpoint" : 186187.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789390800000:TOP",
+      "type" : "TOP",
+      "price" : 188260.0,
+      "extremeTimeMsc" : 1789390800000,
+      "confirmedAtMsc" : 1789401600000,
+      "region" : {
+        "high" : 188260.0,
+        "low" : 187280.0,
+        "midpoint" : 187770.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789477200000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789398000000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 187140.0,
+      "extremeTimeMsc" : 1789398000000,
+      "confirmedAtMsc" : 1789408800000,
+      "region" : {
+        "high" : 187695.0,
+        "low" : 187140.0,
+        "midpoint" : 187417.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789401600000:TOP",
+      "type" : "TOP",
+      "price" : 188170.0,
+      "extremeTimeMsc" : 1789401600000,
+      "confirmedAtMsc" : 1789412400000,
+      "region" : {
+        "high" : 188170.0,
+        "low" : 187205.0,
+        "midpoint" : 187687.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789477200000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789466400000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 186775.0,
+      "extremeTimeMsc" : 1789466400000,
+      "confirmedAtMsc" : 1789477200000,
+      "region" : {
+        "high" : 188655.0,
+        "low" : 186775.0,
+        "midpoint" : 187715.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789480800000:TOP",
+      "type" : "TOP",
+      "price" : 189555.0,
+      "extremeTimeMsc" : 1789480800000,
+      "confirmedAtMsc" : 1789491600000,
+      "region" : {
+        "high" : 189555.0,
+        "low" : 188610.0,
+        "midpoint" : 189082.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "STRICT_H1_PREOPEN",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    } ],
+    "totalActive" : 260,
+    "maxLevels" : 6,
+    "selection" : "PREOPEN_THREE_SESSIONS_STRICT_PIVOTS_GROUP_5_POINTS",
+    "supported" : true,
+    "h1History" : {
+      "previousSessions" : 9,
+      "sufficient" : true,
+      "alignment" : "NATIVE_FEED_HOUR_NO_SHIFT"
+    },
+    "preparation" : {
+      "symbol" : "WIN$N",
+      "sessionDate" : "2026-09-16",
+      "sessionOpenMsc" : 1789549200000,
+      "sourceSessions" : [ "2026-09-11", "2026-09-14", "2026-09-15" ],
+      "sufficient" : true,
+      "criterion" : "PREOPEN_THREE_SESSIONS_STRICT_PIVOTS_GROUP_5_POINTS",
+      "candidates" : [ {
+        "id" : "WIN$N:60:1789117200000:TOP",
+        "type" : "TOP",
+        "price" : 191345.0,
+        "extremeTimeMsc" : 1789117200000,
+        "confirmedAtMsc" : 1789128000000,
+        "region" : {
+          "high" : 191345.0,
+          "low" : 188810.0,
+          "midpoint" : 190077.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789124400000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 188555.0,
+        "extremeTimeMsc" : 1789124400000,
+        "confirmedAtMsc" : 1789135200000,
+        "region" : {
+          "high" : 189500.0,
+          "low" : 188555.0,
+          "midpoint" : 189027.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789142400000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789131600000:TOP",
+        "type" : "TOP",
+        "price" : 189875.0,
+        "extremeTimeMsc" : 1789131600000,
+        "confirmedAtMsc" : 1789142400000,
+        "region" : {
+          "high" : 189875.0,
+          "low" : 189205.0,
+          "midpoint" : 189540.0,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789138800000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 188075.0,
+        "extremeTimeMsc" : 1789138800000,
+        "confirmedAtMsc" : 1789149600000,
+        "region" : {
+          "high" : 188820.0,
+          "low" : 188075.0,
+          "midpoint" : 188447.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789380000000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789146000000:TOP",
+        "type" : "TOP",
+        "price" : 189160.0,
+        "extremeTimeMsc" : 1789146000000,
+        "confirmedAtMsc" : 1789380000000,
+        "region" : {
+          "high" : 189160.0,
+          "low" : 188400.0,
+          "midpoint" : 188780.0,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789480800000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789376400000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 185040.0,
+        "extremeTimeMsc" : 1789376400000,
+        "confirmedAtMsc" : 1789387200000,
+        "region" : {
+          "high" : 187335.0,
+          "low" : 185040.0,
+          "midpoint" : 186187.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789390800000:TOP",
+        "type" : "TOP",
+        "price" : 188260.0,
+        "extremeTimeMsc" : 1789390800000,
+        "confirmedAtMsc" : 1789401600000,
+        "region" : {
+          "high" : 188260.0,
+          "low" : 187280.0,
+          "midpoint" : 187770.0,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789477200000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789398000000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 187140.0,
+        "extremeTimeMsc" : 1789398000000,
+        "confirmedAtMsc" : 1789408800000,
+        "region" : {
+          "high" : 187695.0,
+          "low" : 187140.0,
+          "midpoint" : 187417.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789401600000:TOP",
+        "type" : "TOP",
+        "price" : 188170.0,
+        "extremeTimeMsc" : 1789401600000,
+        "confirmedAtMsc" : 1789412400000,
+        "region" : {
+          "high" : 188170.0,
+          "low" : 187205.0,
+          "midpoint" : 187687.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789477200000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789466400000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 186775.0,
+        "extremeTimeMsc" : 1789466400000,
+        "confirmedAtMsc" : 1789477200000,
+        "region" : {
+          "high" : 188655.0,
+          "low" : 186775.0,
+          "midpoint" : 187715.0,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789480800000:TOP",
+        "type" : "TOP",
+        "price" : 189555.0,
+        "extremeTimeMsc" : 1789480800000,
+        "confirmedAtMsc" : 1789491600000,
+        "region" : {
+          "high" : 189555.0,
+          "low" : 188610.0,
+          "midpoint" : 189082.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      } ],
+      "levels" : [ {
+        "id" : "WIN$N:60:1789117200000:TOP",
+        "type" : "TOP",
+        "price" : 191345.0,
+        "extremeTimeMsc" : 1789117200000,
+        "confirmedAtMsc" : 1789128000000,
+        "region" : {
+          "high" : 191345.0,
+          "low" : 188810.0,
+          "midpoint" : 190077.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789124400000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 188555.0,
+        "extremeTimeMsc" : 1789124400000,
+        "confirmedAtMsc" : 1789135200000,
+        "region" : {
+          "high" : 189500.0,
+          "low" : 188555.0,
+          "midpoint" : 189027.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789142400000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789131600000:TOP",
+        "type" : "TOP",
+        "price" : 189875.0,
+        "extremeTimeMsc" : 1789131600000,
+        "confirmedAtMsc" : 1789142400000,
+        "region" : {
+          "high" : 189875.0,
+          "low" : 189205.0,
+          "midpoint" : 189540.0,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789138800000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 188075.0,
+        "extremeTimeMsc" : 1789138800000,
+        "confirmedAtMsc" : 1789149600000,
+        "region" : {
+          "high" : 188820.0,
+          "low" : 188075.0,
+          "midpoint" : 188447.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789380000000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789146000000:TOP",
+        "type" : "TOP",
+        "price" : 189160.0,
+        "extremeTimeMsc" : 1789146000000,
+        "confirmedAtMsc" : 1789380000000,
+        "region" : {
+          "high" : 189160.0,
+          "low" : 188400.0,
+          "midpoint" : 188780.0,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789480800000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789376400000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 185040.0,
+        "extremeTimeMsc" : 1789376400000,
+        "confirmedAtMsc" : 1789387200000,
+        "region" : {
+          "high" : 187335.0,
+          "low" : 185040.0,
+          "midpoint" : 186187.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789390800000:TOP",
+        "type" : "TOP",
+        "price" : 188260.0,
+        "extremeTimeMsc" : 1789390800000,
+        "confirmedAtMsc" : 1789401600000,
+        "region" : {
+          "high" : 188260.0,
+          "low" : 187280.0,
+          "midpoint" : 187770.0,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789477200000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789398000000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 187140.0,
+        "extremeTimeMsc" : 1789398000000,
+        "confirmedAtMsc" : 1789408800000,
+        "region" : {
+          "high" : 187695.0,
+          "low" : 187140.0,
+          "midpoint" : 187417.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789401600000:TOP",
+        "type" : "TOP",
+        "price" : 188170.0,
+        "extremeTimeMsc" : 1789401600000,
+        "confirmedAtMsc" : 1789412400000,
+        "region" : {
+          "high" : 188170.0,
+          "low" : 187205.0,
+          "midpoint" : 187687.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "BROKEN",
+        "brokenAtMsc" : 1789477200000,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789466400000:BOTTOM",
+        "type" : "BOTTOM",
+        "price" : 186775.0,
+        "extremeTimeMsc" : 1789466400000,
+        "confirmedAtMsc" : 1789477200000,
+        "region" : {
+          "high" : 188655.0,
+          "low" : 186775.0,
+          "midpoint" : 187715.0,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      }, {
+        "id" : "WIN$N:60:1789480800000:TOP",
+        "type" : "TOP",
+        "price" : 189555.0,
+        "extremeTimeMsc" : 1789480800000,
+        "confirmedAtMsc" : 1789491600000,
+        "region" : {
+          "high" : 189555.0,
+          "low" : 188610.0,
+          "midpoint" : 189082.5,
+          "basis" : "PIVOT_CANDLE"
+        },
+        "relevance" : "STRICT_H1_PREOPEN",
+        "state" : "CONFIRMED",
+        "brokenAtMsc" : null,
+        "timeframeMinutes" : 60
+      } ],
+      "groups" : {
+        "WIN$N:60:1789117200000:TOP" : [ "WIN$N:60:1789117200000:TOP" ],
+        "WIN$N:60:1789124400000:BOTTOM" : [ "WIN$N:60:1789124400000:BOTTOM" ],
+        "WIN$N:60:1789131600000:TOP" : [ "WIN$N:60:1789131600000:TOP" ],
+        "WIN$N:60:1789138800000:BOTTOM" : [ "WIN$N:60:1789138800000:BOTTOM" ],
+        "WIN$N:60:1789146000000:TOP" : [ "WIN$N:60:1789146000000:TOP" ],
+        "WIN$N:60:1789376400000:BOTTOM" : [ "WIN$N:60:1789376400000:BOTTOM" ],
+        "WIN$N:60:1789390800000:TOP" : [ "WIN$N:60:1789390800000:TOP" ],
+        "WIN$N:60:1789398000000:BOTTOM" : [ "WIN$N:60:1789398000000:BOTTOM" ],
+        "WIN$N:60:1789401600000:TOP" : [ "WIN$N:60:1789401600000:TOP" ],
+        "WIN$N:60:1789466400000:BOTTOM" : [ "WIN$N:60:1789466400000:BOTTOM" ],
+        "WIN$N:60:1789480800000:TOP" : [ "WIN$N:60:1789480800000:TOP" ]
+      },
+      "detectionMode" : "STRICT_2_2",
+      "experimental" : null
+    },
+    "confirmedPivots" : [ {
+      "id" : "WIN$N:60:1788429600000:TOP",
+      "type" : "TOP",
+      "price" : 191480.0,
+      "extremeTimeMsc" : 1788429600000,
+      "confirmedAtMsc" : 1788440400000,
+      "region" : {
+        "high" : 191480.0,
+        "low" : 190015.0,
+        "midpoint" : 190747.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788444000000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 187215.0,
+      "extremeTimeMsc" : 1788444000000,
+      "confirmedAtMsc" : 1788454800000,
+      "region" : {
+        "high" : 187595.0,
+        "low" : 187215.0,
+        "midpoint" : 187405.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1788516000000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788451200000:TOP",
+      "type" : "TOP",
+      "price" : 188045.0,
+      "extremeTimeMsc" : 1788451200000,
+      "confirmedAtMsc" : 1788512700000,
+      "region" : {
+        "high" : 188045.0,
+        "low" : 187330.0,
+        "midpoint" : 187687.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1788523200000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788512400000:TOP",
+      "type" : "TOP",
+      "price" : 188340.0,
+      "extremeTimeMsc" : 1788512400000,
+      "confirmedAtMsc" : 1788523200000,
+      "region" : {
+        "high" : 188340.0,
+        "low" : 185950.0,
+        "midpoint" : 187145.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1788526800000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788516000000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 185520.0,
+      "extremeTimeMsc" : 1788516000000,
+      "confirmedAtMsc" : 1788526800000,
+      "region" : {
+        "high" : 187120.0,
+        "low" : 185520.0,
+        "midpoint" : 186320.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788526800000:TOP",
+      "type" : "TOP",
+      "price" : 188990.0,
+      "extremeTimeMsc" : 1788526800000,
+      "confirmedAtMsc" : 1788537600000,
+      "region" : {
+        "high" : 188990.0,
+        "low" : 188460.0,
+        "midpoint" : 188725.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1788861600000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788537600000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 187025.0,
+      "extremeTimeMsc" : 1788537600000,
+      "confirmedAtMsc" : 1788858300000,
+      "region" : {
+        "high" : 187760.0,
+        "low" : 187025.0,
+        "midpoint" : 187392.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789380000000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788865200000:TOP",
+      "type" : "TOP",
+      "price" : 191930.0,
+      "extremeTimeMsc" : 1788865200000,
+      "confirmedAtMsc" : 1788876000000,
+      "region" : {
+        "high" : 191930.0,
+        "low" : 190885.0,
+        "midpoint" : 191407.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788872400000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 189555.0,
+      "extremeTimeMsc" : 1788872400000,
+      "confirmedAtMsc" : 1788883200000,
+      "region" : {
+        "high" : 190125.0,
+        "low" : 189555.0,
+        "midpoint" : 189840.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1788948000000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788879600000:TOP",
+      "type" : "TOP",
+      "price" : 191050.0,
+      "extremeTimeMsc" : 1788879600000,
+      "confirmedAtMsc" : 1788890400000,
+      "region" : {
+        "high" : 191050.0,
+        "low" : 190050.0,
+        "midpoint" : 190550.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788955200000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 186895.0,
+      "extremeTimeMsc" : 1788955200000,
+      "confirmedAtMsc" : 1788966000000,
+      "region" : {
+        "high" : 188050.0,
+        "low" : 186895.0,
+        "midpoint" : 187472.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789380000000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788962400000:TOP",
+      "type" : "TOP",
+      "price" : 188165.0,
+      "extremeTimeMsc" : 1788962400000,
+      "confirmedAtMsc" : 1788973200000,
+      "region" : {
+        "high" : 188165.0,
+        "low" : 187700.0,
+        "midpoint" : 187932.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1788976800000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788966000000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 187325.0,
+      "extremeTimeMsc" : 1788966000000,
+      "confirmedAtMsc" : 1788976800000,
+      "region" : {
+        "high" : 187990.0,
+        "low" : 187325.0,
+        "midpoint" : 187657.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789034400000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1788976800000:TOP",
+      "type" : "TOP",
+      "price" : 188810.0,
+      "extremeTimeMsc" : 1788976800000,
+      "confirmedAtMsc" : 1789038000000,
+      "region" : {
+        "high" : 188810.0,
+        "low" : 188405.0,
+        "midpoint" : 188607.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789041600000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789030800000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 186275.0,
+      "extremeTimeMsc" : 1789030800000,
+      "confirmedAtMsc" : 1789041600000,
+      "region" : {
+        "high" : 187825.0,
+        "low" : 186275.0,
+        "midpoint" : 187050.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789380000000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789041600000:TOP",
+      "type" : "TOP",
+      "price" : 190780.0,
+      "extremeTimeMsc" : 1789041600000,
+      "confirmedAtMsc" : 1789052400000,
+      "region" : {
+        "high" : 190780.0,
+        "low" : 189235.0,
+        "midpoint" : 190007.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789117200000:TOP",
+      "type" : "TOP",
+      "price" : 191345.0,
+      "extremeTimeMsc" : 1789117200000,
+      "confirmedAtMsc" : 1789128000000,
+      "region" : {
+        "high" : 191345.0,
+        "low" : 188810.0,
+        "midpoint" : 190077.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789124400000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 188555.0,
+      "extremeTimeMsc" : 1789124400000,
+      "confirmedAtMsc" : 1789135200000,
+      "region" : {
+        "high" : 189500.0,
+        "low" : 188555.0,
+        "midpoint" : 189027.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789142400000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789131600000:TOP",
+      "type" : "TOP",
+      "price" : 189875.0,
+      "extremeTimeMsc" : 1789131600000,
+      "confirmedAtMsc" : 1789142400000,
+      "region" : {
+        "high" : 189875.0,
+        "low" : 189205.0,
+        "midpoint" : 189540.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789138800000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 188075.0,
+      "extremeTimeMsc" : 1789138800000,
+      "confirmedAtMsc" : 1789149600000,
+      "region" : {
+        "high" : 188820.0,
+        "low" : 188075.0,
+        "midpoint" : 188447.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789380000000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789146000000:TOP",
+      "type" : "TOP",
+      "price" : 189160.0,
+      "extremeTimeMsc" : 1789146000000,
+      "confirmedAtMsc" : 1789380000000,
+      "region" : {
+        "high" : 189160.0,
+        "low" : 188400.0,
+        "midpoint" : 188780.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789480800000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789376400000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 185040.0,
+      "extremeTimeMsc" : 1789376400000,
+      "confirmedAtMsc" : 1789387200000,
+      "region" : {
+        "high" : 187335.0,
+        "low" : 185040.0,
+        "midpoint" : 186187.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789390800000:TOP",
+      "type" : "TOP",
+      "price" : 188260.0,
+      "extremeTimeMsc" : 1789390800000,
+      "confirmedAtMsc" : 1789401600000,
+      "region" : {
+        "high" : 188260.0,
+        "low" : 187280.0,
+        "midpoint" : 187770.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789477200000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789398000000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 187140.0,
+      "extremeTimeMsc" : 1789398000000,
+      "confirmedAtMsc" : 1789408800000,
+      "region" : {
+        "high" : 187695.0,
+        "low" : 187140.0,
+        "midpoint" : 187417.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789401600000:TOP",
+      "type" : "TOP",
+      "price" : 188170.0,
+      "extremeTimeMsc" : 1789401600000,
+      "confirmedAtMsc" : 1789463100000,
+      "region" : {
+        "high" : 188170.0,
+        "low" : 187205.0,
+        "midpoint" : 187687.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "BROKEN",
+      "brokenAtMsc" : 1789477200000,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789466400000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 186775.0,
+      "extremeTimeMsc" : 1789466400000,
+      "confirmedAtMsc" : 1789477200000,
+      "region" : {
+        "high" : 188655.0,
+        "low" : 186775.0,
+        "midpoint" : 187715.0,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    }, {
+      "id" : "WIN$N:60:1789480800000:TOP",
+      "type" : "TOP",
+      "price" : 189555.0,
+      "extremeTimeMsc" : 1789480800000,
+      "confirmedAtMsc" : 1789491600000,
+      "region" : {
+        "high" : 189555.0,
+        "low" : 188610.0,
+        "midpoint" : 189082.5,
+        "basis" : "PIVOT_CANDLE"
+      },
+      "relevance" : "PROXIMITY",
+      "state" : "CONFIRMED",
+      "brokenAtMsc" : null,
+      "timeframeMinutes" : 60
+    } ],
+    "earlyPivots" : [ ]
+  },
+  "availableAtMsc" : 1789549560000,
+  "dow" : {
+    "symbol" : "WIN$N",
+    "timeframeMinutes" : 5,
+    "availableAtMsc" : 1789549560000,
+    "state" : "UNDEFINED",
+    "criterion" : "EXPERIMENTAL_PAIRED_PIVOTS_CLOSE_BREAK_V1",
+    "pivots" : [ ],
+    "movements" : [ ],
+    "events" : [ ]
+  },
+  "microDow" : {
+    "symbol" : "WIN$N",
+    "timeframeMinutes" : 5,
+    "availableAtMsc" : 1789549560000,
+    "state" : "UNDEFINED",
+    "criterion" : "EXPERIMENTAL_MICRO_STRICT_1_1_V1",
+    "pivots" : [ ],
+    "movements" : [ ],
+    "events" : [ ],
+    "opening" : {
+      "status" : "WAITING",
+      "anchors" : [ {
+        "id" : "WIN$N:opening:TOP:1789549200000",
+        "type" : "TOP",
+        "price" : 189730.0,
+        "formationTimeMsc" : 1789549200000,
+        "observedAtMsc" : 1789549500000
+      }, {
+        "id" : "WIN$N:opening:BOTTOM:1789549200000",
+        "type" : "BOTTOM",
+        "price" : 188290.0,
+        "formationTimeMsc" : 1789549200000,
+        "observedAtMsc" : 1789549500000
+      } ],
+      "fromId" : null,
+      "toId" : null,
+      "knownAtMsc" : null,
+      "reason" : "Waiting for first unambiguous confirmed extreme",
+      "events" : [ {
+        "atMsc" : 1789549500000,
+        "kind" : "OPENING_OBSERVED",
+        "reason" : "First closed candle range; neither endpoint is a confirmed pivot"
+      } ]
+    },
+    "selectedPivotIds" : [ ],
+    "movementHistory" : [ ],
+    "decisions" : [ ],
+    "openingHistory" : [ {
+      "status" : "WAITING",
+      "anchors" : [ {
+        "id" : "WIN$N:opening:TOP:1789549200000",
+        "type" : "TOP",
+        "price" : 189730.0,
+        "formationTimeMsc" : 1789549200000,
+        "observedAtMsc" : 1789549500000
+      }, {
+        "id" : "WIN$N:opening:BOTTOM:1789549200000",
+        "type" : "BOTTOM",
+        "price" : 188290.0,
+        "formationTimeMsc" : 1789549200000,
+        "observedAtMsc" : 1789549500000
+      } ],
+      "fromId" : null,
+      "toId" : null,
+      "knownAtMsc" : null,
+      "reason" : "Waiting for first unambiguous confirmed extreme",
+      "events" : [ {
+        "atMsc" : 1789549500000,
+        "kind" : "OPENING_OBSERVED",
+        "reason" : "First closed candle range; neither endpoint is a confirmed pivot"
+      } ]
+    } ]
+  },
+  "dowFifty" : {
+    "symbol" : "WIN$N",
+    "timeframeMinutes" : 5,
+    "availableAtMsc" : 1789549560000,
+    "criterion" : "CONFIRMED_MOVEMENT_V2",
+    "approachTolerancePoints" : 5.0,
+    "breakPolicy" : "EXPERIMENTAL_M5_CLOSE",
+    "rejectionPolicy" : "UNVALIDATED_RANGE_TOUCH_CLOSE_SAME_SIDE",
+    "state" : "AGUARDANDO_ONDA",
+    "currentWaveId" : null,
+    "references" : [ ],
+    "events" : [ ],
+    "observations" : [ {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "waveId" : null,
+      "state" : "AGUARDANDO_ONDA",
+      "close" : 188635.0,
+      "distance50" : null,
+      "distanceTop" : null,
+      "distanceBottom" : null,
+      "approachSide" : "UNKNOWN",
+      "breakStatus" : "NONE",
+      "rejectionStatus" : "NONE",
+      "reason" : "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+    } ],
+    "formingWave" : null
+  },
+  "replayMode" : "PROGRESSIVE_M1",
+  "missingM1Times" : [ 1789549200000, 1789549260000 ],
+  "openingStructure" : {
+    "symbol" : "WIN$N",
+    "sessionDate" : "2026-09-16",
+    "availableAtMsc" : 1789549560000,
+    "state" : "EM_FORMACAO",
+    "unit" : "WIN_INDEX_POINTS",
+    "timeBasis" : "MT5_WALL_CLOCK",
+    "previousSession" : {
+      "date" : "2026-09-15",
+      "close" : {
+        "price" : 188510.0,
+        "formationTimeMsc" : 1789496400000,
+        "availableAtMsc" : 1789496700000,
+        "source" : "MT5_LAST_OBSERVED_M5_CLOSE"
+      },
+      "high" : {
+        "price" : 189555.0,
+        "formationTimeMsc" : 1789480800000,
+        "availableAtMsc" : 1789496700000,
+        "source" : "MT5_OBSERVED_PREVIOUS_SESSION_M5_HIGH"
+      },
+      "low" : {
+        "price" : 186775.0,
+        "formationTimeMsc" : 1789467900000,
+        "availableAtMsc" : 1789496700000,
+        "source" : "MT5_OBSERVED_PREVIOUS_SESSION_M5_LOW"
+      },
+      "officialSettlement" : null,
+      "coverage" : "OBSERVED_M5_ONLY_NOT_CERTIFIED_SESSION_CLOSE",
+      "settlementStatus" : "UNAVAILABLE_NO_OFFICIAL_SOURCE"
+    },
+    "tradedOpen" : {
+      "price" : 189320.0,
+      "formationTimeMsc" : 1789549200000,
+      "availableAtMsc" : 1789549500000,
+      "source" : "MT5_FIRST_CLOSED_M5_OPEN"
+    },
+    "gap" : {
+      "kind" : "GAP",
+      "points" : 810.0,
+      "from" : {
+        "price" : 188510.0,
+        "formationTimeMsc" : 1789496400000,
+        "availableAtMsc" : 1789496700000,
+        "source" : "MT5_LAST_OBSERVED_M5_CLOSE"
+      },
+      "to" : {
+        "price" : 189320.0,
+        "formationTimeMsc" : 1789549200000,
+        "availableAtMsc" : 1789549500000,
+        "source" : "MT5_FIRST_CLOSED_M5_OPEN"
+      },
+      "availableAtMsc" : 1789549500000
+    },
+    "observedHigh" : {
+      "price" : 189730.0,
+      "formationTimeMsc" : 1789549200000,
+      "availableAtMsc" : 1789549500000,
+      "source" : "MT5_CLOSED_M5_HIGH"
+    },
+    "observedLow" : {
+      "price" : 188290.0,
+      "formationTimeMsc" : 1789549200000,
+      "availableAtMsc" : 1789549500000,
+      "source" : "MT5_CLOSED_M5_LOW"
+    },
+    "initialLeg" : {
+      "direction" : "DOWN",
+      "state" : "EM_FORMACAO",
+      "origin" : {
+        "price" : 189730.0,
+        "formationTimeMsc" : 1789549200000,
+        "availableAtMsc" : 1789549500000,
+        "source" : "MT5_OPENING_M5_OBSERVED_EXTREME"
+      },
+      "destination" : {
+        "price" : 188290.0,
+        "formationTimeMsc" : 1789549200000,
+        "availableAtMsc" : 1789549500000,
+        "source" : "MT5_CLOSED_M5_LOW"
+      },
+      "amplitudePoints" : 1440.0,
+      "availableAtMsc" : 1789549500000,
+      "intrabarOrder" : "UNKNOWN_SAME_M5"
+    },
+    "legHistory" : [ {
+      "direction" : "DOWN",
+      "state" : "EM_FORMACAO",
+      "origin" : {
+        "price" : 189730.0,
+        "formationTimeMsc" : 1789549200000,
+        "availableAtMsc" : 1789549500000,
+        "source" : "MT5_OPENING_M5_OBSERVED_EXTREME"
+      },
+      "destination" : {
+        "price" : 188290.0,
+        "formationTimeMsc" : 1789549200000,
+        "availableAtMsc" : 1789549500000,
+        "source" : "MT5_CLOSED_M5_LOW"
+      },
+      "amplitudePoints" : 1440.0,
+      "availableAtMsc" : 1789549500000,
+      "intrabarOrder" : "UNKNOWN_SAME_M5"
+    } ],
+    "windows" : [ {
+      "minutes" : 15,
+      "availableAtMsc" : 1789549500000,
+      "amplitudePoints" : 1440.0,
+      "status" : "EM_FORMACAO"
+    }, {
+      "minutes" : 30,
+      "availableAtMsc" : 1789549500000,
+      "amplitudePoints" : 1440.0,
+      "status" : "EM_FORMACAO"
+    }, {
+      "minutes" : 45,
+      "availableAtMsc" : 1789549500000,
+      "amplitudePoints" : 1440.0,
+      "status" : "EM_FORMACAO"
+    } ],
+    "thresholds" : [ {
+      "minimumPoints" : 0,
+      "reached" : true,
+      "firstReachedAtMsc" : 1789549500000
+    }, {
+      "minimumPoints" : 250,
+      "reached" : true,
+      "firstReachedAtMsc" : 1789549500000
+    }, {
+      "minimumPoints" : 300,
+      "reached" : true,
+      "firstReachedAtMsc" : 1789549500000
+    } ],
+    "coverage" : "CONTIGUOUS_CLOSED_M5"
+  },
+  "microDowFifty" : {
+    "symbol" : "WIN$N",
+    "timeframeMinutes" : 5,
+    "availableAtMsc" : 1789549560000,
+    "criterion" : "CONFIRMED_MICRO_MOVEMENT_50_V1",
+    "state" : "WAITING_WAVE",
+    "currentWaveId" : null,
+    "references" : [ ],
+    "events" : [ ]
+  },
+  "patternAudit" : {
+    "symbol" : "WIN$N",
+    "timeframeMinutes" : 5,
+    "sessionDate" : "2026-09-16",
+    "availableAtMsc" : 1789549560000,
+    "rulesStatus" : "DEFINED",
+    "criterionId" : "DOW_LEG_MINIMUM_WICK_TEST_RETURN_M1_V4",
+    "patterns" : [ ]
+  },
+  "patternStudy" : {
+    "symbol" : "WIN$N",
+    "sessionDate" : "2026-09-16",
+    "availableAtMsc" : 1789549560000,
+    "criterionId" : "DOW_LEG_MINIMUM_WICK_TEST_RETURN_M1_V4",
+    "parameters" : {
+      "contactTolerancePoints" : 0.0,
+      "orderOffsetPoints" : 20.0,
+      "minRejectionTicks" : 6.0
+    },
+    "status" : "HIPOTESE_OPERACIONAL_EM_VALIDACAO",
+    "m1Status" : "NATIVE_M1_GAPS_INDETERMINATE",
+    "candidates" : [ ],
+    "rejectedContacts" : [ {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788350400000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788352800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788426600000:BOTTOM",
+      "reason" : "APROXIMACAO_INDETERMINADA: abertura da observacao dentro da faixa"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788435600000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788436200000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788438600000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788523500000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788524700000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788526800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788527100000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788528000000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788528300000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788528900000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788529800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788859200000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788873900000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788875700000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788887100000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788945300000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788945900000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788946800000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788947100000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788948000000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788949800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788951000000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788953700000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1788976800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789045200000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789053000000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789117800000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789119000000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789119600000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789121700000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789122900000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789124400000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789125000000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789126500000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789127100000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789128000000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789128600000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789129800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789131000000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789132500000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789132500000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789134600000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789135500000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789136100000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789137900000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789138800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789141500000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789143300000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789144200000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789144800000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789146300000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789146600000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789147500000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789147800000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789149600000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789466400000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789475400000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789480800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789481400000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789482300000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789483800000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789484400000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789487700000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789489200000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789489200000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789492800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789494000000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789494900000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:5:1789495200000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:60:1789124400000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:60:1789146000000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549500000,
+      "candleTimeMsc" : 1789549200000,
+      "referenceId" : "WIN$N:60:1789480800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=INSUFFICIENT_PRIOR_SESSION_EVIDENCE"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788352800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788438600000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788523500000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788524700000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788527100000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788528300000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788859200000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788945300000:BOTTOM",
+      "reason" : "APROXIMACAO_INDETERMINADA: abertura da observacao dentro da faixa"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788946800000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1788953700000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789124400000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789126500000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789137900000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789141500000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789144800000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789147800000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789466400000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789482300000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789483800000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789487700000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789489200000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789491600000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789492800000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789494000000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789494900000:TOP",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:5:1789495200000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:60:1789124400000:BOTTOM",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    }, {
+      "atMsc" : 1789549560000,
+      "candleTimeMsc" : 1789549500000,
+      "referenceId" : "WIN$N:sessionLow:188290.0",
+      "reason" : "CONTEXTO_APROXIMACAO_NAO_CONFIRMADO: flow=UNDEFINED; source=NO_CONFIRMED_SESSION_DOW_ANCHOR"
+    } ],
+    "visual" : {
+      "symbol" : "WIN$N",
+      "timeframeMinutes" : 5,
+      "sessionDate" : "2026-09-16",
+      "availableAtMsc" : 1789549560000,
+      "rulesStatus" : "DEFINED",
+      "criterionId" : "DOW_LEG_MINIMUM_WICK_TEST_RETURN_M1_V4",
+      "patterns" : [ ]
+    }
+  },
+  "chop" : {
+    "symbol" : "WIN$N",
+    "availableAtMsc" : 1789549560000,
+    "policy" : "CONTINUOUS_AVAILABLE_M5_INCLUDES_OVERNIGHT_TR",
+    "deltaBasis" : "PREVIOUS_CONFIRMED_M5",
+    "confirmed" : [ {
+      "candleTimeMsc" : 1789549200000,
+      "availableAtMsc" : 1789549500000,
+      "provisional" : false,
+      "open" : 189320.0,
+      "high" : 189730.0,
+      "low" : 188290.0,
+      "close" : 188635.0,
+      "displacement" : 125.0,
+      "priceDirection" : "UP",
+      "observedSessionHigh" : 189730.0,
+      "observedSessionLow" : 188290.0,
+      "readings" : [ {
+        "period" : 7,
+        "value" : 23.72786384728057,
+        "delta" : -54.48764953514964,
+        "slope" : "FALLING",
+        "regime" : "DIRECTIONAL",
+        "status" : "VALID"
+      }, {
+        "period" : 14,
+        "value" : 29.11534331501436,
+        "delta" : -36.399833020163896,
+        "slope" : "FALLING",
+        "regime" : "DIRECTIONAL",
+        "status" : "VALID"
+      }, {
+        "period" : 21,
+        "value" : 35.59378887762333,
+        "delta" : -26.080970873296856,
+        "slope" : "FALLING",
+        "regime" : "DIRECTIONAL",
+        "status" : "VALID"
+      } ]
+    } ],
+    "provisional" : {
+      "candleTimeMsc" : 1789549500000,
+      "availableAtMsc" : 1789549560000,
+      "provisional" : true,
+      "open" : 188640.0,
+      "high" : 188760.0,
+      "low" : 188265.0,
+      "close" : 188300.0,
+      "displacement" : -335.0,
+      "priceDirection" : "DOWN",
+      "observedSessionHigh" : 189730.0,
+      "observedSessionLow" : 188265.0,
+      "readings" : [ {
+        "period" : 7,
+        "value" : 30.26469002050793,
+        "delta" : 6.536826173227361,
+        "slope" : "RISING",
+        "regime" : "DIRECTIONAL",
+        "status" : "VALID"
+      }, {
+        "period" : 14,
+        "value" : 33.000712650426,
+        "delta" : 3.8853693354116423,
+        "slope" : "RISING",
+        "regime" : "DIRECTIONAL",
+        "status" : "VALID"
+      }, {
+        "period" : 21,
+        "value" : 38.25371282407336,
+        "delta" : 2.6599239464500286,
+        "slope" : "RISING",
+        "regime" : "INTERMEDIATE",
+        "status" : "VALID"
+      } ]
+    }
+  },
+  "dmi" : {
+    "symbol" : "WIN$N",
+    "availableAtMsc" : 1789549560000,
+    "period" : 14,
+    "confirmed" : [ {
+      "candleTimeMsc" : 1789549200000,
+      "availableAtMsc" : 1789549500000,
+      "provisional" : false,
+      "plusDi" : null,
+      "minusDi" : null,
+      "adx" : null,
+      "regime" : "UNAVAILABLE",
+      "warmupPlusDi" : 0.0,
+      "warmupMinusDi" : 0.0
+    } ],
+    "provisional" : {
+      "candleTimeMsc" : 1789549500000,
+      "availableAtMsc" : 1789549560000,
+      "provisional" : true,
+      "plusDi" : null,
+      "minusDi" : null,
+      "adx" : null,
+      "regime" : "UNAVAILABLE",
+      "warmupPlusDi" : 0.0,
+      "warmupMinusDi" : 5.05050505050505
+    }
+  }
+}

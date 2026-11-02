@@ -9,6 +9,10 @@ import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application
 import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.DowFiftyEngine;
 import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.OpeningStructureContext;
 import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.MicroDowFiftyEngine;
+import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.ThreeCandleVisualAudit;
+import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.ThreeCandlePatternStudy;
+import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.ExperimentalThreeCandlePatternDetector;
+import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Candle;
 import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.H1SessionPreparation;
 import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.H1DetectionMode;
 import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.domain.CandleTimeBasis;
@@ -19,6 +23,8 @@ import org.springframework.http.HttpStatus;
 import java.util.*;
 import java.time.*;
 import java.io.IOException;
+import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.ExperimentalChopStudy;
+import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.DmiStudy;
 
 @RestController
 @RequestMapping("/api/three-candles")
@@ -29,8 +35,9 @@ public final class ThreeCandlesController {
     private final Mt5Symbol symbol;
     private final ThreeCandleHistoryLoader loader;
     private final Map<String, Entry> sessions = new HashMap<>();
-    private record Entry(String symbol,int minutes,ThreeCandleReplay replay,long created) {}
-    public record ReplayView(String id,String symbol,int timeframeMinutes,String status,int speed,List<CandleUpdate> candles,ThreeCandleStructure.Snapshot structure,long availableAtMsc,DowStructureEngine.Snapshot dow, MicroDowEngine.Snapshot microDow, DowFiftyEngine.Snapshot dowFifty,ThreeCandleReplay.Mode replayMode,List<Long> missingM1Times, OpeningStructureContext.Snapshot openingStructure, MicroDowFiftyEngine.Snapshot microDowFifty) {}
+    private static final class PatternCache { long cutoff=Long.MIN_VALUE; ExperimentalThreeCandlePatternDetector.Snapshot snapshot; }
+    private record Entry(String symbol,int minutes,ThreeCandleReplay replay,long created,List<CandleUpdate> patternSource,List<Mt5Candle> patternMinutes,PatternCache patternCache) {}
+    public record ReplayView(String id,String symbol,int timeframeMinutes,String status,int speed,List<CandleUpdate> candles,ThreeCandleStructure.Snapshot structure,long availableAtMsc,DowStructureEngine.Snapshot dow, MicroDowEngine.Snapshot microDow, DowFiftyEngine.Snapshot dowFifty,ThreeCandleReplay.Mode replayMode,List<Long> missingM1Times, OpeningStructureContext.Snapshot openingStructure, MicroDowFiftyEngine.Snapshot microDowFifty, ThreeCandleVisualAudit.Snapshot patternAudit, ExperimentalThreeCandlePatternDetector.Snapshot patternStudy, ExperimentalChopStudy.Snapshot chop, DmiStudy.Snapshot dmi) {}
     public record Start(String symbol,String date,String startTime,int timeframeMinutes,CandleTimeBasis timeBasis,Integer maxLevels,H1DetectionMode h1DetectionMode,ThreeCandleReplay.Mode replayMode) {}
     public record Command(String action,Integer speed) {}
     @ExceptionHandler(ResponseStatusException.class)
@@ -77,16 +84,24 @@ public final class ThreeCandlesController {
         var bars=loader==null ? history.loadWithStructuralWarmup(request.symbol(),date,request.timeframeMinutes())
                 : loader.load(request.symbol(),date,request.timeframeMinutes());
         var preparation=request.timeframeMinutes()==5 ? H1SessionPreparation.prepare(request.symbol(),date,opening,bars,request.h1DetectionMode()) : null;
+        var patternSource=bars;
+        List<Mt5Candle> patternMinutes=List.of();
+        if(request.timeframeMinutes()==5 && loader!=null) {
+            try { patternMinutes=loader.patternMinutes(request.symbol(),date,bars); }
+            catch(IOException | ResponseStatusException unavailable) { /* Preserve M5 study; missing M1 cannot certify reaction/execution. */ }
+        }
         var mode=request.replayMode()==null?ThreeCandleReplay.Mode.CLOSED_CANDLE:request.replayMode();
+        List<Long> sourceGaps=List.of();
         if(mode==ThreeCandleReplay.Mode.PROGRESSIVE_M1) {
             if(request.timeframeMinutes()!=5 || loader==null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Replay progressivo requer M5 e fonte M1");
-            bars=loader.progressive(request.symbol(),date,bars);
+            var progressive=loader.progressiveHistory(request.symbol(),date,bars);
+            bars=progressive.updates();sourceGaps=progressive.missingM1Times();
         }
-        var replay=new ThreeCandleReplay(request.symbol(),request.timeframeMinutes(),bars,start,preparation,mode);
+        var replay=new ThreeCandleReplay(request.symbol(),request.timeframeMinutes(),bars,start,preparation,mode,sourceGaps);
         synchronized(sessions) {
             sessions.entrySet().removeIf(e -> System.currentTimeMillis()-e.getValue().created()>1800000);
             if (sessions.size()>=64) throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS,"Too many replays");
-            String id=UUID.randomUUID().toString(); var entry=new Entry(request.symbol(),request.timeframeMinutes(),replay,System.currentTimeMillis());
+            String id=UUID.randomUUID().toString(); var entry=new Entry(request.symbol(),request.timeframeMinutes(),replay,System.currentTimeMillis(),patternSource,patternMinutes,new PatternCache());
             sessions.put(id,entry); return view(id,entry,request.maxLevels()==null ? 6 : request.maxLevels());
         }
     }
@@ -115,11 +130,19 @@ public final class ThreeCandlesController {
         var candles=e.replay().candles();var structure=e.replay().pipeline().structure(maxLevels);long at=e.replay().availableAtMsc();
         var dow=e.minutes()==5?DowStructureEngine.analyze(e.symbol(),candles,structure,at):null;
         var micro=e.minutes()==5 ? MicroDowEngine.analyze(e.symbol(),candles,structure,at) : null;
+        var cache=e.patternCache();
+        if(e.minutes()==5 && cache.cutoff!=at) {
+            String day=structure.preparation()!=null?structure.preparation().sessionDate():LocalDate.ofEpochDay(at/86400000L).toString();
+            cache.snapshot=ThreeCandlePatternStudy.analyze(e.symbol(),day,e.patternSource(),e.patternMinutes(),structure.preparation(),at);cache.cutoff=at;
+        }
         return new ReplayView(id,e.symbol(),e.minutes(),e.replay().status().name(),e.replay().speed(),candles,structure,at,
             dow,
             micro,
             dow==null?null:DowFiftyEngine.analyze(e.symbol(),candles,dow,at),e.replay().mode(),e.replay().missingM1Times(),
             e.minutes()==5 ? OpeningStructureContext.analyze(e.symbol(),candles,structure,at) : null,
-            micro==null?null:MicroDowFiftyEngine.analyze(micro,at));
+            micro==null?null:MicroDowFiftyEngine.analyze(micro,at),
+            e.minutes()==5 ? cache.snapshot.visual() : null,e.minutes()==5 ? cache.snapshot : null,
+            e.minutes()==5 ? ExperimentalChopStudy.analyze(e.symbol(),candles,at) : null,
+            e.minutes()==5 ? DmiStudy.analyze(e.symbol(),candles,at) : null);
     }
 }

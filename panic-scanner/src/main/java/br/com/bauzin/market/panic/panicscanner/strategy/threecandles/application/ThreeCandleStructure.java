@@ -8,10 +8,11 @@ import java.util.*;
 public final class ThreeCandleStructure implements ThreeCandlePatternDetector {
     public record Snapshot(List<StructuralLevel> levels, int totalActive, int maxLevels,
                            String selection, boolean supported, H1History h1History, H1SessionPreparation preparation,
-                           List<StructuralLevel> confirmedPivots) {}
+                           List<StructuralLevel> confirmedPivots, List<DowAnticipationStudy.Candidate> earlyPivots) {}
     public record H1History(int previousSessions, boolean sufficient, String alignment) {}
     private final Map<Integer, ConfirmedPivotDetector> detectors = new HashMap<>(Map.of(
             5, new ConfirmedPivotDetector(), 60, new ConfirmedPivotDetector()));
+    private final DowAnticipationStudy anticipation = new DowAnticipationStudy();
     private long m5Session = Long.MIN_VALUE;
     private final H1CandleAggregator hourly = new H1CandleAggregator();
     private final NavigableMap<Long, Integer> hourlySessions = new TreeMap<>();
@@ -26,6 +27,7 @@ public final class ThreeCandleStructure implements ThreeCandlePatternDetector {
         if (update.closed()) {
             if (update.candle().bucketStartTimeMsc() <= lastClosed) return;
             lastClosed = update.candle().bucketStartTimeMsc(); lastClose = update.candle().close();
+            anticipation.advance(update);
             process(update);
         }
         hourly.accept(update).ifPresent(this::process);
@@ -108,6 +110,7 @@ public final class ThreeCandleStructure implements ThreeCandlePatternDetector {
                 preparation==null ? "NEAREST_LAST_CLOSED_THEN_LATEST_CONFIRMED" : preparation.criterion(),
                 minutes == 5, h1History(), preparation,
                 active.stream().filter(l -> l.timeframeMinutes() == 60
-                        || l.extremeTimeMsc() / 86_400_000L == selectedSession).toList());
+                        || l.extremeTimeMsc() / 86_400_000L == selectedSession).toList(),
+                anticipation.snapshot().stream().filter(p->p.origin().candle().bucketStartTimeMsc()/86_400_000L==selectedSession).toList());
     }
 }

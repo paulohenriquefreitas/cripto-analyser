@@ -1,19 +1,19 @@
 [ {
+  "officialM5" : 103,
+  "cutoff" : 1793208900000,
   "missingM1Times" : [ 1793199660000 ],
   "causalReconstruction" : true,
   "allClosesEqual" : true,
-  "partialUpdates" : 411,
+  "partialUpdates" : 409,
   "symbol" : "WINZ26",
-  "steps" : 514,
-  "officialM5" : 103,
-  "cutoff" : 1793208900000
+  "steps" : 512
 }, {
+  "officialM5" : 113,
+  "cutoff" : 1792175100000,
   "missingM1Times" : [ ],
   "causalReconstruction" : true,
   "allClosesEqual" : true,
   "partialUpdates" : 452,
   "symbol" : "WIN$N",
-  "steps" : 565,
-  "officialM5" : 113,
-  "cutoff" : 1792175100000
+  "steps" : 565
 } ]

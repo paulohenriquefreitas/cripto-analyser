@@ -1,3 +1,4 @@
+import {DmiPanel} from './DmiPanel';
 import {
   Alert,
   Button,
@@ -8,7 +9,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { useMemo, useState, type ReactNode } from 'react';
+import { useMemo, useState, type ReactNode, type SyntheticEvent } from 'react';
 import type { ChartSink } from '@/features/win/models/mt5Intrabar';
 import type { CandleView } from '../api/threeCandlesApi';
 import {
@@ -21,6 +22,8 @@ import {
 import { ThreeCandlesChart } from './ThreeCandlesChart';
 import { type FibonacciOverlay } from './FibonacciPrimitive';
 import { DowDebugPanel } from './DowDebugPanel';
+import { presentPatterns, patternDuplicationAudit, invalidationReason, type PatternDisplayMode } from '../models/patternPresentation';
+import {ExperimentalChopPanel} from './ExperimentalChopPanel';
 
 const price = (n: number) => n.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
 const reasons: Record<string, string> = {
@@ -41,6 +44,9 @@ export type WorkspacePresentation = {
   microLabels: boolean;
   allMicroFractals: boolean;
   opening?: boolean;
+  patternMarks?: boolean;
+  patternNumbers?: boolean;
+  patternHighlights?: boolean;
 };
 export function ThreeCandlesWorkspace({
   controller,
@@ -77,16 +83,44 @@ export function ThreeCandlesWorkspace({
   const [pick, setPick] = useState<'TOP' | 'BOTTOM'>(),
     [manual, setManual] = useState<FibVersion[]>([]);
   const [error, setError] = useState('');
-  const [showDow, setShowDow] = useState(presentation?.current.dow ?? true),
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const toggleDetails = (key: string) => (event: SyntheticEvent<HTMLDetailsElement>) => {
+    if (event.target !== event.currentTarget) return;
+    const open = event.currentTarget.open;
+    setExpanded(previous => previous[key] === open ? previous : { ...previous, [key]: open });
+  };
+  const [showDow, setShowDow] = useState(presentation?.current.dow ?? false),
     [dowLabels, setDowLabels] = useState(presentation?.current.dowLabels ?? false),
     [selectedDow, setSelectedDow] = useState<string>();
-  const [showMicro, setShowMicro] = useState(presentation?.current.micro ?? true),
+  const [showMicro, setShowMicro] = useState(presentation?.current.micro ?? false),
     [microLabels, setMicroLabels] = useState(presentation?.current.microLabels ?? false);
   const [allMicroFractals, setAllMicroFractals] = useState(
     presentation?.current.allMicroFractals ?? false,
   );
-  const [showOpening, setShowOpening] = useState(presentation?.current.opening ?? true);
+  const [showOpening, setShowOpening] = useState(presentation?.current.opening ?? false);
+  const [showDmi,setShowDmi]=useState(true);
+  const [showChop,setShowChop]=useState(false);
   const [openingMinimum, setOpeningMinimum] = useState(0);
+  const [showPattern, setShowPattern] = useState(presentation?.current.patternMarks ?? false);
+  const [patternNumbers, setPatternNumbers] = useState(presentation?.current.patternNumbers ?? false);
+  const [patternHighlights, setPatternHighlights] = useState(presentation?.current.patternHighlights ?? false);
+  const [patternFocus,setPatternFocus] = useState('');
+  const [earlyAuditOpen,setEarlyAuditOpen]=useState(false);
+  const [patternMode,setPatternMode] = useState<PatternDisplayMode>('MONITORING');
+  const [followPattern,setFollowPattern] = useState(false);
+  const [patternViewport,setPatternViewport] = useState<{from:number;to:number;request:number}>();
+  const candidates=view?.patternStudy?.candidates??[];
+  const reachedSequences=new Set(candidates.filter(c=>c.trigger.state==='ALCANCADO_HIPOTETICO').map(c=>[c.candle1Id,c.direction,c.trigger.level].join('|'))).size;
+  const patternScope=`${view?.symbol}:${view?.patternAudit?.sessionDate}|`;
+  const recognizedCandidates=candidates.filter(c=>view?.patternAudit?.patterns.some(p=>p.id===c.id));
+  const selectedPattern=followPattern ? recognizedCandidates.at(-1)?.id??'' : patternFocus.startsWith(patternScope)?patternFocus.slice(patternScope.length):recognizedCandidates[0]?.id||'';
+  const {snapshot:patternSnapshot,executions:hypotheticalExecutions}=presentPatterns(view?.patternAudit,view?.patternStudy,patternMode,selectedPattern);
+  const duplication=useMemo(()=>patternDuplicationAudit(expanded.candidates ? candidates : []),[candidates, expanded.candidates]);
+  const selectPattern=(id:string)=>{
+    setPatternFocus(patternScope+id);setPatternMode('SELECTED');setFollowPattern(false);
+    const c=candidates.find(c=>c.id===id);
+    if(c)setPatternViewport({from:c.candle1.candle.bucketStartTimeMsc,to:(c.candle3??c.candle2??c.candle1).candle.bucketStartTimeMsc,request:Date.now()});
+  };
   const supported = structuralLevels && view?.timeframeMinutes !== 15;
   const remember = (key: keyof WorkspacePresentation, value: boolean) => {
     if (presentation) presentation.current[key] = value;
@@ -101,12 +135,12 @@ export function ThreeCandlesWorkspace({
     [view?.microDow, showMicro, microLabels, allMicroFractals, supported],
   );
   const dowOverlay = useMemo(
-    () => ({ snapshot: view?.dow, visible: showDow && supported, labels: dowLabels }),
-    [view?.dow, showDow, dowLabels, supported],
+    () => ({ snapshot: view?.dow, candles: view?.candles, earlyPivots: view?.structure?.earlyPivots, visible: showDow && supported, labels: dowLabels }),
+    [view?.dow, view?.candles, view?.structure?.earlyPivots, showDow, dowLabels, supported],
   );
-  const [showDowFifty, setShowDowFifty] = useState(presentation?.current.dowFifty ?? true),
+  const [showDowFifty, setShowDowFifty] = useState(presentation?.current.dowFifty ?? false),
     [selectedFifty, setSelectedFifty] = useState<string>();
-  const [showMicroFifty, setShowMicroFifty] = useState(presentation?.current.microFifty ?? true);
+  const [showMicroFifty, setShowMicroFifty] = useState(presentation?.current.microFifty ?? false);
   const dowFiftyOverlay = useMemo(
     () => ({ snapshot: view?.dowFifty, visible: showDowFifty && supported }),
     [view?.dowFifty, showDowFifty, supported],
@@ -129,7 +163,8 @@ export function ThreeCandlesWorkspace({
     REJEICAO_EM_AVALIACAO: 'Rejeicao em avaliacao',
     ONDA_ENCERRADA: 'Onda encerrada',
   };
-  const analysis = useMemo(() => analyzeFibonacci(view, tolerance), [view, tolerance]);
+  const fibonacciView = visible || compare || pick || manual.length || expanded.advanced || expanded.audit ? view : undefined;
+  const analysis = useMemo(() => analyzeFibonacci(fibonacciView, tolerance), [fibonacciView, tolerance]);
   const lane = analysis.lanes.find((l) => l.timeframeMinutes === scope)!;
   const automatic = lane.versions.at(-1);
   const manualKnown = manual.filter((v) => v.decidedAtMsc <= analysis.cutoff);
@@ -145,17 +180,15 @@ export function ThreeCandlesWorkspace({
     () => ({
       primary: visible ? primary : undefined,
       comparison: visible ? comparison : undefined,
-      anchors,
+      anchors: visible || pick ? anchors : [],
       pick,
     }),
     [primary, comparison, anchors, pick, visible],
   );
-  const time = (t: number) =>
-    new Intl.DateTimeFormat('pt-BR', {
-      timeZone: candleDisplayTimeZone,
-      dateStyle: 'short',
-      timeStyle: 'short',
-    }).format(new Date(t));
+  const dateFormatter = useMemo(() => new Intl.DateTimeFormat('pt-BR', {
+    timeZone: candleDisplayTimeZone, dateStyle: 'short', timeStyle: 'short',
+  }), [candleDisplayTimeZone]);
+  const time = (t: number) => dateFormatter.format(new Date(t));
   const selectAnchor = (a: FibAnchor) => {
     if (pick === 'TOP') setHighId(a.id);
     else if (pick === 'BOTTOM') setLowId(a.id);
@@ -293,6 +326,44 @@ export function ThreeCandlesWorkspace({
           onChange={(_,v)=>{setShowOpening(v);remember('opening',v);}} />} />
         {layerControls}
       </Stack>
+      <Stack direction="row" useFlexGap flexWrap="wrap" gap={1} role="group" aria-label="Marcações do Padrão de 3 Candles" data-testid="pattern-controls">
+        <FormControlLabel label="Mostrar marcações do Padrão de 3 Candles" control={<Checkbox disabled={!supported} checked={showPattern}
+          onChange={(_,v)=>{setShowPattern(v);remember('patternMarks',v);}} />} />
+        <FormControlLabel label="Mostrar números 1 / 2 / 3" control={<Checkbox disabled={!supported} checked={patternNumbers}
+          onChange={(_,v)=>{setPatternNumbers(v);remember('patternNumbers',v);}} />} />
+        <FormControlLabel label="Mostrar destaque colorido dos candles" control={<Checkbox disabled={!supported} checked={patternHighlights}
+          onChange={(_,v)=>{setPatternHighlights(v);remember('patternHighlights',v);}} />} />
+      </Stack>
+      <Stack direction="row" useFlexGap flexWrap="wrap" gap={1} data-testid="pattern-display-controls">
+        <FormControlLabel label="Mostrar DMI / ADX (14)" control={<Checkbox disabled={!supported} checked={showDmi} onChange={(_,v)=>setShowDmi(v)}/>} />
+        <FormControlLabel label="Mostrar CHOP (experimental)" control={<Checkbox disabled={!supported} checked={showChop} onChange={(_,v)=>setShowChop(v)}/>} />
+        <TextField select size="small" label="Exibição dos padrões" value={patternMode} onChange={e=>{setPatternMode(e.target.value as PatternDisplayMode);setPatternViewport(undefined);}}>
+          <MenuItem value="MONITORING">Em formação e gatilhos</MenuItem><MenuItem value="SETUPS">Todos os padrões com gatilho observado</MenuItem><MenuItem value="SELECTED">Padrão selecionado</MenuItem><MenuItem value="TRIGGERS">Gatilhos alcançados</MenuItem><MenuItem value="ALL">Todos os candidatos</MenuItem>
+        </TextField>
+        <TextField select size="small" slotProps={{ select: { native: true } }} label="Candidato do padrão (visualização)" value={candidates.some(c=>c.id===selectedPattern)?selectedPattern:''} onChange={e=>selectPattern(e.target.value)} sx={{minWidth:280,maxWidth:650}}>
+          <option value="">Nenhum candidato disponível neste instante</option>
+          {candidates.map((c,i)=><option key={c.id} value={c.id}>{i+1} · {c.direction==='BUY'?'Compra':'Venda'} · {time(c.candle1.candle.bucketStartTimeMsc)} · {price(c.region.low)} · {c.state}</option>)}
+        </TextField>
+        <FormControlLabel label="Acompanhar candidato mais recente no Replay" control={<Checkbox checked={followPattern} onChange={(_,v)=>{if(!v)setPatternFocus(patternScope+selectedPattern);setFollowPattern(v);}} />} />
+      </Stack>
+      <details data-testid="pattern-candidates" onToggle={toggleDetails('candidates')}>
+        <summary>Candidatos do pregão ({candidates.length}) — selecionar no gráfico</summary>{expanded.candidates && <>
+        <Typography variant="body2">E indica alcance hipotético, sem operação executada ou resultado financeiro. Seleção fixa acompanha as etapas conhecidas desse candidato; a opção de acompanhamento troca para o candidato mais recente.</Typography>
+        <div style={{overflowX:'auto',maxHeight:420}}><table><thead><tr><th>Horário C1 / C2 / C3</th><th>Direção</th><th>Referência-alvo</th><th>NEGA</th><th>Estado</th><th>Preço E / estado</th><th>Invalidação / indeterminação</th></tr></thead>
+          <tbody>{candidates.map(c=><tr key={c.id} onClick={()=>selectPattern(c.id)} aria-selected={c.id===selectedPattern} data-recognized={recognizedCandidates.some(p=>p.id===c.id)} style={{cursor:'pointer',background:c.id===selectedPattern?'rgba(56,189,248,0.14)':undefined}}>
+            <td><Button size="small">{time(c.candle1.candle.bucketStartTimeMsc)}</Button><br/>{c.candle2?time(c.candle2.candle.bucketStartTimeMsc):'—'} / {c.candle3?time(c.candle3.candle.bucketStartTimeMsc):'—'}</td>
+            <td>{c.direction==='BUY'?'Compra':'Venda'}</td><td>{price(c.region.low)}–{price(c.region.high)}<br/>{c.region.source}<br/>{c.region.id}</td>
+            <td>{c.negationVariants.join(' + ')||'—'}</td><td>{c.state}</td><td>{c.trigger.level==null?'—':price(c.trigger.level)}<br/>{c.trigger.state}</td><td>{invalidationReason(c)||'—'}</td>
+          </tr>)}</tbody></table></div>
+        <details data-testid="pattern-duplicates"><summary>Auditoria de duplicidades e regra de negacao</summary>
+          <Typography variant="body2">Total: {duplication.total}; sequências distintas de IDs de candles: {duplication.sequences}; sequência + direção: {duplication.sequenceDirections}. Sequências parciais usam apenas os IDs já conhecidos.</Typography>
+          {duplication.sharedCandles.map((s,i)=><Typography key={i} variant="body2">Candle {i+1} compartilhado: {s.groups} grupos, {s.candidates} candidatos, {s.excess} registros excedentes ao primeiro por grupo.</Typography>)}
+          <Typography variant="body2">Referências diferentes na mesma faixa exata, C1 e direção: {duplication.sameRegionGroups} grupos / {duplication.sameRegionCandidates} candidatos. Sem tolerância de agrupamento adicional.</Typography>
+          <Typography variant="body2">Chegaram ao TESTA: {duplication.tested}; alcançaram E: {duplication.reached}; testes invalidados: {duplication.invalidated}; rejeitados na NEGA: {duplication.rejected}.</Typography>
+          {duplication.variants.map(v=><Typography key={v.variant} variant="body2">{v.variant}: {v.total} candidatos; {v.tested} com teste; {v.invalidated} invalidados.</Typography>)}
+          <Typography variant="body2">Regra V2: C2 nao continua o fechamento de C1, independentemente da cor; C1 so e marcado no fechamento de C2. C3 precisa testar na direcao anterior antes do gatilho. A/B identificam apenas dados legados. Referencias coincidentes continuam preservadas na auditoria.</Typography>
+        </details>
+      </>}</details>
       {pick && (
         <Alert severity="info">
           Seleção manual armada: clique em um {pick === 'TOP' ? 'topo' : 'fundo'} confirmado.{' '}
@@ -302,6 +373,7 @@ export function ThreeCandlesWorkspace({
         </Alert>
       )}
       <ThreeCandlesChart
+        patternViewport={patternViewport}
         controller={controller}
         zone={candleDisplayTimeZone}
         overlay={overlay}
@@ -311,9 +383,12 @@ export function ThreeCandlesWorkspace({
         openingOverlay={{snapshot:view?.openingStructure,visible:showOpening && supported,minimumPoints:openingMinimum}}
         dowFiftyOverlay={dowFiftyOverlay}
         microFiftyOverlay={{snapshot:microFifty,visible:showMicroFifty && supported,principalLevel}}
+        patternOverlay={{snapshot:patternSnapshot,candles:view?.candles,executions:hypotheticalExecutions,visible:showPattern && supported,numbers:patternMode==='TRIGGERS'||patternNumbers,highlights:patternMode!=='TRIGGERS'&&patternHighlights,compactExecutions:patternMode==='TRIGGERS'}}
         onPickDowFifty={setSelectedFifty}
         onPickDow={(p) => setSelectedDow(p.extreme.id)}
       />
+      {supported&&showDmi&&(view?.dmi?<DmiPanel snapshot={view.dmi} zone={candleDisplayTimeZone}/>:<Typography>DMI/ADX: aguardando snapshot do servidor.</Typography>)}
+      {supported&&showChop&&(view?.chop?<ExperimentalChopPanel snapshot={view.chop} zone={candleDisplayTimeZone}/>:<Typography>CHOP: aguardando snapshot do servidor.</Typography>)}
       {supported && showOpening && view?.openingStructure && (
         <Stack spacing={0.5} data-testid="opening-structure-panel">
           <Typography variant="body2">
@@ -344,6 +419,26 @@ export function ThreeCandlesWorkspace({
         </Stack>
       )}
       <Stack spacing={0.5} aria-label="Resumo da estrutura" data-testid="structure-summary">
+        {supported && showDow && view?.structure?.earlyPivots && <Typography variant="body2" data-testid="early-dow-summary" sx={{color:'#F59E0B'}}>
+          Dow 2+1: {view.structure.earlyPivots.filter(p=>p.status==='CANDIDATE_2_1').length} candidato(s) aguardando C3 fechar.
+          {' '}C1, C2 e C3: vermelho para candidato de alta para baixa; verde para baixa para alta. Candidato provisório conhecido ao fechar C2; C3 acompanha o candle em formação. Não representa entrada.
+        </Typography>}
+
+        {supported && showDow && view?.structure?.earlyPivots && <details data-testid="early-dow-audit" onToggle={e=>{if(e.target===e.currentTarget)setEarlyAuditOpen(e.currentTarget.open);}}>
+          <summary>Candidatos Dow 2+1 ({view.structure.earlyPivots.length})</summary>
+          {earlyAuditOpen && <table><thead><tr><th>Extremo</th><th>Formação</th><th>Conhecido ao fechar C2</th><th>Resolução de C3</th><th>Estado</th></tr></thead><tbody>
+            {view.structure.earlyPivots.map(p=><tr key={p.id}><td>{p.type==='TOP'?'Topo':'Fundo'} {price(p.price)}</td><td>{time(p.origin.candle.bucketStartTimeMsc)}</td><td>{time(p.availableAtMsc)}</td><td>{p.resolvedAtMsc==null?'Aguardando':time(p.resolvedAtMsc)}</td><td title={p.reason}>{({CANDIDATE_2_1:'Provisório 2+1',CONFIRMED_2_2:'Confirmado 2+2',INVALIDATED:'Invalidado por C3',INCONCLUSIVE_GAP:'Inconclusivo: lacuna'})[p.status]}</td></tr>)}
+          </tbody></table>}
+        </details>}
+        {supported && showPattern && view?.patternStudy && <Typography variant="body2" data-testid="experimental-pattern-summary">
+          Padrão experimental com contexto e sequencia M1 em validação: {view.patternStudy.candidates.length} candidatos por referência. {reachedSequences} sequências com gatilho observado.
+          {!!view.patternStudy.parameters.minRejectionTicks && <> Pavio mínimo: {view.patternStudy.parameters.minRejectionTicks*5} pontos ({view.patternStudy.parameters.minRejectionTicks} ticks). Afastamento: {view.patternStudy.parameters.orderOffsetPoints} pontos.</>}
+          {' '}E = nível hipotético alcançado após disponibilidade; não representa operação executada.
+          {' '}{view.patternStudy.m1Status.startsWith('M1_AUSENTE')?'M1 ausente: teste/reação e execução permanecem indeterminados.':''}
+          {' '}{view.patternStudy.m1Status==='NATIVE_M1_GAPS_INDETERMINATE'?'M1 incompleto: trechos com lacunas ficam inconclusivos; os demais continuam sendo analisados.':''}
+        </Typography>}
+        {supported && showPattern && view && (!view.patternAudit || view.patternAudit.rulesStatus==='PENDING_DEFINITION') &&
+          <Typography variant="body2" data-testid="pattern-definition-pending">Padrão de 3 Candles: aguardando a definição das regras de Alvo, Nega e Testa. Nenhum candle classificado automaticamente.</Typography>}
         <DowDebugPanel {...dowProps} part="summary" />
         <Typography variant="body2" data-testid="micro-fifty-current">
           {!supported ? 'DOW MICRO 50%: indisponível em M15' : currentMicroFifty
@@ -447,9 +542,27 @@ export function ThreeCandlesWorkspace({
           Fechar detalhes 50%
         </Button>
       )}
-      <details data-testid="advanced-settings">
-        <summary>Configurações avançadas</summary>
+      <details data-testid="advanced-settings" onToggle={toggleDetails('advanced')}>
+        <summary>Configurações avançadas</summary>{expanded.advanced && <>
         <Stack spacing={1.5}>
+          {view?.patternStudy && <details data-testid="experimental-pattern-audit">
+            <summary>Detector experimental — candidatos, hipóteses e gatilhos</summary>
+            <Typography variant="body2">Hipótese operacional em validação, não reprodução fiel do curso. Contagens por referência: confluências podem repetir a mesma sequência. Tolerância: {price(view.patternStudy.parameters.contactTolerancePoints)} pontos; deslocamento hipotético WIN: {price(view.patternStudy.parameters.orderOffsetPoints)} pontos. {view.patternStudy.m1Status}.</Typography>
+            <table><thead><tr><th>Candidato / direção</th><th>Candles M5</th><th>Região e disponibilidade</th><th>NEGA</th><th>Teste</th><th>Gatilho hipotético</th><th>Evidência</th></tr></thead>
+              <tbody>{view.patternStudy.candidates.map((c,i)=><tr key={c.id}>
+                <td>{i+1} · {c.direction==='BUY'?'Compra':'Venda'}<br/>{c.state}<br/>Não validado</td>
+                <td>{[c.candle1,c.candle2,c.candle3].map((b,j)=>b?<div key={j}>{j+1}: {time(b.candle.bucketStartTimeMsc)} · O {price(b.candle.open)} H {price(b.candle.high)} L {price(b.candle.low)} C {price(b.candle.close)}<br/>{[c.candle1Id,c.candle2Id,c.candle3Id][j]} · conhecido {time(b.availableAtMsc)}</div>:<div key={j}>{j+1}: ainda não conhecido</div>)}</td>
+                <td>{c.region.source}<br/>{price(c.region.low)}–{price(c.region.high)}<br/>{time(c.region.availableAtMsc)}<br/>{c.region.id}</td>
+                <td>{c.negationVariants.join(' + ')||'Não confirmada'}<br/>{c.context&&<>Aproximacao: {c.context.flow} ({c.context.source})<br/>Dow principal: {c.context.principalState} / micro: {c.context.microState}<br/>{c.context.anchor&&<>Pivô âncora: {c.context.anchor.type} {price(c.context.anchor.price)} ({time(c.context.anchor.extremeTimeMsc)})<br/></>}</>}Referencia C1: {c.negationComparedExtreme==null?'—':price(c.negationComparedExtreme)}</td>
+                <td>{c.testState}<br/>{c.testLow==null?'':`${price(c.testLow)}–${price(c.testHigh!)}`}</td>
+                <td>{c.trigger.state}<br/>{c.trigger.level==null?'':price(c.trigger.level)}<br/>{c.trigger.placedAtMsc==null?'Sem posicionamento':`Disponível ${time(c.trigger.placedAtMsc)}`}<br/>{c.trigger.reachedAtMsc==null?'':`Alcançado ${time(c.trigger.reachedAtMsc)}`}<br/>{c.rejectionWick&&<>Pavio: {price(c.rejectionWick.points)} pontos / {c.rejectionWick.ticks} ticks, conhecido {time(c.rejectionWick.availableAtMsc)}<br/></>}{c.trigger.reason}</td>
+                <td><details><summary>Eventos e motivos ({c.events.length})</summary><pre>{JSON.stringify(c.events,null,2)}</pre></details></td>
+              </tr>)}</tbody>
+            </table>
+            <details><summary>Contatos rejeitados ou inconclusivos ({view.patternStudy.rejectedContacts.length})</summary>
+              <table><thead><tr><th>Conhecido em</th><th>Candle</th><th>Referência</th><th>Motivo</th></tr></thead><tbody>{view.patternStudy.rejectedContacts.map((r,i)=><tr key={i}><td>{time(r.atMsc)}</td><td>{time(r.candleTimeMsc)}</td><td>{r.referenceId}</td><td>{r.reason}</td></tr>)}</tbody></table>
+            </details>
+          </details>}
           <details>
             <summary>Estrutura de Dow</summary>
             <DowDebugPanel {...dowProps} part="labels" />
@@ -678,10 +791,23 @@ export function ThreeCandlesWorkspace({
             </Typography>{' '}
           </details>
         </Stack>
-      </details>
-      <details data-testid="audit-diagnostics">
-        <summary>Auditoria e diagnósticos</summary>
+      </>}</details>
+      <details data-testid="audit-diagnostics" onToggle={toggleDetails('audit')}>
+        <summary>Auditoria e diagnósticos</summary>{expanded.audit && <>
         <Stack spacing={1.5}>
+          <details data-testid="pattern-audit">
+            <summary>Padrão de 3 Candles — etapas visuais e evidências</summary>
+            <Typography variant="body2">{view?.patternAudit?.rulesStatus==='DEFINED'
+              ? `Critério: ${view.patternAudit.criterionId}. Marcações de estudo; Entrada identifica somente a etapa visual.`
+              : 'As regras de reconhecimento ainda não foram definidas. Não há padrões reconhecidos nesta resposta.'}</Typography>
+            {view?.patternAudit?.patterns.map(p=><details key={p.id}>
+              <summary>{p.direction==='BUY'?'Compra':'Venda'} · {p.state==='CANDLE_1'?'Apenas Candle 1':p.state==='CANDLES_1_2'?'Candle 1+2':'Padrão completo (visual)'} · {p.id}</summary>
+              <table><thead><tr><th>Etapa</th><th>Candle M5</th><th>Referência</th><th>Reconhecida em</th><th>Motivo</th></tr></thead>
+                <tbody>{p.stages.map(s=><tr key={s.number}><td>{s.number} · {s.role==='ALVO'?'Alvo':s.role==='NEGA'?'Nega':'Testa / Entrada (visual)'}</td>
+                  <td>{time(s.observation.candle.bucketStartTimeMsc)}</td><td>{price(s.referencePrice)}</td><td>{time(s.availableAtMsc)}</td><td>{s.reason}</td></tr>)}</tbody>
+              </table>
+            </details>)}
+          </details>
           <details>
             <summary>Dow principal</summary>
             <DowDebugPanel {...dowProps} part="audit" />
@@ -851,7 +977,7 @@ export function ThreeCandlesWorkspace({
             {dataDiagnostics}
           </details>
         </Stack>
-      </details>
+      </>}</details>
     </Stack>
   );
 }

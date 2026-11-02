@@ -228,6 +228,214 @@
       "state" : "CONFIRMED",
       "brokenAtMsc" : null,
       "timeframeMinutes" : 5
+    } ],
+    "earlyPivots" : [ {
+      "id" : "WIN$N:2+1:1792142700000:TOP",
+      "type" : "TOP",
+      "price" : 209375.0,
+      "leftA" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792142100000,
+          "open" : 208860.0,
+          "high" : 209150.0,
+          "low" : 208760.0,
+          "close" : 209020.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792142400000
+      },
+      "leftB" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792142400000,
+          "open" : 209020.0,
+          "high" : 209120.0,
+          "low" : 208885.0,
+          "close" : 209090.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792142700000
+      },
+      "origin" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792142700000,
+          "open" : 209090.0,
+          "high" : 209375.0,
+          "low" : 208845.0,
+          "close" : 208870.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792143000000
+      },
+      "rightC" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792143000000,
+          "open" : 208875.0,
+          "high" : 209120.0,
+          "low" : 208675.0,
+          "close" : 209065.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792143300000
+      },
+      "availableAtMsc" : 1792143300000,
+      "status" : "CONFIRMED_2_2",
+      "rightD" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792143300000,
+          "open" : 209060.0,
+          "high" : 209150.0,
+          "low" : 208730.0,
+          "close" : 208930.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792143600000
+      },
+      "resolvedAtMsc" : 1792143600000,
+      "reason" : "D fechado preservou o extremo; decisao estrutural continua independente"
+    }, {
+      "id" : "WIN$N:2+1:1792143000000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 208675.0,
+      "leftA" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792142400000,
+          "open" : 209020.0,
+          "high" : 209120.0,
+          "low" : 208885.0,
+          "close" : 209090.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792142700000
+      },
+      "leftB" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792142700000,
+          "open" : 209090.0,
+          "high" : 209375.0,
+          "low" : 208845.0,
+          "close" : 208870.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792143000000
+      },
+      "origin" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792143000000,
+          "open" : 208875.0,
+          "high" : 209120.0,
+          "low" : 208675.0,
+          "close" : 209065.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792143300000
+      },
+      "rightC" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792143300000,
+          "open" : 209060.0,
+          "high" : 209150.0,
+          "low" : 208730.0,
+          "close" : 208930.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792143600000
+      },
+      "availableAtMsc" : 1792143600000,
+      "status" : "CONFIRMED_2_2",
+      "rightD" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792143600000,
+          "open" : 208925.0,
+          "high" : 209320.0,
+          "low" : 208890.0,
+          "close" : 209145.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792143900000
+      },
+      "resolvedAtMsc" : 1792143900000,
+      "reason" : "D fechado preservou o extremo; decisao estrutural continua independente"
+    }, {
+      "id" : "WIN$N:2+1:1792143900000:TOP",
+      "type" : "TOP",
+      "price" : 209435.0,
+      "leftA" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792143300000,
+          "open" : 209060.0,
+          "high" : 209150.0,
+          "low" : 208730.0,
+          "close" : 208930.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792143600000
+      },
+      "leftB" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792143600000,
+          "open" : 208925.0,
+          "high" : 209320.0,
+          "low" : 208890.0,
+          "close" : 209145.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792143900000
+      },
+      "origin" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792143900000,
+          "open" : 209145.0,
+          "high" : 209435.0,
+          "low" : 209120.0,
+          "close" : 209150.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792144200000
+      },
+      "rightC" : {
+        "candle" : {
+          "symbol" : "WIN$N",
+          "bucketStartTimeMsc" : 1792144200000,
+          "open" : 209150.0,
+          "high" : 209285.0,
+          "low" : 208960.0,
+          "close" : 209120.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1792144500000
+      },
+      "availableAtMsc" : 1792144500000,
+      "status" : "CANDIDATE_2_1",
+      "rightD" : null,
+      "resolvedAtMsc" : null,
+      "reason" : "Extremo maior/menor que A, B e C; conhecido ao fechar C; nao e entrada nem pivo Dow confirmado"
     } ]
   },
   "dow" : {

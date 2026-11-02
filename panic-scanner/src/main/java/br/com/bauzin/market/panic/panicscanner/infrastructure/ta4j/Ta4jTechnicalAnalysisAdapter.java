@@ -7,6 +7,7 @@ import br.com.bauzin.market.panic.panicscanner.domain.analysis.TechnicalAnalysis
 import br.com.bauzin.market.panic.panicscanner.domain.analysis.Trend;
 
 import org.springframework.stereotype.Component;
+import br.com.bauzin.market.ta4j.indicators.MovingAverages;
 import org.ta4j.core.BarSeries;
 import org.ta4j.core.BaseBar;
 import org.ta4j.core.BaseBarSeriesBuilder;
@@ -71,15 +72,15 @@ public class Ta4jTechnicalAnalysisAdapter implements TechnicalAnalysisEngine {
         BarSeries series = toBarSeries(orderedCandles);
         int lastIndex = series.getEndIndex();
         ClosePriceIndicator closePrice = new ClosePriceIndicator(series);
-        SMAIndicator sma9 = new SMAIndicator(closePrice, SMA_SHORT_PERIOD);
-        SMAIndicator sma21 = new SMAIndicator(closePrice, SMA_LONG_PERIOD);
-        EMAIndicator ema9 = new EMAIndicator(closePrice, EMA_SHORT_PERIOD);
-        EMAIndicator ema21 = new EMAIndicator(closePrice, EMA_LONG_PERIOD);
+        SMAIndicator sma9 = MovingAverages.sma(closePrice, SMA_SHORT_PERIOD);
+        SMAIndicator sma21 = MovingAverages.sma(closePrice, SMA_LONG_PERIOD);
+        EMAIndicator ema9 = MovingAverages.ema(closePrice, EMA_SHORT_PERIOD);
+        EMAIndicator ema21 = MovingAverages.ema(closePrice, EMA_LONG_PERIOD);
         RSIIndicator rsi9 = new RSIIndicator(closePrice, RSI_PERIOD);
         ATRIndicator atr14 = new ATRIndicator(series, ATR_PERIOD);
         ADXIndicator adx14 = new ADXIndicator(series, ADX_PERIOD);
 
-        SMAIndicator adxSma5 = new SMAIndicator(adx14, 5);
+        SMAIndicator adxSma5 = MovingAverages.sma(adx14, 5);
 
         BigDecimal lastSma9 = valueOrZero(sma9.getValue(lastIndex));
         BigDecimal lastSma21 = valueOrZero(sma21.getValue(lastIndex));

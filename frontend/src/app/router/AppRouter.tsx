@@ -1,7 +1,6 @@
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { AppLayout } from '@/common/layout/AppLayout';
-import { DashboardPage } from '@/features/dashboard/pages/DashboardPage';
 import { ScannerPage } from '@/features/scanner/pages/ScannerPage';
 import { SettingsPage } from '@/features/settings/pages/SettingsPage';
 import { StockDetailPage } from '@/features/stock/pages/StockDetailPage';
@@ -18,8 +17,8 @@ const router = createBrowserRouter([
     path: '/',
     element: <AppLayout />,
     children: [
-      { index: true, element: <Navigate to="/dashboard" replace /> },
-      { path: 'dashboard', element: <DashboardPage /> },
+      { index: true, element: <Navigate to="/scanner" replace /> },
+      { path: 'dashboard', element: <Navigate to="/scanner" replace /> },
       { path: 'scanner', element: <ScannerPage /> },
       { path: 'scanner-experimental', element: <ExperimentalScannerPage /> },
       { path: 'win-m5', element: <WinMt5Page /> },

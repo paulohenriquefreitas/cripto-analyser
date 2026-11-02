@@ -1,0 +1,735 @@
+[
+  {
+    "date": "2026-10-06",
+    "symbol": "WINZ26",
+    "beforeCriterion": "DOW_LEG_CLOSE_NEGATION_TEST_RETURN_M1_V3",
+    "afterCriterion": "DOW_LEG_MINIMUM_WICK_TEST_RETURN_M1_V4",
+    "parameters": {
+      "contactTolerancePoints": 0.0,
+      "orderOffsetPoints": 20.0,
+      "minRejectionTicks": 30.0
+    },
+    "beforeSequences": 11,
+    "afterSequences": 5,
+    "retained": [
+      {
+        "c1": "10:15",
+        "direction": "SELL",
+        "entryPoints": 213235.0,
+        "wick": {
+          "points": 270.0,
+          "ticks": 54.0,
+          "minimumPoints": 150.0,
+          "availableAtMsc": 1791282480000,
+          "observation": {
+            "candle": {
+              "symbol": "WINZ26",
+              "bucketStartTimeMsc": 1791282300000,
+              "open": 213255.0,
+              "high": 213655.0,
+              "low": 212995.0,
+              "close": 213385.0
+            },
+            "timeframeMinutes": 5,
+            "closed": false,
+            "availableAtMsc": 1791282480000
+          }
+        },
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 213255.0,
+          "level": 213235.0,
+          "referenceKnownAtMsc": 1791282360000,
+          "placedAtMsc": 1791282480000,
+          "reachedAtMsc": 1791282540000,
+          "evidence": {
+            "startTimeMsc": 1791282480000,
+            "open": 213375.0,
+            "high": 213445.0,
+            "low": 213230.0,
+            "close": 213445.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "11:35",
+        "direction": "SELL",
+        "entryPoints": 209760.0,
+        "wick": {
+          "points": 320.0,
+          "ticks": 64.0,
+          "minimumPoints": 150.0,
+          "availableAtMsc": 1791287280000,
+          "observation": {
+            "candle": {
+              "symbol": "WINZ26",
+              "bucketStartTimeMsc": 1791287100000,
+              "open": 209780.0,
+              "high": 210115.0,
+              "low": 209685.0,
+              "close": 209795.0
+            },
+            "timeframeMinutes": 5,
+            "closed": false,
+            "availableAtMsc": 1791287280000
+          }
+        },
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 209780.0,
+          "level": 209760.0,
+          "referenceKnownAtMsc": 1791287160000,
+          "placedAtMsc": 1791287280000,
+          "reachedAtMsc": 1791287340000,
+          "evidence": {
+            "startTimeMsc": 1791287280000,
+            "open": 209800.0,
+            "high": 209820.0,
+            "low": 209625.0,
+            "close": 209735.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "11:50",
+        "direction": "BUY",
+        "entryPoints": 210070.0,
+        "wick": {
+          "points": 160.0,
+          "ticks": 32.0,
+          "minimumPoints": 150.0,
+          "availableAtMsc": 1791288180000,
+          "observation": {
+            "candle": {
+              "symbol": "WINZ26",
+              "bucketStartTimeMsc": 1791288000000,
+              "open": 210050.0,
+              "high": 210080.0,
+              "low": 209890.0,
+              "close": 210065.0
+            },
+            "timeframeMinutes": 5,
+            "closed": false,
+            "availableAtMsc": 1791288180000
+          }
+        },
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 210050.0,
+          "level": 210070.0,
+          "referenceKnownAtMsc": 1791288060000,
+          "placedAtMsc": 1791288180000,
+          "reachedAtMsc": 1791288240000,
+          "evidence": {
+            "startTimeMsc": 1791288180000,
+            "open": 209995.0,
+            "high": 210250.0,
+            "low": 209915.0,
+            "close": 210250.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "14:45",
+        "direction": "BUY",
+        "entryPoints": 211625.0,
+        "wick": {
+          "points": 205.0,
+          "ticks": 41.0,
+          "minimumPoints": 150.0,
+          "availableAtMsc": 1791298680000,
+          "observation": {
+            "candle": {
+              "symbol": "WINZ26",
+              "bucketStartTimeMsc": 1791298500000,
+              "open": 211605.0,
+              "high": 211620.0,
+              "low": 211400.0,
+              "close": 211620.0
+            },
+            "timeframeMinutes": 5,
+            "closed": false,
+            "availableAtMsc": 1791298680000
+          }
+        },
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 211605.0,
+          "level": 211625.0,
+          "referenceKnownAtMsc": 1791298560000,
+          "placedAtMsc": 1791298680000,
+          "reachedAtMsc": 1791298740000,
+          "evidence": {
+            "startTimeMsc": 1791298680000,
+            "open": 211560.0,
+            "high": 211690.0,
+            "low": 211545.0,
+            "close": 211690.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "16:00",
+        "direction": "SELL",
+        "entryPoints": 210780.0,
+        "wick": {
+          "points": 195.0,
+          "ticks": 39.0,
+          "minimumPoints": 150.0,
+          "availableAtMsc": 1791303180000,
+          "observation": {
+            "candle": {
+              "symbol": "WINZ26",
+              "bucketStartTimeMsc": 1791303000000,
+              "open": 210800.0,
+              "high": 211000.0,
+              "low": 210750.0,
+              "close": 210805.0
+            },
+            "timeframeMinutes": 5,
+            "closed": false,
+            "availableAtMsc": 1791303180000
+          }
+        },
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 210800.0,
+          "level": 210780.0,
+          "referenceKnownAtMsc": 1791303060000,
+          "placedAtMsc": 1791303180000,
+          "reachedAtMsc": 1791303300000,
+          "evidence": {
+            "startTimeMsc": 1791303240000,
+            "open": 210800.0,
+            "high": 210800.0,
+            "low": 210740.0,
+            "close": 210800.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      }
+    ],
+    "added": [],
+    "removed": [
+      {
+        "c1": "09:50",
+        "direction": "BUY",
+        "entryPoints": 212860.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 212840.0,
+          "level": 212860.0,
+          "referenceKnownAtMsc": 1791280860000,
+          "placedAtMsc": 1791280860000,
+          "reachedAtMsc": 1791280920000,
+          "evidence": {
+            "startTimeMsc": 1791280860000,
+            "open": 212810.0,
+            "high": 212940.0,
+            "low": 212745.0,
+            "close": 212855.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "11:55",
+        "direction": "BUY",
+        "entryPoints": 210165.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 210145.0,
+          "level": 210165.0,
+          "referenceKnownAtMsc": 1791288360000,
+          "placedAtMsc": 1791288360000,
+          "reachedAtMsc": 1791288420000,
+          "evidence": {
+            "startTimeMsc": 1791288360000,
+            "open": 210085.0,
+            "high": 210250.0,
+            "low": 210005.0,
+            "close": 210155.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "14:30",
+        "direction": "BUY",
+        "entryPoints": 211450.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 211430.0,
+          "level": 211450.0,
+          "referenceKnownAtMsc": 1791297660000,
+          "placedAtMsc": 1791297660000,
+          "reachedAtMsc": 1791297840000,
+          "evidence": {
+            "startTimeMsc": 1791297780000,
+            "open": 211390.0,
+            "high": 211450.0,
+            "low": 211390.0,
+            "close": 211415.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "14:55",
+        "direction": "SELL",
+        "entryPoints": 211490.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 211510.0,
+          "level": 211490.0,
+          "referenceKnownAtMsc": 1791299160000,
+          "placedAtMsc": 1791299160000,
+          "reachedAtMsc": 1791299220000,
+          "evidence": {
+            "startTimeMsc": 1791299160000,
+            "open": 211505.0,
+            "high": 211505.0,
+            "low": 211400.0,
+            "close": 211435.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "15:25",
+        "direction": "BUY",
+        "entryPoints": 211595.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 211575.0,
+          "level": 211595.0,
+          "referenceKnownAtMsc": 1791300960000,
+          "placedAtMsc": 1791300960000,
+          "reachedAtMsc": 1791301140000,
+          "evidence": {
+            "startTimeMsc": 1791301080000,
+            "open": 211420.0,
+            "high": 211600.0,
+            "low": 211400.0,
+            "close": 211455.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "15:30",
+        "direction": "SELL",
+        "entryPoints": 211480.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 211500.0,
+          "level": 211480.0,
+          "referenceKnownAtMsc": 1791301260000,
+          "placedAtMsc": 1791301260000,
+          "reachedAtMsc": 1791301320000,
+          "evidence": {
+            "startTimeMsc": 1791301260000,
+            "open": 211490.0,
+            "high": 211520.0,
+            "low": 211425.0,
+            "close": 211440.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      }
+    ],
+    "noProfitabilityClaim": true
+  },
+  {
+    "date": "2026-10-30",
+    "symbol": "WINZ26",
+    "beforeCriterion": "DOW_LEG_CLOSE_NEGATION_TEST_RETURN_M1_V3",
+    "afterCriterion": "DOW_LEG_MINIMUM_WICK_TEST_RETURN_M1_V4",
+    "parameters": {
+      "contactTolerancePoints": 0.0,
+      "orderOffsetPoints": 20.0,
+      "minRejectionTicks": 30.0
+    },
+    "beforeSequences": 13,
+    "afterSequences": 3,
+    "retained": [
+      {
+        "c1": "10:50",
+        "direction": "SELL",
+        "entryPoints": 170610.0,
+        "wick": {
+          "points": 185.0,
+          "ticks": 37.0,
+          "minimumPoints": 150.0,
+          "availableAtMsc": 1793358120000,
+          "observation": {
+            "candle": {
+              "symbol": "WINZ26",
+              "bucketStartTimeMsc": 1793358000000,
+              "open": 170630.0,
+              "high": 170925.0,
+              "low": 170570.0,
+              "close": 170740.0
+            },
+            "timeframeMinutes": 5,
+            "closed": false,
+            "availableAtMsc": 1793358120000
+          }
+        },
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170630.0,
+          "level": 170610.0,
+          "referenceKnownAtMsc": 1793358060000,
+          "placedAtMsc": 1793358120000,
+          "reachedAtMsc": 1793358180000,
+          "evidence": {
+            "startTimeMsc": 1793358120000,
+            "open": 170735.0,
+            "high": 170795.0,
+            "low": 170590.0,
+            "close": 170635.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "15:50",
+        "direction": "BUY",
+        "entryPoints": 169835.0,
+        "wick": {
+          "points": 165.0,
+          "ticks": 33.0,
+          "minimumPoints": 150.0,
+          "availableAtMsc": 1793376240000,
+          "observation": {
+            "candle": {
+              "symbol": "WINZ26",
+              "bucketStartTimeMsc": 1793376000000,
+              "open": 169815.0,
+              "high": 169865.0,
+              "low": 169640.0,
+              "close": 169805.0
+            },
+            "timeframeMinutes": 5,
+            "closed": false,
+            "availableAtMsc": 1793376240000
+          }
+        },
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 169815.0,
+          "level": 169835.0,
+          "referenceKnownAtMsc": 1793376060000,
+          "placedAtMsc": 1793376240000,
+          "reachedAtMsc": 1793376300000,
+          "evidence": {
+            "startTimeMsc": 1793376240000,
+            "open": 169805.0,
+            "high": 169865.0,
+            "low": 169780.0,
+            "close": 169845.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      }
+    ],
+    "added": [
+      {
+        "c1": "11:45",
+        "direction": "SELL",
+        "entryPoints": 170230.0,
+        "wick": {
+          "points": 150.0,
+          "ticks": 30.0,
+          "minimumPoints": 150.0,
+          "availableAtMsc": 1793361540000,
+          "observation": {
+            "candle": {
+              "symbol": "WINZ26",
+              "bucketStartTimeMsc": 1793361300000,
+              "open": 170250.0,
+              "high": 170400.0,
+              "low": 170155.0,
+              "close": 170235.0
+            },
+            "timeframeMinutes": 5,
+            "closed": false,
+            "availableAtMsc": 1793361540000
+          }
+        },
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170250.0,
+          "level": 170230.0,
+          "referenceKnownAtMsc": 1793361360000,
+          "placedAtMsc": 1793361540000,
+          "reachedAtMsc": 1793361600000,
+          "evidence": {
+            "startTimeMsc": 1793361540000,
+            "open": 170240.0,
+            "high": 170245.0,
+            "low": 170035.0,
+            "close": 170070.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      }
+    ],
+    "removed": [
+      {
+        "c1": "11:00",
+        "direction": "SELL",
+        "entryPoints": 170375.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170395.0,
+          "level": 170375.0,
+          "referenceKnownAtMsc": 1793358660000,
+          "placedAtMsc": 1793358660000,
+          "reachedAtMsc": 1793358720000,
+          "evidence": {
+            "startTimeMsc": 1793358660000,
+            "open": 170410.0,
+            "high": 170575.0,
+            "low": 170285.0,
+            "close": 170545.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "11:10",
+        "direction": "BUY",
+        "entryPoints": 170210.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170190.0,
+          "level": 170210.0,
+          "referenceKnownAtMsc": 1793359260000,
+          "placedAtMsc": 1793359260000,
+          "reachedAtMsc": 1793359320000,
+          "evidence": {
+            "startTimeMsc": 1793359260000,
+            "open": 170120.0,
+            "high": 170250.0,
+            "low": 170110.0,
+            "close": 170210.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "11:25",
+        "direction": "SELL",
+        "entryPoints": 170480.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170500.0,
+          "level": 170480.0,
+          "referenceKnownAtMsc": 1793360160000,
+          "placedAtMsc": 1793360160000,
+          "reachedAtMsc": 1793360220000,
+          "evidence": {
+            "startTimeMsc": 1793360160000,
+            "open": 170485.0,
+            "high": 170510.0,
+            "low": 170305.0,
+            "close": 170435.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "11:30",
+        "direction": "SELL",
+        "entryPoints": 170450.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170470.0,
+          "level": 170450.0,
+          "referenceKnownAtMsc": 1793360460000,
+          "placedAtMsc": 1793360460000,
+          "reachedAtMsc": 1793360520000,
+          "evidence": {
+            "startTimeMsc": 1793360460000,
+            "open": 170555.0,
+            "high": 170570.0,
+            "low": 170400.0,
+            "close": 170470.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "12:25",
+        "direction": "SELL",
+        "entryPoints": 169455.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 169475.0,
+          "level": 169455.0,
+          "referenceKnownAtMsc": 1793363760000,
+          "placedAtMsc": 1793363760000,
+          "reachedAtMsc": 1793363820000,
+          "evidence": {
+            "startTimeMsc": 1793363760000,
+            "open": 169460.0,
+            "high": 169555.0,
+            "low": 169405.0,
+            "close": 169500.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "13:20",
+        "direction": "BUY",
+        "entryPoints": 170475.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170455.0,
+          "level": 170475.0,
+          "referenceKnownAtMsc": 1793367060000,
+          "placedAtMsc": 1793367060000,
+          "reachedAtMsc": 1793367120000,
+          "evidence": {
+            "startTimeMsc": 1793367060000,
+            "open": 170460.0,
+            "high": 170490.0,
+            "low": 170370.0,
+            "close": 170425.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "13:30",
+        "direction": "BUY",
+        "entryPoints": 170935.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170915.0,
+          "level": 170935.0,
+          "referenceKnownAtMsc": 1793367660000,
+          "placedAtMsc": 1793367660000,
+          "reachedAtMsc": 1793367720000,
+          "evidence": {
+            "startTimeMsc": 1793367660000,
+            "open": 170885.0,
+            "high": 171060.0,
+            "low": 170850.0,
+            "close": 170885.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "14:00",
+        "direction": "BUY",
+        "entryPoints": 170815.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170795.0,
+          "level": 170815.0,
+          "referenceKnownAtMsc": 1793369460000,
+          "placedAtMsc": 1793369460000,
+          "reachedAtMsc": 1793369580000,
+          "evidence": {
+            "startTimeMsc": 1793369520000,
+            "open": 170785.0,
+            "high": 170825.0,
+            "low": 170730.0,
+            "close": 170815.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "14:30",
+        "direction": "BUY",
+        "entryPoints": 170375.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170355.0,
+          "level": 170375.0,
+          "referenceKnownAtMsc": 1793371260000,
+          "placedAtMsc": 1793371260000,
+          "reachedAtMsc": 1793371380000,
+          "evidence": {
+            "startTimeMsc": 1793371320000,
+            "open": 170300.0,
+            "high": 170465.0,
+            "low": 170265.0,
+            "close": 170375.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "14:35",
+        "direction": "BUY",
+        "entryPoints": 170415.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 170395.0,
+          "level": 170415.0,
+          "referenceKnownAtMsc": 1793371560000,
+          "placedAtMsc": 1793371560000,
+          "reachedAtMsc": 1793371740000,
+          "evidence": {
+            "startTimeMsc": 1793371680000,
+            "open": 170330.0,
+            "high": 170485.0,
+            "low": 170320.0,
+            "close": 170425.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      },
+      {
+        "c1": "15:15",
+        "direction": "BUY",
+        "entryPoints": 169695.0,
+        "wick": null,
+        "trigger": {
+          "state": "ALCANCADO_HIPOTETICO",
+          "referencePrice": 169675.0,
+          "level": 169695.0,
+          "referenceKnownAtMsc": 1793373960000,
+          "placedAtMsc": 1793373960000,
+          "reachedAtMsc": 1793374200000,
+          "evidence": {
+            "startTimeMsc": 1793374140000,
+            "open": 169530.0,
+            "high": 169785.0,
+            "low": 169525.0,
+            "close": 169685.0
+          },
+          "reason": "M1 iniciou antes do nivel e o alcancou apos disponibilidade da ordem; sem preco de fill, sem ordem real"
+        }
+      }
+    ],
+    "noProfitabilityClaim": true
+  }
+]

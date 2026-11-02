@@ -5,6 +5,7 @@ import br.com.bauzin.market.panic.panicscanner.domain.win.WinCandle;
 import br.com.bauzin.market.panic.panicscanner.domain.win.WinTechnicalSnapshot;
 
 import org.springframework.stereotype.Component;
+import br.com.bauzin.market.ta4j.indicators.MovingAverages;
 import org.ta4j.core.BarSeries;
 import org.ta4j.core.BaseBar;
 import org.ta4j.core.BaseBarSeriesBuilder;
@@ -52,10 +53,10 @@ public class Ta4jWinTechnicalAnalysisAdapter implements WinTechnicalAnalysisEngi
         BarSeries series = toBarSeries(timeframe, ordered);
         int lastIndex = series.getEndIndex();
         ClosePriceIndicator closePrice = new ClosePriceIndicator(series);
-        SMAIndicator sma9 = new SMAIndicator(closePrice, SHORT_PERIOD);
-        SMAIndicator sma21 = new SMAIndicator(closePrice, LONG_PERIOD);
-        EMAIndicator ema9 = new EMAIndicator(closePrice, SHORT_PERIOD);
-        EMAIndicator ema21 = new EMAIndicator(closePrice, LONG_PERIOD);
+        SMAIndicator sma9 = MovingAverages.sma(closePrice, SHORT_PERIOD);
+        SMAIndicator sma21 = MovingAverages.sma(closePrice, LONG_PERIOD);
+        EMAIndicator ema9 = MovingAverages.ema(closePrice, SHORT_PERIOD);
+        EMAIndicator ema21 = MovingAverages.ema(closePrice, LONG_PERIOD);
         RSIIndicator rsi9 = new RSIIndicator(closePrice, RSI_PERIOD);
         ATRIndicator atr14 = new ATRIndicator(series, ATR_PERIOD);
         ADXIndicator adx14 = new ADXIndicator(series, ADX_PERIOD);

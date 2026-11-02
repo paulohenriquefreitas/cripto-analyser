@@ -1,0 +1,140 @@
+{
+  "candidates": 477,
+  "uniqueC1Direction": 140,
+  "states": {
+    "REJEICAO_OBSERVADA": 135,
+    "REJEITADO": 188,
+    "TESTANDO": 86,
+    "TESTE_INVALIDADO": 54,
+    "NEGA_CONFIRMADA": 5,
+    "ALVO": 9
+  },
+  "triggers": {
+    "ALCANCADO_HIPOTETICO": 169,
+    "NAO_POSICIONADO": 228,
+    "EXPIRADO": 57,
+    "CANCELADO": 23
+  },
+  "rejectedContacts": 22,
+  "protectedSources": {
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\CandleAggregation.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\CandlePipeline.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowFiftyEngine.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowStructureEngine.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1CandleAggregator.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1DetectionMode.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1ExperimentalComparison.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1SessionPreparation.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroDowEngine.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroZigZag.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\OpeningStructureContext.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\OpeningWave.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\ThreeCandleMarketFeed.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\ThreeCandlePatternDetector.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\ThreeCandleStructure.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\application\\win\\strategy\\ConfirmedPivotDetector.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\application\\win\\strategy\\StructureReactionEvent.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\application\\win\\strategy\\StructureReactionScanner.java": true,
+    "frontend\\src\\features\\threecandles\\models\\FibonacciMovementEngine.ts": true
+  },
+  "javaReports": [
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.application.win.strategy.StructureReactionScannerTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.DowFiftyEngineTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.DowFiftyOctober29Test",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.DowStructureEngineTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "1"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.ExperimentalThreeCandlePatternDetectorTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.MicroDowContinuityTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "1"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.MicroDowEngineTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.MicroDowFiftyEngineTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.MicroDowOctober28ValidationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.MicroDowOpeningTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.OpeningStructureContextTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.ThreeCandleAdaptersTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.ThreeCandleHistoryLoaderTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "1"
+    },
+    {
+      "suite": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.ThreeCandleVisualAuditTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ]
+}

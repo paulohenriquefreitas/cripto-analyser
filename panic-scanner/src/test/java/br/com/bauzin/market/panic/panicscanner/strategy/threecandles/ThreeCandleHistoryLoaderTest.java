@@ -47,6 +47,23 @@ class ThreeCandleHistoryLoaderTest {
         assertThat(root.resolve("WIN$N/three-candles-m1/2026-10-16.json.metadata.json")).exists();
         assertThat(loader.load("WIN$N",day,5)).isEqualTo(official);
     }
+    @Test void missingBoundaryMinuteDoesNotDiscardOtherNativePatternEvidenceOrRefetchIt() throws Exception {
+        when(mt5.readCandles("WIN$N","M5",day.minusDays(28),day)).thenReturn(rates());
+        var source=new ArrayList<Mt5Candle>();
+        long opening=day.atTime(9,0).toEpochSecond(ZoneOffset.UTC);
+        for(var bar:rates())if(bar.time()>=opening)
+            for(int i=0;i<5;i++)if(bar.time()+i*60!=opening+4*60)
+                source.add(new Mt5Candle(bar.time()+i*60,bar.open(),bar.high(),bar.low(),bar.close(),1,1));
+        when(mt5.readCandles("WIN$N","M1",day,day)).thenReturn(source);
+        var loader=loader(mt5);var official=loader.load("WIN$N",day,5);
+        // An official M5 close is preserved without pretending the absent final M1 exists.
+        var progressive=loader.progressiveHistory("WIN$N",day,official);
+        assertThat(progressive.missingM1Times()).containsExactly((opening+4*60)*1000);
+        assertThat(progressive.updates().stream().filter(b->b.closed()).toList()).isEqualTo(official);
+        assertThat(loader.patternMinutes("WIN$N",day,official)).containsExactlyElementsOf(source);
+        assertThat(loader(mt5).patternMinutes("WIN$N",day,official)).containsExactlyElementsOf(source);
+        verify(mt5,times(1)).readCandles("WIN$N","M1",day,day);
+    }
     @Test void missingCacheFetchesM5OnceAndPersistsForAnotherLoaderWithoutLookahead() throws Exception {
         when(mt5.readCandles("WIN$N","M5",day.minusDays(28),day)).thenReturn(rates());
         var loader=loader(mt5); assertThat(loader.ready("WIN$N",day)).isFalse();

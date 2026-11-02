@@ -18,7 +18,11 @@
         <module>common</module>
         <module>bolsai-client</module>
         <module>ta4j-engine</module>
+        <module>mt5-client</module>
         <module>panic-scanner</module>
+        <module>apps/scanner/backend</module>
+        <module>apps/win-m5/backend</module>
+        <module>apps/three-candles/backend</module>
         <module>crypto-analyzer</module>
     </modules>
 

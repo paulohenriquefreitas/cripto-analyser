@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5ProcessClient;
 import java.util.*;
 import java.io.IOException;
+import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.ExperimentalChopStudy;
+import br.com.bauzin.market.panic.panicscanner.strategy.threecandles.application.DmiStudy;
 import java.time.*;
 
 /** Reads the existing shared tick; REST refresh only at initialization, reconnect or M5 rollover. */
@@ -24,6 +26,9 @@ public final class ThreeCandleLive {
     private final Clock clock;
     private List<CandleUpdate> base = List.of();
     private long bucket = -1, lastTick = -1;
+    private long patternMinute=-1;
+    private String patternDate="";
+    private List<br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Candle> patternMinutes=List.of();
     private boolean reconnect = true;
     private final Map<Integer, LiveFeed> feeds = new HashMap<>();
     public static final class LiveFeed implements ThreeCandleMarketFeed {
@@ -32,7 +37,7 @@ public final class ThreeCandleLive {
         private LiveFeed(String symbol,int minutes) { pipeline=new CandlePipeline(symbol,minutes); }
         public CandlePipeline pipeline() { return pipeline; }
     }
-    public record View(String symbol, int timeframeMinutes, String status, Long lastTickMsc, List<CandleUpdate> candles, ThreeCandleStructure.Snapshot structure,long availableAtMsc,DowStructureEngine.Snapshot dow, MicroDowEngine.Snapshot microDow, DowFiftyEngine.Snapshot dowFifty, OpeningStructureContext.Snapshot openingStructure, MicroDowFiftyEngine.Snapshot microDowFifty) {}
+    public record View(String symbol, int timeframeMinutes, String status, Long lastTickMsc, List<CandleUpdate> candles, ThreeCandleStructure.Snapshot structure,long availableAtMsc,DowStructureEngine.Snapshot dow, MicroDowEngine.Snapshot microDow, DowFiftyEngine.Snapshot dowFifty, OpeningStructureContext.Snapshot openingStructure, MicroDowFiftyEngine.Snapshot microDowFifty, ThreeCandleVisualAudit.Snapshot patternAudit, ExperimentalThreeCandlePatternDetector.Snapshot patternStudy, ExperimentalChopStudy.Snapshot chop, DmiStudy.Snapshot dmi) {}
     public ThreeCandleLive(GetMt5CandlesUseCase candles, Mt5TickWebSocketHandler ticks, Mt5Symbol symbol) {
         this(candles,ticks,symbol,null);
     }
@@ -125,11 +130,25 @@ public final class ThreeCandleLive {
         var structure=feed.pipeline.structure(maxLevels);
         var dow=minutes==5?DowStructureEngine.analyze(symbol.value(),received,structure,available):null;
         var micro=minutes==5 ? MicroDowEngine.analyze(symbol.value(),received,structure,available) : null;
+        ExperimentalThreeCandlePatternDetector.Snapshot patternStudy=null;
+        if(minutes==5) {
+            String date=structure.preparation()!=null?structure.preparation().sessionDate():LocalDate.ofEpochDay(available/86400000L).toString();
+            if(!patternDate.equals(date)){patternDate=date;patternMinutes=List.of();patternMinute=-1;}
+            if(warmupClient!=null && patternMinute!=available/60000L) {
+                patternMinute=available/60000L;
+                try {var read=warmupClient.readCandles(symbol.value(),"M1",LocalDate.parse(date),LocalDate.parse(date));patternMinutes=read==null?List.of():List.copyOf(read);}
+                catch(IOException unavailableM1) { /* Keep known native minutes; no fabricated sequence or trigger. */ }
+            }
+            patternStudy=ThreeCandlePatternStudy.analyze(symbol.value(),date,received,patternMinutes,structure.preparation(),available);
+        }
         return new View(symbol.value(),minutes,tick.isPresent() ? "LIVE" : "UNAVAILABLE",lastTick<0?null:lastTick,received,
                 structure,available,dow,
                 micro,
                 dow==null?null:DowFiftyEngine.analyze(symbol.value(),received,dow,available),
                 minutes==5 ? OpeningStructureContext.analyze(symbol.value(),received,structure,available) : null,
-                micro==null?null:MicroDowFiftyEngine.analyze(micro,available));
+                micro==null?null:MicroDowFiftyEngine.analyze(micro,available),
+                patternStudy==null?null:patternStudy.visual(),patternStudy,
+                minutes==5 ? ExperimentalChopStudy.analyze(symbol.value(),received,available) : null,
+                minutes==5 ? DmiStudy.analyze(symbol.value(),received,available) : null);
     }
 }

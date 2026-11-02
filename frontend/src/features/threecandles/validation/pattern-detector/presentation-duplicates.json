@@ -1,0 +1,49 @@
+{
+  "total": 477,
+  "sequences": 125,
+  "sequenceDirections": 150,
+  "sharedCandles": [
+    {
+      "groups": 73,
+      "candidates": 473,
+      "excess": 400
+    },
+    {
+      "groups": 72,
+      "candidates": 464,
+      "excess": 392
+    },
+    {
+      "groups": 52,
+      "candidates": 258,
+      "excess": 206
+    }
+  ],
+  "sameRegionGroups": 114,
+  "sameRegionCandidates": 288,
+  "tested": 249,
+  "reached": 169,
+  "invalidated": 54,
+  "rejected": 188,
+  "both": 77,
+  "variants": [
+    {
+      "variant": "A_FALHA_RENOVACAO",
+      "total": 224,
+      "tested": 200,
+      "invalidated": 41
+    },
+    {
+      "variant": "B_FALSO_ROMPIMENTO",
+      "total": 133,
+      "tested": 121,
+      "invalidated": 22
+    }
+  ],
+  "hypothesisReview": {
+    "A_only": 147,
+    "B_only": 56,
+    "A_equal_extreme": 9,
+    "E_without_observed_reaction_event": 31
+  }
+}

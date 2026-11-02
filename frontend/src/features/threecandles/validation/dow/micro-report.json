@@ -1,4 +1,5 @@
 {
+  "prefixes" : 113,
   "main" : {
     "symbol" : "WINZ26",
     "timeframeMinutes" : 5,
@@ -5682,6 +5683,5 @@
         "reason" : "Opening boundary supported through opposite confirmation; remains a reference, never a detector pivot"
       } ]
     } ]
-  },
-  "prefixes" : 113
+  }
 }

@@ -1,3 +1,5 @@
+import { ThreeCandlePatternPrimitive } from './ThreeCandlePatternPrimitive';
+import type { PatternOverlay } from '../models/threeCandlePatternAudit';
 import { MicroDowFiftyPrimitive, type MicroFiftyOverlay } from './MicroDowFiftyPrimitive';
 import { OpeningStructurePrimitive, type OpeningOverlay } from './OpeningStructurePrimitive';
 import { Box, useTheme } from '@mui/material';
@@ -17,6 +19,8 @@ export function ThreeCandlesChart({
   zone,
   overlay,
   onPick,
+  patternOverlay,
+  patternViewport,
   dowOverlay,
   microDowOverlay,
   openingOverlay,
@@ -29,6 +33,8 @@ export function ThreeCandlesChart({
   zone: string;
   overlay: FibonacciOverlay;
   onPick: (anchor: FibAnchor) => void;
+  patternOverlay?: PatternOverlay;
+  patternViewport?: {from:number;to:number;request:number};
   dowOverlay?: DowOverlay;
   microDowOverlay?: DowOverlay;
   openingOverlay?: OpeningOverlay;
@@ -43,6 +49,7 @@ export function ThreeCandlesChart({
   const state = useRef({
     overlay,
     onPick,
+    patternOverlay,
     dowOverlay,
     microDowOverlay,
     openingOverlay,
@@ -54,6 +61,7 @@ export function ThreeCandlesChart({
   state.current = {
     overlay,
     onPick,
+    patternOverlay,
     dowOverlay,
     microDowOverlay,
     openingOverlay,
@@ -65,8 +73,10 @@ export function ThreeCandlesChart({
   const microPrimitive = useRef<DowStructurePrimitive | undefined>(undefined);
   const openingPrimitive = useRef<OpeningStructurePrimitive | undefined>(undefined);
   const microFiftyPrimitive = useRef<MicroDowFiftyPrimitive | undefined>(undefined);
+  const patternPrimitive = useRef<ThreeCandlePatternPrimitive | undefined>(undefined);
   const fiftyPrimitive = useRef<DowFiftyPrimitive | undefined>(undefined);
   const times = useRef<number[]>([]);
+  const patternChart=useRef<ReturnType<typeof createChart> | undefined>(undefined);
   const theme = useTheme();
   useEffect(() => {
     if (!host.current) return;
@@ -104,6 +114,7 @@ export function ThreeCandlesChart({
           }).format(new Date(time * 1000)),
       },
     });
+    patternChart.current=chart;
     const series = chart.addSeries(CandlestickSeries, {
       upColor: '#00FF00',
       downColor: '#FF0000',
@@ -136,7 +147,11 @@ export function ThreeCandlesChart({
     const microFifty = new MicroDowFiftyPrimitive();
     microFiftyPrimitive.current = microFifty;
     series.attachPrimitive(microFifty);
+    const pattern = new ThreeCandlePatternPrimitive();
+    patternPrimitive.current = pattern;
+    series.attachPrimitive(pattern);
     const refresh = () => {
+      pattern.set(state.current.patternOverlay ?? { visible: false, numbers: true, highlights: true });
       microFifty.set(state.current.microFiftyOverlay ?? { visible: false }, times.current);
       opening.set(state.current.openingOverlay ?? { visible: false, minimumPoints: 0 });
       fib.set(state.current.overlay, times.current);
@@ -218,9 +233,11 @@ export function ThreeCandlesChart({
       dowPrimitive.current = undefined;
       microPrimitive.current = undefined;
       fiftyPrimitive.current = undefined;
+      patternPrimitive.current = undefined;
       microFiftyPrimitive.current = undefined;
       openingPrimitive.current = undefined;
       chart.remove();
+      patternChart.current=undefined;
     };
   }, [controller, zone, theme]);
   useEffect(() => {
@@ -241,6 +258,15 @@ export function ThreeCandlesChart({
   useEffect(() => {
     microFiftyPrimitive.current?.set(microFiftyOverlay ?? { visible: false }, times.current);
   }, [microFiftyOverlay]);
+  useEffect(() => {
+    patternPrimitive.current?.set(patternOverlay ?? { visible: false, numbers: true, highlights: true });
+  }, [patternOverlay]);
+  useEffect(()=>{
+    if(!patternViewport||!patternChart.current)return;
+    const from=times.current.findIndex(t=>t>=patternViewport.from/1000);
+    const last=times.current.findIndex(t=>t>=patternViewport.to/1000);
+    if(from>=0)patternChart.current.timeScale().setVisibleLogicalRange({from:from-5,to:Math.max(from,last)+6});
+  },[patternViewport]);
   return (
     <Box
       ref={host}

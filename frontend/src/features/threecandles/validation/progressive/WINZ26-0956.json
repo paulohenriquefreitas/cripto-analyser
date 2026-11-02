@@ -260,6 +260,226 @@
       "state" : "CONFIRMED",
       "brokenAtMsc" : null,
       "timeframeMinutes" : 5
+    } ],
+    "earlyPivots" : [ {
+      "id" : "WINZ26:2+1:1793178900000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 177010.0,
+      "leftA" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793178300000,
+          "open" : 177375.0,
+          "high" : 177725.0,
+          "low" : 177355.0,
+          "close" : 177565.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793178600000
+      },
+      "leftB" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793178600000,
+          "open" : 177560.0,
+          "high" : 177565.0,
+          "low" : 177065.0,
+          "close" : 177170.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793178900000
+      },
+      "origin" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793178900000,
+          "open" : 177170.0,
+          "high" : 177445.0,
+          "low" : 177010.0,
+          "close" : 177235.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793179200000
+      },
+      "rightC" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793179200000,
+          "open" : 177240.0,
+          "high" : 177570.0,
+          "low" : 177200.0,
+          "close" : 177515.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793179500000
+      },
+      "availableAtMsc" : 1793179500000,
+      "status" : "CONFIRMED_2_2",
+      "rightD" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793179500000,
+          "open" : 177520.0,
+          "high" : 177610.0,
+          "low" : 177240.0,
+          "close" : 177605.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793179800000
+      },
+      "resolvedAtMsc" : 1793179800000,
+      "reason" : "D fechado preservou o extremo; decisao estrutural continua independente"
+    }, {
+      "id" : "WINZ26:2+1:1793179800000:TOP",
+      "type" : "TOP",
+      "price" : 177710.0,
+      "leftA" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793179200000,
+          "open" : 177240.0,
+          "high" : 177570.0,
+          "low" : 177200.0,
+          "close" : 177515.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793179500000
+      },
+      "leftB" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793179500000,
+          "open" : 177520.0,
+          "high" : 177610.0,
+          "low" : 177240.0,
+          "close" : 177605.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793179800000
+      },
+      "origin" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793179800000,
+          "open" : 177600.0,
+          "high" : 177710.0,
+          "low" : 177120.0,
+          "close" : 177130.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793180100000
+      },
+      "rightC" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793180100000,
+          "open" : 177130.0,
+          "high" : 177270.0,
+          "low" : 176825.0,
+          "close" : 177000.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793180400000
+      },
+      "availableAtMsc" : 1793180400000,
+      "status" : "CONFIRMED_2_2",
+      "rightD" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793180400000,
+          "open" : 176990.0,
+          "high" : 177150.0,
+          "low" : 176875.0,
+          "close" : 176995.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793180700000
+      },
+      "resolvedAtMsc" : 1793180700000,
+      "reason" : "D fechado preservou o extremo; decisao estrutural continua independente"
+    }, {
+      "id" : "WINZ26:2+1:1793180100000:BOTTOM",
+      "type" : "BOTTOM",
+      "price" : 176825.0,
+      "leftA" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793179500000,
+          "open" : 177520.0,
+          "high" : 177610.0,
+          "low" : 177240.0,
+          "close" : 177605.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793179800000
+      },
+      "leftB" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793179800000,
+          "open" : 177600.0,
+          "high" : 177710.0,
+          "low" : 177120.0,
+          "close" : 177130.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793180100000
+      },
+      "origin" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793180100000,
+          "open" : 177130.0,
+          "high" : 177270.0,
+          "low" : 176825.0,
+          "close" : 177000.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793180400000
+      },
+      "rightC" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793180400000,
+          "open" : 176990.0,
+          "high" : 177150.0,
+          "low" : 176875.0,
+          "close" : 176995.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793180700000
+      },
+      "availableAtMsc" : 1793180700000,
+      "status" : "CONFIRMED_2_2",
+      "rightD" : {
+        "candle" : {
+          "symbol" : "WINZ26",
+          "bucketStartTimeMsc" : 1793180700000,
+          "open" : 176990.0,
+          "high" : 177235.0,
+          "low" : 176925.0,
+          "close" : 177215.0
+        },
+        "timeframeMinutes" : 5,
+        "closed" : true,
+        "availableAtMsc" : 1793181000000
+      },
+      "resolvedAtMsc" : 1793181000000,
+      "reason" : "D fechado preservou o extremo; decisao estrutural continua independente"
     } ]
   },
   "dow" : {

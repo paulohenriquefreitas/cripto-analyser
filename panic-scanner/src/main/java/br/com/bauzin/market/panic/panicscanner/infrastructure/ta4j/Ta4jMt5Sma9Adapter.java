@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import br.com.bauzin.market.panic.panicscanner.infrastructure.marketdata.Mt5Symbol;
+import br.com.bauzin.market.ta4j.indicators.MovingAverages;
 import org.ta4j.core.BarSeries;
 import org.ta4j.core.indicators.averages.SMAIndicator;
 import org.ta4j.core.indicators.helpers.ClosePriceIndicator;
@@ -34,8 +35,8 @@ public class Ta4jMt5Sma9Adapter {
         List<Mt5Candle> candles = input.subList(Math.max(0, input.size() - 1000), input.size());
         BarSeries next = Mt5BarSeriesConverter.convert(candles);
         var close = new ClosePriceIndicator(next);
-        SMAIndicator indicator = new SMAIndicator(close, 9);
-        SMAIndicator indicator21 = new SMAIndicator(close, 21);
+        SMAIndicator indicator = MovingAverages.sma(close, 9);
+        SMAIndicator indicator21 = MovingAverages.sma(close, 21);
         var vwap = new Mt5SessionVwap(next);
         List<Mt5ChartCandle> result = new ArrayList<>(candles.size());
         for (int i = 0; i < candles.size(); i++) {

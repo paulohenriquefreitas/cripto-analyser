@@ -1,0 +1,376 @@
+{
+  "7": {
+    "confirmed": 114,
+    "provisional": 452,
+    "states": {
+      "INTERMEDIATE": 81,
+      "DIRECTIONAL": 22,
+      "CHOPPY": 11
+    },
+    "transitions": [
+      {
+        "at": "2026-10-30T09:05:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 46.18850622582036
+      },
+      {
+        "at": "2026-10-30T09:50:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 29.22923680158982
+      },
+      {
+        "at": "2026-10-30T10:10:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 47.71347063198951
+      },
+      {
+        "at": "2026-10-30T10:20:00Z",
+        "regime": "CHOPPY",
+        "value": 64.12194557752305
+      },
+      {
+        "at": "2026-10-30T10:35:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 47.46729131456532
+      },
+      {
+        "at": "2026-10-30T10:55:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 38.03116656711419
+      },
+      {
+        "at": "2026-10-30T11:05:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 47.48435341729793
+      },
+      {
+        "at": "2026-10-30T11:40:00Z",
+        "regime": "CHOPPY",
+        "value": 70.06000989084924
+      },
+      {
+        "at": "2026-10-30T11:45:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 58.29903000547426
+      },
+      {
+        "at": "2026-10-30T12:10:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 32.33671291996425
+      },
+      {
+        "at": "2026-10-30T12:30:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 39.84692094716427
+      },
+      {
+        "at": "2026-10-30T13:10:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 23.60247001762148
+      },
+      {
+        "at": "2026-10-30T13:25:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 44.55680256595852
+      },
+      {
+        "at": "2026-10-30T13:50:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 28.54488312610007
+      },
+      {
+        "at": "2026-10-30T14:05:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 46.9457403133188
+      },
+      {
+        "at": "2026-10-30T14:35:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 35.49208326381955
+      },
+      {
+        "at": "2026-10-30T14:40:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 40.14473794817866
+      },
+      {
+        "at": "2026-10-30T15:05:00Z",
+        "regime": "CHOPPY",
+        "value": 70.04627113011057
+      },
+      {
+        "at": "2026-10-30T15:15:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 45.72962812481353
+      },
+      {
+        "at": "2026-10-30T15:20:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 35.32955739801354
+      },
+      {
+        "at": "2026-10-30T15:35:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 39.1482162550998
+      },
+      {
+        "at": "2026-10-30T15:50:00Z",
+        "regime": "CHOPPY",
+        "value": 63.93689834871211
+      },
+      {
+        "at": "2026-10-30T16:05:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 59.48130694795724
+      },
+      {
+        "at": "2026-10-30T16:30:00Z",
+        "regime": "CHOPPY",
+        "value": 64.82421769837977
+      },
+      {
+        "at": "2026-10-30T16:35:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 59.9135842034265
+      },
+      {
+        "at": "2026-10-30T16:50:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 37.78482096241804
+      },
+      {
+        "at": "2026-10-30T17:00:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 39.39799804862828
+      },
+      {
+        "at": "2026-10-30T17:50:00Z",
+        "regime": "CHOPPY",
+        "value": 66.90715978423788
+      },
+      {
+        "at": "2026-10-30T17:55:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 47.38084918444941
+      }
+    ],
+    "provisionalDifferingFinal": 40,
+    "candlesWithDifferentProvisionalClass": 18,
+    "otherSessions": {
+      "2026-10-23": {
+        "UNAVAILABLE": 7,
+        "CHOPPY": 26,
+        "INTERMEDIATE": 64,
+        "DIRECTIONAL": 16
+      },
+      "2026-10-26": {
+        "DIRECTIONAL": 49,
+        "CHOPPY": 14,
+        "INTERMEDIATE": 49
+      },
+      "2026-10-27": {
+        "INTERMEDIATE": 78,
+        "CHOPPY": 28,
+        "DIRECTIONAL": 7
+      },
+      "2026-10-28": {
+        "DIRECTIONAL": 22,
+        "INTERMEDIATE": 65,
+        "CHOPPY": 27
+      },
+      "2026-10-29": {
+        "DIRECTIONAL": 10,
+        "INTERMEDIATE": 67,
+        "CHOPPY": 36
+      }
+    }
+  },
+  "14": {
+    "confirmed": 114,
+    "provisional": 452,
+    "states": {
+      "INTERMEDIATE": 91,
+      "DIRECTIONAL": 14,
+      "CHOPPY": 9
+    },
+    "transitions": [
+      {
+        "at": "2026-10-30T09:05:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 46.37168802242454
+      },
+      {
+        "at": "2026-10-30T09:45:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 37.86979643713775
+      },
+      {
+        "at": "2026-10-30T10:20:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 44.83083937175028
+      },
+      {
+        "at": "2026-10-30T11:45:00Z",
+        "regime": "CHOPPY",
+        "value": 62.11393952667961
+      },
+      {
+        "at": "2026-10-30T11:55:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 61.77024267446737
+      },
+      {
+        "at": "2026-10-30T12:00:00Z",
+        "regime": "CHOPPY",
+        "value": 61.97111116997844
+      },
+      {
+        "at": "2026-10-30T12:05:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 54.16923264413422
+      },
+      {
+        "at": "2026-10-30T13:40:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 34.94481684153956
+      },
+      {
+        "at": "2026-10-30T14:05:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 40.46295690579158
+      },
+      {
+        "at": "2026-10-30T15:20:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 36.78723825812997
+      },
+      {
+        "at": "2026-10-30T15:30:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 40.33422772244369
+      },
+      {
+        "at": "2026-10-30T16:25:00Z",
+        "regime": "CHOPPY",
+        "value": 64.67221474380477
+      },
+      {
+        "at": "2026-10-30T16:40:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 55.95753660608934
+      },
+      {
+        "at": "2026-10-30T18:15:00Z",
+        "regime": "CHOPPY",
+        "value": 66.25013992601372
+      },
+      {
+        "at": "2026-10-30T18:35:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 60.70619909007053
+      }
+    ],
+    "provisionalDifferingFinal": 19,
+    "candlesWithDifferentProvisionalClass": 7,
+    "otherSessions": {
+      "2026-10-23": {
+        "UNAVAILABLE": 14,
+        "CHOPPY": 19,
+        "INTERMEDIATE": 68,
+        "DIRECTIONAL": 12
+      },
+      "2026-10-26": {
+        "DIRECTIONAL": 36,
+        "CHOPPY": 3,
+        "INTERMEDIATE": 73
+      },
+      "2026-10-27": {
+        "INTERMEDIATE": 98,
+        "DIRECTIONAL": 3,
+        "CHOPPY": 12
+      },
+      "2026-10-28": {
+        "DIRECTIONAL": 14,
+        "INTERMEDIATE": 87,
+        "CHOPPY": 13
+      },
+      "2026-10-29": {
+        "INTERMEDIATE": 87,
+        "CHOPPY": 26
+      }
+    }
+  },
+  "21": {
+    "confirmed": 114,
+    "provisional": 452,
+    "states": {
+      "INTERMEDIATE": 96,
+      "DIRECTIONAL": 18
+    },
+    "transitions": [
+      {
+        "at": "2026-10-30T09:05:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 46.52509532274731
+      },
+      {
+        "at": "2026-10-30T09:45:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 37.56134828769695
+      },
+      {
+        "at": "2026-10-30T10:20:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 38.21673111315137
+      },
+      {
+        "at": "2026-10-30T13:50:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 34.38579594896473
+      },
+      {
+        "at": "2026-10-30T14:30:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 40.66576752635907
+      },
+      {
+        "at": "2026-10-30T15:25:00Z",
+        "regime": "DIRECTIONAL",
+        "value": 36.71628757742095
+      },
+      {
+        "at": "2026-10-30T15:40:00Z",
+        "regime": "INTERMEDIATE",
+        "value": 39.87721966472922
+      }
+    ],
+    "provisionalDifferingFinal": 6,
+    "candlesWithDifferentProvisionalClass": 2,
+    "otherSessions": {
+      "2026-10-23": {
+        "UNAVAILABLE": 21,
+        "INTERMEDIATE": 71,
+        "CHOPPY": 7,
+        "DIRECTIONAL": 14
+      },
+      "2026-10-26": {
+        "DIRECTIONAL": 30,
+        "INTERMEDIATE": 82
+      },
+      "2026-10-27": {
+        "INTERMEDIATE": 96,
+        "CHOPPY": 17
+      },
+      "2026-10-28": {
+        "INTERMEDIATE": 83,
+        "DIRECTIONAL": 20,
+        "CHOPPY": 11
+      },
+      "2026-10-29": {
+        "INTERMEDIATE": 90,
+        "CHOPPY": 22,
+        "DIRECTIONAL": 1
+      }
+    }
+  }
+}

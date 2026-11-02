@@ -8,9 +8,11 @@ import java.util.*;
 public final class ThreeCandleReplay implements ThreeCandleMarketFeed {
     public enum Mode { CLOSED_CANDLE, PROGRESSIVE_M1 }
     private final Mode mode;
+    private final List<Long> sourceMissingM1Times;
     public Mode mode() { return mode; }
     public List<Long> missingM1Times() {
         if(mode!=Mode.PROGRESSIVE_M1) return List.of();
+        if(sourceMissingM1Times!=null)return sourceMissingM1Times.stream().filter(t->t+60000L>start).toList();
         var missing=new ArrayList<Long>();
         var known=new HashSet<Long>();
         history.stream().filter(c->c.availableAtMsc()>start).forEach(c->known.add(c.availableAtMsc()));
@@ -40,6 +42,11 @@ public final class ThreeCandleReplay implements ThreeCandleMarketFeed {
     }
     public ThreeCandleReplay(String symbol, int timeframe, List<CandleUpdate> history, long start,
                              H1SessionPreparation preparation, Mode mode) {
+        this(symbol,timeframe,history,start,preparation,mode,null);
+    }
+    public ThreeCandleReplay(String symbol,int timeframe,List<CandleUpdate> history,long start,
+                             H1SessionPreparation preparation,Mode mode,List<Long> sourceMissingM1Times) {
+        this.sourceMissingM1Times=sourceMissingM1Times==null?null:List.copyOf(sourceMissingM1Times);
         this.mode = Objects.requireNonNull(mode);
         if(mode==Mode.PROGRESSIVE_M1 && timeframe!=5) throw new IllegalArgumentException("Replay progressivo requer M5");
         this.symbol = symbol; this.timeframe = timeframe; this.start = start; this.preparation=preparation;

@@ -100,3 +100,47 @@ test('all-fractal markers do not redraw superseded segments or change the select
   draw(false);assert.equal(dots.length,2);assert.equal(segments.length,1);
   draw(true);assert.equal(dots.length,5);assert.equal(segments.length,2);assert.deepEqual(segments[0],segments[1]);
 });
+
+
+test('principal labels C1 C2 C3 above the actual closed confirmation candles, only after D is known',()=>{
+  const base=Date.UTC(2026,9,6,9),m5=300000;
+  const candles=[110,120,150,130,125].map((high,i)=>({candle:{symbol:'WIN$N',bucketStartTimeMsc:base+i*m5,open:100,high,low:90,close:100},timeframeMinutes:5,closed:true,availableAtMsc:base+(i+1)*m5}));
+  const top=node(extreme('test','TOP',150,base+2*m5,base+5*m5),'FIRST');
+  const snap={...snapshot,pivots:[top],movements:[],availableAtMsc:base+5*m5};
+  const texts=[];
+  function render({micro=false,visible=true,cutoff=snap.availableAtMsc,bars=candles,missingTime=null}={}) {
+    const p=new DowStructurePrimitive('#E5E7EB',micro);
+    p.attached({chart:{timeScale:()=>({timeToCoordinate:t=>t===missingTime?null:(t-base/1000)/300})},series:{priceToCoordinate:p=>300-p},requestUpdate(){}});
+    p.set({snapshot:{...snap,availableAtMsc:cutoff},candles:bars,visible,labels:false});
+    const ctx={save(){},restore(){},setLineDash(){},beginPath(){},stroke(){},fill(){},arc(){},fillText(t,x,y){texts.push({t,x,y});}};
+    p.paneViews()[0].renderer().draw({useMediaCoordinateSpace:fn=>fn({context:ctx})});
+  }
+  const original=JSON.stringify(candles);
+  render({cutoff:base+5*m5-1});assert.equal(texts.length,0);
+  render();assert.deepEqual(texts,[{t:'C1',x:2,y:126},{t:'C2',x:3,y:146},{t:'C3',x:4,y:151}]);
+  texts.length=0;render({micro:true});render({visible:false});assert.equal(texts.length,0);
+  render({bars:candles.slice(0,4)});assert.equal(texts.length,0);
+  render({bars:candles.map((b,i)=>i===4?{...b,closed:false}:b)});assert.equal(texts.length,0);
+  render({missingTime:(base+3*m5)/1000});assert.deepEqual(texts.map(t=>t.t),['C1','C3']);
+  assert.equal(JSON.stringify(candles),original);
+});
+
+
+test('2+1 candidate uses directional colors at C2 close and accompanies forming D without inventing a confirmed pivot',()=>{
+  const base=Date.UTC(2026,9,6,9),step=300000;
+  const bars=[110,120,150,130,160].map((high,i)=>({candle:{symbol:'WIN$N',bucketStartTimeMsc:base+i*step,open:100,high,low:90,close:100},timeframeMinutes:5,closed:i<4,availableAtMsc:base+(i===4?4: i+1)*step+(i===4?60000:0)}));
+  const early={id:'early',type:'TOP',price:150,leftA:bars[0],leftB:bars[1],origin:bars[2],rightC:bars[3],availableAtMsc:base+4*step,status:'CANDIDATE_2_1',rightD:null,resolvedAtMsc:null,reason:'Test'};
+  function draw(cutoff,status='CANDIDATE_2_1',visible=true,type='TOP') {
+    const p=new DowStructurePrimitive(),texts=[];
+    p.attached({chart:{timeScale:()=>({timeToCoordinate:t=>(t-base/1000)/300})},series:{priceToCoordinate:p=>300-p},requestUpdate(){}});
+    p.set({snapshot:{...snapshot,pivots:[],movements:[],availableAtMsc:cutoff},earlyPivots:[{...early,status,type}],candles:bars,visible,labels:false});
+    const ctx={save(){},restore(){},setLineDash(){},beginPath(){},stroke(){},fill(){},arc(){},fillText(t,x,y){texts.push({t,x,y,color:this.fillStyle});}};
+    p.paneViews()[0].renderer().draw({useMediaCoordinateSpace:fn=>fn({context:ctx})});return texts;
+  }
+  assert.deepEqual(draw(early.availableAtMsc-1),[]);
+  const closeC=draw(early.availableAtMsc);assert.deepEqual(closeC.map(t=>t.t),['C1','C2']);assert.ok(closeC.every(t=>t.color==='#FF3030'));
+  assert.deepEqual(draw(base+4*step+60000).map(t=>t.t),['C1','C2','C3']);
+  assert.ok(draw(early.availableAtMsc,'CANDIDATE_2_1',true,'BOTTOM').every(t=>t.color==='#00E676'));
+  assert.deepEqual(draw(base+5*step,'INVALIDATED'),[]);assert.deepEqual(draw(base+5*step,'CONFIRMED_2_2'),[]);
+  assert.deepEqual(draw(early.availableAtMsc,'CANDIDATE_2_1',false),[]);
+});

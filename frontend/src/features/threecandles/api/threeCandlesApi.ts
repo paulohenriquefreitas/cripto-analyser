@@ -106,6 +106,116 @@ export const openingStructureSchema = z.object({symbol:z.string(),sessionDate:z.
     ctx.addIssue({code:z.ZodIssueCode.custom,message:'Contexto de abertura inconsistente ou futuro.'});
 });
 export type OpeningStructureSnapshot = z.infer<typeof openingStructureSchema>;
+const patternStageSchema=z.object({number:z.union([z.literal(1),z.literal(2),z.literal(3)]),role:z.enum(['ALVO','NEGA','TESTA']),
+  observation:updateSchema.extend({timeframeMinutes:z.literal(5)}),referencePrice:z.number().finite().positive(),
+  availableAtMsc:z.number().int().safe(),reason:z.string().trim().min(1)});
+const patternAuditSchema=z.object({symbol:z.string(),timeframeMinutes:z.literal(5),sessionDate:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  availableAtMsc:z.number().int().safe(),rulesStatus:z.enum(['PENDING_DEFINITION','DEFINED']),criterionId:z.string().trim().min(1).nullable(),
+  patterns:z.array(z.object({id:z.string().min(1),direction:z.enum(['BUY','SELL']),state:z.enum(['CANDLE_1','CANDLES_1_2','COMPLETE']),
+    stages:z.array(patternStageSchema).min(1).max(3)}))}).superRefine((s,ctx)=>{
+    const bad=s.rulesStatus==='PENDING_DEFINITION'?(s.patterns.length!==0||s.criterionId!==null)
+      :s.criterionId===null || new Set(s.patterns.map(p=>p.id)).size!==s.patterns.length || s.patterns.some(p=>
+        p.state!==['CANDLE_1','CANDLES_1_2','COMPLETE'][p.stages.length-1] || p.stages.some((v,i)=>{
+          const b=v.observation,t=b.candle.bucketStartTimeMsc,previous=p.stages[i-1];
+          return v.number!==i+1 || v.role!==['ALVO','NEGA','TESTA'][i] || b.candle.symbol!==s.symbol
+            || new Date(t).toISOString().slice(0,10)!==s.sessionDate || t%300000!==0
+            || b.availableAtMsc<t+(b.closed?300000:0) || v.availableAtMsc<b.availableAtMsc || v.availableAtMsc>s.availableAtMsc
+            || (previous && (t<=previous.observation.candle.bucketStartTimeMsc || v.availableAtMsc<previous.availableAtMsc));
+        }));
+    if(bad)ctx.addIssue({code:z.ZodIssueCode.custom,message:'Etapas visuais futuras ou sem evidência causal válida.'});
+  });
+const patternMinuteSchema=z.object({startTimeMsc:z.number().int().safe(),open:z.number().finite(),high:z.number().finite(),low:z.number().finite(),close:z.number().finite()});
+const patternRegionSchema=z.object({id:z.string(),source:z.string(),low:z.number().positive(),high:z.number().positive(),availableAtMsc:z.number().int().safe(),provenance:z.string()});
+const patternTriggerSchema=z.object({state:z.enum(['NAO_POSICIONADO','AGUARDANDO','ALCANCADO_HIPOTETICO','INDETERMINADO','CANCELADO','EXPIRADO']),
+  referencePrice:z.number().nullable(),level:z.number().nullable(),referenceKnownAtMsc:z.number().int().safe().nullable(),placedAtMsc:z.number().int().safe().nullable(),
+  reachedAtMsc:z.number().int().safe().nullable(),evidence:patternMinuteSchema.nullable(),reason:z.string()});
+const patternStudySchema=z.object({symbol:z.string(),sessionDate:z.string(),availableAtMsc:z.number().int().safe(),criterionId:z.enum(['EXPERIMENTAL_ALVO_NEGA_AB_TESTA_M1_V1','CONTEXT_CLOSE_NEGATION_TEST_RETURN_M1_V2','DOW_LEG_CLOSE_NEGATION_TEST_RETURN_M1_V3','DOW_LEG_MINIMUM_WICK_TEST_RETURN_M1_V4']),
+  parameters:z.object({contactTolerancePoints:z.number().nonnegative(),orderOffsetPoints:z.number().positive(),minRejectionTicks:z.number().nonnegative().optional()}),status:z.literal('HIPOTESE_OPERACIONAL_EM_VALIDACAO'),m1Status:z.string(),
+  candidates:z.array(z.object({id:z.string(),symbol:z.string(),sessionDate:z.string(),direction:z.enum(['BUY','SELL']),region:patternRegionSchema,state:z.string(),
+    negationVariants:z.array(z.enum(['A_FALHA_RENOVACAO','B_FALSO_ROMPIMENTO','FECHAMENTO_NAO_CONTINUA_C1'])),negationComparedExtreme:z.number().nullable(),
+    candle1:updateSchema.extend({timeframeMinutes:z.literal(5)}),candle2:updateSchema.extend({timeframeMinutes:z.literal(5)}).nullable(),candle3:updateSchema.extend({timeframeMinutes:z.literal(5)}).nullable(),
+    candle1Id:z.string(),candle2Id:z.string().nullable(),candle3Id:z.string().nullable(),testLow:z.number().nullable(),testHigh:z.number().nullable(),testState:z.string(),trigger:patternTriggerSchema,
+    events:z.array(z.object({atMsc:z.number().int().safe(),kind:z.string(),reason:z.string(),minute:patternMinuteSchema.nullable(),comparedPrice:z.number().nullable()})),validationStatus:z.literal('NAO_VALIDADO'),recognizedAtMsc:z.number().int().safe().nullable().optional(),
+    rejectionWick:z.object({points:z.number().nonnegative(),ticks:z.number().nonnegative(),minimumPoints:z.number().nonnegative(),availableAtMsc:z.number().int().safe(),observation:updateSchema}).nullable().optional(),
+    context:z.object({flow:z.enum(['UP','DOWN','UNDEFINED']),principalState:z.string(),microState:z.string(),source:z.string(),availableAtMsc:z.number().int().safe(),from:updateSchema.nullable(),to:updateSchema.nullable(),anchor:levelSchema.nullable().optional()}).optional()})),
+  rejectedContacts:z.array(z.object({atMsc:z.number().int().safe(),candleTimeMsc:z.number().int().safe(),referenceId:z.string(),reason:z.string()})),visual:patternAuditSchema,
+}).superRefine((s,ctx)=>{
+  const bad=s.visual.availableAtMsc!==s.availableAtMsc || s.visual.symbol!==s.symbol
+    || s.rejectedContacts.some(r=>r.atMsc>s.availableAtMsc)
+    || s.candidates.some(c=>{
+      const p=s.visual.patterns.find(p=>p.id===c.id),trigger=c.trigger,first=c.events[0];
+      const v4=s.criterionId==='DOW_LEG_MINIMUM_WICK_TEST_RETURN_M1_V4';
+      const v3=v4||s.criterionId==='DOW_LEG_CLOSE_NEGATION_TEST_RETURN_M1_V3';
+      const v2=v3||s.criterionId==='CONTEXT_CLOSE_NEGATION_TEST_RETURN_M1_V2';
+      const recognized=c.recognizedAtMsc!=null;
+      const context=c.context;
+      const invalidV2=v2&&(!context||context.availableAtMsc>c.candle1.candle.bucketStartTimeMsc
+        ||context.flow!==(c.direction==='BUY'?'DOWN':'UP')
+        ||!context.from||!context.to
+        ||(v3 ? !context.anchor||!['MICRO_DOW_DEVELOPING_LEG','PRINCIPAL_DOW_DEVELOPING_LEG'].includes(context.source)
+          ||context.anchor.confirmedAtMsc>context.availableAtMsc
+          ||context.anchor.extremeTimeMsc!==context.from?.candle.bucketStartTimeMsc
+          ||context.to?.candle.bucketStartTimeMsc!==context.availableAtMsc-300000
+          ||context.flow!==(context.to!.candle.close>context.anchor.price?'UP':context.to!.candle.close<context.anchor.price?'DOWN':'UNDEFINED')
+          :context.source!=='TWO_PRIOR_CLOSED_M5_CLOSES'||(context.from&&context.to&&(context.to.candle.bucketStartTimeMsc!==context.from.candle.bucketStartTimeMsc+300000
+            ||context.flow!==(context.to.candle.close>context.from.candle.close?'UP':context.to.candle.close<context.from.candle.close?'DOWN':'UNDEFINED'))))
+        ||[context.from,context.to].some(b=>b&&(b.availableAtMsc>context.availableAtMsc||b.candle.bucketStartTimeMsc>=c.candle1.candle.bucketStartTimeMsc||!b.closed))
+        ||(recognized? !c.candle2||c.recognizedAtMsc!==c.candle2.availableAtMsc||!p||p.stages.length<2
+          ||p.stages[0].availableAtMsc!==c.recognizedAtMsc
+          ||(c.direction==='BUY'?c.candle2.candle.close<c.candle1.candle.close:c.candle2.candle.close>c.candle1.candle.close)
+          ||c.negationComparedExtreme!==c.candle1.candle.close:!!p));
+      const wick=c.rejectionWick,minimum=(s.parameters.minRejectionTicks??0)*5;
+      const invalidWick=v4&&(s.parameters.minRejectionTicks==null
+        ||(trigger.placedAtMsc!=null&&(!wick||wick.availableAtMsc!==trigger.placedAtMsc))
+        ||!!wick&&(wick.availableAtMsc>s.availableAtMsc||wick.observation.availableAtMsc!==wick.availableAtMsc
+          ||wick.observation.timeframeMinutes!==5||wick.observation.closed||wick.observation.candle.symbol!==s.symbol
+          ||wick.observation.candle.bucketStartTimeMsc!==c.candle3?.candle.bucketStartTimeMsc
+          ||wick.minimumPoints!==minimum||wick.points<minimum||wick.ticks!==wick.points/5
+          ||wick.points!==(c.direction==='BUY'?Math.min(wick.observation.candle.open,wick.observation.candle.close)-wick.observation.candle.low
+            :wick.observation.candle.high-Math.max(wick.observation.candle.open,wick.observation.candle.close))
+          ||!c.events.some(e=>e.kind==='PAVIO_REJEICAO_QUALIFICADO'&&e.atMsc===wick.availableAtMsc&&e.comparedPrice===wick.points)));
+      return invalidWick||c.symbol!==s.symbol || c.sessionDate!==s.sessionDate || (!v2&&!p) || (p&&p.direction!==c.direction) || !first || invalidV2
+        || c.region.high<c.region.low || c.region.availableAtMsc>(first.minute?.startTimeMsc??c.candle1.candle.bucketStartTimeMsc)
+        || [c.candle1,c.candle2,c.candle3].some((b,i)=>b && (b.availableAtMsc>s.availableAtMsc || b.candle.symbol!==s.symbol
+          || [c.candle1Id,c.candle2Id,c.candle3Id][i]!==`${s.symbol}:5:${b.candle.bucketStartTimeMsc}`))
+        || (c.candle2!=null && !c.candle2.closed) || c.events.some(e=>e.atMsc>s.availableAtMsc || (e.minute && e.minute.startTimeMsc+60000>e.atMsc))
+        || (trigger.placedAtMsc!=null && (trigger.referenceKnownAtMsc==null || trigger.referenceKnownAtMsc>trigger.placedAtMsc || trigger.placedAtMsc>s.availableAtMsc
+          || !p || p.stages.length<3
+          || (v2 ? trigger.referenceKnownAtMsc!==p.stages[2].observation.candle.bucketStartTimeMsc+60000
+            || trigger.referencePrice!==p.stages[2].observation.candle.open
+            || (v4?!c.events.some(e=>e.kind==='ORDEM_HIPOTETICA_DISPONIVEL'&&e.atMsc===trigger.placedAtMsc):trigger.placedAtMsc!==p.stages[2].availableAtMsc)
+            || !(c.direction==='BUY'?p.stages[2].observation.candle.low<p.stages[2].observation.candle.open:p.stages[2].observation.candle.high>p.stages[2].observation.candle.open)
+            : trigger.referenceKnownAtMsc!==p.stages[2].availableAtMsc
+              || trigger.referencePrice!==(c.direction==='BUY'?p.stages[2].observation.candle.high:p.stages[2].observation.candle.low))
+          || trigger.referencePrice==null || trigger.level!==(c.direction==='BUY'?trigger.referencePrice+s.parameters.orderOffsetPoints:trigger.referencePrice-s.parameters.orderOffsetPoints)))
+        || (trigger.reachedAtMsc!=null && (trigger.state!=='ALCANCADO_HIPOTETICO' || trigger.placedAtMsc==null || trigger.reachedAtMsc<=trigger.placedAtMsc
+          || (v2&&(!c.events.some(e=>e.kind==='REJEICAO_OBSERVADA'&&e.atMsc<=trigger.reachedAtMsc!)||c.testState!=='REJEICAO_OBSERVADA'))
+          || trigger.reachedAtMsc>s.availableAtMsc || !trigger.evidence || trigger.evidence.startTimeMsc<trigger.placedAtMsc
+          || trigger.evidence.startTimeMsc+60000!==trigger.reachedAtMsc || trigger.level==null
+          || !(c.direction==='BUY'?trigger.evidence.open<trigger.level&&trigger.evidence.high>=trigger.level:trigger.evidence.open>trigger.level&&trigger.evidence.low<=trigger.level)));
+    });
+  if(bad)ctx.addIssue({code:z.ZodIssueCode.custom,message:'Estudo experimental contém evidência futura ou gatilho retroativo.'});
+});
+export type PatternStudySnapshot=z.infer<typeof patternStudySchema>;
+const chopReadingSchema=z.object({period:z.union([z.literal(7),z.literal(14),z.literal(21)]),value:z.number().finite().nullable(),delta:z.number().finite().nullable(),slope:z.enum(['UNAVAILABLE','RISING','FALLING','FLAT']),regime:z.enum(['UNAVAILABLE','DIRECTIONAL','CHOPPY','INTERMEDIATE']),status:z.enum(['VALID','INSUFFICIENT_HISTORY','ZERO_RANGE','NON_FINITE'])});
+const chopPointSchema=z.object({candleTimeMsc:z.number().int().safe(),availableAtMsc:z.number().int().safe(),provisional:z.boolean(),open:z.number().finite(),high:z.number().finite(),low:z.number().finite(),close:z.number().finite(),displacement:z.number().finite().nullable(),priceDirection:z.enum(['UNAVAILABLE','UP','DOWN','FLAT']),observedSessionHigh:z.number().finite(),observedSessionLow:z.number().finite(),readings:z.array(chopReadingSchema).length(3)});
+const chopSchema=z.object({symbol:z.string(),availableAtMsc:z.number().int().safe(),policy:z.enum(['CONTINUOUS_AVAILABLE_M5_INCLUDES_OVERNIGHT_TR','SESSION_ONLY_N_PLUS_1']),deltaBasis:z.literal('PREVIOUS_CONFIRMED_M5'),confirmed:z.array(chopPointSchema),provisional:chopPointSchema.nullable()}).superRefine((s,ctx)=>{
+  const points=[...s.confirmed,...(s.provisional?[s.provisional]:[])];
+  if(s.confirmed.some(p=>p.provisional||p.availableAtMsc<p.candleTimeMsc+300000)||s.provisional&&!s.provisional.provisional||points.some((p,i)=>p.availableAtMsc>s.availableAtMsc||p.availableAtMsc<p.candleTimeMsc||i>0&&p.candleTimeMsc<=points[i-1].candleTimeMsc||new Set(p.readings.map(r=>r.period)).size!==3||p.readings.some(r=>(r.status==='VALID')!==(r.value!=null))))ctx.addIssue({code:z.ZodIssueCode.custom,message:'CHOP com evidência futura, inválida ou confirmação antecipada.'});
+});
+const dmiValue=z.number().finite().min(0).max(100).nullable();
+const dmiPointSchema=z.object({candleTimeMsc:z.number().int().safe(),availableAtMsc:z.number().int().safe(),provisional:z.boolean(),plusDi:dmiValue,minusDi:dmiValue,adx:dmiValue,warmupPlusDi:dmiValue.optional(),warmupMinusDi:dmiValue.optional(),regime:z.enum(['UNAVAILABLE','FLAT','INDEFINITE','UP','DOWN'])});
+const dmiSchema=z.object({symbol:z.string(),availableAtMsc:z.number().int().safe(),period:z.literal(14),confirmed:z.array(dmiPointSchema),provisional:dmiPointSchema.nullable()}).superRefine((s,ctx)=>{
+  const sessionStart=Math.floor(s.availableAtMsc/86400000)*86400000+9*3600000;
+  if([...s.confirmed,...(s.provisional?[s.provisional]:[])].some(p=>p.candleTimeMsc<sessionStart))
+    ctx.addIssue({code:z.ZodIssueCode.custom,message:'DMI deve conter apenas candles da sessao atual a partir das 09:00 do feed.'});
+  const points=[...s.confirmed,...(s.provisional?[s.provisional]:[])];
+  if(s.confirmed.some(p=>p.provisional||p.availableAtMsc<p.candleTimeMsc+300000)||s.provisional&&!s.provisional.provisional||points.some((p,i)=>p.availableAtMsc>s.availableAtMsc||p.availableAtMsc<p.candleTimeMsc||i>0&&p.candleTimeMsc<=points[i-1].candleTimeMsc))ctx.addIssue({code:z.ZodIssueCode.custom,message:'DMI com evid?ncia futura ou confirma??o antecipada.'});
+});
+const earlyPivotSchema=z.object({id:z.string(),type:z.enum(['TOP','BOTTOM']),price:z.number().positive(),
+  leftA:updateSchema,leftB:updateSchema,origin:updateSchema,rightC:updateSchema,availableAtMsc:z.number().int().safe(),
+  status:z.enum(['CANDIDATE_2_1','CONFIRMED_2_2','INVALIDATED','INCONCLUSIVE_GAP']),rightD:updateSchema.nullable(),resolvedAtMsc:z.number().int().safe().nullable(),reason:z.string()});
+export type EarlyDowPivot=z.infer<typeof earlyPivotSchema>;
 export const viewSchema = z.object({
   id: z.string().optional(), symbol: z.string(), timeframeMinutes: z.union([z.literal(5), z.literal(15)]),
   availableAtMsc: z.number().int().safe().optional(),
@@ -117,9 +227,14 @@ export const viewSchema = z.object({
   dowFifty:dowFiftySchema.nullable().optional(),
   microDow:microDowSchema.nullable().optional(),
   microDowFifty:microDowFiftySchema.nullable().optional(),
+  patternAudit:patternAuditSchema.nullable().optional(),
+  patternStudy:patternStudySchema.nullable().optional(),
+  chop:chopSchema.nullable().optional(),
+  dmi:dmiSchema.nullable().optional(),
   structure: z.object({
     levels: z.array(levelSchema),
     confirmedPivots: z.array(levelSchema).optional(),
+    earlyPivots:z.array(earlyPivotSchema).optional(),
     totalActive: z.number().int().nonnegative(), maxLevels: z.number().int().min(1).max(12),
     h1History: z.object({previousSessions: z.number().int().nonnegative(), sufficient: z.boolean(), alignment: z.literal('NATIVE_FEED_HOUR_NO_SHIFT')}).optional(),
     preparation: z.object({symbol: z.string(), sessionDate: z.string(), sessionOpenMsc: z.number().int().safe(),
@@ -130,6 +245,14 @@ export const viewSchema = z.object({
     selection: z.enum(['NEAREST_LAST_CLOSED_THEN_LATEST_CONFIRMED','PREOPEN_THREE_SESSIONS_STRICT_PIVOTS_GROUP_5_POINTS','PREOPEN_THREE_SESSIONS_EXPERIMENTAL_1_1_WITH_2_2']), supported: z.boolean(),
   }).optional(),
 }).superRefine((view, ctx) => {
+  if(view.dmi&&(view.timeframeMinutes!==5||view.dmi.symbol!==view.symbol||view.dmi.availableAtMsc!==view.availableAtMsc))ctx.addIssue({code:z.ZodIssueCode.custom,path:['dmi'],message:'DMI fora do ativo ou instante do Replay.'});
+  if(view.chop&&(view.timeframeMinutes!==5||view.chop.symbol!==view.symbol||view.chop.availableAtMsc!==view.availableAtMsc))ctx.addIssue({code:z.ZodIssueCode.custom,path:['chop'],message:'CHOP fora do ativo ou instante do Replay.'});
+  if(view.patternStudy && (view.timeframeMinutes!==5 || view.patternStudy.symbol!==view.symbol || view.patternStudy.availableAtMsc!==view.availableAtMsc
+    || view.patternAudit?.criterionId!==view.patternStudy.criterionId || view.patternAudit?.patterns.length!==view.patternStudy.visual.patterns.length))
+    ctx.addIssue({code:z.ZodIssueCode.custom,path:['patternStudy'],message:'Detector experimental fora do ativo, instante ou auditoria visual.'});
+  if(view.patternAudit && (view.timeframeMinutes!==5 || view.patternAudit.symbol!==view.symbol
+    || view.patternAudit.availableAtMsc!==view.availableAtMsc))
+    ctx.addIssue({code:z.ZodIssueCode.custom,path:['patternAudit'],message:'Auditoria do padrão fora do ativo ou instante atual.'});
   if(view.microDowFifty) {
     const f=view.microDowFifty,micro=view.microDow,at=view.availableAtMsc??-1;
     const invalid=!micro || view.timeframeMinutes!==5 || f.symbol!==view.symbol || f.availableAtMsc!==at
@@ -242,6 +365,20 @@ export const viewSchema = z.object({
   if (!view.structure) return;
   const { levels, maxLevels } = view.structure;
   const availableAt = view.availableAtMsc ?? view.candles.at(-1)?.availableAtMsc ?? -1;
+  if(view.structure.earlyPivots?.some(p=>{
+    const group=[p.leftA,p.leftB,p.origin,p.rightC],top=p.type==='TOP';
+    return view.timeframeMinutes!==5||p.availableAtMsc>availableAt||p.availableAtMsc!==p.rightC.availableAtMsc
+      ||group.some((b,i)=>!b.closed||b.timeframeMinutes!==5||b.candle.symbol!==view.symbol||b.availableAtMsc>p.availableAtMsc||b.availableAtMsc<b.candle.bucketStartTimeMsc+300000
+        ||Math.floor(b.candle.bucketStartTimeMsc/86400000)!==Math.floor(p.origin.candle.bucketStartTimeMsc/86400000)
+        ||i>0&&b.candle.bucketStartTimeMsc!==group[i-1].candle.bucketStartTimeMsc+300000)
+      ||p.price!==(top?p.origin.candle.high:p.origin.candle.low)
+      ||[p.leftA,p.leftB,p.rightC].some(b=>top?p.price<=b.candle.high:p.price>=b.candle.low)
+      ||(p.status==='CANDIDATE_2_1'?(p.rightD!==null||p.resolvedAtMsc!==null):p.resolvedAtMsc==null||p.resolvedAtMsc>availableAt||p.resolvedAtMsc<p.availableAtMsc)
+      ||(p.status==='INCONCLUSIVE_GAP'?p.rightD!==null:p.status!=='CANDIDATE_2_1'&&(!p.rightD||!p.rightD.closed||p.rightD.timeframeMinutes!==5
+        ||p.rightD.candle.symbol!==view.symbol||p.rightD.candle.bucketStartTimeMsc!==p.rightC.candle.bucketStartTimeMsc+300000
+        ||p.rightD.availableAtMsc!==p.resolvedAtMsc
+        ||(p.status==='CONFIRMED_2_2')!==(top?p.price>p.rightD.candle.high:p.price<p.rightD.candle.low)));
+  }))ctx.addIssue({code:z.ZodIssueCode.custom,path:['structure','earlyPivots'],message:'Candidato 2+1 invalido ou com evidencia futura.'});
   if (view.structure.confirmedPivots?.some(l => l.confirmedAtMsc > availableAt || l.confirmedAtMsc <= l.extremeTimeMsc))
     ctx.addIssue({code:z.ZodIssueCode.custom,path:['structure','confirmedPivots'],message:'Memoria estrutural contem pivo futuro ou confirmacao invalida.'});
   for (const timeframe of [60]) {

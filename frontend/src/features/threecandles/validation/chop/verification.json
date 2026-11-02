@@ -1,0 +1,64 @@
+{
+  "ta4j": "0.22.6",
+  "nativeClass": "org.ta4j.core.indicators.ChopIndicator",
+  "javaReports": [
+    {
+      "name": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.ExperimentalChopStudyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.ThreeCandleAdaptersTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "br.com.bauzin.market.panic.panicscanner.strategy.threecandles.ExperimentalThreeCandlePatternDetectorTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "frontendTests": 186,
+  "typescript": "passed",
+  "protectedHashes": {
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\CandleAggregation.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\CandlePipeline.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowFiftyEngine.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\DowStructureEngine.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1CandleAggregator.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1DetectionMode.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1ExperimentalComparison.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\H1SessionPreparation.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroDowEngine.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\MicroZigZag.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\OpeningStructureContext.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\OpeningWave.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\ThreeCandleMarketFeed.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\ThreeCandlePatternDetector.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\strategy\\threecandles\\application\\ThreeCandleStructure.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\application\\win\\strategy\\ConfirmedPivotDetector.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\application\\win\\strategy\\StructureReactionEvent.java": true,
+    "panic-scanner\\src\\main\\java\\br\\com\\bauzin\\market\\panic\\panicscanner\\application\\win\\strategy\\StructureReactionScanner.java": true,
+    "frontend\\src\\features\\threecandles\\models\\FibonacciMovementEngine.ts": true
+  },
+  "coverage": {
+    "sessionM5Closed": 114,
+    "nativeM1": 566,
+    "progressiveM1Observations": 565,
+    "auctionClosedFallback": 1,
+    "closedCutoff": "2026-10-30 18:35 feed civil",
+    "auctionMissingMinutes": [
+      "18:30",
+      "18:32",
+      "18:33",
+      "18:34"
+    ]
+  },
+  "policy": "continuous previous available M5; include overnight TR; compare session-only in CSV; n+1 known bars; no future M1 path inferred"
+}

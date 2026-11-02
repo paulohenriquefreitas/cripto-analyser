@@ -1,0 +1,27 @@
+[
+  {
+    "path": "ta4j-engine\\pom.xml",
+    "bytes": 892,
+    "sha256": "3c90e69d16212d3515db7ee181794a95fa0f5fed5670e8b93a793907687c333a"
+  },
+  {
+    "path": "C:\\Users\\paulo\\.m2\\repository\\org\\ta4j\\ta4j-core\\0.22.6\\ta4j-core-0.22.6-sources.jar",
+    "bytes": 862822,
+    "sha256": "15f07eff567f4cf749a27f1c3dfb8d1db2694dce9ce40b491813d9b4e58e9429"
+  },
+  {
+    "path": "panic-scanner\\src\\test\\resources\\threecandles\\chop\\WINZ26-2026-10-30-M1.json",
+    "bytes": 100673,
+    "sha256": "bbe31524ecc66d3a92724f5d68568ac22508c439f241d4fe04c8deb5f7ca9461"
+  },
+  {
+    "path": "panic-scanner\\src\\test\\resources\\threecandles\\chop\\WINZ26-2026-10-30-M5.json",
+    "bytes": 20488,
+    "sha256": "08b09567873a60c28e622fdcfb45448ffc0251617d244bea496fc6938f30a7b9"
+  },
+  {
+    "path": "panic-scanner\\src\\test\\resources\\threecandles\\pattern-detector\\WINZ26-warmup-M5.json",
+    "bytes": 101664,
+    "sha256": "2e15368e8dd611290a728faf8bd9bed40c73ceea405fae5a3d8eb296dd67d0b0"
+  }
+]

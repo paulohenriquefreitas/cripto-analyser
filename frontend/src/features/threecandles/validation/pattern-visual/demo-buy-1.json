@@ -1,0 +1,2010 @@
+{
+  "id": "opening-oct30",
+  "symbol": "WINZ26",
+  "timeframeMinutes": 5,
+  "status": "PAUSED",
+  "availableAtMsc": 1793352000000,
+  "candles": [
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793264400000,
+        "open": 173135.0,
+        "high": 173485.0,
+        "low": 172615.0,
+        "close": 173010.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793264700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793264700000,
+        "open": 173010.0,
+        "high": 173500.0,
+        "low": 172960.0,
+        "close": 173425.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793265000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793265000000,
+        "open": 173425.0,
+        "high": 173500.0,
+        "low": 173285.0,
+        "close": 173350.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793265300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793265300000,
+        "open": 173350.0,
+        "high": 173775.0,
+        "low": 173340.0,
+        "close": 173520.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793265600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793265600000,
+        "open": 173520.0,
+        "high": 173565.0,
+        "low": 173200.0,
+        "close": 173425.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793265900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793265900000,
+        "open": 173425.0,
+        "high": 173485.0,
+        "low": 173230.0,
+        "close": 173335.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793266200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793266200000,
+        "open": 173330.0,
+        "high": 173550.0,
+        "low": 172875.0,
+        "close": 172935.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793266500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793266500000,
+        "open": 172940.0,
+        "high": 173325.0,
+        "low": 172810.0,
+        "close": 173160.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793266800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793266800000,
+        "open": 173165.0,
+        "high": 173240.0,
+        "low": 172910.0,
+        "close": 173015.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793267100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793267100000,
+        "open": 173020.0,
+        "high": 173195.0,
+        "low": 172945.0,
+        "close": 173145.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793267400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793267400000,
+        "open": 173150.0,
+        "high": 173385.0,
+        "low": 173050.0,
+        "close": 173095.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793267700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793267700000,
+        "open": 173095.0,
+        "high": 173250.0,
+        "low": 172955.0,
+        "close": 173110.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793268000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793268000000,
+        "open": 173110.0,
+        "high": 173630.0,
+        "low": 172990.0,
+        "close": 173525.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793268300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793268300000,
+        "open": 173525.0,
+        "high": 173595.0,
+        "low": 173060.0,
+        "close": 173070.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793268600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793268600000,
+        "open": 173075.0,
+        "high": 173155.0,
+        "low": 172815.0,
+        "close": 173000.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793268900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793268900000,
+        "open": 172995.0,
+        "high": 173260.0,
+        "low": 172540.0,
+        "close": 172895.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793269200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793269200000,
+        "open": 172900.0,
+        "high": 173410.0,
+        "low": 172770.0,
+        "close": 173035.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793269500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793269500000,
+        "open": 173030.0,
+        "high": 173230.0,
+        "low": 172775.0,
+        "close": 173185.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793269800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793269800000,
+        "open": 173190.0,
+        "high": 173540.0,
+        "low": 172940.0,
+        "close": 173370.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793270100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793270100000,
+        "open": 173370.0,
+        "high": 173580.0,
+        "low": 172750.0,
+        "close": 173525.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793270400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793270400000,
+        "open": 173530.0,
+        "high": 173805.0,
+        "low": 172975.0,
+        "close": 173055.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793270700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793270700000,
+        "open": 173060.0,
+        "high": 173765.0,
+        "low": 173005.0,
+        "close": 173575.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793271000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793271000000,
+        "open": 173575.0,
+        "high": 173660.0,
+        "low": 173330.0,
+        "close": 173465.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793271300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793271300000,
+        "open": 173460.0,
+        "high": 173605.0,
+        "low": 172750.0,
+        "close": 172795.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793271600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793271600000,
+        "open": 172800.0,
+        "high": 172995.0,
+        "low": 172520.0,
+        "close": 172900.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793271900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793271900000,
+        "open": 172900.0,
+        "high": 173080.0,
+        "low": 172560.0,
+        "close": 172710.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793272200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793272200000,
+        "open": 172710.0,
+        "high": 172745.0,
+        "low": 171950.0,
+        "close": 172060.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793272500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793272500000,
+        "open": 172060.0,
+        "high": 172490.0,
+        "low": 172015.0,
+        "close": 172275.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793272800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793272800000,
+        "open": 172275.0,
+        "high": 172970.0,
+        "low": 172270.0,
+        "close": 172640.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793273100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793273100000,
+        "open": 172635.0,
+        "high": 172650.0,
+        "low": 172165.0,
+        "close": 172515.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793273400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793273400000,
+        "open": 172515.0,
+        "high": 172585.0,
+        "low": 172300.0,
+        "close": 172355.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793273700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793273700000,
+        "open": 172350.0,
+        "high": 172625.0,
+        "low": 172230.0,
+        "close": 172590.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793274000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793274000000,
+        "open": 172590.0,
+        "high": 172910.0,
+        "low": 172495.0,
+        "close": 172885.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793274300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793274300000,
+        "open": 172885.0,
+        "high": 172920.0,
+        "low": 172165.0,
+        "close": 172265.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793274600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793274600000,
+        "open": 172265.0,
+        "high": 172290.0,
+        "low": 171755.0,
+        "close": 171845.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793274900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793274900000,
+        "open": 171845.0,
+        "high": 171885.0,
+        "low": 171515.0,
+        "close": 171865.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793275200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793275200000,
+        "open": 171860.0,
+        "high": 171955.0,
+        "low": 171450.0,
+        "close": 171570.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793275500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793275500000,
+        "open": 171565.0,
+        "high": 171900.0,
+        "low": 171385.0,
+        "close": 171865.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793275800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793275800000,
+        "open": 171865.0,
+        "high": 172250.0,
+        "low": 171765.0,
+        "close": 172180.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793276100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793276100000,
+        "open": 172185.0,
+        "high": 172195.0,
+        "low": 171795.0,
+        "close": 171810.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793276400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793276400000,
+        "open": 171810.0,
+        "high": 171855.0,
+        "low": 171605.0,
+        "close": 171735.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793276700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793276700000,
+        "open": 171735.0,
+        "high": 171950.0,
+        "low": 171670.0,
+        "close": 171835.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793277000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793277000000,
+        "open": 171840.0,
+        "high": 171915.0,
+        "low": 171610.0,
+        "close": 171750.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793277300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793277300000,
+        "open": 171755.0,
+        "high": 171875.0,
+        "low": 171720.0,
+        "close": 171785.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793277600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793277600000,
+        "open": 171785.0,
+        "high": 171805.0,
+        "low": 171550.0,
+        "close": 171610.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793277900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793277900000,
+        "open": 171605.0,
+        "high": 171960.0,
+        "low": 171575.0,
+        "close": 171900.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793278200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793278200000,
+        "open": 171900.0,
+        "high": 171980.0,
+        "low": 171740.0,
+        "close": 171850.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793278500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793278500000,
+        "open": 171845.0,
+        "high": 171980.0,
+        "low": 171750.0,
+        "close": 171875.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793278800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793278800000,
+        "open": 171875.0,
+        "high": 172075.0,
+        "low": 171705.0,
+        "close": 172045.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793279100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793279100000,
+        "open": 172045.0,
+        "high": 172090.0,
+        "low": 171810.0,
+        "close": 171835.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793279400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793279400000,
+        "open": 171830.0,
+        "high": 171925.0,
+        "low": 171615.0,
+        "close": 171700.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793279700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793279700000,
+        "open": 171695.0,
+        "high": 171820.0,
+        "low": 171580.0,
+        "close": 171735.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793280000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793280000000,
+        "open": 171735.0,
+        "high": 171975.0,
+        "low": 171700.0,
+        "close": 171825.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793280300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793280300000,
+        "open": 171820.0,
+        "high": 171875.0,
+        "low": 171655.0,
+        "close": 171820.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793280600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793280600000,
+        "open": 171820.0,
+        "high": 171890.0,
+        "low": 171600.0,
+        "close": 171665.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793280900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793280900000,
+        "open": 171670.0,
+        "high": 172175.0,
+        "low": 171615.0,
+        "close": 172145.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793281200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793281200000,
+        "open": 172145.0,
+        "high": 172410.0,
+        "low": 172135.0,
+        "close": 172380.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793281500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793281500000,
+        "open": 172380.0,
+        "high": 172455.0,
+        "low": 171980.0,
+        "close": 172000.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793281800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793281800000,
+        "open": 171995.0,
+        "high": 172010.0,
+        "low": 171810.0,
+        "close": 171835.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793282100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793282100000,
+        "open": 171835.0,
+        "high": 171855.0,
+        "low": 171620.0,
+        "close": 171715.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793282400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793282400000,
+        "open": 171715.0,
+        "high": 171875.0,
+        "low": 171605.0,
+        "close": 171630.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793282700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793282700000,
+        "open": 171630.0,
+        "high": 171725.0,
+        "low": 171355.0,
+        "close": 171455.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793283000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793283000000,
+        "open": 171450.0,
+        "high": 171535.0,
+        "low": 171205.0,
+        "close": 171285.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793283300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793283300000,
+        "open": 171285.0,
+        "high": 171360.0,
+        "low": 171175.0,
+        "close": 171220.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793283600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793283600000,
+        "open": 171225.0,
+        "high": 171500.0,
+        "low": 171155.0,
+        "close": 171490.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793283900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793283900000,
+        "open": 171490.0,
+        "high": 171725.0,
+        "low": 171460.0,
+        "close": 171540.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793284200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793284200000,
+        "open": 171540.0,
+        "high": 171555.0,
+        "low": 171195.0,
+        "close": 171370.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793284500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793284500000,
+        "open": 171370.0,
+        "high": 171390.0,
+        "low": 171230.0,
+        "close": 171355.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793284800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793284800000,
+        "open": 171360.0,
+        "high": 171435.0,
+        "low": 171260.0,
+        "close": 171360.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793285100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793285100000,
+        "open": 171360.0,
+        "high": 171790.0,
+        "low": 171355.0,
+        "close": 171745.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793285400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793285400000,
+        "open": 171745.0,
+        "high": 171765.0,
+        "low": 171475.0,
+        "close": 171620.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793285700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793285700000,
+        "open": 171620.0,
+        "high": 171650.0,
+        "low": 171390.0,
+        "close": 171610.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793286000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793286000000,
+        "open": 171610.0,
+        "high": 171670.0,
+        "low": 171320.0,
+        "close": 171490.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793286300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793286300000,
+        "open": 171490.0,
+        "high": 171670.0,
+        "low": 171395.0,
+        "close": 171460.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793286600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793286600000,
+        "open": 171455.0,
+        "high": 171500.0,
+        "low": 171305.0,
+        "close": 171465.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793286900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793286900000,
+        "open": 171460.0,
+        "high": 171480.0,
+        "low": 171295.0,
+        "close": 171405.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793287200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793287200000,
+        "open": 171400.0,
+        "high": 171415.0,
+        "low": 171060.0,
+        "close": 171115.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793287500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793287500000,
+        "open": 171115.0,
+        "high": 171225.0,
+        "low": 170985.0,
+        "close": 171210.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793287800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793287800000,
+        "open": 171205.0,
+        "high": 171370.0,
+        "low": 171135.0,
+        "close": 171285.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793288100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793288100000,
+        "open": 171285.0,
+        "high": 171550.0,
+        "low": 171200.0,
+        "close": 171320.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793288400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793288400000,
+        "open": 171325.0,
+        "high": 171390.0,
+        "low": 171260.0,
+        "close": 171335.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793288700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793288700000,
+        "open": 171340.0,
+        "high": 171715.0,
+        "low": 171275.0,
+        "close": 171695.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793289000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793289000000,
+        "open": 171695.0,
+        "high": 172550.0,
+        "low": 171545.0,
+        "close": 172435.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793289300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793289300000,
+        "open": 172440.0,
+        "high": 172845.0,
+        "low": 171970.0,
+        "close": 171995.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793289600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793289600000,
+        "open": 171990.0,
+        "high": 172250.0,
+        "low": 171940.0,
+        "close": 172075.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793289900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793289900000,
+        "open": 172080.0,
+        "high": 172090.0,
+        "low": 171665.0,
+        "close": 171735.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793290200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793290200000,
+        "open": 171730.0,
+        "high": 172085.0,
+        "low": 171665.0,
+        "close": 171930.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793290500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793290500000,
+        "open": 171930.0,
+        "high": 171995.0,
+        "low": 171805.0,
+        "close": 171870.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793290800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793290800000,
+        "open": 171875.0,
+        "high": 171950.0,
+        "low": 171740.0,
+        "close": 171895.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793291100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793291100000,
+        "open": 171895.0,
+        "high": 172090.0,
+        "low": 171855.0,
+        "close": 171995.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793291400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793291400000,
+        "open": 171995.0,
+        "high": 172225.0,
+        "low": 171990.0,
+        "close": 172145.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793291700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793291700000,
+        "open": 172145.0,
+        "high": 172155.0,
+        "low": 171865.0,
+        "close": 171945.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793292000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793292000000,
+        "open": 171940.0,
+        "high": 171945.0,
+        "low": 171770.0,
+        "close": 171800.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793292300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793292300000,
+        "open": 171800.0,
+        "high": 171800.0,
+        "low": 171650.0,
+        "close": 171695.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793292600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793292600000,
+        "open": 171690.0,
+        "high": 171870.0,
+        "low": 171600.0,
+        "close": 171800.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793292900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793292900000,
+        "open": 171800.0,
+        "high": 171845.0,
+        "low": 171690.0,
+        "close": 171800.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793293200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793293200000,
+        "open": 171800.0,
+        "high": 171815.0,
+        "low": 171610.0,
+        "close": 171635.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793293500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793293500000,
+        "open": 171640.0,
+        "high": 171640.0,
+        "low": 171370.0,
+        "close": 171415.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793293800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793293800000,
+        "open": 171415.0,
+        "high": 171435.0,
+        "low": 171205.0,
+        "close": 171425.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793294100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793294100000,
+        "open": 171425.0,
+        "high": 171510.0,
+        "low": 171315.0,
+        "close": 171415.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793294400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793294400000,
+        "open": 171420.0,
+        "high": 171550.0,
+        "low": 171370.0,
+        "close": 171525.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793294700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793294700000,
+        "open": 171525.0,
+        "high": 171705.0,
+        "low": 171515.0,
+        "close": 171570.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793295000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793295000000,
+        "open": 171570.0,
+        "high": 171630.0,
+        "low": 171500.0,
+        "close": 171515.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793295300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793295300000,
+        "open": 171515.0,
+        "high": 171660.0,
+        "low": 171485.0,
+        "close": 171550.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793295600000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793295600000,
+        "open": 171545.0,
+        "high": 171640.0,
+        "low": 171535.0,
+        "close": 171570.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793295900000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793295900000,
+        "open": 171565.0,
+        "high": 171650.0,
+        "low": 171520.0,
+        "close": 171565.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793296200000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793296200000,
+        "open": 171570.0,
+        "high": 171590.0,
+        "low": 171450.0,
+        "close": 171515.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793296500000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793296500000,
+        "open": 171515.0,
+        "high": 171700.0,
+        "low": 171450.0,
+        "close": 171625.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793296800000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793296800000,
+        "open": 171620.0,
+        "high": 171630.0,
+        "low": 171415.0,
+        "close": 171450.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793297100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793297100000,
+        "open": 171455.0,
+        "high": 171515.0,
+        "low": 171370.0,
+        "close": 171395.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793297400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793297400000,
+        "open": 171400.0,
+        "high": 171420.0,
+        "low": 171200.0,
+        "close": 171255.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793297700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793297700000,
+        "open": 171250.0,
+        "high": 171265.0,
+        "low": 170775.0,
+        "close": 171060.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793298000000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793298000000,
+        "open": 171055.0,
+        "high": 171420.0,
+        "low": 171045.0,
+        "close": 171050.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793298300000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793350800000,
+        "open": 170910.0,
+        "high": 171600.0,
+        "low": 170605.0,
+        "close": 170725.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793351100000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793351100000,
+        "open": 170730.0,
+        "high": 171115.0,
+        "low": 170420.0,
+        "close": 170545.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793351400000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793351400000,
+        "open": 170545.0,
+        "high": 170620.0,
+        "low": 170120.0,
+        "close": 170145.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793351700000
+    },
+    {
+      "candle": {
+        "symbol": "WINZ26",
+        "bucketStartTimeMsc": 1793351700000,
+        "open": 170140.0,
+        "high": 170545.0,
+        "low": 170115.0,
+        "close": 170355.0
+      },
+      "timeframeMinutes": 5,
+      "closed": true,
+      "availableAtMsc": 1793352000000
+    }
+  ],
+  "structure": {
+    "levels": [
+      {
+        "id": "WINZ26:60:1793286000000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 170985.0,
+        "extremeTimeMsc": 1793286000000,
+        "confirmedAtMsc": 1793296800000,
+        "region": {
+          "high": 172845.0,
+          "low": 170985.0,
+          "midpoint": 171915.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1793286000000:TOP",
+        "type": "TOP",
+        "price": 172845.0,
+        "extremeTimeMsc": 1793286000000,
+        "confirmedAtMsc": 1793296800000,
+        "region": {
+          "high": 172845.0,
+          "low": 170985.0,
+          "midpoint": 171915.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      }
+    ],
+    "totalActive": 31,
+    "maxLevels": 6,
+    "selection": "NEAREST_LAST_CLOSED_THEN_LATEST_CONFIRMED",
+    "supported": true,
+    "h1History": {
+      "previousSessions": 1,
+      "sufficient": false,
+      "alignment": "NATIVE_FEED_HOUR_NO_SHIFT"
+    },
+    "preparation": null,
+    "confirmedPivots": [
+      {
+        "id": "WINZ26:60:1793286000000:TOP",
+        "type": "TOP",
+        "price": 172845.0,
+        "extremeTimeMsc": 1793286000000,
+        "confirmedAtMsc": 1793296800000,
+        "region": {
+          "high": 172845.0,
+          "low": 170985.0,
+          "midpoint": 171915.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      },
+      {
+        "id": "WINZ26:60:1793286000000:BOTTOM",
+        "type": "BOTTOM",
+        "price": 170985.0,
+        "extremeTimeMsc": 1793286000000,
+        "confirmedAtMsc": 1793296800000,
+        "region": {
+          "high": 172845.0,
+          "low": 170985.0,
+          "midpoint": 171915.0,
+          "basis": "PIVOT_CANDLE"
+        },
+        "relevance": "PROXIMITY",
+        "state": "CONFIRMED",
+        "brokenAtMsc": null,
+        "timeframeMinutes": 60
+      }
+    ]
+  },
+  "dow": {
+    "symbol": "WINZ26",
+    "timeframeMinutes": 5,
+    "availableAtMsc": 1793352000000,
+    "state": "UNDEFINED",
+    "criterion": "EXPERIMENTAL_PAIRED_PIVOTS_CLOSE_BREAK_V1",
+    "pivots": [],
+    "movements": [],
+    "events": []
+  },
+  "microDow": {
+    "symbol": "WINZ26",
+    "timeframeMinutes": 5,
+    "availableAtMsc": 1793352000000,
+    "state": "UNDEFINED",
+    "criterion": "EXPERIMENTAL_MICRO_STRICT_1_1_V1",
+    "pivots": [],
+    "movements": [],
+    "events": [],
+    "opening": {
+      "status": "WAITING",
+      "anchors": [
+        {
+          "id": "WINZ26:opening:TOP:1793350800000",
+          "type": "TOP",
+          "price": 171600.0,
+          "formationTimeMsc": 1793350800000,
+          "observedAtMsc": 1793351100000
+        },
+        {
+          "id": "WINZ26:opening:BOTTOM:1793350800000",
+          "type": "BOTTOM",
+          "price": 170605.0,
+          "formationTimeMsc": 1793350800000,
+          "observedAtMsc": 1793351100000
+        }
+      ],
+      "fromId": null,
+      "toId": null,
+      "knownAtMsc": null,
+      "reason": "Waiting for first unambiguous confirmed extreme",
+      "events": [
+        {
+          "atMsc": 1793351100000,
+          "kind": "OPENING_OBSERVED",
+          "reason": "First closed candle range; neither endpoint is a confirmed pivot"
+        }
+      ]
+    },
+    "selectedPivotIds": [],
+    "movementHistory": [],
+    "decisions": [],
+    "openingHistory": [
+      {
+        "status": "WAITING",
+        "anchors": [
+          {
+            "id": "WINZ26:opening:TOP:1793350800000",
+            "type": "TOP",
+            "price": 171600.0,
+            "formationTimeMsc": 1793350800000,
+            "observedAtMsc": 1793351100000
+          },
+          {
+            "id": "WINZ26:opening:BOTTOM:1793350800000",
+            "type": "BOTTOM",
+            "price": 170605.0,
+            "formationTimeMsc": 1793350800000,
+            "observedAtMsc": 1793351100000
+          }
+        ],
+        "fromId": null,
+        "toId": null,
+        "knownAtMsc": null,
+        "reason": "Waiting for first unambiguous confirmed extreme",
+        "events": [
+          {
+            "atMsc": 1793351100000,
+            "kind": "OPENING_OBSERVED",
+            "reason": "First closed candle range; neither endpoint is a confirmed pivot"
+          }
+        ]
+      }
+    ]
+  },
+  "dowFifty": {
+    "symbol": "WINZ26",
+    "timeframeMinutes": 5,
+    "availableAtMsc": 1793352000000,
+    "criterion": "CONFIRMED_MOVEMENT_V2",
+    "approachTolerancePoints": 5.0,
+    "breakPolicy": "EXPERIMENTAL_M5_CLOSE",
+    "rejectionPolicy": "UNVALIDATED_RANGE_TOUCH_CLOSE_SAME_SIDE",
+    "state": "AGUARDANDO_ONDA",
+    "currentWaveId": null,
+    "references": [],
+    "events": [],
+    "observations": [
+      {
+        "atMsc": 1793351100000,
+        "candleTimeMsc": 1793350800000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 170725.0,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793351400000,
+        "candleTimeMsc": 1793351100000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 170545.0,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793351700000,
+        "candleTimeMsc": 1793351400000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 170145.0,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      },
+      {
+        "atMsc": 1793352000000,
+        "candleTimeMsc": 1793351700000,
+        "waveId": null,
+        "state": "AGUARDANDO_ONDA",
+        "close": 170355.0,
+        "distance50": null,
+        "distanceTop": null,
+        "distanceBottom": null,
+        "approachSide": "UNKNOWN",
+        "breakStatus": "NONE",
+        "rejectionStatus": "NONE",
+        "reason": "NO_REFERENCE_KNOWN_AT_BAR_OPEN"
+      }
+    ],
+    "formingWave": null
+  },
+  "openingStructure": {
+    "symbol": "WINZ26",
+    "sessionDate": "2026-10-30",
+    "availableAtMsc": 1793352000000,
+    "state": "EM_FORMACAO",
+    "unit": "WIN_INDEX_POINTS",
+    "timeBasis": "MT5_WALL_CLOCK",
+    "previousSession": {
+      "date": "2026-10-29",
+      "close": {
+        "price": 171050.0,
+        "formationTimeMsc": 1793298000000,
+        "availableAtMsc": 1793298300000,
+        "source": "MT5_LAST_OBSERVED_M5_CLOSE"
+      },
+      "high": {
+        "price": 173805.0,
+        "formationTimeMsc": 1793270400000,
+        "availableAtMsc": 1793298300000,
+        "source": "MT5_OBSERVED_PREVIOUS_SESSION_M5_HIGH"
+      },
+      "low": {
+        "price": 170775.0,
+        "formationTimeMsc": 1793297700000,
+        "availableAtMsc": 1793298300000,
+        "source": "MT5_OBSERVED_PREVIOUS_SESSION_M5_LOW"
+      },
+      "officialSettlement": null,
+      "coverage": "OBSERVED_M5_ONLY_NOT_CERTIFIED_SESSION_CLOSE",
+      "settlementStatus": "UNAVAILABLE_NO_OFFICIAL_SOURCE"
+    },
+    "tradedOpen": {
+      "price": 170910.0,
+      "formationTimeMsc": 1793350800000,
+      "availableAtMsc": 1793351100000,
+      "source": "MT5_FIRST_CLOSED_M5_OPEN"
+    },
+    "gap": {
+      "kind": "GAP",
+      "points": -140.0,
+      "from": {
+        "price": 171050.0,
+        "formationTimeMsc": 1793298000000,
+        "availableAtMsc": 1793298300000,
+        "source": "MT5_LAST_OBSERVED_M5_CLOSE"
+      },
+      "to": {
+        "price": 170910.0,
+        "formationTimeMsc": 1793350800000,
+        "availableAtMsc": 1793351100000,
+        "source": "MT5_FIRST_CLOSED_M5_OPEN"
+      },
+      "availableAtMsc": 1793351100000
+    },
+    "observedHigh": {
+      "price": 171600.0,
+      "formationTimeMsc": 1793350800000,
+      "availableAtMsc": 1793351100000,
+      "source": "MT5_CLOSED_M5_HIGH"
+    },
+    "observedLow": {
+      "price": 170115.0,
+      "formationTimeMsc": 1793351700000,
+      "availableAtMsc": 1793352000000,
+      "source": "MT5_CLOSED_M5_LOW"
+    },
+    "initialLeg": {
+      "direction": "DOWN",
+      "state": "EM_FORMACAO",
+      "origin": {
+        "price": 171600.0,
+        "formationTimeMsc": 1793350800000,
+        "availableAtMsc": 1793351100000,
+        "source": "MT5_OPENING_M5_OBSERVED_EXTREME"
+      },
+      "destination": {
+        "price": 170115.0,
+        "formationTimeMsc": 1793351700000,
+        "availableAtMsc": 1793352000000,
+        "source": "MT5_CLOSED_M5_LOW"
+      },
+      "amplitudePoints": 1485.0,
+      "availableAtMsc": 1793352000000,
+      "intrabarOrder": "ORDERED_M5_BARS"
+    },
+    "legHistory": [
+      {
+        "direction": "DOWN",
+        "state": "EM_FORMACAO",
+        "origin": {
+          "price": 171600.0,
+          "formationTimeMsc": 1793350800000,
+          "availableAtMsc": 1793351100000,
+          "source": "MT5_OPENING_M5_OBSERVED_EXTREME"
+        },
+        "destination": {
+          "price": 170605.0,
+          "formationTimeMsc": 1793350800000,
+          "availableAtMsc": 1793351100000,
+          "source": "MT5_CLOSED_M5_LOW"
+        },
+        "amplitudePoints": 995.0,
+        "availableAtMsc": 1793351100000,
+        "intrabarOrder": "UNKNOWN_SAME_M5"
+      },
+      {
+        "direction": "DOWN",
+        "state": "EM_FORMACAO",
+        "origin": {
+          "price": 171600.0,
+          "formationTimeMsc": 1793350800000,
+          "availableAtMsc": 1793351100000,
+          "source": "MT5_OPENING_M5_OBSERVED_EXTREME"
+        },
+        "destination": {
+          "price": 170420.0,
+          "formationTimeMsc": 1793351100000,
+          "availableAtMsc": 1793351400000,
+          "source": "MT5_CLOSED_M5_LOW"
+        },
+        "amplitudePoints": 1180.0,
+        "availableAtMsc": 1793351400000,
+        "intrabarOrder": "ORDERED_M5_BARS"
+      },
+      {
+        "direction": "DOWN",
+        "state": "EM_FORMACAO",
+        "origin": {
+          "price": 171600.0,
+          "formationTimeMsc": 1793350800000,
+          "availableAtMsc": 1793351100000,
+          "source": "MT5_OPENING_M5_OBSERVED_EXTREME"
+        },
+        "destination": {
+          "price": 170120.0,
+          "formationTimeMsc": 1793351400000,
+          "availableAtMsc": 1793351700000,
+          "source": "MT5_CLOSED_M5_LOW"
+        },
+        "amplitudePoints": 1480.0,
+        "availableAtMsc": 1793351700000,
+        "intrabarOrder": "ORDERED_M5_BARS"
+      },
+      {
+        "direction": "DOWN",
+        "state": "EM_FORMACAO",
+        "origin": {
+          "price": 171600.0,
+          "formationTimeMsc": 1793350800000,
+          "availableAtMsc": 1793351100000,
+          "source": "MT5_OPENING_M5_OBSERVED_EXTREME"
+        },
+        "destination": {
+          "price": 170115.0,
+          "formationTimeMsc": 1793351700000,
+          "availableAtMsc": 1793352000000,
+          "source": "MT5_CLOSED_M5_LOW"
+        },
+        "amplitudePoints": 1485.0,
+        "availableAtMsc": 1793352000000,
+        "intrabarOrder": "ORDERED_M5_BARS"
+      }
+    ],
+    "windows": [
+      {
+        "minutes": 15,
+        "availableAtMsc": 1793351700000,
+        "amplitudePoints": 1480.0,
+        "status": "COMPLETE"
+      },
+      {
+        "minutes": 30,
+        "availableAtMsc": 1793352000000,
+        "amplitudePoints": 1485.0,
+        "status": "EM_FORMACAO"
+      },
+      {
+        "minutes": 45,
+        "availableAtMsc": 1793352000000,
+        "amplitudePoints": 1485.0,
+        "status": "EM_FORMACAO"
+      }
+    ],
+    "thresholds": [
+      {
+        "minimumPoints": 0,
+        "reached": true,
+        "firstReachedAtMsc": 1793351100000
+      },
+      {
+        "minimumPoints": 250,
+        "reached": true,
+        "firstReachedAtMsc": 1793351100000
+      },
+      {
+        "minimumPoints": 300,
+        "reached": true,
+        "firstReachedAtMsc": 1793351100000
+      }
+    ],
+    "coverage": "CONTIGUOUS_CLOSED_M5"
+  },
+  "patternAudit": {
+    "symbol": "WINZ26",
+    "timeframeMinutes": 5,
+    "sessionDate": "2026-10-30",
+    "availableAtMsc": 1793352000000,
+    "rulesStatus": "DEFINED",
+    "criterionId": "VISUAL_FIXTURE_ONLY_NOT_RECOGNITION",
+    "patterns": [
+      {
+        "id": "VISUAL-DEMO-BUY",
+        "direction": "BUY",
+        "state": "CANDLE_1",
+        "stages": [
+          {
+            "number": 1,
+            "role": "ALVO",
+            "observation": {
+              "candle": {
+                "symbol": "WINZ26",
+                "bucketStartTimeMsc": 1793351700000,
+                "open": 170140.0,
+                "high": 170545.0,
+                "low": 170115.0,
+                "close": 170355.0
+              },
+              "timeframeMinutes": 5,
+              "closed": true,
+              "availableAtMsc": 1793352000000
+            },
+            "referencePrice": 170355.0,
+            "availableAtMsc": 1793352000000,
+            "reason": "Visual fixture supplied for rendering tests only; no recognition criterion has been inferred."
+          }
+        ]
+      }
+    ]
+  }
+}

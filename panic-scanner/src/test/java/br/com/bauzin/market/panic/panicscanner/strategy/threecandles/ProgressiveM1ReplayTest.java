@@ -24,9 +24,10 @@ class ProgressiveM1ReplayTest {
             var official=Arrays.asList(JSON.treeToValue(finalView.get("candles"),CandleUpdate[].class));
             var minutes=Arrays.asList(JSON.readValue(ROOT.resolve(name+"-m1.json").toFile(),Mt5Candle[].class));
             long start=official.getFirst().candle().bucketStartTimeMsc();
-            var updates=ProgressiveM1History.build(symbol,official,minutes,start);
-            assertThat(updates).hasSize(official.size()*5-(name.equals("WINZ26")?1:0));
-            var replay=new ThreeCandleReplay(symbol,5,updates,start,null,ThreeCandleReplay.Mode.PROGRESSIVE_M1);
+            var built=ProgressiveM1History.buildDetailed(symbol,official,minutes,start);
+            var updates=built.updates();
+            assertThat(updates.stream().filter(CandleUpdate::closed).toList()).isEqualTo(official);
+            var replay=new ThreeCandleReplay(symbol,5,updates,start,null,ThreeCandleReplay.Mode.PROGRESSIVE_M1,built.missingM1Times());
             var closed=new ThreeCandleReplay(symbol,5,official,start);
             var stream=new DowFiftyEngine(symbol);
             int closes=0,partials=0;
@@ -49,7 +50,7 @@ class ProgressiveM1ReplayTest {
                 } else {
                     partials++;
                     // Complete source is available to this test, never to the pipeline.
-                    var rebuilt=new ThreeCandleReplay(symbol,5,updates,at,null,ThreeCandleReplay.Mode.PROGRESSIVE_M1);
+                    var rebuilt=new ThreeCandleReplay(symbol,5,updates,at,null,ThreeCandleReplay.Mode.PROGRESSIVE_M1,built.missingM1Times());
                     assertThat(rebuilt.candles()).isEqualTo(replay.candles());
                     assertThat(rebuilt.pipeline().structure(6)).isEqualTo(structure);
                 }
@@ -76,14 +77,38 @@ class ProgressiveM1ReplayTest {
         }
         JSON.writerWithDefaultPrettyPrinter().writeValue(ROOT.resolve("summary.json").toFile(),summary);
     }
-    @Test void rejectsMissingBoundaryMinutesAndOfficialDivergence() {
+    @Test void retainsOfficialCloseWithMissingMinutesButStillRejectsOfficialDivergence() {
         long t=1793178000000L;
         var minutes=new ArrayList<Mt5Candle>();for(int i=0;i<5;i++)minutes.add(new Mt5Candle(t/1000+i*60,100,110+i,90-i,101+i,1,1));
         var official=List.of(new CandleUpdate(new IntrabarCandleSnapshot("WINZ26",t,100,114,86,105),5,true,t+300000));
         assertThat(ProgressiveM1History.build("WINZ26",official,minutes,t)).hasSize(5);
-        assertThatThrownBy(()->ProgressiveM1History.build("WINZ26",official,minutes.subList(1,5),t)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(()->ProgressiveM1History.build("WINZ26",official,minutes.subList(0,4),t)).isInstanceOf(IllegalArgumentException.class);
+        assertThat(ProgressiveM1History.build("WINZ26",official,minutes.subList(1,5),t)).containsExactlyElementsOf(official);
+        assertThat(ProgressiveM1History.build("WINZ26",official,minutes.subList(0,4),t).getLast()).isEqualTo(official.getFirst());
         var wrong=new ArrayList<>(minutes);wrong.set(2,new Mt5Candle(t/1000+120,100,1000,90,101,1,1));
         assertThatThrownBy(()->ProgressiveM1History.build("WINZ26",official,wrong,t)).hasMessageContaining("diverge");
     }
+    @Test void missingOpeningInteriorFinalOrWholeBucketKeepsOnlyProvenPrefixesAndResumes() {
+        long t=1793178000000L;
+        var first=new CandleUpdate(new IntrabarCandleSnapshot("WINZ26",t,100,110,90,100),5,true,t+300000);
+        var next=new CandleUpdate(new IntrabarCandleSnapshot("WINZ26",t+300000,100,110,90,100),5,true,t+600000);
+        for(var absent:List.of(Set.of(0,1),Set.of(2),Set.of(4),Set.of(0,1,2,3,4))) {
+            var minutes=new ArrayList<Mt5Candle>();
+            for(int i=0;i<10;i++)if(!absent.contains(i))minutes.add(new Mt5Candle(t/1000+i*60,100,110,90,100,1,1));
+            var built=ProgressiveM1History.buildDetailed("WINZ26",List.of(first,next),minutes,t);
+            assertThat(built.missingM1Times()).containsExactlyElementsOf(absent.stream().sorted().map(i->t+i*60000L).toList());
+            int prefix=java.util.Collections.min(absent);
+            var early=built.updates().stream().filter(u->u.candle().bucketStartTimeMsc()==t).toList();
+            assertThat(early).hasSize(Math.min(prefix,4)+1);assertThat(early.getLast()).isEqualTo(first);
+            var replay=new ThreeCandleReplay("WINZ26",5,built.updates(),t,null,ThreeCandleReplay.Mode.PROGRESSIVE_M1,built.missingM1Times());
+            while(replay.status()!=ThreeCandleReplay.Status.COMPLETED) {
+                replay.next();assertThat(replay.candles()).allMatch(b->b.availableAtMsc()<=replay.availableAtMsc());
+                assertThat(replay.missingM1Times()).containsExactlyElementsOf(built.missingM1Times());
+            }
+            assertThat(replay.candles()).containsExactly(first,next);
+            // The real official close must not hide a missing final M1 from source diagnostics.
+            if(absent.contains(4))assertThat(replay.missingM1Times()).contains(t+240000);
+            replay.reset();assertThat(replay.candles()).isEmpty();
+        }
+    }
+
 }

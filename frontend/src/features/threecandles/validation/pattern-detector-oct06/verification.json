@@ -1,0 +1,752 @@
+{
+  "symbol": "WINZ26",
+  "date": "2026-10-06",
+  "nativeM1": 537,
+  "beforeM1Status": "M1_AUSENTE_SEQUENCIA_INDETERMINADA",
+  "afterM1Status": "NATIVE_M1_GAPS_INDETERMINATE",
+  "beforeReachedReferences": 0,
+  "afterReachedReferences": 56,
+  "distinctSequences": 11,
+  "unit": "C1 + direction + trigger price; confluences are reference records, not independent trades",
+  "examples": [
+    {
+      "c1": "09:50",
+      "c2": "09:55",
+      "c3": "10:00",
+      "direction": "BUY",
+      "trigger": 212860,
+      "placed": "10:01",
+      "reached": "10:02",
+      "reference": {
+        "id": "WINZ26:5:1791218700000:TOP",
+        "source": "HISTORICAL_M5_TOP",
+        "low": 212600,
+        "high": 212600,
+        "availableAtMsc": 1791219600000,
+        "provenance": "M5 pivot formed 1791218700000; state at observation CONFIRMED"
+      },
+      "context": {
+        "flow": "DOWN",
+        "principalState": "UNDEFINED",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791280200000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791279600000,
+            "open": 212600,
+            "high": 212735,
+            "low": 212380,
+            "close": 212600
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791279900000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791279900000,
+            "open": 212595,
+            "high": 212665,
+            "low": 212460,
+            "close": 212580
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791280200000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791279600000:TOP",
+          "type": "TOP",
+          "price": 212735,
+          "extremeTimeMsc": 1791279600000,
+          "confirmedAtMsc": 1791280200000,
+          "region": {
+            "high": 212735,
+            "low": 212380,
+            "midpoint": 212557.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "10:15",
+      "c2": "10:20",
+      "c3": "10:25",
+      "direction": "SELL",
+      "trigger": 213235,
+      "placed": "10:27",
+      "reached": "10:29",
+      "reference": {
+        "id": "WINZ26:5:1791207300000:TOP",
+        "source": "HISTORICAL_M5_TOP",
+        "low": 214270,
+        "high": 214270,
+        "availableAtMsc": 1791208200000,
+        "provenance": "M5 pivot formed 1791207300000; state at observation BROKEN"
+      },
+      "context": {
+        "flow": "UP",
+        "principalState": "UP",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791281700000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791280800000,
+            "open": 212840,
+            "high": 212940,
+            "low": 212395,
+            "close": 212595
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791281100000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791281400000,
+            "open": 212585,
+            "high": 213680,
+            "low": 212585,
+            "close": 213680
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791281700000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791280800000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 212395,
+          "extremeTimeMsc": 1791280800000,
+          "confirmedAtMsc": 1791281400000,
+          "region": {
+            "high": 212940,
+            "low": 212395,
+            "midpoint": 212667.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "11:35",
+      "c2": "11:40",
+      "c3": "11:45",
+      "direction": "SELL",
+      "trigger": 209760,
+      "placed": "11:46",
+      "reached": "11:47",
+      "reference": {
+        "id": "micro50:WINZ26:5:micro:1791284700000:TOP->WINZ26:5:micro:1791285600000:BOTTOM",
+        "source": "MICRO_FIFTY_CONFIRMED",
+        "low": 210745,
+        "high": 210745,
+        "availableAtMsc": 1791286200000,
+        "provenance": "WINZ26:5:micro:1791284700000:TOP->WINZ26:5:micro:1791285600000:BOTTOM"
+      },
+      "context": {
+        "flow": "UP",
+        "principalState": "DOWN",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791286500000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791285600000,
+            "open": 210310,
+            "high": 210315,
+            "low": 209605,
+            "close": 210050
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791285900000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791286200000,
+            "open": 210305,
+            "high": 210855,
+            "low": 210205,
+            "close": 210770
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791286500000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791285600000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 209605,
+          "extremeTimeMsc": 1791285600000,
+          "confirmedAtMsc": 1791286200000,
+          "region": {
+            "high": 210315,
+            "low": 209605,
+            "midpoint": 209960,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "11:50",
+      "c2": "11:55",
+      "c3": "12:00",
+      "direction": "BUY",
+      "trigger": 210070,
+      "placed": "12:01",
+      "reached": "12:04",
+      "reference": {
+        "id": "WINZ26:sessionLow:209605.0",
+        "source": "SESSION_LOW_CLOSED_M5",
+        "low": 209605,
+        "high": 209605,
+        "availableAtMsc": 1791285900000,
+        "provenance": "Low of known closed session M5; formed 1791285600000"
+      },
+      "context": {
+        "flow": "DOWN",
+        "principalState": "DOWN",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791287400000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791286500000,
+            "open": 210760,
+            "high": 211075,
+            "low": 210510,
+            "close": 210535
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791286800000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791287100000,
+            "open": 209780,
+            "high": 210115,
+            "low": 209625,
+            "close": 209875
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791287400000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791286500000:TOP",
+          "type": "TOP",
+          "price": 211075,
+          "extremeTimeMsc": 1791286500000,
+          "confirmedAtMsc": 1791287100000,
+          "region": {
+            "high": 211075,
+            "low": 210510,
+            "midpoint": 210792.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "11:55",
+      "c2": "12:00",
+      "c3": "12:05",
+      "direction": "BUY",
+      "trigger": 210165,
+      "placed": "12:06",
+      "reached": "12:07",
+      "reference": {
+        "id": "WINZ26:sessionLow:209435.0",
+        "source": "SESSION_LOW_CLOSED_M5",
+        "low": 209435,
+        "high": 209435,
+        "availableAtMsc": 1791287700000,
+        "provenance": "Low of known closed session M5; formed 1791287400000"
+      },
+      "context": {
+        "flow": "DOWN",
+        "principalState": "DOWN",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791287700000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791286500000,
+            "open": 210760,
+            "high": 211075,
+            "low": 210510,
+            "close": 210535
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791286800000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791287400000,
+            "open": 209875,
+            "high": 209900,
+            "low": 209435,
+            "close": 209775
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791287700000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791286500000:TOP",
+          "type": "TOP",
+          "price": 211075,
+          "extremeTimeMsc": 1791286500000,
+          "confirmedAtMsc": 1791287100000,
+          "region": {
+            "high": 211075,
+            "low": 210510,
+            "midpoint": 210792.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "14:30",
+      "c2": "14:35",
+      "c3": "14:40",
+      "direction": "BUY",
+      "trigger": 211450,
+      "placed": "14:41",
+      "reached": "14:44",
+      "reference": {
+        "id": "micro50:WINZ26:5:micro:1791295200000:BOTTOM->WINZ26:5:micro:1791296400000:TOP",
+        "source": "MICRO_FIFTY_CONFIRMED",
+        "low": 210700,
+        "high": 210700,
+        "availableAtMsc": 1791297000000,
+        "provenance": "WINZ26:5:micro:1791295200000:BOTTOM->WINZ26:5:micro:1791296400000:TOP"
+      },
+      "context": {
+        "flow": "DOWN",
+        "principalState": "TRANSITION",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791297000000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791296400000,
+            "open": 210925,
+            "high": 211095,
+            "low": 210540,
+            "close": 210695
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791296700000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791296700000,
+            "open": 210635,
+            "high": 210835,
+            "low": 210630,
+            "close": 210715
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791297000000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791296400000:TOP",
+          "type": "TOP",
+          "price": 211095,
+          "extremeTimeMsc": 1791296400000,
+          "confirmedAtMsc": 1791297000000,
+          "region": {
+            "high": 211095,
+            "low": 210540,
+            "midpoint": 210817.5,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "14:45",
+      "c2": "14:50",
+      "c3": "14:55",
+      "direction": "BUY",
+      "trigger": 211625,
+      "placed": "14:56",
+      "reached": "14:59",
+      "reference": {
+        "id": "WINZ26:5:micro:1791297300000:TOP",
+        "source": "DOW_MICRO_EXTREME",
+        "low": 211600,
+        "high": 211600,
+        "availableAtMsc": 1791297900000,
+        "provenance": "WINZ26:5:micro:1791297300000:TOP"
+      },
+      "context": {
+        "flow": "DOWN",
+        "principalState": "TRANSITION",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791297900000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791297300000,
+            "open": 211165,
+            "high": 211600,
+            "low": 211120,
+            "close": 211380
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791297600000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791297600000,
+            "open": 211430,
+            "high": 211475,
+            "low": 211295,
+            "close": 211400
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791297900000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791297300000:TOP",
+          "type": "TOP",
+          "price": 211600,
+          "extremeTimeMsc": 1791297300000,
+          "confirmedAtMsc": 1791297900000,
+          "region": {
+            "high": 211600,
+            "low": 211120,
+            "midpoint": 211360,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "14:55",
+      "c2": "15:00",
+      "c3": "15:05",
+      "direction": "SELL",
+      "trigger": 211490,
+      "placed": "15:06",
+      "reached": "15:07",
+      "reference": {
+        "id": "WINZ26:5:1791197100000:BOTTOM",
+        "source": "HISTORICAL_M5_BOTTOM",
+        "low": 211685,
+        "high": 211685,
+        "availableAtMsc": 1791198000000,
+        "provenance": "M5 pivot formed 1791197100000; state at observation BROKEN"
+      },
+      "context": {
+        "flow": "UP",
+        "principalState": "TRANSITION",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791298500000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791297300000,
+            "open": 211165,
+            "high": 211600,
+            "low": 211120,
+            "close": 211380
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791297600000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791298200000,
+            "open": 211675,
+            "high": 211800,
+            "low": 211535,
+            "close": 211690
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791298500000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791297300000:TOP",
+          "type": "TOP",
+          "price": 211600,
+          "extremeTimeMsc": 1791297300000,
+          "confirmedAtMsc": 1791297900000,
+          "region": {
+            "high": 211600,
+            "low": 211120,
+            "midpoint": 211360,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "15:25",
+      "c2": "15:30",
+      "c3": "15:35",
+      "direction": "BUY",
+      "trigger": 211595,
+      "placed": "15:36",
+      "reached": "15:39",
+      "reference": {
+        "id": "main:WINZ26:5:1791278400000:BOTTOM",
+        "source": "DOW_PRINCIPAL_EXTREME",
+        "low": 211285,
+        "high": 211285,
+        "availableAtMsc": 1791279300000,
+        "provenance": "WINZ26:5:1791278400000:BOTTOM"
+      },
+      "context": {
+        "flow": "DOWN",
+        "principalState": "UP",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791300300000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791299700000,
+            "open": 211480,
+            "high": 211630,
+            "low": 211200,
+            "close": 211280
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791300000000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791300000000,
+            "open": 211315,
+            "high": 211370,
+            "low": 211080,
+            "close": 211190
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791300300000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791299700000:TOP",
+          "type": "TOP",
+          "price": 211630,
+          "extremeTimeMsc": 1791299700000,
+          "confirmedAtMsc": 1791300300000,
+          "region": {
+            "high": 211630,
+            "low": 211200,
+            "midpoint": 211415,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "15:30",
+      "c2": "15:35",
+      "c3": "15:40",
+      "direction": "SELL",
+      "trigger": 211480,
+      "placed": "15:41",
+      "reached": "15:42",
+      "reference": {
+        "id": "WINZ26:5:1791299700000:TOP",
+        "source": "HISTORICAL_M5_TOP",
+        "low": 211630,
+        "high": 211630,
+        "availableAtMsc": 1791300600000,
+        "provenance": "M5 pivot formed 1791299700000; state at observation CONFIRMED"
+      },
+      "context": {
+        "flow": "UP",
+        "principalState": "UP",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791300600000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791300000000,
+            "open": 211315,
+            "high": 211370,
+            "low": 211080,
+            "close": 211190
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791300300000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791300300000,
+            "open": 211180,
+            "high": 211350,
+            "low": 211175,
+            "close": 211325
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791300600000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791300000000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 211080,
+          "extremeTimeMsc": 1791300000000,
+          "confirmedAtMsc": 1791300600000,
+          "region": {
+            "high": 211370,
+            "low": 211080,
+            "midpoint": 211225,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    },
+    {
+      "c1": "16:00",
+      "c2": "16:05",
+      "c3": "16:10",
+      "direction": "SELL",
+      "trigger": 210780,
+      "placed": "16:11",
+      "reached": "16:13",
+      "reference": {
+        "id": "WINZ26:5:micro:1791296400000:TOP",
+        "source": "DOW_MICRO_EXTREME",
+        "low": 211095,
+        "high": 211095,
+        "availableAtMsc": 1791297000000,
+        "provenance": "WINZ26:5:micro:1791296400000:TOP"
+      },
+      "context": {
+        "flow": "UP",
+        "principalState": "UP",
+        "microState": "UNDEFINED",
+        "source": "MICRO_DOW_DEVELOPING_LEG",
+        "availableAtMsc": 1791302400000,
+        "from": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791301500000,
+            "open": 211375,
+            "high": 211420,
+            "low": 211220,
+            "close": 211420
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791301800000
+        },
+        "to": {
+          "candle": {
+            "symbol": "WINZ26",
+            "bucketStartTimeMsc": 1791302100000,
+            "open": 211345,
+            "high": 211415,
+            "low": 211240,
+            "close": 211305
+          },
+          "timeframeMinutes": 5,
+          "closed": true,
+          "availableAtMsc": 1791302400000
+        },
+        "anchor": {
+          "id": "WINZ26:5:micro:1791301500000:BOTTOM",
+          "type": "BOTTOM",
+          "price": 211220,
+          "extremeTimeMsc": 1791301500000,
+          "confirmedAtMsc": 1791302100000,
+          "region": {
+            "high": 211420,
+            "low": 211220,
+            "midpoint": 211320,
+            "basis": "PIVOT_CANDLE"
+          },
+          "relevance": "MICRO_1_1",
+          "state": "CONFIRMED",
+          "brokenAtMsc": null,
+          "timeframeMinutes": 5
+        }
+      }
+    }
+  ],
+  "causalAndGapChecksPassed": true,
+  "noWinRateOrExecutionClaim": true
+}

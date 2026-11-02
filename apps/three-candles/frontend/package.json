@@ -1,0 +1,11 @@
+{
+  "name": "three-candles-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node ../../../frontend/node_modules/vite/bin/vite.js",
+    "build": "node ../../../frontend/node_modules/vite/bin/vite.js build",
+    "preview": "node ../../../frontend/node_modules/vite/bin/vite.js preview"
+  }
+}

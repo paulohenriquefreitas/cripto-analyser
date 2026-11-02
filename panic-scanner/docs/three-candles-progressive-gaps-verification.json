@@ -1,0 +1,41 @@
+{
+  "symbol": "WIN$N",
+  "date": "2026-09-16",
+  "timeConvention": "MT5 wall clock; raw timestamps displayed without timezone shift",
+  "nativeM1": 563,
+  "sessionM5": 113,
+  "warmupM5": 1000,
+  "expectedSessionMinutes": 565,
+  "missingNativeM1": [
+    1789549200000,
+    1789549260000
+  ],
+  "reproductionBefore": {
+    "status": 422,
+    "detail": "Replay progressivo indisponivel: M1 inicial/final ausente em WIN$N @ 1789549200000"
+  },
+  "debuggerEvidence": {
+    "session": "ThreeCandlesApplication",
+    "at": "2026-11-01T15:03:16.543Z",
+    "sourceLineBeforeChange": 32,
+    "logpoint": "WIN$N bucket=1789549200000 missing=1789549200000 slot=0 nativeM1=563"
+  },
+  "sources": [
+    {
+      "file": "WIN_N-2026-09-16-M1.json",
+      "sha256": "8dc79d77bf9c270e76ede22ed1505604cc497e7c66d81a82b52bfe84311babb9",
+      "count": 563,
+      "firstTime": 1789549320,
+      "lastTime": 1789583040
+    },
+    {
+      "file": "WIN_N-2026-09-16-M5.json",
+      "sha256": "b8c96b64ce71f334806716b480ebd8abbf29c91b1115f2e766f1cee08d77fad4",
+      "count": 1113,
+      "firstTime": 1788344700,
+      "lastTime": 1789582800
+    }
+  ],
+  "freshMT5QueryAlsoStartsAt0902": true,
+  "policy": "Only contiguous M1 prefixes; official M5 at actual close; resume next bucket; source gaps remain explicit"
+}

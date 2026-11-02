@@ -1,4 +1,3 @@
-import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import InsightsRoundedIcon from '@mui/icons-material/InsightsRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import ShowChartRoundedIcon from '@mui/icons-material/ShowChartRounded';
@@ -21,7 +20,6 @@ const drawerWidth = 248;
 export function AppLayout() {
   const { t } = useTranslation();
   const items = [
-    { to: '/dashboard', label: t('navigation.dashboard'), icon: <DashboardRoundedIcon /> },
     { to: '/scanner', label: t('navigation.scanner'), icon: <InsightsRoundedIcon /> },
     { to: '/scanner-experimental', label: 'Scanner experimental', icon: <InsightsRoundedIcon /> },
     { to: '/win-m5', label: 'WIN M5', icon: <ShowChartRoundedIcon /> },

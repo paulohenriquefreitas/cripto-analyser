@@ -155,7 +155,7 @@ test('line limit is requested from server without resetting replay position',asy
   const limits=[];
   const data={id:'s',symbol:'WINZ26',timeframeMinutes:5,status:'PAUSED',candles:[]};
   const h=host({config:async()=>config,live:async()=>({...data,id:undefined,status:'LIVE'}),
-    start:async()=>data,replay:async(id,signal,max)=>{limits.push(max);return data;},close:async()=>{},
+    start:async(...args)=>{limits.push(args[6]);return data;},replay:async(id,signal,max)=>{limits.push(max);return data;},close:async()=>{},
   });
   await flush();h.mode('replay');await flush();h.button('Carregar').props.onClick();await flush();
   await h.tick();
@@ -240,7 +240,7 @@ test('primary alerts retain missing M1, unavailable source and incompatible back
   for(const [extra,expected] of [
     [{status:'UNAVAILABLE'},'Stream de ticks indisponível'],
     [{structure:undefined},'backend ainda não enviou'],
-    [{replayMode:'PROGRESSIVE_M1',missingM1Times:[1793199660000]},'minuto(s) interno(s) ausente(s)'],
+    [{replayMode:'PROGRESSIVE_M1',missingM1Times:[1793199660000]},'minuto(s) ausente(s)'],
     [{structure:{supported:true,levels:[],totalActive:0,maxLevels:6,selection:'NEAREST_LAST_CLOSED_THEN_LATEST_CONFIRMED'}},'Preparação H1 indisponível'],
   ]) {
     const data={symbol:'WINZ26',timeframeMinutes:5,status:'LIVE',candles:[],...extra};
@@ -268,8 +268,8 @@ test('all H1 audit sections start collapsed even when the experimental compariso
   await flush();const details=h.nodes().filter(n=>n.type==='details');
   assert.ok(details.some(n=>textOf(n.props.children[0]).includes('Candidatos H1 1+1')));
   assert.ok(details.every(n=>n.props.open!==true));
-  assert.equal(h.field('Referência H1 2+2').props.control.props.checked,true,'detector comparison parameters are preserved');
-  assert.equal(h.field('Adicionais H1 1+1').props.control.props.checked,true);
+  assert.equal(h.field('Referência H1 2+2').props.control.props.checked,false,'comparison visibility starts off');
+  assert.equal(h.field('Adicionais H1 1+1').props.control.props.checked,false);
   assert.equal(h.field('H1 - fúcsia').props.control.props.checked,false);h.close();
 });
 
@@ -288,4 +288,20 @@ test('M5 audit archives the single visual projection once and polling does not r
   await h.tick();assert.equal(calls.length,1);
   assert.equal(h.chart.bars,data.candles);
   h.close();
+});
+
+
+test('paused and completed replay do not repeatedly fetch or render snapshots; play and step remain causal',async()=>{
+  let polls=0,status='PAUSED',count=0;
+  const view=()=>({id:'session',symbol:'WINZ26',timeframeMinutes:5,status,speed:1,candles:Array.from({length:count},(_,i)=>candle(i))});
+  const h=host({config:async()=>config,live:async()=>({...view(),id:undefined,status:'LIVE'}),close:async()=>{},
+    start:async()=>view(),replay:async()=>{polls++;return view();},
+    command:async(_id,action)=>{if(action==='PLAY')status='PLAYING';if(action==='PAUSE')status='PAUSED';if(action==='NEXT')count++;return view();}});
+  await flush();h.mode('replay');await flush();await h.button('Carregar').props.onClick();await flush();
+  await h.tick();await h.tick();assert.equal(polls,0);
+  await h.button('ximo candle').props.onClick();await flush();assert.equal(h.chart.bars.length,1);
+  await h.button('Play').props.onClick();await flush();await h.tick();assert.equal(polls,1);
+  await h.button('Pause').props.onClick();await flush();await h.tick();assert.equal(polls,1);
+  await h.button('Play').props.onClick();await flush();status='COMPLETED';await h.tick();assert.equal(polls,2);
+  await h.tick();assert.equal(polls,2);h.close();
 });
