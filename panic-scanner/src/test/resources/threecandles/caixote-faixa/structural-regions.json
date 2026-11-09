@@ -1,0 +1,1127 @@
+[
+  {
+    "date": "2026-10-01",
+    "start": 1790872800,
+    "confirmed": 1790874600,
+    "end": 1790879100,
+    "exit": "DATA_END_OR_GAP",
+    "exit_known": 1790879700,
+    "versions": [
+      {
+        "known": 1790874600,
+        "high": 188075.0,
+        "low": 187730.0,
+        "mid": 187902.5
+      },
+      {
+        "known": 1790875200,
+        "high": 188088.875,
+        "low": 187730.0,
+        "mid": 187909.4375
+      }
+    ],
+    "high": 188088.875,
+    "low": 187730.0,
+    "mid": 187909.4375,
+    "body_mean": 64.16666666666667,
+    "reference_body": 120.0,
+    "reference_range": 217.5,
+    "close_width": 135.0,
+    "slope": 2.5714285714285716,
+    "crossings": 3,
+    "padding": 105.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-02",
+    "start": 1790934000,
+    "confirmed": 1790935800,
+    "end": 1790936400,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1790936400,
+    "versions": [
+      {
+        "known": 1790935800,
+        "high": 191585.0,
+        "low": 190440.0,
+        "mid": 191012.5
+      }
+    ],
+    "high": 191585.0,
+    "low": 190440.0,
+    "mid": 191012.5,
+    "body_mean": 204.16666666666666,
+    "reference_body": 415.0,
+    "reference_range": 812.5,
+    "close_width": 545.0,
+    "slope": 72.14285714285714,
+    "crossings": 2,
+    "padding": 300.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-02",
+    "start": 1790952000,
+    "confirmed": 1790953800,
+    "end": 1790956500,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1790956500,
+    "versions": [
+      {
+        "known": 1790953800,
+        "high": 191095.0,
+        "low": 190600.0,
+        "mid": 190847.5
+      },
+      {
+        "known": 1790954400,
+        "high": 191215.0,
+        "low": 190600.0,
+        "mid": 190907.5
+      },
+      {
+        "known": 1790955300,
+        "high": 191275.0,
+        "low": 190600.0,
+        "mid": 190937.5
+      },
+      {
+        "known": 1790955900,
+        "high": 191276.5,
+        "low": 190600.0,
+        "mid": 190938.25
+      }
+    ],
+    "high": 191276.5,
+    "low": 190600.0,
+    "mid": 190938.25,
+    "body_mean": 60.0,
+    "reference_body": 222.5,
+    "reference_range": 410.0,
+    "close_width": 165.0,
+    "slope": 0.14285714285714285,
+    "crossings": 3,
+    "padding": 165.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-05",
+    "start": 1791221400,
+    "confirmed": 1791223200,
+    "end": 1791224700,
+    "exit": "DATA_END_OR_GAP",
+    "exit_known": 1791277500,
+    "versions": [
+      {
+        "known": 1791223200,
+        "high": 207840.0,
+        "low": 207420.0,
+        "mid": 207630.0
+      },
+      {
+        "known": 1791223500,
+        "high": 207895.0,
+        "low": 207420.0,
+        "mid": 207657.5
+      },
+      {
+        "known": 1791224100,
+        "high": 207940.0,
+        "low": 207420.0,
+        "mid": 207680.0
+      },
+      {
+        "known": 1791224400,
+        "high": 208095.0,
+        "low": 207420.0,
+        "mid": 207757.5
+      },
+      {
+        "known": 1791224700,
+        "high": 208130.0,
+        "low": 207420.0,
+        "mid": 207775.0
+      }
+    ],
+    "high": 208130.0,
+    "low": 207420.0,
+    "mid": 207775.0,
+    "body_mean": 80.0,
+    "reference_body": 160.0,
+    "reference_range": 500.0,
+    "close_width": 160.0,
+    "slope": -10.714285714285714,
+    "crossings": 2,
+    "padding": 130.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-06",
+    "start": 1791279300,
+    "confirmed": 1791281100,
+    "end": 1791282000,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1791282000,
+    "versions": [
+      {
+        "known": 1791281100,
+        "high": 208915.0,
+        "low": 207945.0,
+        "mid": 208430.0
+      }
+    ],
+    "high": 208915.0,
+    "low": 207945.0,
+    "mid": 208430.0,
+    "body_mean": 157.5,
+    "reference_body": 375.0,
+    "reference_range": 835.0,
+    "close_width": 350.0,
+    "slope": 33.0,
+    "crossings": 2,
+    "padding": 310.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-06",
+    "start": 1791288600,
+    "confirmed": 1791290400,
+    "end": 1791297600,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1791297600,
+    "versions": [
+      {
+        "known": 1791290400,
+        "high": 206580.0,
+        "low": 205930.0,
+        "mid": 206255.0
+      },
+      {
+        "known": 1791290700,
+        "high": 206580.0,
+        "low": 205775.0,
+        "mid": 206177.5
+      },
+      {
+        "known": 1791296700,
+        "high": 206865.0,
+        "low": 205775.0,
+        "mid": 206320.0
+      }
+    ],
+    "high": 206865.0,
+    "low": 205775.0,
+    "mid": 206320.0,
+    "body_mean": 157.5,
+    "reference_body": 230.0,
+    "reference_range": 692.5,
+    "close_width": 250.0,
+    "slope": 11.142857142857142,
+    "crossings": 4,
+    "padding": 200.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-06",
+    "start": 1791303000,
+    "confirmed": 1791304800,
+    "end": 1791307200,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1791307200,
+    "versions": [
+      {
+        "known": 1791304800,
+        "high": 206645.0,
+        "low": 206300.0,
+        "mid": 206472.5
+      },
+      {
+        "known": 1791305700,
+        "high": 206645.0,
+        "low": 206275.0,
+        "mid": 206460.0
+      },
+      {
+        "known": 1791306000,
+        "high": 206685.0,
+        "low": 206275.0,
+        "mid": 206480.0
+      }
+    ],
+    "high": 206685.0,
+    "low": 206275.0,
+    "mid": 206480.0,
+    "body_mean": 62.5,
+    "reference_body": 137.5,
+    "reference_range": 295.0,
+    "close_width": 155.0,
+    "slope": -12.571428571428571,
+    "crossings": 3,
+    "padding": 95.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-07",
+    "start": 1791365400,
+    "confirmed": 1791367200,
+    "end": 1791368700,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1791368700,
+    "versions": [
+      {
+        "known": 1791367200,
+        "high": 206630.0,
+        "low": 205670.0,
+        "mid": 206150.0
+      },
+      {
+        "known": 1791367500,
+        "high": 206655.875,
+        "low": 205670.0,
+        "mid": 206162.9375
+      }
+    ],
+    "high": 206655.875,
+    "low": 205670.0,
+    "mid": 206162.9375,
+    "body_mean": 170.0,
+    "reference_body": 260.0,
+    "reference_range": 597.5,
+    "close_width": 350.0,
+    "slope": 25.142857142857142,
+    "crossings": 3,
+    "padding": 305.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-07",
+    "start": 1791384300,
+    "confirmed": 1791386100,
+    "end": 1791389400,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1791389400,
+    "versions": [
+      {
+        "known": 1791386100,
+        "high": 206165.0,
+        "low": 205800.0,
+        "mid": 205982.5
+      },
+      {
+        "known": 1791386700,
+        "high": 206165.0,
+        "low": 205770.0,
+        "mid": 205967.5
+      },
+      {
+        "known": 1791387000,
+        "high": 206165.0,
+        "low": 205655.0,
+        "mid": 205910.0
+      },
+      {
+        "known": 1791387900,
+        "high": 206165.0,
+        "low": 205645.25,
+        "mid": 205905.125
+      }
+    ],
+    "high": 206165.0,
+    "low": 205645.25,
+    "mid": 205905.125,
+    "body_mean": 52.5,
+    "reference_body": 137.5,
+    "reference_range": 315.0,
+    "close_width": 135.0,
+    "slope": 15.714285714285714,
+    "crossings": 2,
+    "padding": 115.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-07",
+    "start": 1791393600,
+    "confirmed": 1791395400,
+    "end": 1791397500,
+    "exit": "DATA_END_OR_GAP",
+    "exit_known": 1791450300,
+    "versions": [
+      {
+        "known": 1791395400,
+        "high": 204940.0,
+        "low": 204680.0,
+        "mid": 204810.0
+      },
+      {
+        "known": 1791396600,
+        "high": 204940.0,
+        "low": 204660.0,
+        "mid": 204800.0
+      },
+      {
+        "known": 1791396900,
+        "high": 204940.0,
+        "low": 204640.0,
+        "mid": 204790.0
+      }
+    ],
+    "high": 204940.0,
+    "low": 204640.0,
+    "mid": 204790.0,
+    "body_mean": 40.0,
+    "reference_body": 130.0,
+    "reference_range": 237.5,
+    "close_width": 120.0,
+    "slope": -17.142857142857142,
+    "crossings": 2,
+    "padding": 70.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-08",
+    "start": 1791465600,
+    "confirmed": 1791467400,
+    "end": 1791468000,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1791468000,
+    "versions": [
+      {
+        "known": 1791467400,
+        "high": 206340.0,
+        "low": 205980.0,
+        "mid": 206160.0
+      }
+    ],
+    "high": 206340.0,
+    "low": 205980.0,
+    "mid": 206160.0,
+    "body_mean": 59.166666666666664,
+    "reference_body": 117.5,
+    "reference_range": 292.5,
+    "close_width": 130.0,
+    "slope": -5.857142857142857,
+    "crossings": 2,
+    "padding": 115.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-08",
+    "start": 1791480900,
+    "confirmed": 1791482700,
+    "end": 1791483300,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1791483300,
+    "versions": [
+      {
+        "known": 1791482700,
+        "high": 206565.0,
+        "low": 206230.0,
+        "mid": 206397.5
+      }
+    ],
+    "high": 206565.0,
+    "low": 206230.0,
+    "mid": 206397.5,
+    "body_mean": 53.333333333333336,
+    "reference_body": 90.0,
+    "reference_range": 205.0,
+    "close_width": 125.0,
+    "slope": -7.0,
+    "crossings": 3,
+    "padding": 105.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-09",
+    "start": 1791565800,
+    "confirmed": 1791567600,
+    "end": 1791570300,
+    "exit": "DATA_END_OR_GAP",
+    "exit_known": 1791882300,
+    "versions": [
+      {
+        "known": 1791567600,
+        "high": 209095.0,
+        "low": 208775.0,
+        "mid": 208935.0
+      },
+      {
+        "known": 1791568200,
+        "high": 209175.0,
+        "low": 208775.0,
+        "mid": 208975.0
+      }
+    ],
+    "high": 209175.0,
+    "low": 208775.0,
+    "mid": 208975.0,
+    "body_mean": 47.5,
+    "reference_body": 90.0,
+    "reference_range": 255.0,
+    "close_width": 80.0,
+    "slope": -13.428571428571429,
+    "crossings": 3,
+    "padding": 120.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-13",
+    "start": 1791891900,
+    "confirmed": 1791893700,
+    "end": 1791900300,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1791900300,
+    "versions": [
+      {
+        "known": 1791893700,
+        "high": 207750.0,
+        "low": 206975.0,
+        "mid": 207362.5
+      },
+      {
+        "known": 1791895200,
+        "high": 207760.0,
+        "low": 206975.0,
+        "mid": 207367.5
+      },
+      {
+        "known": 1791896100,
+        "high": 207841.25,
+        "low": 206975.0,
+        "mid": 207408.125
+      }
+    ],
+    "high": 207841.25,
+    "low": 206975.0,
+    "mid": 207408.125,
+    "body_mean": 167.5,
+    "reference_body": 237.5,
+    "reference_range": 525.0,
+    "close_width": 255.0,
+    "slope": 10.0,
+    "crossings": 4,
+    "padding": 260.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-13",
+    "start": 1791909600,
+    "confirmed": 1791911400,
+    "end": 1791915600,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1791915600,
+    "versions": [
+      {
+        "known": 1791911400,
+        "high": 207055.0,
+        "low": 206710.0,
+        "mid": 206882.5
+      },
+      {
+        "known": 1791912900,
+        "high": 207055.0,
+        "low": 206700.0,
+        "mid": 206877.5
+      },
+      {
+        "known": 1791914400,
+        "high": 207055.0,
+        "low": 206680.0,
+        "mid": 206867.5
+      },
+      {
+        "known": 1791915000,
+        "high": 207055.0,
+        "low": 206679.625,
+        "mid": 206867.3125
+      }
+    ],
+    "high": 207055.0,
+    "low": 206679.625,
+    "mid": 206867.3125,
+    "body_mean": 63.333333333333336,
+    "reference_body": 105.0,
+    "reference_range": 227.5,
+    "close_width": 115.0,
+    "slope": -7.142857142857143,
+    "crossings": 3,
+    "padding": 115.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-14",
+    "start": 1791991800,
+    "confirmed": 1791993600,
+    "end": 1791994200,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1791994200,
+    "versions": [
+      {
+        "known": 1791993600,
+        "high": 211455.0,
+        "low": 211055.0,
+        "mid": 211255.0
+      }
+    ],
+    "high": 211455.0,
+    "low": 211055.0,
+    "mid": 211255.0,
+    "body_mean": 42.5,
+    "reference_body": 97.5,
+    "reference_range": 305.0,
+    "close_width": 140.0,
+    "slope": -14.142857142857142,
+    "crossings": 2,
+    "padding": 130.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-14",
+    "start": 1791997200,
+    "confirmed": 1791999000,
+    "end": 1792001700,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1792001700,
+    "versions": [
+      {
+        "known": 1791999000,
+        "high": 211115.0,
+        "low": 210745.0,
+        "mid": 210930.0
+      },
+      {
+        "known": 1792001100,
+        "high": 211190.5,
+        "low": 210745.0,
+        "mid": 210967.75
+      }
+    ],
+    "high": 211190.5,
+    "low": 210745.0,
+    "mid": 210967.75,
+    "body_mean": 49.166666666666664,
+    "reference_body": 120.0,
+    "reference_range": 270.0,
+    "close_width": 130.0,
+    "slope": -8.428571428571429,
+    "crossings": 2,
+    "padding": 120.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-15",
+    "start": 1792078200,
+    "confirmed": 1792080000,
+    "end": 1792081200,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1792081200,
+    "versions": [
+      {
+        "known": 1792080000,
+        "high": 210055.0,
+        "low": 209645.0,
+        "mid": 209850.0
+      }
+    ],
+    "high": 210055.0,
+    "low": 209645.0,
+    "mid": 209850.0,
+    "body_mean": 70.83333333333333,
+    "reference_body": 105.0,
+    "reference_range": 275.0,
+    "close_width": 180.0,
+    "slope": -2.2857142857142856,
+    "crossings": 2,
+    "padding": 115.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-16",
+    "start": 1792152900,
+    "confirmed": 1792154700,
+    "end": 1792155900,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1792155900,
+    "versions": [
+      {
+        "known": 1792154700,
+        "high": 209380.0,
+        "low": 208595.0,
+        "mid": 208987.5
+      }
+    ],
+    "high": 209380.0,
+    "low": 208595.0,
+    "mid": 208987.5,
+    "body_mean": 118.33333333333333,
+    "reference_body": 315.0,
+    "reference_range": 520.0,
+    "close_width": 345.0,
+    "slope": 34.142857142857146,
+    "crossings": 2,
+    "padding": 220.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-19",
+    "start": 1792422300,
+    "confirmed": 1792424100,
+    "end": 1792428300,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1792428300,
+    "versions": [
+      {
+        "known": 1792424100,
+        "high": 209445.0,
+        "low": 209170.0,
+        "mid": 209307.5
+      },
+      {
+        "known": 1792425000,
+        "high": 209566.0,
+        "low": 209170.0,
+        "mid": 209368.0
+      }
+    ],
+    "high": 209566.0,
+    "low": 209170.0,
+    "mid": 209368.0,
+    "body_mean": 61.666666666666664,
+    "reference_body": 115.0,
+    "reference_range": 240.0,
+    "close_width": 95.0,
+    "slope": 0.2857142857142857,
+    "crossings": 4,
+    "padding": 90.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-19",
+    "start": 1792430400,
+    "confirmed": 1792432200,
+    "end": 1792432800,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1792432800,
+    "versions": [
+      {
+        "known": 1792432200,
+        "high": 209935.0,
+        "low": 209715.0,
+        "mid": 209825.0
+      }
+    ],
+    "high": 209935.0,
+    "low": 209715.0,
+    "mid": 209825.0,
+    "body_mean": 35.0,
+    "reference_body": 112.5,
+    "reference_range": 205.0,
+    "close_width": 110.0,
+    "slope": 12.571428571428571,
+    "crossings": 2,
+    "padding": 55.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-20",
+    "start": 1792496100,
+    "confirmed": 1792497900,
+    "end": 1792501500,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1792501500,
+    "versions": [
+      {
+        "known": 1792497900,
+        "high": 212555.0,
+        "low": 211730.0,
+        "mid": 212142.5
+      },
+      {
+        "known": 1792498800,
+        "high": 212592.125,
+        "low": 211730.0,
+        "mid": 212161.0625
+      }
+    ],
+    "high": 212592.125,
+    "low": 211730.0,
+    "mid": 212161.0625,
+    "body_mean": 144.16666666666666,
+    "reference_body": 267.5,
+    "reference_range": 522.5,
+    "close_width": 295.0,
+    "slope": 31.0,
+    "crossings": 3,
+    "padding": 265.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-20",
+    "start": 1792517100,
+    "confirmed": 1792518900,
+    "end": 1792520700,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1792520700,
+    "versions": [
+      {
+        "known": 1792518900,
+        "high": 212440.0,
+        "low": 212120.0,
+        "mid": 212280.0
+      }
+    ],
+    "high": 212440.0,
+    "low": 212120.0,
+    "mid": 212280.0,
+    "body_mean": 37.5,
+    "reference_body": 92.5,
+    "reference_range": 215.0,
+    "close_width": 110.0,
+    "slope": -6.857142857142857,
+    "crossings": 2,
+    "padding": 105.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-21",
+    "start": 1792582200,
+    "confirmed": 1792584000,
+    "end": 1792586400,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1792586400,
+    "versions": [
+      {
+        "known": 1792584000,
+        "high": 211870.0,
+        "low": 211260.0,
+        "mid": 211565.0
+      },
+      {
+        "known": 1792584600,
+        "high": 211870.0,
+        "low": 211240.0,
+        "mid": 211555.0
+      },
+      {
+        "known": 1792585800,
+        "high": 211875.0,
+        "low": 211240.0,
+        "mid": 211557.5
+      }
+    ],
+    "high": 211875.0,
+    "low": 211240.0,
+    "mid": 211557.5,
+    "body_mean": 84.16666666666667,
+    "reference_body": 132.5,
+    "reference_range": 417.5,
+    "close_width": 80.0,
+    "slope": -6.285714285714286,
+    "crossings": 4,
+    "padding": 265.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-21",
+    "start": 1792601100,
+    "confirmed": 1792602900,
+    "end": 1792603500,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1792603500,
+    "versions": [
+      {
+        "known": 1792602900,
+        "high": 210555.0,
+        "low": 210250.0,
+        "mid": 210402.5
+      }
+    ],
+    "high": 210555.0,
+    "low": 210250.0,
+    "mid": 210402.5,
+    "body_mean": 50.833333333333336,
+    "reference_body": 70.0,
+    "reference_range": 207.5,
+    "close_width": 105.0,
+    "slope": -1.2857142857142858,
+    "crossings": 3,
+    "padding": 100.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-22",
+    "start": 1792689900,
+    "confirmed": 1792691700,
+    "end": 1792692600,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1792692600,
+    "versions": [
+      {
+        "known": 1792691700,
+        "high": 207625.0,
+        "low": 207365.0,
+        "mid": 207495.0
+      }
+    ],
+    "high": 207625.0,
+    "low": 207365.0,
+    "mid": 207495.0,
+    "body_mean": 53.333333333333336,
+    "reference_body": 95.0,
+    "reference_range": 220.0,
+    "close_width": 100.0,
+    "slope": -2.5714285714285716,
+    "crossings": 4,
+    "padding": 80.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-26",
+    "start": 1793035800,
+    "confirmed": 1793037600,
+    "end": 1793039100,
+    "exit": "DATA_END_OR_GAP",
+    "exit_known": 1793091900,
+    "versions": [
+      {
+        "known": 1793037600,
+        "high": 178190.0,
+        "low": 177440.0,
+        "mid": 177815.0
+      },
+      {
+        "known": 1793037900,
+        "high": 178350.0,
+        "low": 177440.0,
+        "mid": 177895.0
+      }
+    ],
+    "high": 178350.0,
+    "low": 177440.0,
+    "mid": 177895.0,
+    "body_mean": 111.66666666666667,
+    "reference_body": 345.0,
+    "reference_range": 835.0,
+    "close_width": 250.0,
+    "slope": 25.857142857142858,
+    "crossings": 3,
+    "padding": 250.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-27",
+    "start": 1793122200,
+    "confirmed": 1793124000,
+    "end": 1793125500,
+    "exit": "DATA_END_OR_GAP",
+    "exit_known": 1793178300,
+    "versions": [
+      {
+        "known": 1793124000,
+        "high": 178475.0,
+        "low": 178265.0,
+        "mid": 178370.0
+      },
+      {
+        "known": 1793124300,
+        "high": 178515.0,
+        "low": 178265.0,
+        "mid": 178390.0
+      },
+      {
+        "known": 1793125500,
+        "high": 178515.0,
+        "low": 178240.0,
+        "mid": 178377.5
+      }
+    ],
+    "high": 178515.0,
+    "low": 178240.0,
+    "mid": 178377.5,
+    "body_mean": 41.666666666666664,
+    "reference_body": 135.0,
+    "reference_range": 285.0,
+    "close_width": 70.0,
+    "slope": -2.857142857142857,
+    "crossings": 3,
+    "padding": 70.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-28",
+    "start": 1793187600,
+    "confirmed": 1793189400,
+    "end": 1793195700,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1793195700,
+    "versions": [
+      {
+        "known": 1793189400,
+        "high": 173495.0,
+        "low": 172775.0,
+        "mid": 173135.0
+      },
+      {
+        "known": 1793189700,
+        "high": 173625.0,
+        "low": 172775.0,
+        "mid": 173200.0
+      },
+      {
+        "known": 1793190000,
+        "high": 173950.625,
+        "low": 172775.0,
+        "mid": 173362.8125
+      }
+    ],
+    "high": 173950.625,
+    "low": 172775.0,
+    "mid": 173362.8125,
+    "body_mean": 125.0,
+    "reference_body": 257.5,
+    "reference_range": 712.5,
+    "close_width": 240.0,
+    "slope": 29.0,
+    "crossings": 3,
+    "padding": 240.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-28",
+    "start": 1793207400,
+    "confirmed": 1793209200,
+    "end": 1793212200,
+    "exit": "DATA_END_OR_GAP",
+    "exit_known": 1793264700,
+    "versions": [
+      {
+        "known": 1793209200,
+        "high": 173795.0,
+        "low": 173390.0,
+        "mid": 173592.5
+      },
+      {
+        "known": 1793210700,
+        "high": 173795.0,
+        "low": 173320.0,
+        "mid": 173557.5
+      },
+      {
+        "known": 1793211900,
+        "high": 173795.0,
+        "low": 173176.25,
+        "mid": 173485.625
+      }
+    ],
+    "high": 173795.0,
+    "low": 173176.25,
+    "mid": 173485.625,
+    "body_mean": 64.16666666666667,
+    "reference_body": 135.0,
+    "reference_range": 375.0,
+    "close_width": 155.0,
+    "slope": -11.142857142857142,
+    "crossings": 2,
+    "padding": 125.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-29",
+    "start": 1793294400,
+    "confirmed": 1793296200,
+    "end": 1793297700,
+    "exit": "TWO_CLOSES_BELOW",
+    "exit_known": 1793297700,
+    "versions": [
+      {
+        "known": 1793296200,
+        "high": 171675.0,
+        "low": 171410.0,
+        "mid": 171542.5
+      },
+      {
+        "known": 1793296800,
+        "high": 171700.0,
+        "low": 171410.0,
+        "mid": 171555.0
+      }
+    ],
+    "high": 171700.0,
+    "low": 171410.0,
+    "mid": 171555.0,
+    "body_mean": 44.166666666666664,
+    "reference_body": 107.5,
+    "reference_range": 220.0,
+    "close_width": 55.0,
+    "slope": 6.714285714285714,
+    "crossings": 3,
+    "padding": 105.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-30",
+    "start": 1793354400,
+    "confirmed": 1793356200,
+    "end": 1793356800,
+    "exit": "TWO_CLOSES_ABOVE",
+    "exit_known": 1793356800,
+    "versions": [
+      {
+        "known": 1793356200,
+        "high": 169845.0,
+        "low": 169235.0,
+        "mid": 169540.0
+      }
+    ],
+    "high": 169845.0,
+    "low": 169235.0,
+    "mid": 169540.0,
+    "body_mean": 108.33333333333333,
+    "reference_body": 207.5,
+    "reference_range": 422.5,
+    "close_width": 250.0,
+    "slope": -7.857142857142857,
+    "crossings": 2,
+    "padding": 180.0,
+    "failed": ""
+  },
+  {
+    "date": "2026-10-30",
+    "start": 1793380500,
+    "confirmed": 1793382300,
+    "end": 1793384700,
+    "exit": "OPEN_AT_END",
+    "exit_known": null,
+    "versions": [
+      {
+        "known": 1793382300,
+        "high": 170380.0,
+        "low": 169990.0,
+        "mid": 170185.0
+      },
+      {
+        "known": 1793383200,
+        "high": 170380.0,
+        "low": 169920.0,
+        "mid": 170150.0
+      },
+      {
+        "known": 1793384400,
+        "high": 170386.125,
+        "low": 169920.0,
+        "mid": 170153.0625
+      }
+    ],
+    "high": 170386.125,
+    "low": 169920.0,
+    "mid": 170153.0625,
+    "body_mean": 50.0,
+    "reference_body": 110.0,
+    "reference_range": 282.5,
+    "close_width": 70.0,
+    "slope": 4.714285714285714,
+    "crossings": 2,
+    "padding": 160.0,
+    "failed": ""
+  }
+]
